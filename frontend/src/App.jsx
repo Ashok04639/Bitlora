@@ -197,7 +197,6 @@ function App() {
               </div>
               <div className="market-change">
                 <strong>{coin.change}</strong>
-                <span>{coin.volume}</span>
               </div>
             </div>
           ))}
