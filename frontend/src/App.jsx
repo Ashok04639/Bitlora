@@ -9,6 +9,7 @@ function App() {
   const [assetsData, setAssetsData] = useState([]);
   const [marketsData, setMarketsData] = useState([]);
   const [transactionsData, setTransactionsData] = useState([]);
+  const [marketTab, setMarketTab] = useState("Favorites");
 
   const API_BASE_URL = `http://${window.location.hostname}:3000`;
 
@@ -124,21 +125,21 @@ function App() {
   ];
 
   const markets = [
-    {
-      pair: "BTC/USDT",
-      price: "$66,842.10",
-      change: "+2.41%",
-    },
-    {
-      pair: "ETH/USDT",
-      price: "$3,224.50",
-      change: "+1.82%",
-    },
-    {
-      pair: "BNB/USDT",
-      price: "$648.30",
-      change: "-0.74%",
-    },
+    { pair: "BTC/USDT", price: "$66,842.10", change: "+2.41%" },
+    { pair: "ETH/USDT", price: "$3,224.50", change: "+1.82%" },
+    { pair: "BNB/USDT", price: "$648.30", change: "-0.74%" },
+    { pair: "SOL/USDT", price: "$182.45", change: "+3.16%" },
+    { pair: "DOGE/USDT", price: "$0.1742", change: "+2.87%" },
+    { pair: "SHIB/USDT", price: "$0.00001284", change: "+1.94%" },
+    { pair: "ADA/USDT", price: "$0.8215", change: "+1.27%" },
+    { pair: "XRP/USDT", price: "$2.74", change: "+2.08%" },
+    { pair: "TRX/USDT", price: "$0.3438", change: "+0.92%" },
+    { pair: "AVAX/USDT", price: "$28.64", change: "-1.12%" },
+    { pair: "LINK/USDT", price: "$18.42", change: "+2.35%" },
+    { pair: "DOT/USDT", price: "$4.76", change: "+1.08%" },
+    { pair: "ICP/USDT", price: "$5.91", change: "+1.76%" },
+    { pair: "LTC/USDT", price: "$68.25", change: "+0.64%" },
+    { pair: "TON/USDT", price: "$3.18", change: "-0.58%" },
   ];
 
   const formattedBalance = balanceData
@@ -157,7 +158,10 @@ function App() {
     : "Loading...";
 
   const displayAssets = assetsData.length > 0 ? assetsData : assets;
-  const displayMarkets = marketsData.length > 0 ? marketsData : markets;
+  const displayMarkets = (marketsData.length > 0 ? marketsData : markets).filter((market) => {
+    if (marketTab === "Favorites") return true;
+    return market.pair.endsWith(`/${marketTab}`);
+  });
 
   const displayTransactions =
     transactionsData.length > 0
@@ -301,36 +305,57 @@ function App() {
       )}
 
       {active === "Markets" && (
-        <section className="section">
+        <section className="markets-screen">
           <div className="section-header">
             <div>
               <h3>Markets</h3>
-              <p>Latest crypto market prices</p>
+              <p>Explore crypto markets</p>
             </div>
           </div>
 
-          <div className="cards">
-            {displayMarkets.map((market) => (
-              <div className="market" key={market.pair}>
-                <div className="market-left">
-                  <div className="market-icon">◆</div>
+          <div className="market-search">
+            <span>⌕</span>
+            <input type="text" placeholder="Search markets" aria-label="Search markets" />
+          </div>
 
+          <div className="market-tabs">
+            {["Favorites", "USDT", "USDC", "BTC", "ETH"].map((tab) => (
+              <button
+                key={tab}
+                type="button"
+                className={marketTab === tab ? "active" : ""}
+                onClick={() => setMarketTab(tab)}
+              >
+                {tab}
+              </button>
+            ))}
+          </div>
+
+          <div className="market-list">
+            <div className="market-list-header">
+              <span>Pair</span>
+              <span>Last Price</span>
+              <span>24h Change</span>
+            </div>
+
+            {displayMarkets.map((market) => (
+              <div className="market-row" key={market.pair}>
+                <div className="market-pair">
+                  <button type="button" className="favorite-button">☆</button>
+                  <div className="market-coin">◆</div>
                   <div>
                     <strong>{market.pair}</strong>
-                    <span>24h Market</span>
+                    <span>Spot</span>
                   </div>
                 </div>
 
-                <div className="market-value">
+                <div className="market-price">
                   <strong>{market.price}</strong>
+                  <span>{market.pair.split("/")[1]}</span>
+                </div>
 
-                  <span
-                    className={
-                      market.change.startsWith("+") ? "green" : "red"
-                    }
-                  >
-                    {market.change}
-                  </span>
+                <div className={market.change.startsWith('+') ? 'market-change green' : 'market-change red'}>
+                  {market.change}
                 </div>
               </div>
             ))}
@@ -339,28 +364,87 @@ function App() {
       )}
 
       {active === "Trade" && (
-        <section className="section">
-          <div className="section-header">
+        <section className="trade-screen">
+          <div className="trade-header">
             <div>
-              <h3>Trade</h3>
-              <p>Buy and sell crypto assets</p>
+              <strong>BTC/USDT</strong>
+              <span>Bitcoin / Tether</span>
             </div>
+
+            <button type="button" className="trade-pair-button">
+              ▾
+            </button>
           </div>
 
-          <div className="cards">
-            <div className="market">
-              <div className="market-left">
-                <div className="market-icon">⇄</div>
+          <div className="trade-price-card">
+            <div>
+              <strong>{marketsData.find((market) => market.pair === "BTC/USDT")?.price || "$66,842.10"}</strong>
+              <span>≈ {marketsData.find((market) => market.pair === "BTC/USDT")?.price || "$66,842.10"}</span>
+            </div>
 
+            <span className="green">+2.41%</span>
+          </div>
+
+          <div className="trade-layout">
+            <div className="trade-panel">
+              <div className="trade-tabs">
+                <button type="button" className="active">Buy</button>
+                <button type="button">Sell</button>
+              </div>
+
+              <div className="order-tabs">
+                <button type="button" className="active">Limit</button>
+                <button type="button">Market</button>
+              </div>
+
+              <div className="order-field">
+                <label>Price</label>
                 <div>
-                  <strong>BTC/USDT</strong>
-                  <span>Trading Pair</span>
+                  <input type="text" value={marketsData.find((market) => market.pair === "BTC/USDT")?.price.replace(/[$,]/g, "") || "66842.10"} readOnly />
+                  <span>USDT</span>
                 </div>
               </div>
 
-              <div className="market-value">
-                <strong>$66,842.10</strong>
-                <span className="green">+2.41%</span>
+              <div className="order-field">
+                <label>Amount</label>
+                <div>
+                  <input type="text" placeholder="0.00" />
+                  <span>BTC</span>
+                </div>
+              </div>
+
+              <div className="order-field">
+                <label>Total</label>
+                <div>
+                  <input type="text" placeholder="0.00" />
+                  <span>USDT</span>
+                </div>
+              </div>
+
+              <div className="trade-balance">
+                <span>Available</span>
+                <strong>{formattedBalance}</strong>
+              </div>
+
+              <button type="button" className="buy-button">
+                Buy BTC
+              </button>
+            </div>
+
+            <div className="order-book">
+              <div className="order-book-header">
+                <strong>Order Book</strong>
+                <span>Price (USDT)</span>
+              </div>
+
+              <div className="order-book-rows">
+                <div><span>66,875.20</span><span>0.0042</span></div>
+                <div><span>66,862.40</span><span>0.0081</span></div>
+                <div><span>66,851.70</span><span>0.0124</span></div>
+                <div className="order-book-current"><strong>66,842.10</strong><span>Last Price</span></div>
+                <div><span>66,830.60</span><span>0.0095</span></div>
+                <div><span>66,821.30</span><span>0.0068</span></div>
+                <div><span>66,810.90</span><span>0.0142</span></div>
               </div>
             </div>
           </div>
