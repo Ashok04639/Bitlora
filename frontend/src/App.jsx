@@ -6,11 +6,12 @@ function App() {
   const [apiStatus, setApiStatus] = useState("Checking...");
   const [balanceData, setBalanceData] = useState(null);
   const [assetsData, setAssetsData] = useState([]);
+  const API_BASE_URL = `http://${window.location.hostname}:3000`;
 
   useEffect(() => {
     const checkApiHealth = async () => {
       try {
-        const response = await fetch("http://localhost:3000/api/health");
+        const response = await fetch(`${API_BASE_URL}/api/health`);
 
         if (!response.ok) {
           throw new Error("API health check failed");
@@ -30,7 +31,7 @@ function App() {
 
     const loadBalance = async () => {
       try {
-        const response = await fetch("http://localhost:3000/api/balance");
+        const response = await fetch(`${API_BASE_URL}/api/balance`);
 
         if (!response.ok) {
           throw new Error("Balance request failed");
@@ -48,7 +49,7 @@ function App() {
 
     const loadAssets = async () => {
       try {
-        const response = await fetch("http://localhost:3000/api/assets");
+        const response = await fetch(`${API_BASE_URL}/api/assets`);
 
         if (!response.ok) {
           throw new Error("Assets API request failed");
