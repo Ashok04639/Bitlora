@@ -4,20 +4,19 @@ import "./App.css";
 function App() {
   const [active, setActive] = useState("Home");
   const [apiStatus, setApiStatus] = useState("Checking...");
+  const [menuOpen, setMenuOpen] = useState(false);
   const [balanceData, setBalanceData] = useState(null);
   const [assetsData, setAssetsData] = useState([]);
   const [marketsData, setMarketsData] = useState([]);
   const [transactionsData, setTransactionsData] = useState([]);
+
   const API_BASE_URL = `http://${window.location.hostname}:3000`;
 
   useEffect(() => {
     const checkApiHealth = async () => {
       try {
         const response = await fetch(`${API_BASE_URL}/api/health`);
-
-        if (!response.ok) {
-          throw new Error("API health check failed");
-        }
+        if (!response.ok) throw new Error("API health check failed");
 
         const data = await response.json();
 
@@ -34,10 +33,7 @@ function App() {
     const loadBalance = async () => {
       try {
         const response = await fetch(`${API_BASE_URL}/api/balance`);
-
-        if (!response.ok) {
-          throw new Error("Balance request failed");
-        }
+        if (!response.ok) throw new Error("Balance request failed");
 
         const data = await response.json();
 
@@ -52,10 +48,7 @@ function App() {
     const loadMarkets = async () => {
       try {
         const response = await fetch(`${API_BASE_URL}/api/markets`);
-
-        if (!response.ok) {
-          throw new Error("Markets API request failed");
-        }
+        if (!response.ok) throw new Error("Markets API request failed");
 
         const data = await response.json();
 
@@ -70,7 +63,6 @@ function App() {
     const loadTransactions = async () => {
       try {
         const response = await fetch(`${API_BASE_URL}/api/transactions`);
-
         if (!response.ok) {
           throw new Error("Transactions API request failed");
         }
@@ -88,10 +80,7 @@ function App() {
     const loadAssets = async () => {
       try {
         const response = await fetch(`${API_BASE_URL}/api/assets`);
-
-        if (!response.ok) {
-          throw new Error("Assets API request failed");
-        }
+        if (!response.ok) throw new Error("Assets API request failed");
 
         const data = await response.json();
 
@@ -99,7 +88,7 @@ function App() {
           setAssetsData(data.assets);
         }
       } catch {
-        setApiStatus("API Offline");
+        setAssetsData([]);
       }
     };
 
@@ -167,6 +156,27 @@ function App() {
     ? `${balanceData.change24h >= 0 ? "+" : ""}${balanceData.change24h}% today`
     : "Loading...";
 
+  const displayAssets = assetsData.length > 0 ? assetsData : assets;
+  const displayMarkets = marketsData.length > 0 ? marketsData : markets;
+
+  const displayTransactions =
+    transactionsData.length > 0
+      ? transactionsData
+      : [
+          {
+            type: "Deposit",
+            asset: "Bitcoin",
+            amount: "+$500.00",
+            direction: "in",
+          },
+          {
+            type: "Trade",
+            asset: "BTC/USDT",
+            amount: "-$120.00",
+            direction: "out",
+          },
+        ];
+
   return (
     <div className="app">
       <header className="header">
@@ -185,174 +195,315 @@ function App() {
           <button className="notification" type="button">
             🔔
           </button>
+
+          <button
+            className="menu-button"
+            type="button"
+            onClick={() => setMenuOpen(!menuOpen)}
+          >
+            ☰
+          </button>
+
+          {menuOpen && (
+            <div className="profile-menu">
+              <button
+                type="button"
+                onClick={() => {
+                  setActive("Profile");
+                  setMenuOpen(false);
+                }}
+              >
+                Profile
+              </button>
+            </div>
+          )}
         </div>
       </header>
 
       {active === "Home" && (
         <>
+          <section className="balance">
+            <div className="balance-title">
+              <span>Total Balance</span>
+              <button type="button">•••</button>
+            </div>
 
-      <section className="balance">
-        <div className="balance-title">
-          <span>Total Balance</span>
-          <button type="button">•••</button>
-        </div>
+            <h2>{formattedBalance}</h2>
 
-        <h2>{formattedBalance}</h2>
+            <div className="balance-info">
+              <span>{formattedBtcEquivalent}</span>
+              <strong>{formattedChange}</strong>
+            </div>
+          </section>
 
-        <div className="balance-info">
-          <span>{formattedBtcEquivalent}</span>
-          <strong>{formattedChange}</strong>
-        </div>
-      </section>
+          <section className="actions">
+            <button type="button" onClick={() => setActive("Wallet")}>
+              <span>↓</span>
+              Deposit
+            </button>
 
-      <section className="actions">
-        <button type="button" onClick={() => setActive("Wallet")}>
-          <span>↓</span>
-          Deposit
-        </button>
+            <button type="button" onClick={() => setActive("Wallet")}>
+              <span>↑</span>
+              Withdraw
+            </button>
 
-        <button type="button" onClick={() => setActive("Wallet")}>
-          <span>↑</span>
-          Withdraw
-        </button>
+            <button type="button">
+              <span>⇄</span>
+              Transfer
+            </button>
 
-        <button type="button">
-          <span>⇄</span>
-          Transfer
-        </button>
+            <button type="button" onClick={() => setActive("Trade")}>
+              <span>+</span>
+              Buy
+            </button>
+          </section>
 
-        <button type="button" onClick={() => setActive("Trade")}>
-          <span>+</span>
-          Buy
-        </button>
-      </section>
+          <section className="section">
+            <div className="section-header">
+              <div>
+                <h3>Market Overview</h3>
+                <p>Latest crypto prices</p>
+              </div>
 
+              <button type="button" onClick={() => setActive("Markets")}>
+                View all
+              </button>
+            </div>
 
-      <section className="section">
-        <div className="section-header">
-          <div>
-            <h3>Market Overview</h3>
-            <p>Latest crypto prices</p>
+            <div className="cards">
+              {displayMarkets.map((market) => (
+                <div className="market" key={market.pair}>
+                  <div className="market-left">
+                    <div className="market-icon">◆</div>
+
+                    <div>
+                      <strong>{market.pair}</strong>
+                      <span>24h Market</span>
+                    </div>
+                  </div>
+
+                  <div className="market-value">
+                    <strong>{market.price}</strong>
+
+                    <span
+                      className={
+                        market.change.startsWith("+") ? "green" : "red"
+                      }
+                    >
+                      {market.change}
+                    </span>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </section>
+        </>
+      )}
+
+      {active === "Markets" && (
+        <section className="section">
+          <div className="section-header">
+            <div>
+              <h3>Markets</h3>
+              <p>Latest crypto market prices</p>
+            </div>
           </div>
 
-          <button type="button" onClick={() => setActive("Markets")}>
-            View all
-          </button>
-        </div>
+          <div className="cards">
+            {displayMarkets.map((market) => (
+              <div className="market" key={market.pair}>
+                <div className="market-left">
+                  <div className="market-icon">◆</div>
 
-        <div className="cards">
-          {(marketsData.length > 0 ? marketsData : markets).map((market) => (
-            <div className="market" key={market.pair}>
+                  <div>
+                    <strong>{market.pair}</strong>
+                    <span>24h Market</span>
+                  </div>
+                </div>
+
+                <div className="market-value">
+                  <strong>{market.price}</strong>
+
+                  <span
+                    className={
+                      market.change.startsWith("+") ? "green" : "red"
+                    }
+                  >
+                    {market.change}
+                  </span>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+      )}
+
+      {active === "Trade" && (
+        <section className="section">
+          <div className="section-header">
+            <div>
+              <h3>Trade</h3>
+              <p>Buy and sell crypto assets</p>
+            </div>
+          </div>
+
+          <div className="cards">
+            <div className="market">
               <div className="market-left">
-                <div className="market-icon">◆</div>
+                <div className="market-icon">⇄</div>
 
                 <div>
-                  <strong>{market.pair}</strong>
-                  <span>24h Market</span>
+                  <strong>BTC/USDT</strong>
+                  <span>Trading Pair</span>
                 </div>
               </div>
 
               <div className="market-value">
-                <strong>{market.price}</strong>
-
-                <span
-                  className={
-                    market.change.startsWith("+") ? "green" : "red"
-                  }
-                >
-                  {market.change}
-                </span>
+                <strong>$66,842.10</strong>
+                <span className="green">+2.41%</span>
               </div>
             </div>
-          ))}
-        </div>
-      </section>
-
-
-        </>
+          </div>
+        </section>
       )}
 
-        {active === "Wallet" && (
-          <section className="wallet-screen">
-            <div className="section-header">
-              <div>
-                <h3>Wallet</h3>
-                <p>Manage your crypto assets</p>
-              </div>
+      {active === "Futures" && (
+        <section className="section">
+          <div className="section-header">
+            <div>
+              <h3>Futures</h3>
+              <p>Trade crypto futures</p>
             </div>
+          </div>
 
-            <div className="wallet-balance">
-              <span>Total Wallet Balance</span>
-              <strong>{formattedBalance}</strong>
-              <small>{formattedBtcEquivalent}</small>
-            </div>
+          <div className="cards">
+            <div className="market">
+              <div className="market-left">
+                <div className="market-icon">⚡</div>
 
-            <div className="wallet-actions">
-              <button type="button">
-                <span>↓</span>
-                Deposit
-              </button>
-              <button type="button">
-                <span>↑</span>
-                Withdraw
-              </button>
-            </div>
-
-            <div className="section-header">
-              <div>
-                <h3>Your Assets</h3>
-                <p>Available crypto balances</p>
-              </div>
-            </div>
-
-            <div className="cards">
-              {assetsData.map((asset) => (
-                <div className="asset" key={asset.symbol}>
-                  <div className="coin">{asset.icon}</div>
-                  <div className="asset-name">
-                    <strong>{asset.name}</strong>
-                    <span>{asset.symbol}</span>
-                  </div>
-                  <div className="asset-value">
-                    <strong>{asset.amount}</strong>
-                    <span>{asset.value}</span>
-                  </div>
+                <div>
+                  <strong>BTC/USDT Perpetual</strong>
+                  <span>Futures Market</span>
                 </div>
-              ))}
-            </div>
+              </div>
 
-            <div className="section-header">
-              <div>
-                <h3>Recent Transactions</h3>
-                <p>Your latest activity</p>
+              <div className="market-value">
+                <strong>$66,842.10</strong>
+                <span className="green">+2.41%</span>
               </div>
             </div>
+          </div>
+        </section>
+      )}
 
-            <div className="cards">
-              {(transactionsData.length > 0 ? transactionsData : [
-                { type: "Deposit", asset: "Bitcoin", amount: "+$500.00", direction: "in" },
-                { type: "Trade", asset: "BTC/USDT", amount: "-$120.00", direction: "out" }
-              ]).map((transaction, index) => (
-                <div className="transaction" key={`${transaction.type}-${index}`}>
-                  <div className="transaction-icon">
-                    {transaction.direction === "in" ? "↓" : "⇄"}
-                  </div>
-
-                  <div>
-                    <strong>{transaction.type}</strong>
-                    <span>{transaction.asset}</span>
-                  </div>
-
-                  <b className={transaction.direction === "in" ? "green" : "red"}>
-                    {transaction.amount}
-                  </b>
-                </div>
-              ))}
+      {active === "Wallet" && (
+        <section className="wallet-screen">
+          <div className="section-header">
+            <div>
+              <h3>Wallet</h3>
+              <p>Manage your crypto assets</p>
             </div>
+          </div>
 
-          </section>
-        )}
+          <div className="wallet-balance">
+            <span>Total Wallet Balance</span>
+            <strong>{formattedBalance}</strong>
+            <small>{formattedBtcEquivalent}</small>
+          </div>
 
+          <div className="wallet-actions">
+            <button type="button">
+              <span>↓</span>
+              Deposit
+            </button>
+
+            <button type="button">
+              <span>↑</span>
+              Withdraw
+            </button>
+          </div>
+
+          <div className="section-header">
+            <div>
+              <h3>Your Assets</h3>
+              <p>Available crypto balances</p>
+            </div>
+          </div>
+
+          <div className="cards">
+            {displayAssets.map((asset) => (
+              <div className="asset" key={asset.symbol}>
+                <div className="coin">{asset.icon}</div>
+
+                <div className="asset-name">
+                  <strong>{asset.name}</strong>
+                  <span>{asset.symbol}</span>
+                </div>
+
+                <div className="asset-value">
+                  <strong>{asset.amount}</strong>
+                  <span>{asset.value}</span>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <div className="section-header">
+            <div>
+              <h3>Recent Transactions</h3>
+              <p>Your latest activity</p>
+            </div>
+          </div>
+
+          <div className="cards">
+            {displayTransactions.map((transaction, index) => (
+              <div
+                className="transaction"
+                key={`${transaction.type}-${index}`}
+              >
+                <div className="transaction-icon">
+                  {transaction.direction === "in" ? "↓" : "⇄"}
+                </div>
+
+                <div>
+                  <strong>{transaction.type}</strong>
+                  <span>{transaction.asset}</span>
+                </div>
+
+                <b
+                  className={
+                    transaction.direction === "in" ? "green" : "red"
+                  }
+                >
+                  {transaction.amount}
+                </b>
+              </div>
+            ))}
+          </div>
+        </section>
+      )}
+
+      {active === "Profile" && (
+        <section className="section">
+          <div className="section-header">
+            <div>
+              <h3>Profile</h3>
+              <p>Manage your Bitlora account</p>
+            </div>
+          </div>
+
+          <div className="cards">
+            <div className="asset">
+              <div className="coin">B</div>
+
+              <div className="asset-name">
+                <strong>Bitlora User</strong>
+                <span>Account Profile</span>
+              </div>
+            </div>
+          </div>
+        </section>
+      )}
 
       <nav className="bottom">
         <button
@@ -384,20 +535,20 @@ function App() {
 
         <button
           type="button"
+          className={active === "Futures" ? "active" : ""}
+          onClick={() => setActive("Futures")}
+        >
+          <span>⚡</span>
+          <small>Futures</small>
+        </button>
+
+        <button
+          type="button"
           className={active === "Wallet" ? "active" : ""}
           onClick={() => setActive("Wallet")}
         >
           <span>▣</span>
           <small>Wallet</small>
-        </button>
-
-        <button
-          type="button"
-          className={active === "Profile" ? "active" : ""}
-          onClick={() => setActive("Profile")}
-        >
-          <span>●</span>
-          <small>Profile</small>
         </button>
       </nav>
     </div>

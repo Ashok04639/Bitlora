@@ -472,3 +472,45 @@ button {
   font-weight: 600;
   white-space: nowrap;
 }
+
+.menu-button {
+  border: 1px solid #263149;
+  border-radius: 10px;
+  background: #151c2b;
+  color: #ffffff;
+  width: 36px;
+  height: 36px;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.profile-menu {
+  position: absolute;
+  top: 58px;
+  right: 0;
+  min-width: 130px;
+  padding: 6px;
+  border-radius: 12px;
+  background: #151c2b;
+  border: 1px solid #263149;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
+  z-index: 100;
+}
+
+.profile-menu button {
+  width: 100%;
+  border: 0;
+  border-radius: 8px;
+  background: transparent;
+  color: #ffffff;
+  padding: 10px 12px;
+  text-align: left;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.profile-menu button:hover {
+  background: #202a3f;
+}
