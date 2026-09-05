@@ -4,6 +4,7 @@ import "./App.css";
 function App() {
   const [active, setActive] = useState("Home");
   const [apiStatus, setApiStatus] = useState("Checking...");
+  const [balanceData, setBalanceData] = useState(null);
 
   useEffect(() => {
     const checkApiHealth = async () => {
@@ -26,7 +27,26 @@ function App() {
       }
     };
 
+    const loadBalance = async () => {
+      try {
+        const response = await fetch("http://localhost:3000/api/balance");
+
+        if (!response.ok) {
+          throw new Error("Balance request failed");
+        }
+
+        const data = await response.json();
+
+        if (data.success) {
+          setBalanceData(data);
+        }
+      } catch {
+        setBalanceData(null);
+      }
+    };
+
     checkApiHealth();
+    loadBalance();
   }, []);
 
   const assets = [
@@ -71,6 +91,21 @@ function App() {
     },
   ];
 
+  const formattedBalance = balanceData
+    ? `$${balanceData.balance.toLocaleString("en-US", {
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2,
+      })}`
+    : "Loading...";
+
+  const formattedBtcEquivalent = balanceData
+    ? `≈ ${balanceData.btcEquivalent} BTC`
+    : "Loading...";
+
+  const formattedChange = balanceData
+    ? `${balanceData.change24h >= 0 ? "+" : ""}${balanceData.change24h}% today`
+    : "Loading...";
+
   return (
     <div className="app">
       <header className="header">
@@ -98,11 +133,11 @@ function App() {
           <button type="button">•••</button>
         </div>
 
-        <h2>$12,458.80</h2>
+        <h2>{formattedBalance}</h2>
 
         <div className="balance-info">
-          <span>≈ 0.186 BTC</span>
-          <strong>+4.82% today</strong>
+          <span>{formattedBtcEquivalent}</span>
+          <strong>{formattedChange}</strong>
         </div>
       </section>
 

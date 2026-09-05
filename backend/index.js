@@ -23,6 +23,16 @@ app.get("/api/health", (req, res) => {
   });
 });
 
+app.get("/api/balance", (req, res) => {
+  res.json({
+    success: true,
+    currency: "USDT",
+    balance: 12458.8,
+    change24h: 4.82,
+    btcEquivalent: 0.186,
+  });
+});
+
 const PORT = process.env.PORT || 3000;
 
 app.listen(PORT, () => {
