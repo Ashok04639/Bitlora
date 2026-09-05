@@ -85,6 +85,26 @@ app.get("/api/markets", (req, res) => {
   });
 });
 
+app.get("/api/transactions", (req, res) => {
+  res.json({
+    success: true,
+    transactions: [
+      {
+        type: "Deposit",
+        asset: "Bitcoin",
+        amount: "+$500.00",
+        direction: "in"
+      },
+      {
+        type: "Trade",
+        asset: "BTC/USDT",
+        amount: "-$120.00",
+        direction: "out"
+      }
+    ]
+  });
+});
+
 const PORT = process.env.PORT || 3000;
 
 app.listen(PORT, () => {

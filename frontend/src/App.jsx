@@ -7,6 +7,7 @@ function App() {
   const [balanceData, setBalanceData] = useState(null);
   const [assetsData, setAssetsData] = useState([]);
   const [marketsData, setMarketsData] = useState([]);
+  const [transactionsData, setTransactionsData] = useState([]);
   const API_BASE_URL = `http://${window.location.hostname}:3000`;
 
   useEffect(() => {
@@ -66,6 +67,24 @@ function App() {
       }
     };
 
+    const loadTransactions = async () => {
+      try {
+        const response = await fetch(`${API_BASE_URL}/api/transactions`);
+
+        if (!response.ok) {
+          throw new Error("Transactions API request failed");
+        }
+
+        const data = await response.json();
+
+        if (data.success && Array.isArray(data.transactions)) {
+          setTransactionsData(data.transactions);
+        }
+      } catch {
+        setTransactionsData([]);
+      }
+    };
+
     const loadAssets = async () => {
       try {
         const response = await fetch(`${API_BASE_URL}/api/assets`);
@@ -85,6 +104,7 @@ function App() {
     };
 
     loadAssets();
+    loadTransactions();
     loadMarkets();
     checkApiHealth();
     loadBalance();
@@ -288,27 +308,25 @@ function App() {
         </div>
 
         <div className="cards">
-          <div className="transaction">
-            <div className="transaction-icon">↓</div>
+          {(transactionsData.length > 0 ? transactionsData : [
+            { type: "Deposit", asset: "Bitcoin", amount: "+$500.00", direction: "in" },
+            { type: "Trade", asset: "BTC/USDT", amount: "-$120.00", direction: "out" }
+          ]).map((transaction, index) => (
+            <div className="transaction" key={`${transaction.type}-${index}`}>
+              <div className="transaction-icon">
+                {transaction.direction === "in" ? "↓" : "⇄"}
+              </div>
 
-            <div>
-              <strong>Deposit</strong>
-              <span>Bitcoin</span>
+              <div>
+                <strong>{transaction.type}</strong>
+                <span>{transaction.asset}</span>
+              </div>
+
+              <b className={transaction.direction === "in" ? "green" : "red"}>
+                {transaction.amount}
+              </b>
             </div>
-
-            <b className="green">+$500.00</b>
-          </div>
-
-          <div className="transaction">
-            <div className="transaction-icon">⇄</div>
-
-            <div>
-              <strong>Trade</strong>
-              <span>BTC/USDT</span>
-            </div>
-
-            <b className="red">-$120.00</b>
-          </div>
+          ))}
         </div>
       </section>
 
