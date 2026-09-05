@@ -3,13 +3,17 @@ import "./App.css";
 
 function App() {
   const [active, setActive] = useState("Home");
+  const [selectedPair, setSelectedPair] = useState("BTC/USDT");
   const [apiStatus, setApiStatus] = useState("Checking...");
   const [menuOpen, setMenuOpen] = useState(false);
+  const [buyMenuOpen, setBuyMenuOpen] = useState(false);
+  const [cardComingSoon, setCardComingSoon] = useState(false);
   const [balanceData, setBalanceData] = useState(null);
   const [assetsData, setAssetsData] = useState([]);
   const [marketsData, setMarketsData] = useState([]);
   const [transactionsData, setTransactionsData] = useState([]);
   const [marketTab, setMarketTab] = useState("Favorites");
+  const [favoritePairs, setFavoritePairs] = useState([]);
 
   const API_BASE_URL = `http://${window.location.hostname}:3000`;
 
@@ -54,6 +58,7 @@ function App() {
         const data = await response.json();
 
         if (data.success && Array.isArray(data.markets)) {
+          console.log("Bitlora markets received:", data.markets.length, data.markets.map((market) => market.pair));
           setMarketsData(data.markets);
         }
       } catch {
@@ -159,7 +164,7 @@ function App() {
 
   const displayAssets = assetsData.length > 0 ? assetsData : assets;
   const displayMarkets = (marketsData.length > 0 ? marketsData : markets).filter((market) => {
-    if (marketTab === "Favorites") return true;
+    if (marketTab === "Favorites") return favoritePairs.includes(market.pair);
     return market.pair.endsWith(`/${marketTab}`);
   });
 
@@ -240,27 +245,66 @@ function App() {
             </div>
           </section>
 
-          <section className="actions">
-            <button type="button" onClick={() => setActive("Wallet")}>
-              <span>↓</span>
-              Deposit
-            </button>
+          {cardComingSoon ? (
+            <section className="coming-soon">
+              <div className="coming-soon-icon">💳</div>
+              <h2>Coming Soon</h2>
+              <p>Card purchases will be available soon.</p>
+              <button type="button" onClick={() => setCardComingSoon(false)}>
+                Back
+              </button>
+            </section>
+          ) : (
+            <>
+              <section className="actions">
+                <button type="button" onClick={() => setActive("Wallet")}>
+                  <span>↓</span>
+                  Deposit
+                </button>
 
-            <button type="button" onClick={() => setActive("Wallet")}>
-              <span>↑</span>
-              Withdraw
-            </button>
+                <button type="button" onClick={() => setActive("Wallet")}>
+                  <span>↑</span>
+                  Withdraw
+                </button>
 
-            <button type="button">
-              <span>⇄</span>
-              Transfer
-            </button>
+                <button type="button">
+                  <span>⇄</span>
+                  Transfer
+                </button>
 
-            <button type="button" onClick={() => setActive("Trade")}>
-              <span>+</span>
-              Buy
-            </button>
-          </section>
+                <button type="button" onClick={() => setBuyMenuOpen((current) => !current)}>
+                  <span>+</span>
+                  Buy
+                </button>
+              </section>
+
+              {buyMenuOpen && (
+                <div className="buy-options">
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setBuyMenuOpen(false);
+                      setCardComingSoon(true);
+                    }}
+                  >
+                    <span>💳</span>
+                    Buy with Debit Card
+                  </button>
+
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setBuyMenuOpen(false);
+                      setCardComingSoon(true);
+                    }}
+                  >
+                    <span>💳</span>
+                    Buy with Credit Card
+                  </button>
+                </div>
+              )}
+            </>
+          )}
 
           <section className="section">
             <div className="section-header">
@@ -275,8 +319,15 @@ function App() {
             </div>
 
             <div className="cards">
-              {displayMarkets.map((market) => (
-                <div className="market" key={market.pair}>
+              {(marketsData.length > 0 ? marketsData : markets).slice(0, 9).map((market) => (
+                <div
+                  className="market"
+                  key={market.pair}
+                  onClick={() => {
+                    setSelectedPair(market.pair);
+                    setActive("Trade");
+                  }}
+                >
                   <div className="market-left">
                     <div className="market-icon">◆</div>
 
@@ -341,7 +392,19 @@ function App() {
             {displayMarkets.map((market) => (
               <div className="market-row" key={market.pair}>
                 <div className="market-pair">
-                  <button type="button" className="favorite-button">☆</button>
+                  <button
+                    type="button"
+                    className={favoritePairs.includes(market.pair) ? "favorite-button active" : "favorite-button"}
+                    onClick={() => {
+                      setFavoritePairs((current) =>
+                        current.includes(market.pair)
+                          ? current.filter((pair) => pair !== market.pair)
+                          : [...current, market.pair]
+                      );
+                    }}
+                  >
+                    {favoritePairs.includes(market.pair) ? "★" : "☆"}
+                  </button>
                   <div className="market-coin">◆</div>
                   <div>
                     <strong>{market.pair}</strong>
@@ -366,9 +429,9 @@ function App() {
       {active === "Trade" && (
         <section className="trade-screen">
           <div className="trade-header">
-            <div>
-              <strong>BTC/USDT</strong>
-              <span>Bitcoin / Tether</span>
+            <div className="trade-pair-info">
+              <strong>{selectedPair}</strong>
+              <span>Spot Trading</span>
             </div>
 
             <button type="button" className="trade-pair-button">
@@ -376,77 +439,160 @@ function App() {
             </button>
           </div>
 
-          <div className="trade-price-card">
+          <div className="trade-price-bar">
             <div>
-              <strong>{marketsData.find((market) => market.pair === "BTC/USDT")?.price || "$66,842.10"}</strong>
-              <span>≈ {marketsData.find((market) => market.pair === "BTC/USDT")?.price || "$66,842.10"}</span>
+              <strong>
+                {marketsData.find((market) => market.pair === selectedPair)?.price || "$66,842.10"}
+              </strong>
+              <span>Last Price</span>
             </div>
 
-            <span className="green">+2.41%</span>
+            <div className="trade-change">
+              <strong className="green">
+                {marketsData.find((market) => market.pair === selectedPair)?.change || "+2.41%"}
+              </strong>
+              <span>24h Change</span>
+            </div>
           </div>
 
-          <div className="trade-layout">
-            <div className="trade-panel">
-              <div className="trade-tabs">
-                <button type="button" className="active">Buy</button>
-                <button type="button">Sell</button>
-              </div>
+          <div className="trade-timeframes">
+            <button type="button" className="active">1m</button>
+            <button type="button">5m</button>
+            <button type="button">15m</button>
+            <button type="button">1H</button>
+            <button type="button">4H</button>
+            <button type="button">1D</button>
+          </div>
 
-              <div className="order-tabs">
-                <button type="button" className="active">Limit</button>
-                <button type="button">Market</button>
-              </div>
+          <div className="trade-chart">
+            <div className="chart-grid">
+              <span>$67,000</span>
+              <span>$66,900</span>
+              <span>$66,800</span>
+              <span>$66,700</span>
+            </div>
 
-              <div className="order-field">
-                <label>Price</label>
-                <div>
-                  <input type="text" value={marketsData.find((market) => market.pair === "BTC/USDT")?.price.replace(/[$,]/g, "") || "66842.10"} readOnly />
-                  <span>USDT</span>
-                </div>
-              </div>
+            <div className="candles">
+              <i className="candle up h1"></i>
+              <i className="candle down h2"></i>
+              <i className="candle up h3"></i>
+              <i className="candle up h4"></i>
+              <i className="candle down h5"></i>
+              <i className="candle up h6"></i>
+              <i className="candle up h7"></i>
+              <i className="candle down h8"></i>
+              <i className="candle up h9"></i>
+              <i className="candle up h10"></i>
+              <i className="candle down h11"></i>
+              <i className="candle up h12"></i>
+              <i className="candle up h13"></i>
+              <i className="candle down h14"></i>
+              <i className="candle up h15"></i>
+            </div>
 
-              <div className="order-field">
-                <label>Amount</label>
-                <div>
-                  <input type="text" placeholder="0.00" />
-                  <span>BTC</span>
-                </div>
-              </div>
+            <div className="chart-line"></div>
+            <div className="chart-time">
+              <span>12:00</span>
+              <span>14:00</span>
+              <span>16:00</span>
+              <span>18:00</span>
+            </div>
+          </div>
 
-              <div className="order-field">
-                <label>Total</label>
-                <div>
-                  <input type="text" placeholder="0.00" />
-                  <span>USDT</span>
-                </div>
-              </div>
-
-              <div className="trade-balance">
-                <span>Available</span>
-                <strong>{formattedBalance}</strong>
-              </div>
-
-              <button type="button" className="buy-button">
-                Buy BTC
-              </button>
+          <div className="trade-market-section">
+            <div className="trade-section-title">
+              <strong>Order Book</strong>
+              <span>Price&nbsp;&nbsp;&nbsp;&nbsp;Amount</span>
             </div>
 
             <div className="order-book">
-              <div className="order-book-header">
-                <strong>Order Book</strong>
-                <span>Price (USDT)</span>
+              <div className="order-row ask">
+                <span>66,875.20</span>
+                <span>0.0042</span>
+              </div>
+              <div className="order-row ask">
+                <span>66,862.40</span>
+                <span>0.0081</span>
+              </div>
+              <div className="order-row ask">
+                <span>66,851.70</span>
+                <span>0.0124</span>
               </div>
 
-              <div className="order-book-rows">
-                <div><span>66,875.20</span><span>0.0042</span></div>
-                <div><span>66,862.40</span><span>0.0081</span></div>
-                <div><span>66,851.70</span><span>0.0124</span></div>
-                <div className="order-book-current"><strong>66,842.10</strong><span>Last Price</span></div>
-                <div><span>66,830.60</span><span>0.0095</span></div>
-                <div><span>66,821.30</span><span>0.0068</span></div>
-                <div><span>66,810.90</span><span>0.0142</span></div>
+              <div className="order-current">
+                <strong>
+                  {marketsData.find((market) => market.pair === selectedPair)?.price?.replace("$", "") || "66,842.10"}
+                </strong>
+                <span>Last Price</span>
+              </div>
+
+              <div className="order-row bid">
+                <span>66,830.60</span>
+                <span>0.0095</span>
+              </div>
+              <div className="order-row bid">
+                <span>66,821.30</span>
+                <span>0.0068</span>
+              </div>
+              <div className="order-row bid">
+                <span>66,810.90</span>
+                <span>0.0142</span>
               </div>
             </div>
+          </div>
+
+          <div className="trade-order-section">
+            <div className="trade-tabs">
+              <button type="button" className="active">Buy</button>
+              <button type="button">Sell</button>
+            </div>
+
+            <div className="order-tabs">
+              <button type="button" className="active">Limit</button>
+              <button type="button">Market</button>
+            </div>
+
+            <div className="order-field">
+              <label>Price</label>
+              <div>
+                <input
+                  type="text"
+                  value={marketsData.find((market) => market.pair === selectedPair)?.price?.replace(/[$,]/g, "") || "66842.10"}
+                  readOnly
+                />
+                <span>USDT</span>
+              </div>
+            </div>
+
+            <div className="order-field">
+              <label>Amount</label>
+              <div>
+                <input type="text" placeholder="0.00" />
+                <span>{selectedPair.split("/")[0]}</span>
+              </div>
+            </div>
+
+            <div className="order-field">
+              <label>Total</label>
+              <div>
+                <input type="text" placeholder="0.00" />
+                <span>{selectedPair.split("/")[1]}</span>
+              </div>
+            </div>
+
+            <div className="trade-balance">
+              <span>Available Balance</span>
+              <strong>{formattedBalance}</strong>
+            </div>
+
+            <button type="button" className="buy-button">
+              Buy {selectedPair.split("/")[0]}
+            </button>
+          </div>
+
+          <div className="trade-orders">
+            <button type="button" className="active">Open Orders</button>
+            <button type="button">Order History</button>
           </div>
         </section>
       )}
