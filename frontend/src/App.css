@@ -407,3 +407,16 @@ button {
     min-height: 68px;
   }
 }
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.api-status {
+  color: #43dc91;
+  font-size: 9px;
+  font-weight: 600;
+  white-space: nowrap;
+}
