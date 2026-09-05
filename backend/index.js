@@ -33,6 +33,35 @@ app.get("/api/balance", (req, res) => {
   });
 });
 
+app.get("/api/assets", (req, res) => {
+  res.json({
+    success: true,
+    assets: [
+      {
+        icon: "₿",
+        name: "Bitcoin",
+        symbol: "BTC",
+        amount: "0.0024 BTC",
+        value: "$158.42",
+      },
+      {
+        icon: "Ξ",
+        name: "Ethereum",
+        symbol: "ETH",
+        amount: "0.041 ETH",
+        value: "$132.18",
+      },
+      {
+        icon: "◆",
+        name: "BNB",
+        symbol: "BNB",
+        amount: "0.18 BNB",
+        value: "$116.70",
+      },
+    ],
+  });
+});
+
 const PORT = process.env.PORT || 3000;
 
 app.listen(PORT, () => {
