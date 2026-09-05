@@ -188,6 +188,9 @@ function App() {
         </div>
       </header>
 
+      {active === "Home" && (
+        <>
+
       <section className="balance">
         <div className="balance-title">
           <span>Total Balance</span>
@@ -224,36 +227,6 @@ function App() {
         </button>
       </section>
 
-      <section className="section">
-        <div className="section-header">
-          <div>
-            <h3>My Assets</h3>
-            <p>Your crypto portfolio</p>
-          </div>
-
-          <button type="button" onClick={() => setActive("Wallet")}>
-            View all
-          </button>
-        </div>
-
-        <div className="cards">
-          {assetsData.map((asset) => (
-            <div className="asset" key={asset.symbol}>
-              <div className="coin">{asset.icon}</div>
-
-              <div className="asset-name">
-                <strong>{asset.name}</strong>
-                <span>{asset.symbol}</span>
-              </div>
-
-              <div className="asset-value">
-                <strong>{asset.amount}</strong>
-                <span>{asset.value}</span>
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
 
       <section className="section">
         <div className="section-header">
@@ -295,40 +268,91 @@ function App() {
         </div>
       </section>
 
-      <section className="section">
-        <div className="section-header">
-          <div>
-            <h3>Recent Transactions</h3>
-            <p>Your latest activity</p>
-          </div>
 
-          <button type="button" onClick={() => setActive("Wallet")}>
-            View all
-          </button>
-        </div>
+        </>
+      )}
 
-        <div className="cards">
-          {(transactionsData.length > 0 ? transactionsData : [
-            { type: "Deposit", asset: "Bitcoin", amount: "+$500.00", direction: "in" },
-            { type: "Trade", asset: "BTC/USDT", amount: "-$120.00", direction: "out" }
-          ]).map((transaction, index) => (
-            <div className="transaction" key={`${transaction.type}-${index}`}>
-              <div className="transaction-icon">
-                {transaction.direction === "in" ? "↓" : "⇄"}
-              </div>
-
+        {active === "Wallet" && (
+          <section className="wallet-screen">
+            <div className="section-header">
               <div>
-                <strong>{transaction.type}</strong>
-                <span>{transaction.asset}</span>
+                <h3>Wallet</h3>
+                <p>Manage your crypto assets</p>
               </div>
-
-              <b className={transaction.direction === "in" ? "green" : "red"}>
-                {transaction.amount}
-              </b>
             </div>
-          ))}
-        </div>
-      </section>
+
+            <div className="wallet-balance">
+              <span>Total Wallet Balance</span>
+              <strong>{formattedBalance}</strong>
+              <small>{formattedBtcEquivalent}</small>
+            </div>
+
+            <div className="wallet-actions">
+              <button type="button">
+                <span>↓</span>
+                Deposit
+              </button>
+              <button type="button">
+                <span>↑</span>
+                Withdraw
+              </button>
+            </div>
+
+            <div className="section-header">
+              <div>
+                <h3>Your Assets</h3>
+                <p>Available crypto balances</p>
+              </div>
+            </div>
+
+            <div className="cards">
+              {assetsData.map((asset) => (
+                <div className="asset" key={asset.symbol}>
+                  <div className="coin">{asset.icon}</div>
+                  <div className="asset-name">
+                    <strong>{asset.name}</strong>
+                    <span>{asset.symbol}</span>
+                  </div>
+                  <div className="asset-value">
+                    <strong>{asset.amount}</strong>
+                    <span>{asset.value}</span>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            <div className="section-header">
+              <div>
+                <h3>Recent Transactions</h3>
+                <p>Your latest activity</p>
+              </div>
+            </div>
+
+            <div className="cards">
+              {(transactionsData.length > 0 ? transactionsData : [
+                { type: "Deposit", asset: "Bitcoin", amount: "+$500.00", direction: "in" },
+                { type: "Trade", asset: "BTC/USDT", amount: "-$120.00", direction: "out" }
+              ]).map((transaction, index) => (
+                <div className="transaction" key={`${transaction.type}-${index}`}>
+                  <div className="transaction-icon">
+                    {transaction.direction === "in" ? "↓" : "⇄"}
+                  </div>
+
+                  <div>
+                    <strong>{transaction.type}</strong>
+                    <span>{transaction.asset}</span>
+                  </div>
+
+                  <b className={transaction.direction === "in" ? "green" : "red"}>
+                    {transaction.amount}
+                  </b>
+                </div>
+              ))}
+            </div>
+
+          </section>
+        )}
+
 
       <nav className="bottom">
         <button
