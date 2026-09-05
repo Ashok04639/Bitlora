@@ -5,6 +5,7 @@ function App() {
   const [active, setActive] = useState("Home");
   const [apiStatus, setApiStatus] = useState("Checking...");
   const [balanceData, setBalanceData] = useState(null);
+  const [assetsData, setAssetsData] = useState([]);
 
   useEffect(() => {
     const checkApiHealth = async () => {
@@ -45,6 +46,25 @@ function App() {
       }
     };
 
+    const loadAssets = async () => {
+      try {
+        const response = await fetch("http://localhost:3000/api/assets");
+
+        if (!response.ok) {
+          throw new Error("Assets API request failed");
+        }
+
+        const data = await response.json();
+
+        if (data.success && Array.isArray(data.assets)) {
+          setAssetsData(data.assets);
+        }
+      } catch {
+        setApiStatus("API Offline");
+      }
+    };
+
+    loadAssets();
     checkApiHealth();
     loadBalance();
   }, []);
@@ -176,7 +196,7 @@ function App() {
         </div>
 
         <div className="cards">
-          {assets.map((asset) => (
+          {assetsData.map((asset) => (
             <div className="asset" key={asset.symbol}>
               <div className="coin">{asset.icon}</div>
 
