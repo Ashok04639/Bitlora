@@ -6,6 +6,7 @@ function App() {
   const [apiStatus, setApiStatus] = useState("Checking...");
   const [balanceData, setBalanceData] = useState(null);
   const [assetsData, setAssetsData] = useState([]);
+  const [marketsData, setMarketsData] = useState([]);
   const API_BASE_URL = `http://${window.location.hostname}:3000`;
 
   useEffect(() => {
@@ -47,6 +48,24 @@ function App() {
       }
     };
 
+    const loadMarkets = async () => {
+      try {
+        const response = await fetch(`${API_BASE_URL}/api/markets`);
+
+        if (!response.ok) {
+          throw new Error("Markets API request failed");
+        }
+
+        const data = await response.json();
+
+        if (data.success && Array.isArray(data.markets)) {
+          setMarketsData(data.markets);
+        }
+      } catch {
+        setMarketsData([]);
+      }
+    };
+
     const loadAssets = async () => {
       try {
         const response = await fetch(`${API_BASE_URL}/api/assets`);
@@ -66,6 +85,7 @@ function App() {
     };
 
     loadAssets();
+    loadMarkets();
     checkApiHealth();
     loadBalance();
   }, []);
@@ -228,7 +248,7 @@ function App() {
         </div>
 
         <div className="cards">
-          {markets.map((market) => (
+          {(marketsData.length > 0 ? marketsData : markets).map((market) => (
             <div className="market" key={market.pair}>
               <div className="market-left">
                 <div className="market-icon">◆</div>

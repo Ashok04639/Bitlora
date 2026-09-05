@@ -62,6 +62,29 @@ app.get("/api/assets", (req, res) => {
   });
 });
 
+app.get("/api/markets", (req, res) => {
+  res.json({
+    success: true,
+    markets: [
+      {
+        pair: "BTC/USDT",
+        price: "$66,842.10",
+        change: "+2.41%",
+      },
+      {
+        pair: "ETH/USDT",
+        price: "$3,224.50",
+        change: "+1.82%",
+      },
+      {
+        pair: "BNB/USDT",
+        price: "$648.30",
+        change: "-0.74%",
+      },
+    ],
+  });
+});
+
 const PORT = process.env.PORT || 3000;
 
 app.listen(PORT, () => {
