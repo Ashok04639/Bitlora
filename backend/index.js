@@ -10,7 +10,16 @@ app.use(express.json());
 app.get("/", (req, res) => {
   res.json({
     success: true,
-    message: "Bitlora Exchange API is running"
+    message: "Bitlora Exchange API is running",
+  });
+});
+
+app.get("/api/health", (req, res) => {
+  res.json({
+    success: true,
+    service: "Bitlora Exchange API",
+    status: "healthy",
+    timestamp: new Date().toISOString(),
   });
 });
 
