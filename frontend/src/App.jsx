@@ -228,7 +228,17 @@ const [orderBookSide, setOrderBookSide] = useState("All");
     ? `${balanceData.change24h >= 0 ? "+" : ""}${balanceData.change24h}% today`
     : "Loading...";
 
-  const orderBookMarketPrice = Number((marketsData.find((market) => market.pair === selectedPair)?.price || markets.find((market) => market.pair === selectedPair)?.price || "$66842.10").replace(/[$,]/g, ""));
+  const getDemoPrice = (pair) => {
+    const fallback = Number(String(
+      marketsData.find((market) => market.pair === pair)?.price ||
+      markets.find((market) => market.pair === pair)?.price ||
+      "66842.10"
+    ).replace(/[$,]/g, ""));
+
+    return demoPrices[pair] ?? fallback;
+  };
+
+  const orderBookMarketPrice = getDemoPrice(selectedPair);
   const orderBookDecimals = Math.max(2, ((marketsData.find((market) => market.pair === selectedPair)?.price || markets.find((market) => market.pair === selectedPair)?.price || "$66842.10").split(".")[1] || "").length);
   const orderBookPrice = (multiplier) => { const stepDecimals = Math.max(0, (String(priceStep).split(".")[1] || "").length); const decimals = Math.max(2, stepDecimals); return orderBookMarketPrice ? (orderBookMarketPrice * multiplier).toFixed(decimals) : "66842.10"; };
   const displayAssets = assetsData.length > 0 ? assetsData : assets;
@@ -407,7 +417,7 @@ const [orderBookSide, setOrderBookSide] = useState("All");
                   </div>
 
                   <div className="market-value">
-                    <strong>{market.price}</strong>
+                    <strong>{"$" + getDemoPrice(market.pair).toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 8 })}</strong>
 
                     <span
                       className={
@@ -482,7 +492,7 @@ const [orderBookSide, setOrderBookSide] = useState("All");
                 </div>
 
                 <div className="market-price">
-                  <strong>{market.price}</strong>
+                  <strong>{"$" + getDemoPrice(market.pair).toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 8 })}</strong>
                   <span>{market.pair.split("/")[1]}</span>
                 </div>
 
@@ -564,7 +574,7 @@ const [orderBookSide, setOrderBookSide] = useState("All");
             <div className="order-book">
                 {orderBookSide !== "Buy" && <div className="order-book-label sell-label">{orderBookSide === "Sell" ? "Sell" : "Sell Orders"}</div>}{orderBookSide !== "Buy" && <div className="sell-orders-visible">
                 <div className="order-current">
-                  <strong>{marketsData.find((market) => market.pair === selectedPair)?.price?.replace("$", "") || "66,842.10"}</strong>
+                  <strong>{getDemoPrice(selectedPair).toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 8 })}</strong>
                   <span>Current Market Price</span>
                 </div>
 
@@ -587,7 +597,7 @@ const [orderBookSide, setOrderBookSide] = useState("All");
 
                 {orderBookSide !== "Sell" && <div className="order-book-label buy-label">{orderBookSide === "Buy" ? "Buy" : "Buy Orders"}</div>}
                 {orderBookSide !== "Sell" && <>
-                  {orderBookSide === "Buy" && <div className="order-current buy-market-price"><strong>{marketsData.find((market) => market.pair === selectedPair)?.price?.replace("$", "") || "66,842.10"}</strong><span>Current Market Price</span></div>}
+                  {orderBookSide === "Buy" && <div className="order-current buy-market-price"><strong>{getDemoPrice(selectedPair).toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 8 })}</strong><span>Current Market Price</span></div>}
 
               <div className="order-row bid">
                 <span>{orderBookPrice(0.9998)}</span>
@@ -651,7 +661,7 @@ const [orderBookSide, setOrderBookSide] = useState("All");
               <div>
                 <input
                   type="text"
-                  value={marketsData.find((market) => market.pair === selectedPair)?.price?.replace(/[$,]/g, "") || "66842.10"}
+                  value={getDemoPrice(selectedPair).toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 8 }).replace(/[$,]/g, "")}
                   readOnly
                 />
                 <span>USDT</span>
