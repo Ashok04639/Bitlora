@@ -1109,12 +1109,12 @@ button {
 .trade-section-title strong{color:#fff;font-size:14px}
 .trade-section-title span{color:#68758d;font-size:9px}
 .order-book{display:grid;gap:2px}
-.order-row{display:flex;justify-content:space-between;padding:5px 6px;font-size:10px}
+.order-row{display:flex;justify-content:space-between;padding:5px 6px;font-size:11px}
 .order-row.ask span:first-child{color:#ff647c}
 .order-row.bid span:first-child{color:#43dc91}
 .order-row span:last-child{color:#8f9bb3}
-.order-current{display:flex;align-items:center;justify-content:space-between;margin:4px 0;padding:8px 6px;border-top:1px solid #263149;border-bottom:1px solid #263149}
-.order-current strong{color:#f5c451;font-size:13px}
+.order-current{display:flex;flex-direction:column;align-items:flex-end;justify-content:center;margin:4px 0;padding:8px 6px;border-top:1px solid #263149;border-bottom:1px solid #263149}
+.order-current strong{color:#ff647c;font-size:13px}
 .order-current span{color:#68758d;font-size:9px}
 .trade-order-section{padding:16px 0}
 .trade-tabs,.order-tabs{display:flex;gap:20px;border-bottom:1px solid #20283a}
@@ -1126,3 +1126,162 @@ button {
 .trade-balance{display:flex;align-items:center;justify-content:space-between;margin:4px 0 12px;color:#68758d;font-size:10px}.trade-balance strong{color:#fff;font-size:11px}.buy-button{width:100%;min-height:44px;border:0;border-radius:10px;background:#43dc91;color:#07110c;font-size:13px;font-weight:700}.trade-orders{display:flex;gap:20px;padding:14px 0;border-top:1px solid #20283a}.trade-orders button{padding:0;border:0;background:transparent;color:#68758d;font-size:11px;font-weight:600}.trade-orders button.active{color:#fff}
 @media (max-width:380px){.trade-screen{padding-bottom:100px}.trade-price-bar strong{font-size:19px}.trade-timeframes{gap:13px}.trade-chart{height:220px}.candles{height:160px;left:6px;right:40px}.order-field input{padding:10px}.trade-orders{gap:14px}}
 .order-field{display:grid;gap:6px;margin-bottom:10px}.order-field label{color:#8f9bb3;font-size:10px}.order-field>div{display:flex;align-items:center;border:1px solid #263149;border-radius:10px;background:#151c2b;overflow:hidden}.order-field input{width:100%;min-width:0;padding:11px 12px;border:0;outline:0;background:transparent;color:#fff;font-size:12px}.order-field input::placeholder{color:#68758d}.order-field>div>span{padding:0 11px;color:#8f9bb3;font-size:10px;font-weight:600}
+.sell-button{width:100%;min-height:44px;border:0;border-radius:10px;background:#ff647c;color:#fff;font-size:13px;font-weight:700}
+.trade-screen{padding-left:30px;padding-right:30px}
+.trade-screen{padding-left:15px;padding-right:15px}
+.trade-message{margin-top:8px;text-align:center;color:#f5c451;font-size:10px;line-height:1.4}
+
+.trade-workspace{display:grid;grid-template-columns:calc(50% + 7.5px) calc(50% - 7.5px);gap:12px;align-items:stretch}
+.trade-workspace{width:100%;}
+.trade-workspace .trade-market-section,.trade-workspace .trade-order-section{min-width:0}
+.trade-workspace .order-book{height:calc(100% - 70px);box-sizing:border-box;}
+@media(max-width:760px){.trade-workspace{grid-template-columns:calc(50% + 7.5px) calc(50% - 7.5px);gap:8px}}
+
+.trade-workspace .order-book-label{padding:5px 6px;font-size:9px;font-weight:700;text-transform:uppercase}
+.trade-workspace .sell-label{color:#ff647c}
+.trade-workspace .buy-label{color:#43dc91}
+.trade-workspace .order-row{display:grid;grid-template-columns:1.2fr 0.9fr 1fr;gap:6px;text-align:right}
+.trade-workspace .order-row span:first-child{text-align:left}
+.trade-workspace .order-row span{font-variant-numeric:tabular-nums}
+.order-book-controls{
+  display:flex;
+  align-items:center;
+  justify-content:flex-end;
+  gap:6px;
+  margin-top:6px;
+}
+.order-book-controls label{
+  font-size:10px;
+  color:#8f9bb3;
+}
+.order-book-controls select{
+  min-width:58px;
+  height:26px;
+  padding:2px 20px 2px 7px;
+  border:1px solid #263149;
+  border-radius:6px;
+  background:#151c2b;
+  color:#e8edf7;
+  font-size:10px;
+}
+
+.order-book-dropdown{
+  position:relative;
+}
+
+.order-book-dropdown-button{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:10px;
+  min-width:72px;
+  padding:6px 9px;
+  border:1px solid #263149;
+  border-radius:6px;
+  background:#111827;
+  color:#cbd5e1;
+  font-size:10px;
+  cursor:pointer;
+}
+
+.order-book-dropdown-button span{
+  color:#68758d;
+  font-size:9px;
+}
+
+.order-book-dropdown-menu{
+  position:absolute;
+  top:calc(100% + 4px);
+  left:0;
+  min-width:72px;
+  padding:4px;
+  border:1px solid #263149;
+  border-radius:6px;
+  background:#111827;
+  box-shadow:0 8px 20px rgba(0,0,0,.35);
+  z-index:50;
+}
+
+.order-book-dropdown-menu button{
+  display:block;
+  width:100%;
+  padding:6px 8px;
+  border:0;
+  border-radius:4px;
+  background:transparent;
+  color:#8f9bb3;
+  font-size:10px;
+  text-align:left;
+  cursor:pointer;
+}
+
+.order-book-dropdown-menu button:hover,
+.order-book-dropdown-menu button.active{
+  background:#1b2538;
+  color:#fff;
+}
+
+.order-book-dropdown{
+  position:relative;
+}
+
+.order-book-dropdown-button{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:10px;
+  min-width:72px;
+  padding:6px 9px;
+  border:1px solid #263149;
+  border-radius:6px;
+  background:#111827;
+  color:#cbd5e1;
+  font-size:10px;
+  cursor:pointer;
+}
+
+.order-book-dropdown-button span:last-child{
+  color:#68758d;
+  font-size:9px;
+}
+
+.order-book-dropdown-menu{
+  position:absolute;
+  top:calc(100% + 4px);
+  left:0;
+  min-width:72px;
+  padding:4px;
+  border:1px solid #263149;
+  border-radius:6px;
+  background:#111827;
+  box-shadow:0 8px 20px rgba(0,0,0,.35);
+  z-index:100;
+}
+
+.order-book-dropdown-menu button{
+  display:block;
+  width:100%;
+  padding:6px 8px;
+  border:0;
+  border-radius:4px;
+  background:transparent;
+  color:#8f9bb3;
+  font-size:10px;
+  text-align:left;
+  cursor:pointer;
+}
+
+.order-book-dropdown-menu button:hover,
+.order-book-dropdown-menu button.active{
+  background:#1b2538;
+  color:#fff;
+}
+
+.buy-label{
+  font-size:13px !important;
+  font-weight:700;
+}
+
+.buy-market-price{
+  margin:4px 0 8px;
+}

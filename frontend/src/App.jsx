@@ -11,9 +11,75 @@ function App() {
   const [balanceData, setBalanceData] = useState(null);
   const [assetsData, setAssetsData] = useState([]);
   const [marketsData, setMarketsData] = useState([]);
+  const [demoPrices, setDemoPrices] = useState({});
   const [transactionsData, setTransactionsData] = useState([]);
   const [marketTab, setMarketTab] = useState("Favorites");
   const [favoritePairs, setFavoritePairs] = useState([]);
+  const [tradeSide, setTradeSide] = useState("Buy");
+  const [tradeAmount, setTradeAmount] = useState("");
+  const [tradeTotal, setTradeTotal] = useState("");
+  const [orderType, setOrderType] = useState("Limit");
+const [priceStep, setPriceStep] = useState("0.01");
+const [orderBookSide, setOrderBookSide] = useState("All");
+  const [orderBookMenuOpen, setOrderBookMenuOpen] = useState(false);
+  const [priceStepMenuOpen, setPriceStepMenuOpen] = useState(false);
+  const [liveCandles,setLiveCandles]=useState(()=>Array.from({length:15},(_,i)=>({up:i%3!==1,height:35+Math.floor(Math.random()*55)})));
+  useEffect(() => { setTradeAmount(""); setTradeTotal(""); setTradeMessage(""); }, [selectedPair]);
+  const [tradeMessage, setTradeMessage] = useState("");
+  useEffect(()=>{const t=setInterval(()=>setLiveCandles(c=>[...c.slice(1),{up:Math.random()>0.45,height:25+Math.floor(Math.random()*65)}]),1200);return()=>clearInterval(t)},[]);
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setDemoPrices((current) => {
+        const next = { ...current };
+
+        markets.forEach((market) => {
+          const base = Number(String(market.price).replace(/[$,]/g, ""));
+          const previous = Number(next[market.pair] ?? base);
+
+          if (Number.isFinite(previous) && previous > 0) {
+            next[market.pair] =
+              previous * (1 + (Math.random() - 0.5) * 0.0006);
+          }
+        });
+
+        return next;
+      });
+    }, 1500);
+
+    return () => clearInterval(timer);
+  }, []);
+
+
+  const handleTradeOrder = () => {
+    const amount = Number(tradeAmount);
+
+    if (!tradeAmount.trim()) {
+      setTradeMessage("Enter an amount to place this order.");
+      return;
+    }
+
+    if (!Number.isFinite(amount) || amount <= 0) {
+      setTradeMessage("Enter a valid amount greater than 0.");
+      return;
+    }
+    if (tradeSide === "Buy" && balanceData && Number(tradeTotal) > Number(balanceData.balance)) {
+      setTradeMessage("Insufficient USDT balance for this order.");
+      return;
+    }
+
+    setTradeMessage(`${tradeSide} order ready for ${amount} ${selectedPair.split("/")[0]}.`);
+  };
+  useEffect(() => {
+    const market = marketsData.find((item) => item.pair === selectedPair);
+    const price = Number(market?.price?.replace(/[$,]/g, ""));
+    const amount = Number(tradeAmount);
+
+    if (Number.isFinite(price) && Number.isFinite(amount) && amount > 0) {
+      setTradeTotal((price * amount).toFixed(8));
+    } else {
+      setTradeTotal("");
+    }
+  }, [tradeAmount, selectedPair, marketsData]);
 
   const API_BASE_URL = `http://${window.location.hostname}:3000`;
 
@@ -162,6 +228,9 @@ function App() {
     ? `${balanceData.change24h >= 0 ? "+" : ""}${balanceData.change24h}% today`
     : "Loading...";
 
+  const orderBookMarketPrice = Number((marketsData.find((market) => market.pair === selectedPair)?.price || markets.find((market) => market.pair === selectedPair)?.price || "$66842.10").replace(/[$,]/g, ""));
+  const orderBookDecimals = Math.max(2, ((marketsData.find((market) => market.pair === selectedPair)?.price || markets.find((market) => market.pair === selectedPair)?.price || "$66842.10").split(".")[1] || "").length);
+  const orderBookPrice = (multiplier) => { const stepDecimals = Math.max(0, (String(priceStep).split(".")[1] || "").length); const decimals = Math.max(2, stepDecimals); return orderBookMarketPrice ? (orderBookMarketPrice * multiplier).toFixed(decimals) : "66842.10"; };
   const displayAssets = assetsData.length > 0 ? assetsData : assets;
   const displayMarkets = (marketsData.length > 0 ? marketsData : markets).filter((market) => {
     if (marketTab === "Favorites") return favoritePairs.includes(market.pair);
@@ -442,7 +511,7 @@ function App() {
           <div className="trade-price-bar">
             <div>
               <strong>
-                {marketsData.find((market) => market.pair === selectedPair)?.price || "$66,842.10"}
+                {"$" + (demoPrices[selectedPair] ?? Number(String(marketsData.find((market) => market.pair === selectedPair)?.price || markets.find((market) => market.pair === selectedPair)?.price || "$66842.10").replace(/[$,]/g, ""))).toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 8 })}
               </strong>
               <span>Last Price</span>
             </div>
@@ -473,22 +542,8 @@ function App() {
             </div>
 
             <div className="candles">
-              <i className="candle up h1"></i>
-              <i className="candle down h2"></i>
-              <i className="candle up h3"></i>
-              <i className="candle up h4"></i>
-              <i className="candle down h5"></i>
-              <i className="candle up h6"></i>
-              <i className="candle up h7"></i>
-              <i className="candle down h8"></i>
-              <i className="candle up h9"></i>
-              <i className="candle up h10"></i>
-              <i className="candle down h11"></i>
-              <i className="candle up h12"></i>
-              <i className="candle up h13"></i>
-              <i className="candle down h14"></i>
-              <i className="candle up h15"></i>
-            </div>
+                {liveCandles.map((candle,index)=><i key={index} className={`candle ${candle.up?"up":"down"}`} style={{height:`${candle.height}%`}}></i>)}
+              </div>
 
             <div className="chart-line"></div>
             <div className="chart-time">
@@ -499,57 +554,96 @@ function App() {
             </div>
           </div>
 
+          <div className="trade-workspace">
           <div className="trade-market-section">
             <div className="trade-section-title">
               <strong>Order Book</strong>
-              <span>Price&nbsp;&nbsp;&nbsp;&nbsp;Amount</span>
+                <span>Price&nbsp;&nbsp;&nbsp;&nbsp;Amount&nbsp;&nbsp;&nbsp;&nbsp;Total</span>
             </div>
 
             <div className="order-book">
+                {orderBookSide !== "Buy" && <div className="order-book-label sell-label">{orderBookSide === "Sell" ? "Sell" : "Sell Orders"}</div>}{orderBookSide !== "Buy" && <div className="sell-orders-visible">
+                <div className="order-current">
+                  <strong>{marketsData.find((market) => market.pair === selectedPair)?.price?.replace("$", "") || "66,842.10"}</strong>
+                  <span>Current Market Price</span>
+                </div>
+
               <div className="order-row ask">
-                <span>66,875.20</span>
+                <span>{orderBookPrice(1.0005)}</span>
                 <span>0.0042</span>
+                <span>280.88</span>
               </div>
               <div className="order-row ask">
-                <span>66,862.40</span>
+                <span>{orderBookPrice(1.0003)}</span>
                 <span>0.0081</span>
+                <span>541.59</span>
               </div>
               <div className="order-row ask">
-                <span>66,851.70</span>
+                <span>{orderBookPrice(1.0001)}</span>
                 <span>0.0124</span>
+                <span>829.36</span>
               </div>
+                </div>}
 
-              <div className="order-current">
-                <strong>
-                  {marketsData.find((market) => market.pair === selectedPair)?.price?.replace("$", "") || "66,842.10"}
-                </strong>
-                <span>Last Price</span>
-              </div>
+                {orderBookSide !== "Sell" && <div className="order-book-label buy-label">{orderBookSide === "Buy" ? "Buy" : "Buy Orders"}</div>}
+                {orderBookSide !== "Sell" && <>
+                  {orderBookSide === "Buy" && <div className="order-current buy-market-price"><strong>{marketsData.find((market) => market.pair === selectedPair)?.price?.replace("$", "") || "66,842.10"}</strong><span>Current Market Price</span></div>}
 
               <div className="order-row bid">
-                <span>66,830.60</span>
+                <span>{orderBookPrice(0.9998)}</span>
                 <span>0.0095</span>
+                <span>634.89</span>
               </div>
               <div className="order-row bid">
-                <span>66,821.30</span>
+                <span>{orderBookPrice(0.9997)}</span>
                 <span>0.0068</span>
+                <span>454.38</span>
               </div>
               <div className="order-row bid">
-                <span>66,810.90</span>
+                <span>{orderBookPrice(0.9995)}</span>
                 <span>0.0142</span>
+                <span>948.70</span>
               </div>
+                </>}
             </div>
+              <div className="order-book-controls">
+                  <div className="order-book-dropdown">
+                    <button type="button" className="order-book-dropdown-button" onClick={() => setOrderBookMenuOpen((open) => !open)}>
+                      <span>{orderBookSide}</span><span>▾</span>
+                    </button>
+                    {orderBookMenuOpen && <div className="order-book-dropdown-menu">
+                      {["All", "Buy", "Sell"].map((side) => (
+                        <button key={side} type="button" className={orderBookSide === side ? "active" : ""} onClick={() => { setOrderBookSide(side); setOrderBookMenuOpen(false); }}>
+                          {side}
+                        </button>
+                      ))}
+                    </div>}
+                  </div>
+                  <div className="order-book-dropdown">
+                    <button type="button" className="order-book-dropdown-button" onClick={() => setPriceStepMenuOpen((open) => !open)}>
+                      <span>{priceStep}</span><span>▾</span>
+                    </button>
+                    {priceStepMenuOpen && <div className="order-book-dropdown-menu">
+                      {["0.01", "0.001", "0.0001", "0.00001"].map((step) => (
+                        <button key={step} type="button" className={priceStep === step ? "active" : ""} onClick={() => { setPriceStep(step); setPriceStepMenuOpen(false); }}>
+                          {step}
+                        </button>
+                      ))}
+                    </div>}
+                  </div>
+              </div>
           </div>
 
           <div className="trade-order-section">
             <div className="trade-tabs">
-              <button type="button" className="active">Buy</button>
-              <button type="button">Sell</button>
+              <button type="button" className={tradeSide === "Buy" ? "active" : ""} onClick={() => { setTradeSide("Buy"); setTradeMessage("Buy mode selected for " + selectedPair.split("/")[0] + "."); }}>Buy</button>
+              <button type="button" className={tradeSide === "Sell" ? "active" : ""} onClick={() => { setTradeSide("Sell"); setTradeMessage("Sell mode selected for " + selectedPair.split("/")[0] + "."); }}>Sell</button>
             </div>
 
+            {orderType === "Market" && <div className="market-order-note">Market order uses the current market price.</div>}
             <div className="order-tabs">
-              <button type="button" className="active">Limit</button>
-              <button type="button">Market</button>
+              <button type="button" className={orderType === "Limit" ? "active" : ""} onClick={() => setOrderType("Limit")}>Limit</button>
+              <button type="button" className={orderType === "Market" ? "active" : ""} onClick={() => setOrderType("Market")}>Market</button>
             </div>
 
             <div className="order-field">
@@ -567,7 +661,7 @@ function App() {
             <div className="order-field">
               <label>Amount</label>
               <div>
-                <input type="text" placeholder="0.00" />
+                <input type="text" placeholder="0.00" value={tradeAmount} onChange={(event) => setTradeAmount(event.target.value)} />
                 <span>{selectedPair.split("/")[0]}</span>
               </div>
             </div>
@@ -575,7 +669,7 @@ function App() {
             <div className="order-field">
               <label>Total</label>
               <div>
-                <input type="text" placeholder="0.00" />
+                <input type="text" placeholder="0.00" value={tradeTotal} readOnly />
                 <span>{selectedPair.split("/")[1]}</span>
               </div>
             </div>
@@ -585,11 +679,12 @@ function App() {
               <strong>{formattedBalance}</strong>
             </div>
 
-            <button type="button" className="buy-button">
-              Buy {selectedPair.split("/")[0]}
+            <button type="button" className={tradeSide === "Buy" ? "buy-button" : "sell-button"} onClick={handleTradeOrder}>
+              {tradeSide} {selectedPair.split("/")[0]}
             </button>
           </div>
 
+          </div>
           <div className="trade-orders">
             <button type="button" className="active">Open Orders</button>
             <button type="button">Order History</button>
