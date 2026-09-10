@@ -1,0 +1,20 @@
+
+# Bitlora local/runtime files
+*.db
+*.db-shm
+*.db-wal
+*.log
+*-cookies.txt
+*.tmp
+*.sqlite-backup
+*.before-*
+*.backup
+backend/*.backup*
+backend/*-backup*
+backend/*.before-*
+frontend/src/*.backup*
+frontend/src/*.before-*
+frontend/src/*.nav-backup
+frontend/src/*.orderbook-backup
+frontend/src/*.trade-backup*
+*cookie*

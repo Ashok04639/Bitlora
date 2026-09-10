@@ -2332,3 +2332,1229 @@ button {
   pointer-events:none;
 }
 
+
+/* ===== MOBILE TRADE LAYOUT — FINAL ===== */
+@media (max-width: 760px) {
+  .mobile-trade-layout {
+    width: 100%;
+    box-sizing: border-box;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 100px;
+  }
+
+  .mobile-trade-layout .trade-workspace {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 8px;
+    align-items: stretch;
+    width: 100%;
+    margin-top: 10px;
+  }
+
+  .mobile-trade-layout .trade-order-section,
+  .mobile-trade-layout .trade-market-section {
+    min-width: 0;
+    width: 100%;
+    box-sizing: border-box;
+    margin: 0;
+  }
+
+  .mobile-trade-layout .trade-order-section {
+    order: 1;
+  }
+
+  .mobile-trade-layout .trade-market-section {
+    order: 2;
+  }
+
+  .mobile-trade-layout .trade-orders {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0;
+    width: 100%;
+    box-sizing: border-box;
+    margin-top: 8px;
+    padding: 0;
+  }
+
+  .mobile-trade-layout .trade-orders button {
+    width: 100%;
+    min-width: 0;
+    padding: 11px 3px;
+    text-align: center;
+    white-space: nowrap;
+  }
+
+  .mobile-trade-layout .order-history-filters {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 6px;
+    width: 100%;
+    box-sizing: border-box;
+    margin: 8px 0;
+  }
+
+  .mobile-trade-layout .order-history-filters button {
+    width: 100%;
+    box-sizing: border-box;
+    text-align: center;
+  }
+
+  .mobile-trade-layout .open-orders-list {
+    width: 100%;
+    box-sizing: border-box;
+  }
+}
+
+/* ===== END MOBILE TRADE LAYOUT ===== */
+
+/* ===== MOBILE TRADE — EQUAL PANEL HEIGHT ===== */
+@media (max-width: 760px) {
+  .mobile-trade-layout .trade-workspace {
+    align-items: stretch;
+  }
+
+  .mobile-trade-layout .trade-order-section,
+  .mobile-trade-layout .trade-market-section {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    box-sizing: border-box;
+  }
+
+  .mobile-trade-layout .trade-market-section .order-book {
+    flex: 1 1 auto;
+    height: auto;
+  }
+}
+/* ===== END MOBILE TRADE — EQUAL PANEL HEIGHT ===== */
+
+/* ===== MOBILE TRADE — HISTORY DIRECTLY BELOW PANELS ===== */
+@media (max-width: 760px) {
+  .mobile-trade-layout > .trade-orders {
+    width: 100%;
+    margin-top: 0;
+    clear: both;
+    box-sizing: border-box;
+  }
+
+  .mobile-trade-layout > .order-history-filters {
+    width: 100%;
+    clear: both;
+    box-sizing: border-box;
+  }
+
+  .mobile-trade-layout > .open-orders-list {
+    width: 100%;
+    clear: both;
+    box-sizing: border-box;
+  }
+}
+/* ===== END MOBILE TRADE — HISTORY DIRECTLY BELOW PANELS ===== */
+
+
+/* ===== BITLORA HOME PROFESSIONAL ===== */
+.home-pro{width:100%;max-width:1180px;margin:0 auto;padding:18px 0 120px;box-sizing:border-box}.home-balance-card{padding:22px;border:1px solid #202735;border-radius:14px;background:linear-gradient(145deg,#141b27,#0e131c);box-shadow:0 10px 30px rgba(0,0,0,.18)}.home-balance-top{display:flex;align-items:flex-start;justify-content:space-between;gap:16px}.home-eyebrow{display:block;margin-bottom:8px;color:#7d899d;font-size:11px;font-weight:600;letter-spacing:.3px;text-transform:uppercase}.home-balance-card h2{margin:0;color:#f4f7fb;font-size:30px;line-height:1.15;font-weight:750}.home-balance-menu{width:34px;height:34px;border:1px solid #2a3447;border-radius:8px;background:#151d2a;color:#9ba7ba}.home-balance-meta{display:flex;gap:14px;margin-top:12px}.home-balance-meta span{color:#7d899d;font-size:11px}.home-balance-meta strong{color:#43dc91;font-size:11px}.home-balance-footer{display:flex;justify-content:space-between;margin-top:20px;padding-top:13px;border-top:1px solid #202a3a;color:#657188;font-size:9px}.home-quick-actions,.home-market-section{margin-top:16px;padding:16px;border:1px solid #202735;border-radius:12px;background:#10151f}.home-section-heading{display:flex;align-items:center;justify-content:space-between;gap:15px;margin-bottom:14px}.home-section-heading h3{margin:0;color:#edf1f7;font-size:14px;font-weight:700}.home-section-heading p{margin:4px 0 0;color:#69758a;font-size:9px}.home-section-heading>button{border:0;background:transparent;color:#f5c451;font-size:10px;font-weight:600}.home-action-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:9px}.home-action-grid button{min-width:0;padding:13px 8px;border:1px solid #242e40;border-radius:9px;background:#121923;text-align:left;color:inherit}.home-action-icon{display:flex;align-items:center;justify-content:center;width:30px;height:30px;margin-bottom:10px;border-radius:8px;background:#1a2332;color:#f5c451;font-size:16px;font-weight:700}.home-action-grid strong,.home-action-grid small{display:block}.home-action-grid strong{color:#e9edf4;font-size:11px}.home-action-grid small{margin-top:4px;color:#68758b;font-size:8px}.home-market-list{display:grid;gap:1px;overflow:hidden;border:1px solid #1e2736;border-radius:8px}.home-market-row{display:flex;align-items:center;justify-content:space-between;gap:12px;width:100%;padding:12px 11px;border:0;border-bottom:1px solid #1b2432;background:#0d121a;color:inherit;text-align:left}.home-market-row:last-child{border-bottom:0}.home-market-main{display:flex;align-items:center;gap:9px;min-width:0}.home-coin-icon{display:flex;align-items:center;justify-content:center;flex:0 0 30px;width:30px;height:30px;border-radius:50%;background:#182131;color:#f5c451;font-size:11px}.home-market-main strong,.home-market-main small{display:block}.home-market-main strong{color:#e7ebf2;font-size:11px}.home-market-main small{margin-top:3px;color:#657188;font-size:8px}.home-market-price{text-align:right}.home-market-price strong,.home-market-price span{display:block}.home-market-price strong{color:#e9edf4;font-size:10px}.home-market-price span{margin-top:3px;font-size:9px;font-weight:600}.home-discover-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:16px}.home-feature-card{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:11px;width:100%;padding:14px;border:1px solid #202735;border-radius:11px;background:#10151f;color:inherit;text-align:left}.home-feature-icon{display:flex;align-items:center;justify-content:center;width:34px;height:34px;border-radius:8px;background:#192232;color:#f5c451;font-size:16px;font-weight:700}.home-feature-card strong,.home-feature-card span{display:block}.home-feature-card strong{color:#e9edf4;font-size:11px}.home-feature-card span{margin-top:4px;color:#69758a;font-size:8px;line-height:1.35}.home-feature-card b{color:#667389;font-size:18px;font-weight:400}.home-status-card{display:flex;align-items:center;gap:9px;margin-top:16px;padding:11px 13px;border:1px solid #202735;border-radius:9px;background:#0f141d}.home-status-dot{width:7px;height:7px;flex:0 0 7px;border-radius:50%;background:#43dc91}.home-status-card div:nth-child(2){flex:1}.home-status-card strong,.home-status-card span{display:block}.home-status-card strong{color:#dfe5ee;font-size:9px}.home-status-card span{margin-top:2px;color:#657188;font-size:8px}.home-status-card>small{color:#43dc91;font-size:8px;font-weight:700}@media(max-width:760px){.home-pro{padding:12px 10px 105px}.home-balance-card{padding:18px}.home-balance-card h2{font-size:26px}.home-action-grid{grid-template-columns:repeat(2,1fr)}.home-discover-grid{grid-template-columns:1fr}}@media(max-width:380px){.home-pro{padding-left:7px;padding-right:7px}.home-balance-card{padding:16px}.home-balance-card h2{font-size:24px}}/* ===== END BITLORA HOME PROFESSIONAL ===== */
+
+
+/* ===== BITLORA HOME — RESPONSIVE INSIGHTS ===== */
+.home-insights-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin-top:16px}.home-insight-card{min-width:0;padding:16px;border:1px solid #202735;border-radius:12px;background:#10151f}.home-insight-heading{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}.home-insight-heading strong{color:#edf1f7;font-size:12px}.home-insight-heading span,.home-insight-heading button{border:0;background:transparent;color:#69758a;font-size:9px}.home-mover-row,.home-activity-row{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px 0;border-top:1px solid #1d2635}.home-mover-row:first-of-type,.home-activity-row:first-of-type{border-top:0}.home-mover-row span,.home-activity-row span{color:#cbd2dd;font-size:10px}.home-mover-row b{font-size:9px}.home-activity-row{align-items:flex-start}.home-activity-row small{color:#69758a;font-size:8px;text-align:right}.home-announce-card{display:flex;align-items:center;gap:11px;margin-top:16px;padding:14px 16px;border:1px solid #202735;border-radius:11px;background:#10151f}.home-announce-icon{display:flex;align-items:center;justify-content:center;flex:0 0 32px;width:32px;height:32px;border-radius:8px;background:#192232;color:#f5c451;font-size:14px;font-weight:800}.home-announce-card div:nth-child(2){flex:1;min-width:0}.home-announce-card strong,.home-announce-card span{display:block}.home-announce-card strong{color:#e9edf4;font-size:10px}.home-announce-card span{margin-top:4px;color:#69758a;font-size:8px;line-height:1.4}.home-announce-card button{border:0;background:transparent;color:#69758a;font-size:18px}.home-security-card{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:10px;padding:13px 16px;border:1px solid #202735;border-radius:10px;background:#0f141d}.home-security-main{display:flex;align-items:center;gap:9px;min-width:0}.home-security-icon{display:flex;align-items:center;justify-content:center;width:25px;height:25px;border-radius:50%;background:#172b25;color:#43dc91;font-size:11px;font-weight:800}.home-security-main strong,.home-security-main small{display:block}.home-security-main strong{color:#dfe5ee;font-size:9px}.home-security-main small{margin-top:3px;color:#657188;font-size:8px}.home-security-card>button{padding:7px 12px;border:1px solid #2a3447;border-radius:7px;background:#151d2a;color:#d9dfe8;font-size:8px;font-weight:600}@media(max-width:760px){.home-insights-grid{grid-template-columns:1fr;gap:10px}.home-insight-card{padding:14px}.home-announce-card{padding:13px}.home-security-card{padding:12px 13px}}@media(min-width:761px){.home-pro{padding-top:24px}.home-balance-card h2{font-size:34px}.home-action-grid button{padding:16px 12px}.home-market-row{padding:13px 14px}.home-feature-card{padding:16px}}
+/* ===== END BITLORA HOME — RESPONSIVE INSIGHTS ===== */
+
+
+/* ===== BITLORA HOME — DESKTOP POLISH ===== */
+@media(min-width:761px){.home-pro{width:min(calc(100% - 48px),1180px);margin:0 auto;padding:28px 0 130px}.home-balance-card{padding:26px 28px;border-radius:16px}.home-balance-card h2{font-size:38px}.home-balance-meta{margin-top:14px}.home-quick-actions,.home-market-section{padding:20px;margin-top:18px;border-radius:14px}.home-section-heading{margin-bottom:16px}.home-action-grid{gap:12px}.home-action-grid button{min-height:112px;padding:18px 16px;border-radius:11px}.home-action-icon{width:34px;height:34px}.home-market-row{padding:15px 16px}.home-discover-grid{gap:12px;margin-top:18px}.home-feature-card{min-height:72px;padding:17px}.home-insights-grid{gap:18px;margin-top:18px}.home-insight-card{padding:19px}.home-announce-card{margin-top:18px;padding:16px 18px}.home-security-card{margin-top:12px;padding:15px 18px}}
+/* ===== END BITLORA HOME — DESKTOP POLISH ===== */
+
+
+/* ===== BITLORA HOME — MOBILE POLISH ===== */
+@media(max-width:760px){.home-pro{width:100%;box-sizing:border-box;padding:10px 10px 110px}.home-balance-card{padding:17px;border-radius:13px}.home-balance-card h2{font-size:27px}.home-balance-footer{margin-top:17px}.home-quick-actions,.home-market-section{margin-top:12px;padding:13px;border-radius:11px}.home-section-heading{margin-bottom:11px}.home-action-grid{gap:7px}.home-action-grid button{min-height:96px;padding:11px 9px;border-radius:9px}.home-action-icon{width:29px;height:29px;margin-bottom:8px;font-size:14px}.home-market-row{padding:11px 9px}.home-coin-icon{width:28px;height:28px;flex-basis:28px}.home-discover-grid{gap:8px;margin-top:12px}.home-feature-card{min-height:62px;padding:12px}.home-feature-icon{width:31px;height:31px}.home-insights-grid{margin-top:12px}.home-insight-card{padding:13px;border-radius:10px}.home-mover-row,.home-activity-row{padding:9px 0}.home-announce-card{margin-top:12px;padding:12px 13px}.home-security-card{margin-top:8px;padding:11px 13px}}
+@media(max-width:380px){.home-pro{padding-left:7px;padding-right:7px}.home-balance-card{padding:15px}.home-balance-card h2{font-size:24px}.home-quick-actions,.home-market-section{padding:11px}.home-action-grid button{min-height:91px;padding:10px 8px}.home-action-grid strong{font-size:10px}.home-action-grid small{font-size:7px}}
+/* ===== END BITLORA HOME — MOBILE POLISH ===== */
+
+
+/* ===== BITLORA HOME — MOBILE TYPOGRAPHY ===== */
+@media(max-width:760px){.home-eyebrow{font-size:12px}.home-balance-card h2{font-size:29px}.home-balance-meta span,.home-balance-meta strong{font-size:12px}.home-balance-footer{font-size:10px}.home-section-heading h3{font-size:15px}.home-section-heading p{font-size:10px}.home-section-heading>button{font-size:11px}.home-action-grid strong{font-size:12px}.home-action-grid small{font-size:9px}.home-action-icon{font-size:15px}.home-market-main strong{font-size:12px}.home-market-main small{font-size:9px}.home-market-price strong{font-size:11px}.home-market-price span{font-size:10px}.home-feature-card strong{font-size:12px}.home-feature-card span{font-size:9px}.home-feature-card b{font-size:20px}.home-insight-heading strong{font-size:13px}.home-insight-heading span,.home-insight-heading button{font-size:10px}.home-mover-row span,.home-activity-row span{font-size:11px}.home-mover-row b{font-size:10px}.home-activity-row small{font-size:9px}.home-announce-card strong{font-size:11px}.home-announce-card span{font-size:9px}.home-announce-card button{font-size:20px}.home-security-main strong{font-size:10px}.home-security-main small{font-size:9px}.home-security-card>button{font-size:9px}}
+@media(max-width:380px){.home-balance-card h2{font-size:27px}.home-section-heading h3{font-size:14px}.home-action-grid strong{font-size:11px}.home-action-grid small{font-size:8px}.home-market-main strong{font-size:11px}.home-market-main small{font-size:8px}.home-feature-card strong{font-size:11px}.home-feature-card span{font-size:8px}.home-mover-row span,.home-activity-row span{font-size:10px}.home-announce-card span{font-size:8px}}
+/* ===== END BITLORA HOME — MOBILE TYPOGRAPHY ===== */
+
+
+/* ===== BITLORA HOME — MOBILE READABLE TEXT ===== */
+@media(max-width:760px){.home-eyebrow{font-size:13px!important}.home-balance-card h2{font-size:32px!important}.home-balance-meta span,.home-balance-meta strong{font-size:13px!important}.home-balance-footer{font-size:11px!important}.home-section-heading h3{font-size:17px!important}.home-section-heading p{font-size:11px!important}.home-section-heading>button{font-size:12px!important}.home-action-grid strong{font-size:14px!important}.home-action-grid small{font-size:11px!important}.home-action-icon{font-size:17px!important}.home-market-main strong{font-size:14px!important}.home-market-main small{font-size:11px!important}.home-market-price strong{font-size:13px!important}.home-market-price span{font-size:11px!important}.home-feature-card strong{font-size:14px!important}.home-feature-card span{font-size:11px!important}.home-feature-card b{font-size:22px!important}.home-insight-heading strong{font-size:15px!important}.home-insight-heading span,.home-insight-heading button{font-size:11px!important}.home-mover-row span,.home-activity-row span{font-size:13px!important}.home-mover-row b{font-size:12px!important}.home-activity-row small{font-size:11px!important}.home-announce-card strong{font-size:13px!important}.home-announce-card span{font-size:11px!important}.home-announce-card button{font-size:22px!important}.home-security-main strong{font-size:12px!important}.home-security-main small{font-size:11px!important}.home-security-card>button{font-size:11px!important}}
+@media(max-width:380px){.home-balance-card h2{font-size:30px!important}.home-section-heading h3{font-size:16px!important}.home-action-grid strong{font-size:13px!important}.home-action-grid small{font-size:10px!important}.home-market-main strong{font-size:13px!important}.home-market-main small{font-size:10px!important}.home-feature-card strong{font-size:13px!important}.home-feature-card span{font-size:10px!important}.home-mover-row span,.home-activity-row span{font-size:12px!important}.home-activity-row small{font-size:10px!important}.home-announce-card span{font-size:10px!important}}
+/* ===== END BITLORA HOME — MOBILE READABLE TEXT ===== */
+
+
+/* ===== BITLORA HOME — BELOW PORTFOLIO TEXT SCALE ===== */
+@media(max-width:760px){.home-quick-actions .home-section-heading h3,.home-market-section .home-section-heading h3{font-size:18px!important}.home-quick-actions .home-section-heading p,.home-market-section .home-section-heading p{font-size:12px!important}.home-quick-actions .home-section-heading>button,.home-market-section .home-section-heading>button{font-size:13px!important}.home-action-grid strong{font-size:15px!important}.home-action-grid small{font-size:12px!important}.home-market-main strong{font-size:15px!important}.home-market-main small{font-size:12px!important}.home-market-price strong{font-size:14px!important}.home-market-price span{font-size:12px!important}.home-feature-card strong{font-size:15px!important}.home-feature-card span{font-size:12px!important}.home-insight-heading strong{font-size:16px!important}.home-insight-heading span,.home-insight-heading button{font-size:12px!important}.home-mover-row span,.home-activity-row span{font-size:14px!important}.home-mover-row b{font-size:13px!important}.home-activity-row small{font-size:12px!important}.home-announce-card strong{font-size:14px!important}.home-announce-card span{font-size:12px!important}.home-security-main strong{font-size:13px!important}.home-security-main small{font-size:12px!important}.home-security-card>button{font-size:12px!important}}
+@media(max-width:380px){.home-action-grid strong{font-size:14px!important}.home-action-grid small{font-size:11px!important}.home-market-main strong{font-size:14px!important}.home-market-main small{font-size:11px!important}.home-feature-card strong{font-size:14px!important}.home-feature-card span{font-size:11px!important}.home-mover-row span,.home-activity-row span{font-size:13px!important}.home-activity-row small{font-size:11px!important}.home-announce-card span{font-size:11px!important}}
+/* ===== END BITLORA HOME — BELOW PORTFOLIO TEXT SCALE ===== */
+
+
+
+/* BITLORA TOP LOGO */
+.bitlora-logo {
+  width: 252px;
+  height: auto;
+  display: block;
+  object-fit: contain;
+}
+
+@media (max-width: 700px) {
+  .bitlora-logo {
+    width: 222px;
+  }
+}
+
+/* MOBILE HEADER CONTROLS FIX */
+@media (max-width: 700px) {
+  .header {
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+
+  .header-right {
+    gap: 6px;
+    margin-right: 8px;
+    flex-shrink: 0;
+  }
+
+  .api-status {
+    font-size: 8px;
+  }
+
+  .menu-button {
+    width: 34px;
+    height: 34px;
+    flex-shrink: 0;
+  }
+}
+
+/* MOBILE HEADER RIGHT - MOVE 25PX LEFT */
+@media (max-width: 700px) {
+  .header-right {
+    transform: translateX(-25px);
+  }
+}
+
+/* MOBILE HEADER - HORIZONTAL CENTER */
+@media (max-width: 700px) {
+  .header {
+    width: 100%;
+    box-sizing: border-box;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .header .brand {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .header-right {
+    position: static;
+    transform: none;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+/* =========================================================
+   BITLORA MARKETS - PROFESSIONAL EXCHANGE UI
+   MOBILE ONLY - DOES NOT MODIFY TRADE
+   ========================================================= */
+
+@media (max-width: 700px) {
+
+  .markets-screen {
+    padding: 16px 0 105px;
+  }
+
+  .markets-title {
+    margin-bottom: 14px;
+  }
+
+  .markets-title h3 {
+    font-size: 18px;
+    font-weight: 800;
+    letter-spacing: 0.1px;
+  }
+
+  .markets-title p {
+    font-size: 11px;
+    margin-top: 4px;
+  }
+
+  .market-search {
+    height: 44px;
+    margin: 12px 0 13px;
+    padding: 0 13px;
+    border-radius: 12px;
+    background: #121927;
+    border: 1px solid #263149;
+  }
+
+  .market-search span {
+    font-size: 19px;
+    line-height: 1;
+  }
+
+  .market-search input {
+    font-size: 13px;
+    font-weight: 500;
+  }
+
+  .market-tabs {
+    gap: 7px;
+    padding: 1px 0 13px;
+  }
+
+  .market-tabs button {
+    min-height: 34px;
+    padding: 7px 13px;
+    border-radius: 9px;
+    font-size: 11px;
+    font-weight: 700;
+    white-space: nowrap;
+  }
+
+  .market-tabs button.active {
+    background: #202a3f;
+    border-color: #4a5b7c;
+    color: #ffffff;
+  }
+
+  .market-list {
+    margin-top: 3px;
+    border-top: 1px solid #263149;
+  }
+
+  .market-list-header {
+    grid-template-columns: 1.45fr 1fr 0.9fr;
+    gap: 7px;
+    min-height: 38px;
+    padding: 11px 3px 8px;
+    font-size: 9px;
+    text-transform: uppercase;
+    letter-spacing: 0.25px;
+  }
+
+  .market-row {
+    grid-template-columns: 1.45fr 1fr 0.9fr;
+    gap: 7px;
+    min-height: 66px;
+    padding: 9px 3px;
+    border-top: 1px solid #20283a;
+    cursor: pointer;
+  }
+
+  .market-row:active {
+    background: #151d2d;
+  }
+
+  .market-pair {
+    gap: 7px;
+  }
+
+  .favorite-button {
+    width: 18px;
+    font-size: 16px;
+    line-height: 1;
+  }
+
+  .favorite-button.active {
+    color: #f5c451;
+  }
+
+  .market-coin {
+    width: 30px;
+    height: 30px;
+    flex: 0 0 30px;
+    font-size: 12px;
+  }
+
+  .market-pair > div:last-child {
+    gap: 3px;
+  }
+
+  .market-pair strong {
+    font-size: 12px;
+    font-weight: 800;
+  }
+
+  .market-pair span {
+    font-size: 9px;
+  }
+
+  .market-price {
+    gap: 3px;
+  }
+
+  .market-price strong {
+    font-size: 11px;
+    font-weight: 750;
+  }
+
+  .market-price span {
+    font-size: 9px;
+  }
+
+  .market-change {
+    font-size: 11px;
+    font-weight: 800;
+  }
+
+  .market-empty {
+    min-height: 130px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    color: #68758d;
+    text-align: center;
+  }
+
+  .market-empty strong {
+    color: #ffffff;
+    font-size: 13px;
+  }
+
+  .market-empty span {
+    font-size: 10px;
+  }
+}
+
+@media (max-width: 380px) {
+
+  .market-list-header,
+  .market-row {
+    grid-template-columns: 1.35fr 0.95fr 0.85fr;
+    gap: 5px;
+  }
+
+  .market-pair {
+    gap: 5px;
+  }
+
+  .favorite-button {
+    width: 16px;
+    font-size: 14px;
+  }
+
+  .market-coin {
+    width: 27px;
+    height: 27px;
+    flex-basis: 27px;
+  }
+
+  .market-pair strong {
+    font-size: 11px;
+  }
+
+  .market-price strong {
+    font-size: 10px;
+  }
+
+  .market-change {
+    font-size: 10px;
+  }
+}
+
+/* =========================================================
+   BITLORA PREMIUM MARKET OVERVIEW
+   MOBILE ONLY
+   ========================================================= */
+
+@media (max-width: 700px) {
+
+  .market-overview {
+    margin: 0 0 14px;
+    padding: 15px;
+    border: 1px solid #2a3447;
+    border-radius: 14px;
+    background:
+      radial-gradient(circle at 90% 0%, rgba(245,196,81,.08), transparent 42%),
+      linear-gradient(145deg, #151c28, #0c1119);
+    box-shadow: 0 10px 28px rgba(0,0,0,.22);
+  }
+
+  .market-overview-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    margin-bottom: 14px;
+  }
+
+  .market-overview-head > div:first-child {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .market-overview-head span {
+    color: #77849a;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: .7px;
+  }
+
+  .market-overview-head strong {
+    color: #f2f5fa;
+    font-size: 15px;
+    font-weight: 800;
+  }
+
+  .market-live {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    padding: 5px 8px;
+    border: 1px solid #244334;
+    border-radius: 7px;
+    color: #43dc91;
+    font-size: 9px;
+    font-weight: 800;
+  }
+
+  .market-live i {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #43dc91;
+    box-shadow: 0 0 8px rgba(67,220,145,.55);
+  }
+
+  .market-overview-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 7px;
+  }
+
+  .market-stat {
+    min-width: 0;
+    padding: 10px 8px;
+    border: 1px solid #222d3e;
+    border-radius: 9px;
+    background: rgba(10,15,23,.72);
+  }
+
+  .market-stat span,
+  .market-stat strong,
+  .market-stat small {
+    display: block;
+  }
+
+  .market-stat span {
+    color: #77849a;
+    font-size: 10px;
+    font-weight: 600;
+  }
+
+  /* MATCH HOME PAIR TEXT SCALE */
+  .market-stat strong {
+    margin-top: 6px;
+    color: #edf1f7;
+    font-size: 15px !important;
+    font-weight: 800;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .market-stat small {
+    margin-top: 4px;
+    color: #647188;
+    font-size: 9px;
+  }
+
+  .market-stat .green {
+    color: #43dc91;
+  }
+
+  .market-search {
+    margin-top: 10px;
+  }
+
+  .market-row {
+    transition: background .15s ease, transform .15s ease;
+  }
+
+  .market-row:active {
+    transform: scale(.995);
+  }
+}
+
+@media (max-width: 380px) {
+
+  .market-overview {
+    padding: 13px;
+  }
+
+  .market-overview-grid {
+    gap: 5px;
+  }
+
+  .market-stat {
+    padding: 9px 6px;
+  }
+
+  .market-stat strong {
+    font-size: 14px !important;
+  }
+
+  .market-stat small {
+    font-size: 8px;
+  }
+}
+
+/* MARKET OVERVIEW - MOBILE CENTER + 15PX HORIZONTAL REDUCTION */
+@media (max-width: 700px) {
+  .market-overview {
+    width: calc(100% - 30px);
+    margin-left: auto;
+    margin-right: auto;
+    box-sizing: border-box;
+  }
+}
+
+
+/* =========================================================
+   BITLORA MARKETS - FINAL MOBILE TEXT SCALE
+   MATCH HOME MOBILE TYPOGRAPHY
+   MOBILE ONLY - TRADE/DESKTOP UNTOUCHED
+   ========================================================= */
+
+@media (max-width: 700px) {
+
+  /* Page heading */
+  .markets-title h3 {
+    font-size: 18px !important;
+  }
+
+  .markets-title p {
+    font-size: 12px !important;
+  }
+
+  /* Search */
+  .market-search input {
+    font-size: 14px !important;
+  }
+
+  .market-search span {
+    font-size: 20px !important;
+  }
+
+  /* Category tabs */
+  .market-tabs button {
+    font-size: 13px !important;
+  }
+
+  /* Table headings */
+  .market-list-header {
+    font-size: 11px !important;
+  }
+
+  /* Trading Pair - SAME SCALE AS HOME BUTTON TEXT */
+  .market-pair strong {
+    font-size: 15px !important;
+    font-weight: 800 !important;
+  }
+
+  .market-pair span {
+    font-size: 12px !important;
+  }
+
+  /* Price */
+  .market-price strong {
+    font-size: 14px !important;
+    font-weight: 800 !important;
+  }
+
+  .market-price span {
+    font-size: 12px !important;
+  }
+
+  /* 24H change */
+  .market-change {
+    font-size: 13px !important;
+    font-weight: 800 !important;
+  }
+
+  /* Favorite */
+  .favorite-button {
+    font-size: 18px !important;
+  }
+
+  /* Overview */
+  .market-overview-head span {
+    font-size: 11px !important;
+  }
+
+  .market-overview-head strong {
+    font-size: 16px !important;
+  }
+
+  .market-live {
+    font-size: 10px !important;
+  }
+
+  .market-stat span {
+    font-size: 11px !important;
+  }
+
+  .market-stat strong {
+    font-size: 15px !important;
+  }
+
+  .market-stat small {
+    font-size: 10px !important;
+  }
+
+  /* Empty state */
+  .market-empty strong {
+    font-size: 14px !important;
+  }
+
+  .market-empty span {
+    font-size: 11px !important;
+  }
+}
+
+/* =========================================================
+   SMALL PHONES - MATCH HOME'S SMALL SCREEN SCALE
+   ========================================================= */
+
+@media (max-width: 380px) {
+
+  .markets-title h3 {
+    font-size: 16px !important;
+  }
+
+  .markets-title p {
+    font-size: 11px !important;
+  }
+
+  .market-search input {
+    font-size: 13px !important;
+  }
+
+  .market-tabs button {
+    font-size: 12px !important;
+  }
+
+  .market-list-header {
+    font-size: 10px !important;
+  }
+
+  /* HOME BUTTON / PAIR MATCH */
+  .market-pair strong {
+    font-size: 14px !important;
+  }
+
+  .market-pair span {
+    font-size: 11px !important;
+  }
+
+  .market-price strong {
+    font-size: 13px !important;
+  }
+
+  .market-price span {
+    font-size: 11px !important;
+  }
+
+  .market-change {
+    font-size: 12px !important;
+  }
+
+  .favorite-button {
+    font-size: 16px !important;
+  }
+
+  .market-overview-head span {
+    font-size: 10px !important;
+  }
+
+  .market-overview-head strong {
+    font-size: 15px !important;
+  }
+
+  .market-live {
+    font-size: 9px !important;
+  }
+
+  .market-stat span {
+    font-size: 10px !important;
+  }
+
+  .market-stat strong {
+    font-size: 14px !important;
+  }
+
+  .market-stat small {
+    font-size: 9px !important;
+  }
+}
+
+
+/* CENTER MARKET FILTER TABS - MOBILE ONLY */
+@media (max-width: 700px) {
+  .market-tabs {
+    justify-content: center;
+  }
+
+  .market-tabs button {
+    flex: 0 0 auto;
+  }
+}
+
+@media (max-width: 380px) {
+  .market-tabs {
+    justify-content: center;
+  }
+}
+
+/* MARKET TABS - TRUE HORIZONTAL CENTER / MOBILE ONLY */
+@media (max-width: 700px) {
+  .market-tabs {
+    width: 100%;
+    display: flex;
+    justify-content: center !important;
+    align-items: center;
+    gap: 7px;
+    overflow-x: auto;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    box-sizing: border-box;
+  }
+
+  .market-tabs button {
+    flex: 0 0 auto;
+  }
+}
+
+/* HOME QUICK ACTIONS - 4 EQUAL COLUMNS / MOBILE ONLY */
+@media (max-width: 700px) {
+  .home-action-grid {
+    display: grid !important;
+    grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+    gap: 8px !important;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .home-action-grid button {
+    width: 100% !important;
+    min-width: 0 !important;
+    margin: 0 !important;
+    box-sizing: border-box;
+  }
+}
+
+@media (max-width: 380px) {
+  .home-action-grid {
+    gap: 5px !important;
+  }
+}
+
+/* QUICK ACTION BOXES - CENTER EACH BUTTON IN ITS OWN COLUMN */
+@media (max-width: 700px) {
+  .home-action-grid {
+    display: grid !important;
+    grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+    gap: 8px !important;
+    align-items: stretch !important;
+    justify-items: center !important;
+  }
+
+  .home-action-grid > button {
+    width: 100% !important;
+    justify-self: center !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    box-sizing: border-box !important;
+  }
+}
+
+@media (max-width: 380px) {
+  .home-action-grid {
+    gap: 5px !important;
+  }
+}
+
+/* FINAL: HOME QUICK ACTIONS - EVERYTHING CENTERED */
+@media (max-width: 700px) {
+  .home-action-grid {
+    display: grid !important;
+    grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+    gap: 8px !important;
+    width: 100% !important;
+    align-items: stretch !important;
+  }
+
+  .home-action-grid > button {
+    width: 100% !important;
+    min-width: 0 !important;
+    margin: 0 !important;
+
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+
+    text-align: center !important;
+    box-sizing: border-box !important;
+  }
+
+  .home-action-grid > button > * {
+    align-self: center !important;
+    text-align: center !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+
+  .home-action-grid .home-action-icon {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 100% !important;
+    margin: 0 auto 6px !important;
+    text-align: center !important;
+  }
+
+  .home-action-grid strong {
+    display: block !important;
+    width: 100% !important;
+    text-align: center !important;
+    margin: 0 auto !important;
+  }
+
+  .home-action-grid small {
+    display: block !important;
+    width: 100% !important;
+    text-align: center !important;
+    margin: 3px auto 0 !important;
+  }
+}
+
+@media (max-width: 380px) {
+  .home-action-grid {
+    gap: 5px !important;
+  }
+}
+
+/* TRADE PRO HERO MOBILE */
+@media(max-width:700px){
+.trade-pro-hero{margin:0 0 10px;padding:16px;border:1px solid rgba(212,175,55,.32);border-radius:20px;background:radial-gradient(circle at 85% 15%,rgba(212,175,55,.18),transparent 30%),linear-gradient(145deg,#181818,#070707);box-shadow:0 18px 45px rgba(0,0,0,.55),inset 0 1px rgba(255,255,255,.07)}
+.trade-pro-top{display:flex;justify-content:space-between;align-items:center}
+.trade-pro-pair{display:flex;align-items:center;gap:8px}
+.trade-pro-pair strong{font-size:23px;font-weight:950}
+.trade-pro-pair span{color:#d4af37;font-size:18px}
+.trade-pro-top small{display:block;margin-top:4px;color:#888;font-size:8px;letter-spacing:1.5px}
+.trade-pro-live{font-size:9px;color:#d4af37}
+.trade-pro-price{display:flex;justify-content:space-between;align-items:end;margin:18px 0 14px}
+.trade-pro-price small{display:block;color:#888;font-size:8px;margin-bottom:4px}
+.trade-pro-price strong{display:block;font-size:28px;font-weight:950}
+.trade-pro-price>div:last-child{text-align:right}
+.trade-pro-price>div:last-child strong{font-size:17px}
+.trade-pro-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}
+.trade-pro-stats span{padding:9px 6px;border-radius:10px;background:rgba(255,255,255,.035);border:1px solid rgba(255,255,255,.06);color:#777;font-size:7px}
+.trade-pro-stats b{display:block;color:#ddd;font-size:10px;margin-top:3px}
+.trade-pro-nav{display:grid;grid-template-columns:repeat(5,1fr);gap:5px;margin-top:10px}
+.trade-pro-nav button{min-height:34px;border:1px solid rgba(212,175,55,.12);border-radius:9px;background:#0d0d0d;color:#aaa;font-size:8px;font-weight:900}
+.trade-pro-nav button:first-child{color:#d4af37;background:rgba(212,175,55,.09)}
+.trade-screen>.trade-header,.trade-screen>.trade-price-bar{display:none!important}
+}
+@media(max-width:380px){
+.trade-pro-hero{padding:13px}
+.trade-pro-price strong{font-size:24px}
+.trade-pro-pair strong{font-size:20px}
+}
+
+/* BITLORA MOBILE ORDER BOOK EQUAL SIZE */
+@media(max-width:700px){
+
+/* ORDER BOOK - SELL / BUY ROWS EQUAL */
+.trade-order-row,
+.order-row,
+.trade-orderbook-row,
+.order-book-row{
+  min-height:34px!important;
+  height:34px!important;
+  box-sizing:border-box!important;
+  display:grid!important;
+  align-items:center!important;
+  font-size:12px!important;
+  line-height:1.2!important;
+}
+
+.trade-order-row>*,
+.order-row>*,
+.trade-orderbook-row>*,
+.order-book-row>*{
+  font-size:12px!important;
+  line-height:1.2!important;
+}
+
+/* ORDER BOOK HEADINGS */
+.trade-orderbook,
+.trade-market-section{
+  font-size:12px!important;
+}
+
+.trade-market-section input,
+.trade-market-section button,
+.trade-market-section select{
+  font-size:12px!important;
+}
+
+/* CURRENT MARKET PRICE */
+.order-current{
+  min-height:44px!important;
+  display:flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+}
+
+.order-current strong{
+  font-size:17px!important;
+  font-weight:950!important;
+}
+
+/* BUY / SELL ORDER FORM */
+.trade-order-section{
+  padding:14px!important;
+}
+
+.trade-order-section label,
+.trade-order-section .order-label,
+.trade-order-section small{
+  font-size:11px!important;
+  line-height:1.3!important;
+}
+
+.order-field{
+  margin-bottom:9px!important;
+}
+
+.order-field>div{
+  min-height:48px!important;
+  height:48px!important;
+  display:flex!important;
+  align-items:center!important;
+  box-sizing:border-box!important;
+  border-radius:11px!important;
+}
+
+.order-field input{
+  min-height:46px!important;
+  height:46px!important;
+  padding:0 11px!important;
+  font-size:14px!important;
+  font-weight:700!important;
+  line-height:1!important;
+}
+
+.order-field>div>span{
+  font-size:11px!important;
+  font-weight:900!important;
+  padding-right:10px!important;
+}
+
+/* PERCENT BUTTONS - SAME SIZE */
+.trade-percent-buttons{
+  display:grid!important;
+  grid-template-columns:repeat(4,1fr)!important;
+  gap:6px!important;
+  width:100%!important;
+}
+
+.trade-percent-buttons button{
+  min-height:36px!important;
+  height:36px!important;
+  padding:0!important;
+  font-size:11px!important;
+  font-weight:900!important;
+  border-radius:9px!important;
+}
+
+/* AVAILABLE BALANCE */
+.premium-trade-balance{
+  min-height:42px!important;
+  display:flex!important;
+  align-items:center!important;
+  justify-content:space-between!important;
+  padding:10px 12px!important;
+  box-sizing:border-box!important;
+  font-size:11px!important;
+}
+
+.premium-trade-balance strong{
+  font-size:12px!important;
+}
+
+/* ESTIMATE VALUES */
+.trade-estimate{
+  gap:7px!important;
+}
+
+.trade-estimate>div{
+  min-height:42px!important;
+  display:flex!important;
+  align-items:center!important;
+  justify-content:space-between!important;
+  padding:8px 10px!important;
+  box-sizing:border-box!important;
+}
+
+.trade-estimate span{
+  font-size:10px!important;
+}
+
+.trade-estimate strong{
+  font-size:12px!important;
+}
+
+/* BUY / SELL MAIN BUTTONS - EQUAL */
+.buy-button,
+.sell-button{
+  width:100%!important;
+  min-height:52px!important;
+  height:52px!important;
+  box-sizing:border-box!important;
+  font-size:15px!important;
+  font-weight:950!important;
+  border-radius:13px!important;
+}
+
+/* BUY / SELL TABS - EQUAL */
+.trade-tabs{
+  display:grid!important;
+  grid-template-columns:1fr 1fr!important;
+  gap:5px!important;
+}
+
+.trade-tabs button{
+  width:100%!important;
+  min-height:44px!important;
+  height:44px!important;
+  font-size:14px!important;
+  font-weight:900!important;
+}
+
+/* ORDER TYPE TABS */
+.premium-order-tabs{
+  display:grid!important;
+  grid-template-columns:repeat(3,1fr)!important;
+  gap:4px!important;
+}
+
+.premium-order-tabs button{
+  min-height:38px!important;
+  height:38px!important;
+  font-size:10px!important;
+}
+
+/* ORDER BOOK SIDE CONTROLS */
+.trade-section-title button,
+.order-book-controls button{
+  min-height:34px!important;
+  height:34px!important;
+  font-size:11px!important;
+  font-weight:900!important;
+}
+
+/* SMALL SCREEN */
+}
+
+@media(max-width:380px){
+.trade-order-row,
+.order-row,
+.trade-orderbook-row,
+.order-book-row{
+  min-height:32px!important;
+  height:32px!important;
+  font-size:11px!important;
+}
+.trade-order-row>*,
+.order-row>*,
+.trade-orderbook-row>*,
+.order-book-row>*{
+  font-size:11px!important;
+}
+.order-field>div,
+.order-field input{
+  min-height:46px!important;
+  height:46px!important;
+}
+.buy-button,.sell-button{
+  min-height:50px!important;
+  height:50px!important;
+}
+}
+
+/* ORDER BOOK - BUY & SELL TEXT SAME SIZE / MOBILE ONLY */
+@media (max-width:700px){
+  .trade-market-section .order-row,
+  .trade-market-section .trade-order-row,
+  .trade-market-section .trade-orderbook-row,
+  .trade-market-section .order-book-row{
+    font-size:13px!important;
+  }
+
+  .trade-market-section .order-row>*,
+  .trade-market-section .trade-order-row>*,
+  .trade-market-section .trade-orderbook-row>*,
+  .trade-market-section .order-book-row>*{
+    font-size:13px!important;
+  }
+}
+
+/* ORDER BOOK LABELS - BUY & SELL EQUAL / MOBILE ONLY */
+@media (max-width:700px){
+  .order-book-label.sell-label,
+  .order-book-label.buy-label{
+    font-size:16px!important;
+    line-height:1.2!important;
+    font-weight:900!important;
+  }
+}
+
+/* FINAL ORDER BOOK BUY/SELL LABEL SIZE */
+@media (max-width:700px){
+  .trade-market-section .order-book-label.sell-label,
+  .trade-market-section .order-book-label.buy-label{
+    font-size:18px !important;
+    line-height:18px !important;
+    font-weight:900 !important;
+    display:block !important;
+    height:18px !important;
+    min-height:18px !important;
+    transform:none !important;
+  }
+
+  .trade-market-section .order-book-label.sell-label *,
+  .trade-market-section .order-book-label.buy-label *{
+    font-size:18px !important;
+    line-height:18px !important;
+    font-weight:900 !important;
+  }
+}
+
+/* ORDER BOOK BUY/SELL = 15PX */
+@media (max-width:700px){
+  .trade-market-section .order-book-label.sell-label,
+  .trade-market-section .order-book-label.buy-label,
+  .trade-market-section .order-book-label.sell-label *,
+  .trade-market-section .order-book-label.buy-label *{
+    font-size:15px !important;
+    line-height:15px !important;
+    font-weight:900 !important;
+  }
+}
