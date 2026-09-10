@@ -170,7 +170,11 @@ const [orderBookSide, setOrderBookSide] = useState("All");
     const balance = available + frozen;
     const price = balance > 0 && Number.isFinite(Number(item.value))
       ? Number(item.value) / balance
-      : (item.symbol === "USDT" ? 1 : Number(getDemoPrice(item.symbol + "/USDT")) || 0);
+      : (item.symbol === "USDT"
+          ? 1
+          : (Number(String(
+              marketsData.find((m) => m.pair === `${item.symbol}/USDT`)?.price ?? ""
+            ).replace(/[$,]/g, "")) || 0));
 
     return {
       asset: item.symbol,
@@ -576,7 +580,21 @@ const [orderBookSide, setOrderBookSide] = useState("All");
     { pair: "SOL/ETH", price: "$0.05655", change: "+1.03%" },
   ];
 
-    const formattedBtcEquivalent = balanceData
+    const formattedBalance = balanceData
+    ? `${(balanceData.totalBalance ?? balanceData.balance ?? 0).toLocaleString("en-US", {
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2,
+      })}`
+    : "Loading...";
+
+  const formattedUsdtBalance = balanceData
+    ? `${Number(balanceData.balance ?? 0).toLocaleString("en-US", {
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2,
+      })}`
+    : "Loading...";
+
+  const formattedBtcEquivalent = balanceData
     ? `≈ ${balanceData.btcEquivalent} BTC`
     : "Loading...";
 
