@@ -215,6 +215,20 @@ const [orderBookSide, setOrderBookSide] = useState("All");
     );
   });
 
+  const formattedBalance = balanceData
+    ? `${(balanceData.totalBalance ?? balanceData.balance ?? 0).toLocaleString("en-US", {
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2,
+      })}`
+    : "Loading...";
+
+  const formattedUsdtBalance = balanceData
+    ? `${Number(balanceData.balance ?? 0).toLocaleString("en-US", {
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2,
+      })}`
+    : "Loading...";
+
   const selectedBaseAsset = selectedPair.split("/")[0];
     const selectedAsset = assetsData.find((asset) => asset.symbol === selectedBaseAsset);
     const formattedTradeBalance = tradeSide === "Sell"
@@ -580,21 +594,7 @@ const [orderBookSide, setOrderBookSide] = useState("All");
     { pair: "SOL/ETH", price: "$0.05655", change: "+1.03%" },
   ];
 
-    const formattedBalance = balanceData
-    ? `${(balanceData.totalBalance ?? balanceData.balance ?? 0).toLocaleString("en-US", {
-        minimumFractionDigits: 2,
-        maximumFractionDigits: 2,
-      })}`
-    : "Loading...";
-
-  const formattedUsdtBalance = balanceData
-    ? `${Number(balanceData.balance ?? 0).toLocaleString("en-US", {
-        minimumFractionDigits: 2,
-        maximumFractionDigits: 2,
-      })}`
-    : "Loading...";
-
-  const formattedBtcEquivalent = balanceData
+    const formattedBtcEquivalent = balanceData
     ? `≈ ${balanceData.btcEquivalent} BTC`
     : "Loading...";
 
