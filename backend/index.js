@@ -455,15 +455,69 @@ app.get("/api/health", (req, res) => {
 
 app.get("/api/balance", (req, res) => {
   const userId = Number(req.query.userId || 1);
-  const usdt = ensureBalance(userId, "USDT");
+
+  const balances = db.prepare(`
+    SELECT currency, available, locked
+    FROM balances
+    WHERE user_id = ?
+    ORDER BY currency
+  `).all(userId);
+
+  const assets = balances.map((item) => {
+    const available = Number(item.available) || 0;
+    const locked = Number(item.locked) || 0;
+    const total = available + locked;
+
+    const price =
+      item.currency === "USDT"
+        ? 1
+        : getMarketPrice(`${item.currency}/USDT`);
+
+    return {
+      currency: item.currency,
+      available,
+      locked,
+      total,
+      price,
+      value: total * price
+    };
+  });
+
+  const totalBalance = assets.reduce(
+    (sum, item) => sum + item.value,
+    0
+  );
+
+  const availableTotal = assets.reduce(
+    (sum, item) => sum + (item.available * item.price),
+    0
+  );
+
+  const lockedTotal = assets.reduce(
+    (sum, item) => sum + (item.locked * item.price),
+    0
+  );
+
+  const usdt = assets.find((item) => item.currency === "USDT") || {
+    available: 0,
+    locked: 0
+  };
+
+  const btcPrice = getMarketPrice("BTC/USDT");
+  const btcEquivalent = btcPrice > 0
+    ? totalBalance / btcPrice
+    : 0;
 
   res.json({
     success: true,
     currency: "USDT",
-    balance: Number(usdt.available),
-    locked: Number(usdt.locked),
-    change24h: 4.82,
-    btcEquivalent: 0.186
+    balance: usdt.available,
+    locked: usdt.locked,
+    totalBalance,
+    availableTotal,
+    lockedTotal,
+    btcEquivalent,
+    change24h: 0
   });
 });
 
@@ -491,7 +545,7 @@ app.get("/api/assets", (req, res) => {
       symbol: item.currency,
       amount: Number(item.available),
       locked: Number(item.locked),
-      value: Number(item.available) * price
+      value: (Number(item.available) + Number(item.locked)) * price
     };
   });
 

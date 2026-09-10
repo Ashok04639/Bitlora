@@ -8,6 +8,7 @@ function App() {
   const [tradeMode, setTradeMode] = useState("Spot");
   const [apiStatus, setApiStatus] = useState("Checking...");
   const [menuOpen, setMenuOpen] = useState(false);
+const [expandedMenu, setExpandedMenu] = useState(null);
   const [buyMenuOpen, setBuyMenuOpen] = useState(false);
   const [cardComingSoon, setCardComingSoon] = useState(false);
   const [balanceData, setBalanceData] = useState(null);
@@ -163,73 +164,59 @@ const [orderBookSide, setOrderBookSide] = useState("All");
   const [walletWhitelistOnly, setWalletWhitelistOnly] = useState(true);
   const [walletNewAddressLock, setWalletNewAddressLock] = useState(true);
 
-  const walletAssets = [
-    {
-      asset: "USDT",
-      name: "Tether",
-      balance: 1250.45,
-      available: 1100.45,
-      frozen: 150.00,
-      price: 1
-    },
-    {
-      asset: "BTC",
-      name: "Bitcoin",
-      balance: 0.01842,
-      available: 0.01842,
-      frozen: 0,
-      price: 66842.10
-    },
-    {
-      asset: "ETH",
-      name: "Ethereum",
-      balance: 0.2841,
-      available: 0.2841,
-      frozen: 0,
-      price: 3521.25
-    },
-    {
-      asset: "BNB",
-      name: "BNB",
-      balance: 1.82,
-      available: 1.72,
-      frozen: 0.10,
-      price: 612.40
-    }
-  ];
+  const walletAssets = assetsData.map((item) => {
+    const available = Number(item.amount) || 0;
+    const frozen = Number(item.locked) || 0;
+    const balance = available + frozen;
+    const price = balance > 0 && Number.isFinite(Number(item.value))
+      ? Number(item.value) / balance
+      : (item.symbol === "USDT" ? 1 : Number(getDemoPrice(item.symbol + "/USDT")) || 0);
+
+    return {
+      asset: item.symbol,
+      name: item.name || item.symbol,
+      balance,
+      available,
+      frozen,
+      price,
+    };
+  });
 
   const walletTotalUsd = walletAssets.reduce(
-    (sum, item) => sum + item.balance * item.price,
+    (sum, item) => sum + (item.balance * item.price),
     0
   );
 
   const walletAvailableUsd = walletAssets.reduce(
-    (sum, item) => sum + item.available * item.price,
+    (sum, item) => sum + (item.available * item.price),
     0
   );
 
   const walletFrozenUsd = walletAssets.reduce(
-    (sum, item) => sum + item.frozen * item.price,
+    (sum, item) => sum + (item.frozen * item.price),
     0
   );
 
   const walletVisibleAssets = walletAssets.filter((item) => {
     const query = walletSearch.trim().toLowerCase();
 
-    if (
-      walletHideSmall &&
-      item.balance * item.price < 1
-    ) {
+    if (walletHideSmall && item.balance * item.price < 1) {
       return false;
     }
 
-    if (!query) return true;
-
     return (
+      !query ||
       item.asset.toLowerCase().includes(query) ||
       item.name.toLowerCase().includes(query)
     );
   });
+
+  const selectedBaseAsset = selectedPair.split("/")[0];
+    const selectedAsset = assetsData.find((asset) => asset.symbol === selectedBaseAsset);
+    const formattedTradeBalance = tradeSide === "Sell"
+      ? (selectedAsset ? selectedAsset.amount : `0 ${selectedBaseAsset}`)
+      : formattedUsdtBalance;
+
 
   const walletSubmitAction = () => {
     if (walletAction === "Deposit") {
@@ -589,26 +576,7 @@ const [orderBookSide, setOrderBookSide] = useState("All");
     { pair: "SOL/ETH", price: "$0.05655", change: "+1.03%" },
   ];
 
-    const formattedBalance = balanceData
-      ? `$${(balanceData.totalBalance ?? balanceData.balance).toLocaleString("en-US", {
-          minimumFractionDigits: 2,
-          maximumFractionDigits: 2,
-        })}`
-      : "Loading...";
-    const formattedUsdtBalance = balanceData
-      ? `$${balanceData.balance.toLocaleString("en-US", {
-          minimumFractionDigits: 2,
-          maximumFractionDigits: 2,
-        })}`
-      : "Loading...";
-    const selectedBaseAsset = selectedPair.split("/")[0];
-    const selectedAsset = assetsData.find((asset) => asset.symbol === selectedBaseAsset);
-    const formattedTradeBalance = tradeSide === "Sell"
-      ? (selectedAsset ? selectedAsset.amount : `0 ${selectedBaseAsset}`)
-      : formattedUsdtBalance;
-
-
-  const formattedBtcEquivalent = balanceData
+    const formattedBtcEquivalent = balanceData
     ? `≈ ${balanceData.btcEquivalent} BTC`
     : "Loading...";
 
@@ -702,16 +670,162 @@ const [orderBookSide, setOrderBookSide] = useState("All");
           </button>
 
           {menuOpen && (
-            <div className="profile-menu">
-              <button
-                type="button"
-                onClick={() => {
-                  setActive("Profile");
-                  setMenuOpen(false);
-                }}
-              >
-                Profile
-              </button>
+            <div className="profile-menu bitlora-account-menu">
+
+              <div className="account-menu-head">
+                <div className="account-avatar">B</div>
+                <div className="account-menu-user">
+                  <strong>Bitlora Account</strong>
+                  <span>Account Center</span>
+                </div>
+                <span className="account-status-dot">●</span>
+              </div>
+
+              <div className="account-menu-list">
+
+                <button type="button" className="account-menu-row"
+                  onClick={() => setExpandedMenu(expandedMenu === "Profile" ? null : "Profile")}>
+                  <span>👤</span><strong>Profile</strong><b>›</b>
+                </button>
+                {expandedMenu === "Profile" && (
+                  <div className="account-submenu">
+                    <button type="button">Personal Information</button>
+                    <button type="button">Account Details</button>
+                    <button type="button">Verification</button>
+                  </div>
+                )}
+
+                <button type="button" className="account-menu-row"
+                  onClick={() => alert("Login / Logout will be connected to Bitlora authentication.")}>
+                  <span>🔐</span><strong>Login / Logout</strong><b>›</b>
+                </button>
+
+                <button type="button" className="account-menu-row"
+                  onClick={() => setExpandedMenu(expandedMenu === "2FA" ? null : "2FA")}>
+                  <span>🛡️</span><strong>2FA Security</strong><b>›</b>
+                </button>
+                {expandedMenu === "2FA" && (
+                  <div className="account-submenu">
+                    <button type="button">Enable 2FA</button>
+                    <button type="button">Authenticator App</button>
+                    <button type="button">Security Verification</button>
+                  </div>
+                )}
+
+                <button type="button" className="account-menu-row"
+                  onClick={() => setExpandedMenu(expandedMenu === "Password" ? null : "Password")}>
+                  <span>🔑</span><strong>Change Password</strong><b>›</b>
+                </button>
+                {expandedMenu === "Password" && (
+                  <div className="account-submenu">
+                    <button type="button">Change Password</button>
+                    <button type="button">Forgot Password</button>
+                  </div>
+                )}
+
+                <button type="button" className="account-menu-row"
+                  onClick={() => setExpandedMenu(expandedMenu === "Devices" ? null : "Devices")}>
+                  <span>📱</span><strong>Devices & Sessions</strong><b>›</b>
+                </button>
+                {expandedMenu === "Devices" && (
+                  <div className="account-submenu">
+                    <button type="button">Active Devices</button>
+                    <button type="button">Login Sessions</button>
+                    <button type="button">Sign Out All Devices</button>
+                  </div>
+                )}
+
+                <button type="button" className="account-menu-row"
+                  onClick={() => setExpandedMenu(expandedMenu === "Notifications" ? null : "Notifications")}>
+                  <span>🔔</span><strong>Notifications</strong><b>›</b>
+                </button>
+                {expandedMenu === "Notifications" && (
+                  <div className="account-submenu">
+                    <button type="button">Push Notifications</button>
+                    <button type="button">Trading Alerts</button>
+                    <button type="button">Security Alerts</button>
+                  </div>
+                )}
+
+                <button type="button" className="account-menu-row"
+                  onClick={() => setExpandedMenu(expandedMenu === "Settings" ? null : "Settings")}>
+                  <span>⚙️</span><strong>Settings</strong><b>›</b>
+                </button>
+                {expandedMenu === "Settings" && (
+                  <div className="account-submenu">
+                    <button type="button">Appearance</button>
+                    <button type="button">Language</button>
+                    <button type="button">Currency</button>
+                  </div>
+                )}
+
+                <button type="button" className="account-menu-row"
+                  onClick={() => setExpandedMenu(expandedMenu === "Payment" ? null : "Payment")}>
+                  <span>💳</span><strong>Payment / Withdrawal Settings</strong><b>›</b>
+                </button>
+                {expandedMenu === "Payment" && (
+                  <div className="account-submenu">
+                    <button type="button">Payment Methods</button>
+                    <button type="button">Withdrawal Settings</button>
+                    <button type="button">Withdrawal Address</button>
+                    <button type="button">Address Whitelist</button>
+                  </div>
+                )}
+
+                <button type="button" className="account-menu-row"
+                  onClick={() => setExpandedMenu(expandedMenu === "History" ? null : "History")}>
+                  <span>📜</span><strong>Transaction History</strong><b>›</b>
+                </button>
+                {expandedMenu === "History" && (
+                  <div className="account-submenu">
+                    <button type="button">Deposit History</button>
+                    <button type="button">Withdrawal History</button>
+                    <button type="button">Trading History</button>
+                  </div>
+                )}
+
+                <button type="button" className="account-menu-row"
+                  onClick={() => setExpandedMenu(expandedMenu === "Referral" ? null : "Referral")}>
+                  <span>🎁</span><strong>Referral</strong><b>›</b>
+                </button>
+                {expandedMenu === "Referral" && (
+                  <div className="account-submenu">
+                    <button type="button">Referral Program</button>
+                    <button type="button">My Referral Code</button>
+                    <button type="button">Referral Rewards</button>
+                  </div>
+                )}
+
+                <button type="button" className="account-menu-row"
+                  onClick={() => setExpandedMenu(expandedMenu === "Help" ? null : "Help")}>
+                  <span>🆘</span><strong>Help & Support</strong><b>›</b>
+                </button>
+                {expandedMenu === "Help" && (
+                  <div className="account-submenu">
+                    <button type="button">Help Center</button>
+                    <button type="button">Contact Support</button>
+                    <button type="button">Report a Problem</button>
+                  </div>
+                )}
+
+                <button type="button" className="account-menu-row"
+                  onClick={() => setExpandedMenu(expandedMenu === "Terms" ? null : "Terms")}>
+                  <span>📄</span><strong>Terms / Privacy</strong><b>›</b>
+                </button>
+                {expandedMenu === "Terms" && (
+                  <div className="account-submenu">
+                    <button type="button">Terms of Service</button>
+                    <button type="button">Privacy Policy</button>
+                  </div>
+                )}
+
+                <button type="button" className="account-menu-row account-logout"
+                  onClick={() => alert("Logout will be connected to Bitlora authentication.")}>
+                  <span>🚪</span><strong>Logout</strong><b>›</b>
+                </button>
+
+              </div>
+
             </div>
           )}
         </div>
