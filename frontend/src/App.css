@@ -3558,3 +3558,465 @@ button {
     font-weight:900 !important;
   }
 }
+
+/* =========================================================
+   BITLORA — REAL EXCHANGE PREMIUM TRADE UI
+   MOBILE ONLY
+   BUY = GREEN / SELL = RED
+   ========================================================= */
+
+@media (max-width:700px){
+
+  /* ===== TRADE MASTER TYPE ===== */
+
+  .trade-screen{
+    font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif !important;
+    color:#f5f5f5 !important;
+  }
+
+  /* ===== PRIMARY MARKET IDENTITY ===== */
+
+  .trade-pro-pair strong{
+    font-size:22px !important;
+    font-weight:900 !important;
+    letter-spacing:-.035em !important;
+  }
+
+  .trade-pro-price strong{
+    font-size:29px !important;
+    font-weight:900 !important;
+    letter-spacing:-.045em !important;
+    line-height:1 !important;
+  }
+
+  .trade-pro-price small,
+  .trade-pro-top small{
+    font-size:8px !important;
+    font-weight:800 !important;
+    letter-spacing:.13em !important;
+    text-transform:uppercase !important;
+  }
+
+  /* ===== SECTION TITLES ===== */
+
+  .trade-section-title strong,
+  .trade-bottom-header strong{
+    font-size:15px !important;
+    font-weight:900 !important;
+    letter-spacing:-.015em !important;
+  }
+
+  .trade-section-title{
+    min-height:30px !important;
+  }
+
+  .order-book-columns span{
+    font-size:8px !important;
+    font-weight:800 !important;
+    letter-spacing:.08em !important;
+    text-transform:uppercase !important;
+  }
+
+  /* =====================================================
+     ORDER BOOK
+     ===================================================== */
+
+  .order-book-label{
+    font-size:14px !important;
+    font-weight:900 !important;
+    letter-spacing:.01em !important;
+    text-transform:uppercase !important;
+  }
+
+  /* SELL ORDERS = RED */
+
+  .order-book-label.sell-label{
+    color:#ff4d5e !important;
+  }
+
+  .order-row.ask span:first-child{
+    color:#ff4d5e !important;
+    font-weight:850 !important;
+  }
+
+  .order-row.ask span:nth-child(2),
+  .order-row.ask span:nth-child(3){
+    color:#d9d9d9 !important;
+  }
+
+  /* BUY ORDERS = GREEN */
+
+  .order-book-label.buy-label{
+    color:#19d98b !important;
+  }
+
+  .order-row.bid span:first-child{
+    color:#19d98b !important;
+    font-weight:850 !important;
+  }
+
+  .order-row.bid span:nth-child(2),
+  .order-row.bid span:nth-child(3){
+    color:#d9d9d9 !important;
+  }
+
+  /* ORDER BOOK NUMBERS */
+
+  .order-row{
+    min-height:27px !important;
+    font-variant-numeric:tabular-nums !important;
+  }
+
+  .order-row span{
+    font-size:10px !important;
+    line-height:1 !important;
+    font-weight:650 !important;
+  }
+
+  .order-current{
+    padding:12px 8px !important;
+  }
+
+  .order-current strong{
+    font-size:17px !important;
+    font-weight:950 !important;
+    letter-spacing:-.025em !important;
+    font-variant-numeric:tabular-nums !important;
+  }
+
+  .order-current span{
+    font-size:7px !important;
+    font-weight:800 !important;
+    letter-spacing:.11em !important;
+    text-transform:uppercase !important;
+  }
+
+  /* ===== ORDER BOOK CONTROLS ===== */
+
+  .order-book-dropdown-button{
+    font-size:9px !important;
+    font-weight:850 !important;
+    letter-spacing:.04em !important;
+  }
+
+  .order-book-dropdown-menu button{
+    font-size:10px !important;
+    font-weight:750 !important;
+  }
+
+  /* =====================================================
+     BUY / SELL TRADING PANEL
+     ===================================================== */
+
+  .trade-tabs{
+    display:grid !important;
+    grid-template-columns:1fr 1fr !important;
+    gap:5px !important;
+    padding:4px !important;
+    border-radius:12px !important;
+  }
+
+  .trade-tabs button{
+    min-height:44px !important;
+    border-radius:9px !important;
+    font-size:13px !important;
+    font-weight:950 !important;
+    letter-spacing:.03em !important;
+    text-transform:uppercase !important;
+    border:1px solid transparent !important;
+    transition:all .18s ease !important;
+  }
+
+  /* BUY ACTIVE = GREEN */
+
+  .trade-tabs button.active:first-child{
+    color:#07130d !important;
+    background:linear-gradient(135deg,#19d98b,#0ca96a) !important;
+    border-color:#2df0a2 !important;
+    box-shadow:0 7px 22px rgba(25,217,139,.22) !important;
+  }
+
+  /* SELL ACTIVE = RED */
+
+  .trade-tabs button.active:last-child{
+    color:#190608 !important;
+    background:linear-gradient(135deg,#ff5264,#d92e43) !important;
+    border-color:#ff6878 !important;
+    box-shadow:0 7px 22px rgba(255,68,88,.22) !important;
+  }
+
+  /* INACTIVE SIDE */
+
+  .trade-tabs button:not(.active){
+    color:#8c8c8c !important;
+    background:#0b0b0b !important;
+  }
+
+  /* ===== ORDER TYPE ===== */
+
+  .order-tabs button,
+  .premium-order-tabs button{
+    font-size:10px !important;
+    font-weight:850 !important;
+    letter-spacing:.04em !important;
+    text-transform:uppercase !important;
+  }
+
+  /* ===== INPUT LABELS ===== */
+
+  .order-field label{
+    font-size:8px !important;
+    font-weight:900 !important;
+    letter-spacing:.11em !important;
+    text-transform:uppercase !important;
+    color:#8e8e8e !important;
+  }
+
+  .order-field input{
+    font-size:13px !important;
+    font-weight:750 !important;
+    letter-spacing:-.015em !important;
+    font-variant-numeric:tabular-nums !important;
+  }
+
+  .order-field>div>span{
+    font-size:9px !important;
+    font-weight:900 !important;
+    letter-spacing:.05em !important;
+  }
+
+  /* ===== PERCENTAGE ===== */
+
+  .trade-percent-buttons button{
+    font-size:9px !important;
+    font-weight:850 !important;
+  }
+
+  /* ===== BALANCE ===== */
+
+  .trade-balance span,
+  .premium-trade-balance span{
+    font-size:8px !important;
+    font-weight:800 !important;
+    letter-spacing:.09em !important;
+    text-transform:uppercase !important;
+  }
+
+  .trade-balance strong,
+  .premium-trade-balance strong{
+    font-size:11px !important;
+    font-weight:900 !important;
+    font-variant-numeric:tabular-nums !important;
+  }
+
+  /* =====================================================
+     MAIN BUY / SELL BUTTON
+     ===================================================== */
+
+  .buy-button,
+  .sell-button{
+    min-height:53px !important;
+    font-size:15px !important;
+    font-weight:950 !important;
+    letter-spacing:.04em !important;
+    text-transform:uppercase !important;
+    border-radius:14px !important;
+  }
+
+  .buy-button{
+    background:linear-gradient(135deg,#19d98b,#07945c) !important;
+    color:#04110a !important;
+    border:1px solid #35e9a3 !important;
+    box-shadow:0 10px 30px rgba(25,217,139,.18) !important;
+  }
+
+  .sell-button{
+    background:linear-gradient(135deg,#ff5365,#c9243b) !important;
+    color:#180508 !important;
+    border:1px solid #ff7180 !important;
+    box-shadow:0 10px 30px rgba(255,68,88,.18) !important;
+  }
+
+  /* =====================================================
+     OPEN / ORDER / TRADE HISTORY
+     ===================================================== */
+
+  .trade-orders button{
+    font-size:9px !important;
+    font-weight:900 !important;
+    letter-spacing:.045em !important;
+    text-transform:uppercase !important;
+  }
+
+  .order-history-filters button{
+    font-size:8px !important;
+    font-weight:850 !important;
+    letter-spacing:.06em !important;
+    text-transform:uppercase !important;
+  }
+
+  .open-order-row{
+    font-variant-numeric:tabular-nums !important;
+  }
+
+  .open-order-row>div>strong{
+    font-size:11px !important;
+    font-weight:950 !important;
+    letter-spacing:.01em !important;
+    text-transform:uppercase !important;
+  }
+
+  .open-order-row>div>span{
+    font-size:9px !important;
+    line-height:1.25 !important;
+    font-weight:650 !important;
+  }
+
+  /* BUY SIDE IN HISTORY */
+
+  .open-order-row>div>strong:first-child{
+    font-weight:950 !important;
+  }
+
+  /* Any row containing BUY */
+
+  .open-order-row:has(strong:first-child){
+    --trade-side-neutral:#ddd;
+  }
+
+  /* Explicit side colors from row content */
+
+  .open-order-row strong{
+    letter-spacing:.025em !important;
+  }
+
+  .open-order-row button{
+    font-size:8px !important;
+    font-weight:900 !important;
+    letter-spacing:.05em !important;
+    text-transform:uppercase !important;
+  }
+
+  /* =====================================================
+     TRADE HISTORY LABELS
+     ===================================================== */
+
+  .open-orders-list .open-order-row span{
+    color:#aaa !important;
+  }
+
+  .empty-orders{
+    font-size:10px !important;
+    font-weight:700 !important;
+    letter-spacing:.04em !important;
+  }
+
+  /* =====================================================
+     CHART / NAV TEXT
+     ===================================================== */
+
+  .trade-timeframes button,
+  .chart-tool,
+  .trade-advanced-button{
+    font-size:9px !important;
+    font-weight:850 !important;
+    letter-spacing:.04em !important;
+    text-transform:uppercase !important;
+  }
+
+  .trade-pro-nav button{
+    font-size:8px !important;
+    font-weight:900 !important;
+    letter-spacing:.06em !important;
+    text-transform:uppercase !important;
+  }
+
+  /* =====================================================
+     SMALL STATUS / MESSAGE TEXT
+     ===================================================== */
+
+  .market-order-note,
+  .trade-message,
+  .trade-status{
+    font-size:8px !important;
+    line-height:1.35 !important;
+    font-weight:650 !important;
+    letter-spacing:.025em !important;
+  }
+
+  /* =====================================================
+     NUMERIC PRECISION
+     ===================================================== */
+
+  .trade-screen .order-row,
+  .trade-screen .order-current strong,
+  .trade-screen input,
+  .trade-screen .open-order-row{
+    font-variant-numeric:tabular-nums !important;
+  }
+}
+
+
+/* =========================================================
+   EXTRA SMALL PHONES
+   ========================================================= */
+
+@media(max-width:380px){
+
+  .trade-pro-pair strong{
+    font-size:20px !important;
+  }
+
+  .trade-pro-price strong{
+    font-size:25px !important;
+  }
+
+  .trade-section-title strong,
+  .trade-bottom-header strong{
+    font-size:14px !important;
+  }
+
+  .trade-tabs button{
+    font-size:12px !important;
+  }
+
+  .order-book-label{
+    font-size:13px !important;
+  }
+
+  .order-row span{
+    font-size:9px !important;
+  }
+
+  .buy-button,
+  .sell-button{
+    font-size:14px !important;
+  }
+}
+
+/* MOBILE ONLY — keep Trade history clear of bottom navigation */
+@media (max-width:700px){
+  .trade-screen{
+    padding-bottom:110px !important;
+  }
+
+  .trade-screen .trade-orders,
+  .trade-screen .premium-trade-orders{
+    margin-bottom:28px !important;
+  }
+
+  .trade-screen .open-orders-list,
+  .trade-screen .order-history-list,
+  .trade-screen .trade-history-list{
+    padding-bottom:35px !important;
+  }
+
+  /* Extra scroll space at the very bottom of Trade */
+  .trade-screen::after{
+    content:"";
+    display:block;
+    height:70px;
+    width:100%;
+  }
+}
+
