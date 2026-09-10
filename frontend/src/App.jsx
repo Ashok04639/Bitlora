@@ -5,6 +5,7 @@ function App() {
   const [active, setActive] = useState("Home");
   const [activeUserId, setActiveUserId] = useState(1);
   const [selectedPair, setSelectedPair] = useState("BTC/USDT");
+  const [tradeMode, setTradeMode] = useState("Spot");
   const [apiStatus, setApiStatus] = useState("Checking...");
   const [menuOpen, setMenuOpen] = useState(false);
   const [buyMenuOpen, setBuyMenuOpen] = useState(false);
@@ -829,7 +830,29 @@ const [orderBookSide, setOrderBookSide] = useState("All");
           </div>
 
           
-    <div className="trade-premium-strip">
+    <div className="trade-mode-switch">
+  <button
+    type="button"
+    className={tradeMode === "Spot" ? "active spot-mode" : ""}
+    onClick={() => {
+      setTradeMode("Spot");
+      setActive("Trade");
+    }}
+  >
+    SPOT
+  </button>
+  <button
+    type="button"
+    className={tradeMode === "Futures" ? "active futures-mode" : ""}
+    onClick={() => {
+      setTradeMode("Futures");
+      setActive("Futures");
+    }}
+  >
+    FUTURES
+  </button>
+</div>
+<div className="trade-premium-strip">
       <div className="trade-premium-stat">
         <span>24H HIGH</span>
         <strong>$67,920.00</strong>
