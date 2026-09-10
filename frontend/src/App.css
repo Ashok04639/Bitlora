@@ -2495,9 +2495,9 @@ button {
 
 /* BITLORA PREMIUM LOGO — COMPACT HEADER */
 .bitlora-logo {
-  width: 420px;
+  width: 270px;
   height: auto;
-  max-height: 82px;
+  max-height: 55px;
   display: block;
   object-fit: contain;
   object-position: center;
@@ -2508,9 +2508,9 @@ button {
 
 @media (max-width: 700px) {
   .bitlora-logo {
-    width: 356px;
+    width: 285px;
     max-width: 100%;
-    max-height: 72px;
+    max-height: 55px;
   }
 }
 
@@ -2533,10 +2533,10 @@ button {
   }
 
   .bitlora-logo {
-    width: min(356px, 100%);
+    width: min(270px, 100%);
     max-width: 100%;
     height: auto;
-    max-height: 100px;
+    max-height: 55px;
   }
 
   .header-right {
@@ -7187,5 +7187,57 @@ button {
   .actions,
   .section {
     transform: translateY(-40px);
+  }
+}
+
+/* FINAL BITLORA LOGO SIZE — OVERRIDE */
+.bitlora-logo {
+  width: 240px !important;
+  max-width: 240px !important;
+  height: auto !important;
+  max-height: 50px !important;
+  object-fit: contain !important;
+  object-position: center !important;
+}
+
+@media (max-width: 700px) {
+  .bitlora-logo {
+    width: 220px !important;
+    max-width: 220px !important;
+    height: auto !important;
+    max-height: 48px !important;
+  }
+}
+
+/* FINAL LOGO HARD SIZE */
+.header .brand {
+  width: 180px !important;
+  max-width: 180px !important;
+  min-width: 0 !important;
+  flex: 0 0 180px !important;
+  overflow: hidden !important;
+}
+
+.header .brand .bitlora-logo {
+  display: block !important;
+  width: 180px !important;
+  max-width: 180px !important;
+  min-width: 0 !important;
+  height: auto !important;
+  max-height: 42px !important;
+  flex: none !important;
+}
+
+@media (max-width: 700px) {
+  .header .brand {
+    width: 180px !important;
+    max-width: 180px !important;
+    flex: 0 0 180px !important;
+  }
+
+  .header .brand .bitlora-logo {
+    width: 180px !important;
+    max-width: 180px !important;
+    max-height: 42px !important;
   }
 }
