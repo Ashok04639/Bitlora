@@ -41,6 +41,7 @@ db.exec(`
     amount REAL NOT NULL,
     remaining_amount REAL NOT NULL,
     total REAL NOT NULL,
+      reserved_amount REAL NOT NULL DEFAULT 0,
     status TEXT NOT NULL DEFAULT 'Open',
     created_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY(user_id) REFERENCES users(id)

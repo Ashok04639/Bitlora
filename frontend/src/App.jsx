@@ -50,6 +50,214 @@ const [orderBookSide, setOrderBookSide] = useState("All");
   const [liveCandles,setLiveCandles]=useState(()=>Array.from({length:15},(_,i)=>({up:i%3!==1,height:35+Math.floor(Math.random()*55)})));
   const [tradeTimeframe, setTradeTimeframe] = useState("1m");
   const [chartType, setChartType] = useState("Candles");
+
+  /* ===== BITLORA FUTURES STATE ===== */
+  const [futuresPair, setFuturesPair] = useState("BTC/USDT");
+  const [futuresMarketPrice, setFuturesMarketPrice] = useState(66842.10);
+  const [futuresChange, setFuturesChange] = useState("+0.00%");
+  const [futuresAvailableMargin, setFuturesAvailableMargin] = useState(1000);
+  const [futuresInitialMargin, setFuturesInitialMargin] = useState(0);
+  const [futuresRiskLevel, setFuturesRiskLevel] = useState("LOW");
+  const [futuresMarginMode, setFuturesMarginMode] = useState("Cross");
+  const [futuresLeverage, setFuturesLeverage] = useState(10);
+  const [futuresPositionMode, setFuturesPositionMode] = useState("One-Way");
+  const [futuresSide, setFuturesSide] = useState("Long");
+  const [futuresOrderType, setFuturesOrderType] = useState("Limit");
+  const [futuresPrice, setFuturesPrice] = useState("");
+  const [futuresTriggerPrice, setFuturesTriggerPrice] = useState("");
+  const [futuresAmount, setFuturesAmount] = useState("");
+  const [futuresAmountUnit, setFuturesAmountUnit] = useState("USDT");
+  const [futuresReduceOnly, setFuturesReduceOnly] = useState(false);
+  const [futuresPostOnly, setFuturesPostOnly] = useState(false);
+  const [futuresTriggerBy, setFuturesTriggerBy] = useState("Mark");
+  const [futuresTakeProfit, setFuturesTakeProfit] = useState("");
+  const [futuresStopLoss, setFuturesStopLoss] = useState("");
+  const [futuresNotional, setFuturesNotional] = useState(0);
+  const [futuresLiquidationPrice, setFuturesLiquidationPrice] = useState(0);
+  const [futuresMessage, setFuturesMessage] = useState("");
+  const [futuresTab, setFuturesTab] = useState("Positions");
+  const [futuresPositions, setFuturesPositions] = useState([]);
+  const [futuresOrders, setFuturesOrders] = useState([]);
+  const [futuresMarginUsage, setFuturesMarginUsage] = useState(0);
+  const [futuresSettingsOpen, setFuturesSettingsOpen] = useState(false);
+
+  /* ===== END BITLORA FUTURES STATE ===== */
+  /* ===== BITLORA FUTURES HANDLERS ===== */
+  const placeFuturesOrder = () => {
+    const amount = Number(futuresAmount || 0);
+    const price = Number(futuresPrice || futuresTriggerPrice || futuresMarketPrice || 0);
+
+    if (!amount || amount <= 0) {
+      setFuturesMessage("Enter a valid order size.");
+      return;
+    }
+
+    if (!price || price <= 0) {
+      setFuturesMessage("Enter a valid price.");
+      return;
+    }
+
+    const notional = futuresAmountUnit === "Asset" ? amount * price : amount;
+    const leverage = Number(futuresLeverage || 1);
+    const initialMargin = notional / leverage;
+
+    setFuturesNotional(notional);
+    setFuturesInitialMargin(initialMargin);
+
+    const usage = futuresAvailableMargin > 0
+      ? Math.min(100, (initialMargin / futuresAvailableMargin) * 100)
+      : 0;
+
+    setFuturesMarginUsage(usage);
+
+    const liquidationPrice = futuresSide === "Long"
+      ? Math.max(0, futuresMarketPrice * (1 - 0.9 / leverage))
+      : futuresMarketPrice * (1 + 0.9 / leverage);
+
+    setFuturesLiquidationPrice(liquidationPrice);
+
+    const newPosition = {
+      id: Date.now(),
+      pair: futuresPair,
+      side: futuresSide,
+      leverage: leverage,
+      size: amount,
+      entry: price,
+      mark: futuresMarketPrice,
+      liquidationPrice: liquidationPrice,
+      pnl: 0,
+      roi: 0
+    };
+
+    setFuturesPositions((prev) => [...prev, newPosition]);
+    setFuturesMessage(
+      futuresSide + " order prepared successfully (" + futuresOrderType + ")."
+    );
+  };
+
+  const closeFuturesPosition = (positionId) => {
+    setFuturesPositions((prev) =>
+      prev.filter((position) => position.id !== positionId)
+    );
+    setFuturesMessage("Futures position closed.");
+  };
+
+  /* ===== END BITLORA FUTURES HANDLERS ===== */
+
+
+  /* ===== BITLORA WALLET PRO STATE ===== */
+  const [walletActiveTab, setWalletActiveTab] = useState("Overview");
+  const [walletSettingsOpen, setWalletSettingsOpen] = useState(false);
+  const [walletAction, setWalletAction] = useState("Deposit");
+  const [walletAsset, setWalletAsset] = useState("USDT");
+  const [walletNetwork, setWalletNetwork] = useState("BEP20");
+  const [walletAddress, setWalletAddress] = useState("");
+  const [walletMemo, setWalletMemo] = useState("");
+  const [walletAmount, setWalletAmount] = useState("");
+  const [walletSearch, setWalletSearch] = useState("");
+  const [walletMessage, setWalletMessage] = useState("");
+  const [walletSecurityOpen, setWalletSecurityOpen] = useState(false);
+  const [walletHideSmall, setWalletHideSmall] = useState(false);
+  const [walletShowUsd, setWalletShowUsd] = useState(true);
+  const [walletConfirmWithdrawal, setWalletConfirmWithdrawal] = useState(true);
+  const [walletWhitelistOnly, setWalletWhitelistOnly] = useState(true);
+  const [walletNewAddressLock, setWalletNewAddressLock] = useState(true);
+
+  const walletAssets = [
+    {
+      asset: "USDT",
+      name: "Tether",
+      balance: 1250.45,
+      available: 1100.45,
+      frozen: 150.00,
+      price: 1
+    },
+    {
+      asset: "BTC",
+      name: "Bitcoin",
+      balance: 0.01842,
+      available: 0.01842,
+      frozen: 0,
+      price: 66842.10
+    },
+    {
+      asset: "ETH",
+      name: "Ethereum",
+      balance: 0.2841,
+      available: 0.2841,
+      frozen: 0,
+      price: 3521.25
+    },
+    {
+      asset: "BNB",
+      name: "BNB",
+      balance: 1.82,
+      available: 1.72,
+      frozen: 0.10,
+      price: 612.40
+    }
+  ];
+
+  const walletTotalUsd = walletAssets.reduce(
+    (sum, item) => sum + item.balance * item.price,
+    0
+  );
+
+  const walletAvailableUsd = walletAssets.reduce(
+    (sum, item) => sum + item.available * item.price,
+    0
+  );
+
+  const walletFrozenUsd = walletAssets.reduce(
+    (sum, item) => sum + item.frozen * item.price,
+    0
+  );
+
+  const walletVisibleAssets = walletAssets.filter((item) => {
+    const query = walletSearch.trim().toLowerCase();
+
+    if (
+      walletHideSmall &&
+      item.balance * item.price < 1
+    ) {
+      return false;
+    }
+
+    if (!query) return true;
+
+    return (
+      item.asset.toLowerCase().includes(query) ||
+      item.name.toLowerCase().includes(query)
+    );
+  });
+
+  const walletSubmitAction = () => {
+    if (walletAction === "Deposit") {
+      setWalletMessage(
+        "Deposit address generation will be connected to the wallet backend."
+      );
+      return;
+    }
+
+    if (walletAction === "Withdraw") {
+      if (!walletAddress || !walletAmount) {
+        setWalletMessage("Enter withdrawal address and amount.");
+        return;
+      }
+
+      setWalletMessage(
+        "Withdrawal request prepared. Security verification will be required."
+      );
+      return;
+    }
+
+    setWalletMessage(
+      "Transfer module is ready for backend integration."
+    );
+  };
+
+  /* ===== END WALLET PRO STATE ===== */
+
   useEffect(() => { setTradePrice(Number(getDemoPrice(selectedPair)).toFixed(8)); setTradeAmount(""); setTradeTotal(""); setTradeMessage(""); }, [selectedPair]);
   const [tradeMessage, setTradeMessage] = useState("");
   const [openOrders, setOpenOrders] = useState([]);
@@ -475,7 +683,7 @@ const [orderBookSide, setOrderBookSide] = useState("All");
     <div className="app">
       <header className="header">
         <div className="brand">
-          <img className="bitlora-logo" src="/bitlora-logo.svg" alt="Bitlora" />
+          <img className="bitlora-logo" src="/assets/bitlora-logo.png" alt="Bitlora" />
         </div>
 
         <div className="header-right">
@@ -1238,144 +1446,1432 @@ const [orderBookSide, setOrderBookSide] = useState("All");
       )}
 
       {active === "Futures" && (
-        <section className="section">
-          <div className="section-header">
-            <div>
-              <h3>Futures</h3>
-              <p>Trade crypto futures</p>
-            </div>
+  <section className="futures-screen">
+
+    <div className="futures-topbar">
+      <div className="futures-pair-area">
+        <select
+          className="futures-pair-select"
+          value={futuresPair}
+          onChange={(e) => setFuturesPair(e.target.value)}
+        >
+          {markets.slice(0, 15).map((market) => (
+            <option key={market.pair} value={market.pair}>
+              {market.pair} Perpetual
+            </option>
+          ))}
+        </select>
+
+        <span className="futures-contract-badge">PERP</span>
+        <span className="futures-live-dot">LIVE</span>
+      </div>
+
+      <button
+        type="button"
+        className="futures-settings-button"
+        onClick={() => setFuturesSettingsOpen(true)}
+      >
+        ⚙ Settings
+      </button>
+    </div>
+
+    <div className="futures-price-card">
+
+      <div className="futures-main-price">
+        <span>Mark Price</span>
+
+        <strong>
+          {"$" + futuresMarketPrice.toLocaleString(undefined, {
+            minimumFractionDigits: futuresMarketPrice < 1 ? 6 : 2,
+            maximumFractionDigits: futuresMarketPrice < 1 ? 8 : 2
+          })}
+        </strong>
+
+        <b className={String(futuresChange).startsWith("-") ? "red" : "green"}>
+          {futuresChange}
+        </b>
+      </div>
+
+      <div className="futures-stat">
+        <span>Index Price</span>
+        <strong>
+          {"$" + futuresMarketPrice.toLocaleString(undefined, {
+            minimumFractionDigits: 2,
+            maximumFractionDigits: 2
+          })}
+        </strong>
+      </div>
+
+      <div className="futures-stat">
+        <span>24H High</span>
+        <strong>
+          {"$" + (futuresMarketPrice * 1.035).toLocaleString(undefined, {
+            minimumFractionDigits: 2,
+            maximumFractionDigits: 2
+          })}
+        </strong>
+      </div>
+
+      <div className="futures-stat">
+        <span>24H Low</span>
+        <strong>
+          {"$" + (futuresMarketPrice * 0.965).toLocaleString(undefined, {
+            minimumFractionDigits: 2,
+            maximumFractionDigits: 2
+          })}
+        </strong>
+      </div>
+
+      <div className="futures-stat">
+        <span>Funding Rate</span>
+        <strong className="green">+0.0100%</strong>
+        <small>Next 08:00</small>
+      </div>
+
+    </div>
+
+    <div className="futures-account-grid">
+
+      <div>
+        <span>Available Margin</span>
+        <strong>{"$" + futuresAvailableMargin.toFixed(2)}</strong>
+      </div>
+
+      <div>
+        <span>Margin Used</span>
+        <strong>{"$" + futuresInitialMargin.toFixed(2)}</strong>
+      </div>
+
+      <div>
+        <span>Unrealized PnL</span>
+        <strong className="green">$0.00</strong>
+      </div>
+
+      <div>
+        <span>Risk Level</span>
+        <strong className={
+          futuresRiskLevel === "HIGH"
+            ? "red"
+            : futuresRiskLevel === "MEDIUM"
+            ? "yellow"
+            : "green"
+        }>
+          {futuresRiskLevel}
+        </strong>
+      </div>
+
+    </div>
+
+    <div className="futures-contract-tabs">
+      <button type="button" className="active">USDT-M Perpetual</button>
+      <button type="button">USDC-M Perpetual</button>
+      <button type="button">COIN-M</button>
+    </div>
+
+    <div className="futures-main-grid">
+
+      <div className="futures-chart-card">
+
+        <div className="futures-chart-header">
+          <div>
+            <strong>{futuresPair} Perpetual</strong>
+            <span>Advanced market chart</span>
           </div>
 
-          <div className="cards">
-            <div className="market">
-              <div className="market-left">
-                <div className="market-icon">⚡</div>
-
-                <div>
-                  <strong>BTC/USDT Perpetual</strong>
-                  <span>Futures Market</span>
-                </div>
-              </div>
-
-              <div className="market-value">
-                <strong>$66,842.10</strong>
-                <span className="green">+2.41%</span>
-              </div>
-            </div>
-          </div>
-        </section>
-      )}
-
-      {active === "Wallet" && (
-        <section className="wallet-screen">
-          <div className="section-header">
-            <div>
-              <h3>Wallet</h3>
-              <p>Manage your crypto assets</p>
-            </div>
-          </div>
-
-          <div className="wallet-balance">
-            <span>Total Wallet Balance</span>
-            <strong>{formattedBalance}</strong>
-            <small>{formattedBtcEquivalent}</small>
-          </div>
-
-          <div className="wallet-actions">
-            <button type="button">
-              <span>↓</span>
-              Deposit
-            </button>
-
-            <button type="button">
-              <span>↑</span>
-              Withdraw
-            </button>
-          </div>
-
-          <div className="section-header">
-            <div>
-              <h3>Your Assets</h3>
-              <p>Available crypto balances</p>
-            </div>
-          </div>
-
-          <div className="cards">
-            {displayAssets.map((asset) => (
-              <div className="asset" key={asset.symbol}>
-                <div className="coin">{asset.icon}</div>
-
-                <div className="asset-name">
-                  <strong>{asset.name}</strong>
-                  <span>{asset.symbol}</span>
-                </div>
-
-                <div className="asset-value">
-                  <strong>{asset.amount}</strong>
-                  <span>{asset.value}</span>
-                </div>
-              </div>
-            ))}
-          </div>
-
-          <div className="section-header">
-            <div>
-              <h3>Recent Transactions</h3>
-              <p>Your latest activity</p>
-            </div>
-          </div>
-
-          <div className="cards">
-            {displayTransactions.map((transaction, index) => (
-              <div
-                className="transaction"
-                key={`${transaction.type}-${index}`}
+          <div className="futures-timeframes">
+            {["1m","5m","15m","1H","4H","1D"].map((tf) => (
+              <button
+                key={tf}
+                type="button"
+                className={tradeTimeframe === tf ? "active" : ""}
+                onClick={() => setTradeTimeframe(tf)}
               >
-                <div className="transaction-icon">
-                  {transaction.direction === "in" ? "↓" : "⇄"}
-                </div>
+                {tf}
+              </button>
+            ))}
+          </div>
+        </div>
 
-                <div>
-                  <strong>{transaction.type}</strong>
-                  <span>{transaction.asset}</span>
-                </div>
+        <div className="futures-chart">
 
-                <b
-                  className={
-                    transaction.direction === "in" ? "green" : "red"
-                  }
-                >
-                  {transaction.amount}
-                </b>
+          <div className="futures-chart-grid">
+            {liveCandles.map((candle, index) => (
+              <div className="futures-candle" key={index}>
+                <span
+                  className={candle.up ? "up" : "down"}
+                  style={{ height: candle.height + "%" }}
+                />
               </div>
             ))}
           </div>
-        </section>
+
+          <div className="futures-chart-labels">
+            <span>09:00</span>
+            <span>12:00</span>
+            <span>15:00</span>
+            <span>18:00</span>
+          </div>
+
+          <div className="futures-chart-price-line">
+            <span>{futuresMarketPrice.toFixed(2)}</span>
+          </div>
+
+        </div>
+
+        <div className="futures-chart-footer">
+          <span>MA</span>
+          <span>EMA</span>
+          <span>VOL</span>
+          <span>RSI</span>
+          <span>MACD</span>
+          <span>DEPTH</span>
+        </div>
+
+      </div>
+
+      <div className="futures-order-card">
+
+        <div className="futures-order-controls">
+
+          <label>
+            Margin
+            <select
+              value={futuresMarginMode}
+              onChange={(e) => setFuturesMarginMode(e.target.value)}
+            >
+              <option>Cross</option>
+              <option>Isolated</option>
+              <option>Portfolio</option>
+            </select>
+          </label>
+
+          <label>
+            Leverage
+            <select
+              value={futuresLeverage}
+              onChange={(e) => setFuturesLeverage(Number(e.target.value))}
+            >
+              {[1,2,3,5,10,20,25,50,75,100].map((x) => (
+                <option key={x} value={x}>{x}x</option>
+              ))}
+            </select>
+          </label>
+
+          <label>
+            Position
+            <select
+              value={futuresPositionMode}
+              onChange={(e) => setFuturesPositionMode(e.target.value)}
+            >
+              <option>One-Way</option>
+              <option>Hedge</option>
+            </select>
+          </label>
+
+        </div>
+
+        <div className="futures-side-tabs">
+
+          <button
+            type="button"
+            className={futuresSide === "Long" ? "active-long" : ""}
+            onClick={() => setFuturesSide("Long")}
+          >
+            LONG
+          </button>
+
+          <button
+            type="button"
+            className={futuresSide === "Short" ? "active-short" : ""}
+            onClick={() => setFuturesSide("Short")}
+          >
+            SHORT
+          </button>
+
+        </div>
+
+        <div className="futures-order-types">
+          {["Market","Limit","Stop Market","Stop Limit"].map((type) => (
+            <button
+              key={type}
+              type="button"
+              className={futuresOrderType === type ? "active" : ""}
+              onClick={() => setFuturesOrderType(type)}
+            >
+              {type}
+            </button>
+          ))}
+        </div>
+
+        {(futuresOrderType === "Limit" ||
+          futuresOrderType === "Stop Limit") && (
+          <label className="futures-field">
+            <span>Price</span>
+
+            <input
+              type="number"
+              inputMode="decimal"
+              placeholder={futuresMarketPrice.toFixed(2)}
+              value={futuresPrice}
+              onChange={(e) => setFuturesPrice(e.target.value)}
+            />
+
+            <b>USDT</b>
+          </label>
+        )}
+
+        {(futuresOrderType === "Stop Market" ||
+          futuresOrderType === "Stop Limit") && (
+          <label className="futures-field">
+            <span>Trigger Price</span>
+
+            <input
+              type="number"
+              inputMode="decimal"
+              placeholder={futuresMarketPrice.toFixed(2)}
+              value={futuresTriggerPrice}
+              onChange={(e) => setFuturesTriggerPrice(e.target.value)}
+            />
+
+            <b>USDT</b>
+          </label>
+        )}
+
+        <label className="futures-field">
+          <span>Size</span>
+
+          <input
+            type="number"
+            inputMode="decimal"
+            placeholder="0.00"
+            value={futuresAmount}
+            onChange={(e) => setFuturesAmount(e.target.value)}
+          />
+
+          <select
+            value={futuresAmountUnit}
+            onChange={(e) => setFuturesAmountUnit(e.target.value)}
+          >
+            <option>USDT</option>
+            <option>Asset</option>
+            <option>Margin</option>
+          </select>
+        </label>
+
+        <div className="futures-size-presets">
+          {[25,50,75,100].map((pct) => (
+            <button
+              type="button"
+              key={pct}
+              onClick={() => {
+                const value =
+                  (
+                    futuresAvailableMargin *
+                    pct *
+                    Number(futuresLeverage || 1)
+                  ) /
+                  100 /
+                  Math.max(futuresMarketPrice, 1);
+
+                setFuturesAmount(value.toFixed(6));
+              }}
+            >
+              {pct}%
+            </button>
+          ))}
+        </div>
+
+        <div className="futures-advanced-row">
+
+          <label>
+            <input
+              type="checkbox"
+              checked={futuresReduceOnly}
+              onChange={(e) => setFuturesReduceOnly(e.target.checked)}
+            />
+            Reduce Only
+          </label>
+
+          <label>
+            <input
+              type="checkbox"
+              checked={futuresPostOnly}
+              onChange={(e) => setFuturesPostOnly(e.target.checked)}
+            />
+            Post Only
+          </label>
+
+        </div>
+
+        <div className="futures-trigger-row">
+          <span>Trigger By</span>
+
+          {["Mark Price","Last Price","Index Price"].map((item) => (
+            <button
+              key={item}
+              type="button"
+              className={futuresTriggerBy === item ? "active" : ""}
+              onClick={() => setFuturesTriggerBy(item)}
+            >
+              {item.replace(" Price", "")}
+            </button>
+          ))}
+        </div>
+
+        <div className="futures-tpsl-grid">
+
+          <label>
+            <span>Take Profit</span>
+
+            <input
+              type="number"
+              inputMode="decimal"
+              placeholder="Optional"
+              value={futuresTakeProfit}
+              onChange={(e) => setFuturesTakeProfit(e.target.value)}
+            />
+          </label>
+
+          <label>
+            <span>Stop Loss</span>
+
+            <input
+              type="number"
+              inputMode="decimal"
+              placeholder="Optional"
+              value={futuresStopLoss}
+              onChange={(e) => setFuturesStopLoss(e.target.value)}
+            />
+          </label>
+
+        </div>
+
+        <div className="futures-order-summary">
+
+          <div>
+            <span>Notional</span>
+            <strong>{"$" + futuresNotional.toFixed(2)}</strong>
+          </div>
+
+          <div>
+            <span>Initial Margin</span>
+            <strong>{"$" + futuresInitialMargin.toFixed(2)}</strong>
+          </div>
+
+          <div>
+            <span>Est. Liq. Price</span>
+            <strong>
+              {futuresLiquidationPrice > 0
+                ? "$" + futuresLiquidationPrice.toFixed(2)
+                : "--"}
+            </strong>
+          </div>
+
+        </div>
+
+        <button
+          type="button"
+          className={
+            "futures-submit-button " +
+            (futuresSide === "Long" ? "long-action" : "short-action")
+          }
+          onClick={placeFuturesOrder}
+        >
+          {futuresSide === "Long" ? "OPEN LONG" : "OPEN SHORT"}
+          <small>
+            {futuresOrderType} • {futuresLeverage}x
+          </small>
+        </button>
+
+        {futuresMessage && (
+          <div className="futures-message">
+            {futuresMessage}
+          </div>
+        )}
+
+        <div className="futures-order-note">
+          ⚠ Demo execution mode — live execution will be connected to
+          Bitlora's backend order/risk engine later.
+        </div>
+
+      </div>
+
+    </div>
+
+    <div className="futures-data-card">
+
+      <div className="futures-data-tabs">
+        {[
+          "Positions",
+          "Open Orders",
+          "Order History",
+          "Trades",
+          "Funding",
+          "PnL"
+        ].map((tab) => (
+          <button
+            type="button"
+            key={tab}
+            className={futuresTab === tab ? "active" : ""}
+            onClick={() => setFuturesTab(tab)}
+          >
+            {tab}
+          </button>
+        ))}
+      </div>
+
+      {futuresTab === "Positions" && (
+        <div className="futures-table-wrap">
+
+          {futuresPositions.length === 0 ? (
+            <div className="futures-empty">
+              <strong>No open positions</strong>
+              <span>Your active futures positions will appear here.</span>
+            </div>
+          ) : (
+            <div className="futures-position-list">
+
+              {futuresPositions.map((position) => (
+                <div className="futures-position" key={position.id}>
+
+                  <div>
+                    <strong>{position.pair} Perpetual</strong>
+                    <span className={position.side === "Long" ? "green" : "red"}>
+                      {position.side} • {position.leverage}x
+                    </span>
+                  </div>
+
+                  <div>
+                    <span>Size</span>
+                    <strong>{position.size}</strong>
+                  </div>
+
+                  <div>
+                    <span>Entry</span>
+                    <strong>{"$" + position.entryPrice.toFixed(2)}</strong>
+                  </div>
+
+                  <div>
+                    <span>Mark</span>
+                    <strong>{"$" + position.markPrice.toFixed(2)}</strong>
+                  </div>
+
+                  <div>
+                    <span>Liq. Price</span>
+                    <strong>{"$" + position.liquidationPrice.toFixed(2)}</strong>
+                  </div>
+
+                  <button
+                    type="button"
+                    className="futures-close-button"
+                    onClick={() => closeFuturesPosition(position.id)}
+                  >
+                    CLOSE
+                  </button>
+
+                </div>
+              ))}
+
+            </div>
+          )}
+
+        </div>
       )}
 
-      {active === "Profile" && (
-        <section className="section">
-          <div className="section-header">
+      {futuresTab === "Open Orders" && (
+        <div className="futures-table-wrap">
+
+          {futuresOrders.length === 0 ? (
+            <div className="futures-empty">
+              <strong>No open orders</strong>
+              <span>Limit and conditional orders will appear here.</span>
+            </div>
+          ) : (
+            <div className="futures-position-list">
+
+              {futuresOrders.map((order) => (
+                <div className="futures-position" key={order.id}>
+
+                  <div>
+                    <strong>{order.pair}</strong>
+                    <span>{order.side} • {order.type}</span>
+                  </div>
+
+                  <div>
+                    <span>Price</span>
+                    <strong>{"$" + Number(order.price).toFixed(2)}</strong>
+                  </div>
+
+                  <div>
+                    <span>Size</span>
+                    <strong>{order.size}</strong>
+                  </div>
+
+                  <div>
+                    <span>Trigger</span>
+                    <strong>
+                      {order.triggerPrice
+                        ? Number(order.triggerPrice).toFixed(2)
+                        : "--"}
+                    </strong>
+                  </div>
+
+                  <div>
+                    <span>Status</span>
+                    <strong className="yellow">{order.status}</strong>
+                  </div>
+
+                </div>
+              ))}
+
+            </div>
+          )}
+
+        </div>
+      )}
+
+      {futuresTab !== "Positions" &&
+        futuresTab !== "Open Orders" && (
+          <div className="futures-empty">
+            <strong>{futuresTab}</strong>
+            <span>
+              This module is ready for backend data integration.
+            </span>
+          </div>
+        )}
+
+    </div>
+
+    <div className="futures-risk-grid">
+
+      <div className="futures-risk-card">
+
+        <div className="futures-risk-heading">
+          <strong>Risk Monitor</strong>
+          <span>{futuresRiskLevel}</span>
+        </div>
+
+        <div className="futures-risk-meter">
+          <span style={{ width: futuresMarginUsage + "%" }} />
+        </div>
+
+        <div className="futures-risk-stats">
+
+          <div>
+            <span>Margin Ratio</span>
+            <strong>{futuresMarginUsage.toFixed(1)}%</strong>
+          </div>
+
+          <div>
+            <span>Maintenance Margin</span>
+            <strong>
+              {"$" + (futuresInitialMargin * 0.5).toFixed(2)}
+            </strong>
+          </div>
+
+          <div>
+            <span>Liq. Buffer</span>
+            <strong>Protected</strong>
+          </div>
+
+        </div>
+
+      </div>
+
+      <div className="futures-protection-card">
+        <strong>Risk Protection</strong>
+        <span>Price Protection</span>
+        <span>Slippage Protection</span>
+        <span>Volatility Protection</span>
+        <span>Circuit Breaker</span>
+      </div>
+
+    </div>
+
+    {futuresSettingsOpen && (
+      <div
+        className="futures-settings-overlay"
+        onClick={() => setFuturesSettingsOpen(false)}
+      >
+
+        <div
+          className="futures-settings-drawer"
+          onClick={(e) => e.stopPropagation()}
+        >
+
+          <div className="futures-settings-header">
+
             <div>
-              <h3>Profile</h3>
-              <p>Manage your Bitlora account</p>
+              <strong>Futures Settings</strong>
+              <span>Professional trading preferences</span>
             </div>
+
+            <button
+              type="button"
+              onClick={() => setFuturesSettingsOpen(false)}
+            >
+              ×
+            </button>
+
           </div>
 
-          <div className="cards">
-            <div className="asset">
-              <div className="coin">B</div>
+          <div className="futures-setting-group">
 
-              <div className="asset-name">
-                <strong>Bitlora User</strong>
-                <span>Account Profile</span>
+            <strong>Trading</strong>
+
+            <label>
+              <input type="checkbox" defaultChecked />
+              Confirm orders
+            </label>
+
+            <label>
+              <input type="checkbox" defaultChecked />
+              Confirm close position
+            </label>
+
+            <label>
+              <input type="checkbox" />
+              One-click trading
+            </label>
+
+            <label>
+              <input type="checkbox" defaultChecked />
+              Show PnL
+            </label>
+
+          </div>
+
+          <div className="futures-setting-group">
+
+            <strong>Display</strong>
+
+            <label>
+              <input type="checkbox" defaultChecked />
+              Show liquidation price
+            </label>
+
+            <label>
+              <input type="checkbox" defaultChecked />
+              Show margin ratio
+            </label>
+
+            <label>
+              <input type="checkbox" defaultChecked />
+              Show funding rate
+            </label>
+
+            <label>
+              <input type="checkbox" />
+              Compact mode
+            </label>
+
+          </div>
+
+          <div className="futures-setting-group">
+
+            <strong>Risk Controls</strong>
+
+            <label>
+              <input type="checkbox" defaultChecked />
+              Price protection
+            </label>
+
+            <label>
+              <input type="checkbox" defaultChecked />
+              Slippage protection
+            </label>
+
+            <label>
+              <input type="checkbox" defaultChecked />
+              Volatility protection
+            </label>
+
+            <label>
+              <input type="checkbox" defaultChecked />
+              Circuit breaker
+            </label>
+
+          </div>
+
+        </div>
+
+      </div>
+    )}
+
+  </section>
+)}
+
+{active === "Wallet" && (
+  <section className="wallet-pro-screen">
+
+    <div className="wallet-pro-header">
+
+      <div>
+        <h3>Wallet</h3>
+        <p>Manage assets, deposits, withdrawals and transfers</p>
+      </div>
+
+      <button
+        type="button"
+        className="wallet-pro-settings"
+        onClick={() => setWalletSettingsOpen(true)}
+      >
+        ⚙ Settings
+      </button>
+
+    </div>
+
+
+    <div className="wallet-pro-balance-hero">
+
+      <div className="wallet-pro-total">
+
+        <span>Total Estimated Balance</span>
+
+        <strong>
+          {"$" + walletTotalUsd.toLocaleString(undefined, {
+            minimumFractionDigits: 2,
+            maximumFractionDigits: 2
+          })}
+        </strong>
+
+        {walletShowUsd && (
+          <small>
+            ≈ USDT {walletTotalUsd.toFixed(2)}
+          </small>
+        )}
+
+      </div>
+
+      <div className="wallet-pro-balance-stats">
+
+        <div>
+          <span>Available</span>
+          <strong>
+            {"$" + walletAvailableUsd.toFixed(2)}
+          </strong>
+        </div>
+
+        <div>
+          <span>Frozen</span>
+          <strong>
+            {"$" + walletFrozenUsd.toFixed(2)}
+          </strong>
+        </div>
+
+        <div>
+          <span>24H PnL</span>
+          <strong className="green">+$42.18</strong>
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <div className="wallet-pro-wallet-tabs">
+
+      {[
+        "Overview",
+        "Spot",
+        "Futures",
+        "Funding",
+        "Earn"
+      ].map((tab) => (
+        <button
+          type="button"
+          key={tab}
+          className={walletActiveTab === tab ? "active" : ""}
+          onClick={() => setWalletActiveTab(tab)}
+        >
+          {tab}
+        </button>
+      ))}
+
+    </div>
+
+
+    <div className="wallet-pro-actions">
+
+      <button
+        type="button"
+        className="deposit-action"
+        onClick={() => {
+          setWalletAction("Deposit");
+          setWalletMessage("");
+        }}
+      >
+        ↓ Deposit
+      </button>
+
+      <button
+        type="button"
+        className="withdraw-action"
+        onClick={() => {
+          setWalletAction("Withdraw");
+          setWalletMessage("");
+        }}
+      >
+        ↑ Withdraw
+      </button>
+
+      <button
+        type="button"
+        className="transfer-action"
+        onClick={() => {
+          setWalletAction("Transfer");
+          setWalletMessage("");
+        }}
+      >
+        ⇄ Transfer
+      </button>
+
+    </div>
+
+
+    <div className="wallet-pro-main-grid">
+
+
+      <div className="wallet-pro-assets-card">
+
+        <div className="wallet-pro-card-header">
+
+          <div>
+            <strong>Assets</strong>
+            <span>Your cryptocurrency balances</span>
+          </div>
+
+          <input
+            type="search"
+            placeholder="Search asset"
+            value={walletSearch}
+            onChange={(e) => setWalletSearch(e.target.value)}
+          />
+
+        </div>
+
+
+        <div className="wallet-pro-asset-head">
+          <span>Asset</span>
+          <span>Total Balance</span>
+          <span>Available</span>
+          <span>Frozen</span>
+          <span>Value</span>
+        </div>
+
+
+        <div className="wallet-pro-asset-list">
+
+          {walletVisibleAssets.map((item) => (
+
+            <div
+              className="wallet-pro-asset-row"
+              key={item.asset}
+            >
+
+              <div className="wallet-pro-asset-name">
+
+                <div className="wallet-pro-coin-icon">
+                  {item.asset.slice(0, 1)}
+                </div>
+
+                <div>
+                  <strong>{item.asset}</strong>
+                  <span>{item.name}</span>
+                </div>
+
               </div>
-            </div>
-          </div>
-        </section>
-      )}
 
-      <nav className="bottom">
+              <strong>{item.balance}</strong>
+
+              <span>{item.available}</span>
+
+              <span>{item.frozen}</span>
+
+              <strong>
+                {"$" + (item.balance * item.price).toFixed(2)}
+              </strong>
+
+            </div>
+
+          ))}
+
+        </div>
+
+      </div>
+
+
+      <div className="wallet-pro-action-card">
+
+        <div className="wallet-pro-action-tabs">
+
+          {["Deposit","Withdraw","Transfer"].map((action) => (
+
+            <button
+              type="button"
+              key={action}
+              className={walletAction === action ? "active" : ""}
+              onClick={() => {
+                setWalletAction(action);
+                setWalletMessage("");
+              }}
+            >
+              {action}
+            </button>
+
+          ))}
+
+        </div>
+
+
+        <div className="wallet-pro-form">
+
+          <label>
+            <span>Asset</span>
+
+            <select
+              value={walletAsset}
+              onChange={(e) => setWalletAsset(e.target.value)}
+            >
+              <option>USDT</option>
+              <option>BTC</option>
+              <option>ETH</option>
+              <option>BNB</option>
+            </select>
+          </label>
+
+
+          {walletAction === "Deposit" && (
+
+            <>
+              <label>
+                <span>Network</span>
+
+                <select
+                  value={walletNetwork}
+                  onChange={(e) => setWalletNetwork(e.target.value)}
+                >
+                  <option>BEP20</option>
+                  <option>ERC20</option>
+                  <option>TRC20</option>
+                  <option>Solana</option>
+                  <option>Bitcoin</option>
+                  <option>Arbitrum</option>
+                  <option>Polygon</option>
+                </select>
+              </label>
+
+              <div className="wallet-pro-address-box">
+
+                <span>Deposit Address</span>
+
+                <strong>
+                  Generate deposit address
+                </strong>
+
+                <small>
+                  QR Code • Minimum deposit • Confirmations
+                </small>
+
+              </div>
+            </>
+
+          )}
+
+
+          {walletAction === "Withdraw" && (
+
+            <>
+              <label>
+                <span>Network</span>
+
+                <select
+                  value={walletNetwork}
+                  onChange={(e) => setWalletNetwork(e.target.value)}
+                >
+                  <option>BEP20</option>
+                  <option>ERC20</option>
+                  <option>TRC20</option>
+                  <option>Solana</option>
+                  <option>Arbitrum</option>
+                  <option>Polygon</option>
+                </select>
+              </label>
+
+              <label>
+                <span>Withdrawal Address</span>
+
+                <input
+                  type="text"
+                  placeholder="Paste wallet address"
+                  value={walletAddress}
+                  onChange={(e) => setWalletAddress(e.target.value)}
+                />
+              </label>
+
+              <label>
+                <span>Memo / Tag</span>
+
+                <input
+                  type="text"
+                  placeholder="Optional"
+                  value={walletMemo}
+                  onChange={(e) => setWalletMemo(e.target.value)}
+                />
+              </label>
+
+              <label>
+                <span>Amount</span>
+
+                <input
+                  type="number"
+                  inputMode="decimal"
+                  placeholder="0.00"
+                  value={walletAmount}
+                  onChange={(e) => setWalletAmount(e.target.value)}
+                />
+              </label>
+
+              <div className="wallet-pro-fee-box">
+
+                <div>
+                  <span>Network Fee</span>
+                  <strong>Calculated automatically</strong>
+                </div>
+
+                <div>
+                  <span>Daily Limit</span>
+                  <strong>Security policy</strong>
+                </div>
+
+              </div>
+            </>
+
+          )}
+
+
+          {walletAction === "Transfer" && (
+
+            <>
+              <label>
+                <span>From</span>
+
+                <select>
+                  <option>Spot Wallet</option>
+                  <option>Funding Wallet</option>
+                  <option>Futures Wallet</option>
+                </select>
+              </label>
+
+              <label>
+                <span>To</span>
+
+                <select>
+                  <option>Futures Wallet</option>
+                  <option>Spot Wallet</option>
+                  <option>Funding Wallet</option>
+                </select>
+              </label>
+
+              <label>
+                <span>Amount</span>
+
+                <input
+                  type="number"
+                  inputMode="decimal"
+                  placeholder="0.00"
+                  value={walletAmount}
+                  onChange={(e) => setWalletAmount(e.target.value)}
+                />
+              </label>
+            </>
+
+          )}
+
+
+          <button
+            type="button"
+            className="wallet-pro-primary-action"
+            onClick={walletSubmitAction}
+          >
+            {walletAction === "Deposit"
+              ? "GENERATE DEPOSIT"
+              : walletAction === "Withdraw"
+              ? "REVIEW WITHDRAWAL"
+              : "TRANSFER FUNDS"}
+          </button>
+
+
+          {walletMessage && (
+            <div className="wallet-pro-message">
+              {walletMessage}
+            </div>
+          )}
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <div className="wallet-pro-security-strip">
+
+      <div>
+        <span>Withdrawal Security</span>
+        <strong>Protected</strong>
+      </div>
+
+      <div>
+        <span>Address Whitelist</span>
+        <strong className="green">
+          {walletWhitelistOnly ? "Enabled" : "Disabled"}
+        </strong>
+      </div>
+
+      <div>
+        <span>2FA</span>
+        <strong className="green">Required</strong>
+      </div>
+
+      <div>
+        <span>New Address Lock</span>
+        <strong>
+          {walletNewAddressLock ? "Enabled" : "Disabled"}
+        </strong>
+      </div>
+
+    </div>
+
+
+    <div className="wallet-pro-history-card">
+
+      <div className="wallet-pro-card-header">
+
+        <div>
+          <strong>Wallet History</strong>
+          <span>Deposits, withdrawals, transfers and fees</span>
+        </div>
+
+        <button type="button">
+          View All
+        </button>
+
+      </div>
+
+      <div className="wallet-pro-history-grid">
+
+        <span>Type</span>
+        <span>Asset</span>
+        <span>Network</span>
+        <span>Amount</span>
+        <span>Status</span>
+
+        <strong>Deposit</strong>
+        <span>USDT</span>
+        <span>BEP20</span>
+        <span>+500.00</span>
+        <b className="green">Completed</b>
+
+        <strong>Transfer</strong>
+        <span>USDT</span>
+        <span>Internal</span>
+        <span>−100.00</span>
+        <b className="green">Completed</b>
+
+      </div>
+
+    </div>
+
+
+    <div className="wallet-pro-security-card">
+
+      <div>
+        <strong>Wallet Security</strong>
+        <span>Protect your assets and withdrawals</span>
+      </div>
+
+      <button
+        type="button"
+        onClick={() => setWalletSettingsOpen(true)}
+      >
+        Manage Security
+      </button>
+
+    </div>
+
+
+    {walletSettingsOpen && (
+
+      <div
+        className="wallet-pro-settings-overlay"
+        onClick={() => setWalletSettingsOpen(false)}
+      >
+
+        <div
+          className="wallet-pro-settings-drawer"
+          onClick={(e) => e.stopPropagation()}
+        >
+
+          <div className="wallet-pro-settings-header">
+
+            <div>
+              <strong>Wallet Settings</strong>
+              <span>Security, display and withdrawal preferences</span>
+            </div>
+
+            <button
+              type="button"
+              onClick={() => setWalletSettingsOpen(false)}
+            >
+              ×
+            </button>
+
+          </div>
+
+
+          <div className="wallet-pro-setting-group">
+
+            <strong>Security</strong>
+
+            <label>
+              <input
+                type="checkbox"
+                checked={walletConfirmWithdrawal}
+                onChange={(e) =>
+                  setWalletConfirmWithdrawal(e.target.checked)
+                }
+              />
+              Confirm withdrawals
+            </label>
+
+            <label>
+              <input
+                type="checkbox"
+                checked={walletWhitelistOnly}
+                onChange={(e) =>
+                  setWalletWhitelistOnly(e.target.checked)
+                }
+              />
+              Withdrawal whitelist only
+            </label>
+
+            <label>
+              <input
+                type="checkbox"
+                checked={walletNewAddressLock}
+                onChange={(e) =>
+                  setWalletNewAddressLock(e.target.checked)
+                }
+              />
+              New-address protection
+            </label>
+
+            <label>
+              <input type="checkbox" defaultChecked />
+              Require 2FA for withdrawal
+            </label>
+
+            <label>
+              <input type="checkbox" defaultChecked />
+              Email confirmation
+            </label>
+
+          </div>
+
+
+          <div className="wallet-pro-setting-group">
+
+            <strong>Display</strong>
+
+            <label>
+              <input
+                type="checkbox"
+                checked={walletShowUsd}
+                onChange={(e) =>
+                  setWalletShowUsd(e.target.checked)
+                }
+              />
+              Show USD estimated value
+            </label>
+
+            <label>
+              <input
+                type="checkbox"
+                checked={walletHideSmall}
+                onChange={(e) =>
+                  setWalletHideSmall(e.target.checked)
+                }
+              />
+              Hide small balances
+            </label>
+
+          </div>
+
+
+          <div className="wallet-pro-setting-group">
+
+            <strong>Withdrawal Protection</strong>
+
+            <label>
+              <input type="checkbox" defaultChecked />
+              Daily withdrawal limit
+            </label>
+
+            <label>
+              <input type="checkbox" defaultChecked />
+              Address risk screening
+            </label>
+
+            <label>
+              <input type="checkbox" defaultChecked />
+              Network validation
+            </label>
+
+            <label>
+              <input type="checkbox" defaultChecked />
+              Suspicious withdrawal protection
+            </label>
+
+          </div>
+
+
+          <div className="wallet-pro-setting-group">
+
+            <strong>Notifications</strong>
+
+            <label>
+              <input type="checkbox" defaultChecked />
+              Deposit notifications
+            </label>
+
+            <label>
+              <input type="checkbox" defaultChecked />
+              Withdrawal notifications
+            </label>
+
+            <label>
+              <input type="checkbox" defaultChecked />
+              Transfer notifications
+            </label>
+
+            <label>
+              <input type="checkbox" defaultChecked />
+              Security alerts
+            </label>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    )}
+
+  </section>
+)}
+
+<nav className="bottom">
         <button
           type="button"
           className={active === "Home" ? "active" : ""}

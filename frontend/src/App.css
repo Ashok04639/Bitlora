@@ -2493,73 +2493,99 @@ button {
 
 
 
-/* BITLORA TOP LOGO */
+/* BITLORA PREMIUM LOGO — COMPACT HEADER */
 .bitlora-logo {
-  width: 252px;
+  width: 420px;
   height: auto;
+  max-height: 82px;
   display: block;
   object-fit: contain;
+  object-position: center;
+  background: transparent;
+  border: 0;
+  box-shadow: none;
 }
 
 @media (max-width: 700px) {
   .bitlora-logo {
-    width: 222px;
+    width: 356px;
+    max-width: 100%;
+    max-height: 72px;
   }
 }
 
-/* MOBILE HEADER CONTROLS FIX */
+/* MOBILE HEADER CONTROLS — SAFE SCREEN FIT */
 @media (max-width: 700px) {
   .header {
-    padding-left: 12px;
-    padding-right: 12px;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    padding-left: 10px;
+    padding-right: 10px;
+    gap: 8px;
+    overflow: hidden;
+  }
+
+  .brand {
+    min-width: 0;
+    flex: 1 1 auto;
+    overflow: hidden;
+  }
+
+  .bitlora-logo {
+    width: min(356px, 100%);
+    max-width: 100%;
+    height: auto;
+    max-height: 100px;
   }
 
   .header-right {
+    flex: 0 0 auto;
+    min-width: 0;
+    margin: 0;
     gap: 6px;
-    margin-right: 8px;
-    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
   }
 
   .api-status {
     font-size: 8px;
+    white-space: nowrap;
+    flex-shrink: 1;
+  }
+
+  .notification,
+  .menu-button {
+    flex: 0 0 auto;
+    flex-shrink: 0;
   }
 
   .menu-button {
     width: 34px;
     height: 34px;
-    flex-shrink: 0;
   }
 }
 
-/* MOBILE HEADER RIGHT - MOVE 25PX LEFT */
-@media (max-width: 700px) {
-  .header-right {
-    transform: translateX(-25px);
-  }
-}
-
-/* MOBILE HEADER - HORIZONTAL CENTER */
+/* MOBILE HEADER — BALANCED BRAND + CONTROLS */
 @media (max-width: 700px) {
   .header {
-    width: 100%;
-    box-sizing: border-box;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
   }
 
   .header .brand {
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
+    min-width: 0;
+    flex: 1 1 auto;
   }
 
   .header-right {
     position: static;
     transform: none;
     margin: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
   }
 }
 
@@ -4057,5 +4083,3109 @@ button {
     background:rgba(212,175,55,.14) !important;
     color:#d4af37 !important;
     box-shadow:inset 0 0 0 1px rgba(212,175,55,.28) !important;
+  }
+}
+
+/* =========================================================
+   BITLORA FUTURES PRO — GOLD / BLACK
+   SCOPED ONLY TO .futures-*
+   DO NOT MODIFY TRADE / MARKETS / WALLET CSS
+   ========================================================= */
+
+.futures-screen{
+  width:100%;
+  box-sizing:border-box;
+  color:#f5f5f5;
+}
+
+.futures-screen *{
+  box-sizing:border-box;
+}
+
+.futures-topbar{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  margin-bottom:14px;
+}
+
+.futures-pair-area{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  min-width:0;
+}
+
+.futures-pair-select{
+  min-width:190px;
+  padding:10px 12px;
+  border:1px solid rgba(212,175,55,.35);
+  border-radius:10px;
+  background:#111;
+  color:#f5d76e;
+  font-weight:800;
+  outline:none;
+}
+
+.futures-contract-badge,
+.futures-live-dot{
+  padding:5px 8px;
+  border-radius:7px;
+  font-size:10px;
+  font-weight:900;
+  letter-spacing:.6px;
+}
+
+.futures-contract-badge{
+  background:rgba(212,175,55,.12);
+  border:1px solid rgba(212,175,55,.28);
+  color:#d4af37;
+}
+
+.futures-live-dot{
+  background:rgba(45,190,105,.12);
+  border:1px solid rgba(45,190,105,.25);
+  color:#48d889;
+}
+
+.futures-settings-button{
+  padding:10px 14px;
+  border:1px solid rgba(212,175,55,.28);
+  border-radius:10px;
+  background:rgba(212,175,55,.08);
+  color:#f5d76e;
+  font-weight:800;
+  cursor:pointer;
+}
+
+.futures-price-card{
+  display:grid;
+  grid-template-columns:1.6fr repeat(4,1fr);
+  gap:10px;
+  padding:14px;
+  border:1px solid rgba(212,175,55,.16);
+  border-radius:16px;
+  background:linear-gradient(145deg,#111,#080808);
+  box-shadow:0 12px 35px rgba(0,0,0,.25);
+  margin-bottom:12px;
+}
+
+.futures-main-price,
+.futures-stat{
+  min-width:0;
+}
+
+.futures-main-price span,
+.futures-stat span{
+  display:block;
+  color:#858585;
+  font-size:11px;
+  margin-bottom:5px;
+}
+
+.futures-main-price strong{
+  display:block;
+  color:#f5d76e;
+  font-size:24px;
+  line-height:1.15;
+}
+
+.futures-main-price b{
+  display:block;
+  margin-top:5px;
+  font-size:12px;
+}
+
+.futures-stat strong{
+  display:block;
+  color:#eee;
+  font-size:13px;
+}
+
+.futures-stat small{
+  color:#777;
+  font-size:10px;
+}
+
+.futures-account-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:10px;
+  margin-bottom:12px;
+}
+
+.futures-account-grid>div{
+  padding:12px;
+  border:1px solid rgba(255,255,255,.07);
+  border-radius:12px;
+  background:#0e0e0e;
+}
+
+.futures-account-grid span,
+.futures-account-grid strong{
+  display:block;
+}
+
+.futures-account-grid span{
+  color:#777;
+  font-size:10px;
+  margin-bottom:5px;
+}
+
+.futures-account-grid strong{
+  color:#eee;
+  font-size:13px;
+}
+
+.futures-contract-tabs,
+.futures-data-tabs{
+  display:flex;
+  gap:6px;
+  overflow-x:auto;
+  scrollbar-width:none;
+}
+
+.futures-contract-tabs::-webkit-scrollbar,
+.futures-data-tabs::-webkit-scrollbar{
+  display:none;
+}
+
+.futures-contract-tabs{
+  margin-bottom:12px;
+}
+
+.futures-contract-tabs button,
+.futures-data-tabs button{
+  flex:0 0 auto;
+  padding:9px 13px;
+  border:1px solid rgba(255,255,255,.08);
+  border-radius:9px;
+  background:#101010;
+  color:#888;
+  font-size:11px;
+  font-weight:800;
+  cursor:pointer;
+}
+
+.futures-contract-tabs button.active,
+.futures-data-tabs button.active{
+  border-color:rgba(212,175,55,.4);
+  background:rgba(212,175,55,.10);
+  color:#f5d76e;
+}
+
+.futures-main-grid{
+  display:grid;
+  grid-template-columns:minmax(0,1.65fr) minmax(340px,.9fr);
+  gap:12px;
+  margin-bottom:12px;
+}
+
+.futures-chart-card,
+.futures-order-card,
+.futures-data-card,
+.futures-risk-card,
+.futures-protection-card{
+  border:1px solid rgba(212,175,55,.14);
+  border-radius:16px;
+  background:linear-gradient(145deg,#111,#090909);
+  box-shadow:0 12px 35px rgba(0,0,0,.22);
+}
+
+.futures-chart-card{
+  min-height:520px;
+  overflow:hidden;
+}
+
+.futures-chart-header{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:10px;
+  padding:14px;
+  border-bottom:1px solid rgba(255,255,255,.06);
+}
+
+.futures-chart-header strong,
+.futures-chart-header span{
+  display:block;
+}
+
+.futures-chart-header strong{
+  color:#eee;
+  font-size:14px;
+}
+
+.futures-chart-header span{
+  color:#777;
+  font-size:10px;
+  margin-top:3px;
+}
+
+.futures-timeframes{
+  display:flex;
+  gap:3px;
+}
+
+.futures-timeframes button{
+  border:0;
+  background:transparent;
+  color:#777;
+  padding:6px 7px;
+  border-radius:6px;
+  font-size:10px;
+  cursor:pointer;
+}
+
+.futures-timeframes button.active{
+  color:#f5d76e;
+  background:rgba(212,175,55,.1);
+}
+
+.futures-chart{
+  position:relative;
+  min-height:425px;
+  padding:20px 16px 38px;
+  overflow:hidden;
+  background:
+    linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px);
+  background-size:55px 55px;
+}
+
+.futures-chart-grid{
+  position:absolute;
+  inset:25px 25px 55px;
+  display:flex;
+  align-items:center;
+  justify-content:space-around;
+  gap:5px;
+}
+
+.futures-candle{
+  position:relative;
+  height:100%;
+  flex:1;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.futures-candle span{
+  display:block;
+  width:7px;
+  min-height:30px;
+  border-radius:2px;
+  position:relative;
+}
+
+.futures-candle span:before{
+  content:"";
+  position:absolute;
+  left:50%;
+  top:-16px;
+  bottom:-16px;
+  width:1px;
+  transform:translateX(-50%);
+  background:currentColor;
+  opacity:.7;
+}
+
+.futures-candle span.up{
+  background:#39c978;
+  color:#39c978;
+}
+
+.futures-candle span.down{
+  background:#e05252;
+  color:#e05252;
+}
+
+.futures-chart-labels{
+  position:absolute;
+  left:18px;
+  right:18px;
+  bottom:12px;
+  display:flex;
+  justify-content:space-between;
+  color:#555;
+  font-size:9px;
+}
+
+.futures-chart-price-line{
+  position:absolute;
+  right:0;
+  top:50%;
+  padding:4px 7px;
+  background:#161616;
+  border:1px solid rgba(212,175,55,.25);
+  color:#f5d76e;
+  font-size:9px;
+}
+
+.futures-chart-footer{
+  display:flex;
+  gap:15px;
+  padding:9px 14px;
+  border-top:1px solid rgba(255,255,255,.06);
+  color:#666;
+  font-size:9px;
+}
+
+.futures-order-card{
+  padding:14px;
+}
+
+.futures-order-controls{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:6px;
+  margin-bottom:12px;
+}
+
+.futures-order-controls label{
+  color:#777;
+  font-size:9px;
+}
+
+.futures-order-controls select{
+  display:block;
+  width:100%;
+  margin-top:4px;
+  padding:8px 5px;
+  border:1px solid rgba(255,255,255,.09);
+  border-radius:8px;
+  background:#0b0b0b;
+  color:#eee;
+  font-size:10px;
+  outline:none;
+}
+
+.futures-side-tabs{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:5px;
+  margin-bottom:10px;
+}
+
+.futures-side-tabs button{
+  padding:11px;
+  border:1px solid rgba(255,255,255,.08);
+  border-radius:9px;
+  background:#0c0c0c;
+  color:#777;
+  font-weight:900;
+  cursor:pointer;
+}
+
+.futures-side-tabs button.active-long{
+  border-color:rgba(50,200,115,.45);
+  background:rgba(50,200,115,.1);
+  color:#42d486;
+}
+
+.futures-side-tabs button.active-short{
+  border-color:rgba(225,75,75,.45);
+  background:rgba(225,75,75,.1);
+  color:#f06a6a;
+}
+
+.futures-order-types{
+  display:flex;
+  gap:4px;
+  overflow-x:auto;
+  scrollbar-width:none;
+  margin-bottom:10px;
+}
+
+.futures-order-types::-webkit-scrollbar{
+  display:none;
+}
+
+.futures-order-types button{
+  flex:0 0 auto;
+  padding:7px 9px;
+  border:0;
+  border-radius:7px;
+  background:#101010;
+  color:#777;
+  font-size:9px;
+  cursor:pointer;
+}
+
+.futures-order-types button.active{
+  background:rgba(212,175,55,.1);
+  color:#f5d76e;
+}
+
+.futures-field{
+  position:relative;
+  display:block;
+  margin-bottom:8px;
+}
+
+.futures-field>span{
+  display:block;
+  margin-bottom:4px;
+  color:#777;
+  font-size:9px;
+}
+
+.futures-field input{
+  width:100%;
+  padding:10px 65px 10px 10px;
+  border:1px solid rgba(255,255,255,.08);
+  border-radius:9px;
+  background:#0b0b0b;
+  color:#eee;
+  outline:none;
+  font-size:11px;
+}
+
+.futures-field input:focus{
+  border-color:rgba(212,175,55,.45);
+}
+
+.futures-field>b{
+  position:absolute;
+  right:9px;
+  bottom:10px;
+  color:#d4af37;
+  font-size:9px;
+}
+
+.futures-field select{
+  position:absolute;
+  right:5px;
+  bottom:5px;
+  height:28px;
+  border:0;
+  border-left:1px solid rgba(255,255,255,.08);
+  background:#111;
+  color:#d4af37;
+  font-size:9px;
+}
+
+.futures-size-presets{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:4px;
+  margin-bottom:10px;
+}
+
+.futures-size-presets button{
+  padding:6px;
+  border:1px solid rgba(255,255,255,.07);
+  border-radius:7px;
+  background:#101010;
+  color:#777;
+  font-size:9px;
+  cursor:pointer;
+}
+
+.futures-size-presets button:hover{
+  border-color:rgba(212,175,55,.35);
+  color:#f5d76e;
+}
+
+.futures-advanced-row{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:6px;
+  margin-bottom:10px;
+}
+
+.futures-advanced-row label,
+.futures-setting-group label{
+  display:flex;
+  align-items:center;
+  gap:6px;
+  color:#999;
+  font-size:10px;
+}
+
+.futures-advanced-row input,
+.futures-setting-group input{
+  accent-color:#d4af37;
+}
+
+.futures-trigger-row{
+  display:flex;
+  align-items:center;
+  gap:4px;
+  flex-wrap:wrap;
+  margin-bottom:10px;
+}
+
+.futures-trigger-row span{
+  color:#666;
+  font-size:9px;
+  margin-right:3px;
+}
+
+.futures-trigger-row button{
+  padding:6px 8px;
+  border:1px solid rgba(255,255,255,.07);
+  border-radius:6px;
+  background:#0e0e0e;
+  color:#777;
+  font-size:8px;
+  cursor:pointer;
+}
+
+.futures-trigger-row button.active{
+  border-color:rgba(212,175,55,.3);
+  color:#f5d76e;
+  background:rgba(212,175,55,.08);
+}
+
+.futures-tpsl-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:6px;
+  margin-bottom:10px;
+}
+
+.futures-tpsl-grid label span{
+  display:block;
+  color:#777;
+  font-size:9px;
+  margin-bottom:4px;
+}
+
+.futures-tpsl-grid input{
+  width:100%;
+  padding:9px;
+  border:1px solid rgba(255,255,255,.07);
+  border-radius:8px;
+  background:#0b0b0b;
+  color:#eee;
+  outline:none;
+  font-size:10px;
+}
+
+.futures-order-summary{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:5px;
+  margin:10px 0;
+  padding:9px;
+  border-radius:9px;
+  background:#0b0b0b;
+}
+
+.futures-order-summary span,
+.futures-order-summary strong{
+  display:block;
+}
+
+.futures-order-summary span{
+  color:#666;
+  font-size:8px;
+}
+
+.futures-order-summary strong{
+  margin-top:3px;
+  color:#ddd;
+  font-size:10px;
+}
+
+.futures-submit-button{
+  width:100%;
+  padding:12px;
+  border:0;
+  border-radius:10px;
+  color:#fff;
+  font-weight:900;
+  cursor:pointer;
+}
+
+.futures-submit-button.long-action{
+  background:linear-gradient(135deg,#126b42,#239b62);
+}
+
+.futures-submit-button.short-action{
+  background:linear-gradient(135deg,#852d2d,#b84747);
+}
+
+.futures-submit-button small{
+  display:block;
+  margin-top:3px;
+  opacity:.7;
+  font-size:8px;
+}
+
+.futures-message{
+  margin-top:8px;
+  padding:8px;
+  border:1px solid rgba(212,175,55,.2);
+  border-radius:8px;
+  background:rgba(212,175,55,.06);
+  color:#d4af37;
+  font-size:9px;
+}
+
+.futures-order-note{
+  margin-top:8px;
+  padding:8px;
+  border-radius:8px;
+  background:rgba(255,170,0,.05);
+  color:#777;
+  font-size:8px;
+  line-height:1.5;
+}
+
+.futures-data-card{
+  margin-bottom:12px;
+  overflow:hidden;
+}
+
+.futures-data-tabs{
+  padding:10px;
+  border-bottom:1px solid rgba(255,255,255,.06);
+}
+
+.futures-table-wrap{
+  padding:12px;
+}
+
+.futures-empty{
+  min-height:110px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:5px;
+  color:#555;
+  text-align:center;
+}
+
+.futures-empty strong{
+  color:#aaa;
+  font-size:12px;
+}
+
+.futures-empty span{
+  font-size:9px;
+}
+
+.futures-position-list{
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+}
+
+.futures-position{
+  display:grid;
+  grid-template-columns:1.5fr repeat(4,1fr) auto;
+  gap:10px;
+  align-items:center;
+  padding:11px;
+  border:1px solid rgba(255,255,255,.06);
+  border-radius:10px;
+  background:#0c0c0c;
+}
+
+.futures-position>div span,
+.futures-position>div strong{
+  display:block;
+}
+
+.futures-position>div span{
+  color:#666;
+  font-size:8px;
+}
+
+.futures-position>div strong{
+  color:#ddd;
+  font-size:10px;
+  margin-top:3px;
+}
+
+.futures-close-button{
+  padding:7px 9px;
+  border:1px solid rgba(225,75,75,.25);
+  border-radius:7px;
+  background:rgba(225,75,75,.08);
+  color:#ef7272;
+  font-size:8px;
+  font-weight:900;
+  cursor:pointer;
+}
+
+.futures-risk-grid{
+  display:grid;
+  grid-template-columns:1.4fr 1fr;
+  gap:12px;
+}
+
+.futures-risk-card,
+.futures-protection-card{
+  padding:14px;
+}
+
+.futures-risk-heading{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  margin-bottom:12px;
+}
+
+.futures-risk-heading strong,
+.futures-protection-card>strong{
+  color:#eee;
+  font-size:12px;
+}
+
+.futures-risk-heading span{
+  color:#48d889;
+  font-size:10px;
+  font-weight:900;
+}
+
+.futures-risk-meter{
+  height:7px;
+  border-radius:99px;
+  overflow:hidden;
+  background:#1b1b1b;
+  margin-bottom:12px;
+}
+
+.futures-risk-meter span{
+  display:block;
+  height:100%;
+  border-radius:inherit;
+  background:linear-gradient(90deg,#42d486,#d4af37,#e05252);
+}
+
+.futures-risk-stats{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:8px;
+}
+
+.futures-risk-stats span,
+.futures-risk-stats strong{
+  display:block;
+}
+
+.futures-risk-stats span{
+  color:#666;
+  font-size:8px;
+}
+
+.futures-risk-stats strong{
+  color:#ddd;
+  font-size:10px;
+  margin-top:3px;
+}
+
+.futures-protection-card{
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+}
+
+.futures-protection-card span{
+  padding:7px 9px;
+  border-radius:7px;
+  background:rgba(45,190,105,.05);
+  border:1px solid rgba(45,190,105,.08);
+  color:#8cae9a;
+  font-size:9px;
+}
+
+.futures-settings-overlay{
+  position:fixed;
+  inset:0;
+  z-index:9999;
+  display:flex;
+  justify-content:flex-end;
+  background:rgba(0,0,0,.72);
+}
+
+.futures-settings-drawer{
+  width:min(420px,100%);
+  height:100%;
+  overflow-y:auto;
+  padding:20px;
+  background:#090909;
+  border-left:1px solid rgba(212,175,55,.22);
+  box-shadow:-15px 0 50px rgba(0,0,0,.5);
+}
+
+.futures-settings-header{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:10px;
+  padding-bottom:15px;
+  margin-bottom:15px;
+  border-bottom:1px solid rgba(255,255,255,.07);
+}
+
+.futures-settings-header strong,
+.futures-settings-header span{
+  display:block;
+}
+
+.futures-settings-header strong{
+  color:#f5d76e;
+  font-size:17px;
+}
+
+.futures-settings-header span{
+  margin-top:4px;
+  color:#666;
+  font-size:9px;
+}
+
+.futures-settings-header button{
+  width:32px;
+  height:32px;
+  border:1px solid rgba(255,255,255,.08);
+  border-radius:8px;
+  background:#111;
+  color:#aaa;
+  font-size:20px;
+  cursor:pointer;
+}
+
+.futures-setting-group{
+  padding:13px;
+  margin-bottom:10px;
+  border:1px solid rgba(255,255,255,.06);
+  border-radius:11px;
+  background:#0e0e0e;
+}
+
+.futures-setting-group>strong{
+  display:block;
+  color:#d4af37;
+  font-size:11px;
+  margin-bottom:10px;
+}
+
+.futures-setting-group label{
+  min-height:32px;
+  border-bottom:1px solid rgba(255,255,255,.035);
+}
+
+.futures-setting-group label:last-child{
+  border-bottom:0;
+}
+
+/* =========================
+   FUTURES DESKTOP
+   ========================= */
+
+@media(min-width:701px){
+
+  .futures-screen{
+    max-width:1450px;
+    margin:0 auto;
+  }
+
+}
+
+/* =========================
+   FUTURES MOBILE
+   ========================= */
+
+@media(max-width:700px){
+
+  .futures-screen{
+    padding-bottom:20px;
+  }
+
+  .futures-topbar{
+    align-items:stretch;
+    flex-direction:column;
+  }
+
+  .futures-pair-area{
+    width:100%;
+    overflow:hidden;
+  }
+
+  .futures-pair-select{
+    min-width:0;
+    flex:1;
+    width:100%;
+  }
+
+  .futures-settings-button{
+    width:100%;
+  }
+
+  .futures-price-card{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .futures-main-price{
+    grid-column:1 / -1;
+  }
+
+  .futures-main-price strong{
+    font-size:22px;
+  }
+
+  .futures-account-grid{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .futures-main-grid{
+    grid-template-columns:1fr;
+  }
+
+  .futures-chart-card{
+    min-height:370px;
+  }
+
+  .futures-chart{
+    min-height:275px;
+  }
+
+  .futures-chart-grid{
+    inset:20px 15px 45px;
+  }
+
+  .futures-chart-footer{
+    overflow-x:auto;
+    white-space:nowrap;
+  }
+
+  .futures-position{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .futures-position>div:first-child{
+    grid-column:1 / -1;
+  }
+
+  .futures-close-button{
+    width:100%;
+  }
+
+  .futures-risk-grid{
+    grid-template-columns:1fr;
+  }
+
+  .futures-risk-stats{
+    grid-template-columns:1fr 1fr 1fr;
+  }
+
+  .futures-settings-drawer{
+    width:100%;
+  }
+
+}
+
+@media(max-width:380px){
+
+  .futures-price-card{
+    grid-template-columns:1fr 1fr;
+    padding:10px;
+  }
+
+  .futures-main-price strong{
+    font-size:19px;
+  }
+
+  .futures-account-grid{
+    gap:6px;
+  }
+
+  .futures-order-card,
+  .futures-chart-header,
+  .futures-risk-card,
+  .futures-protection-card{
+    padding:10px;
+  }
+
+  .futures-order-controls{
+    gap:4px;
+  }
+
+  .futures-order-controls select{
+    font-size:9px;
+  }
+
+  .futures-risk-stats{
+    gap:4px;
+  }
+
+}
+
+/* =========================================================
+   END BITLORA FUTURES PRO
+   ========================================================= */
+
+/* =========================================================
+   BITLORA WALLET PRO — GOLD / BLACK
+   SCOPED ONLY TO .wallet-pro-*
+   Existing Trade / Markets / Futures CSS untouched
+   ========================================================= */
+
+.wallet-pro-screen{
+  width:100%;
+  color:#f5f5f5;
+}
+
+.wallet-pro-screen *{
+  box-sizing:border-box;
+}
+
+.wallet-pro-header{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  margin-bottom:14px;
+}
+
+.wallet-pro-header h3{
+  margin:0;
+  color:#f5d76e;
+  font-size:22px;
+}
+
+.wallet-pro-header p{
+  margin:5px 0 0;
+  color:#777;
+  font-size:11px;
+}
+
+.wallet-pro-settings{
+  padding:10px 14px;
+  border:1px solid rgba(212,175,55,.28);
+  border-radius:10px;
+  background:rgba(212,175,55,.08);
+  color:#f5d76e;
+  font-weight:800;
+  cursor:pointer;
+}
+
+.wallet-pro-balance-hero{
+  display:grid;
+  grid-template-columns:1.4fr 1fr;
+  gap:15px;
+  padding:20px;
+  margin-bottom:12px;
+  border:1px solid rgba(212,175,55,.2);
+  border-radius:18px;
+  background:
+    radial-gradient(circle at top right,rgba(212,175,55,.11),transparent 45%),
+    linear-gradient(145deg,#151515,#080808);
+  box-shadow:0 15px 40px rgba(0,0,0,.3);
+}
+
+.wallet-pro-total span,
+.wallet-pro-total strong,
+.wallet-pro-total small{
+  display:block;
+}
+
+.wallet-pro-total span{
+  color:#888;
+  font-size:11px;
+}
+
+.wallet-pro-total strong{
+  margin-top:7px;
+  color:#f5d76e;
+  font-size:30px;
+  letter-spacing:-.5px;
+}
+
+.wallet-pro-total small{
+  margin-top:5px;
+  color:#666;
+  font-size:10px;
+}
+
+.wallet-pro-balance-stats{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:8px;
+  align-items:center;
+}
+
+.wallet-pro-balance-stats>div{
+  padding:10px;
+  border:1px solid rgba(255,255,255,.06);
+  border-radius:10px;
+  background:rgba(0,0,0,.2);
+}
+
+.wallet-pro-balance-stats span,
+.wallet-pro-balance-stats strong{
+  display:block;
+}
+
+.wallet-pro-balance-stats span{
+  color:#666;
+  font-size:9px;
+}
+
+.wallet-pro-balance-stats strong{
+  margin-top:5px;
+  color:#ddd;
+  font-size:11px;
+}
+
+.wallet-pro-wallet-tabs{
+  display:flex;
+  gap:6px;
+  overflow-x:auto;
+  scrollbar-width:none;
+  margin-bottom:12px;
+}
+
+.wallet-pro-wallet-tabs::-webkit-scrollbar{
+  display:none;
+}
+
+.wallet-pro-wallet-tabs button{
+  flex:0 0 auto;
+  padding:9px 16px;
+  border:1px solid rgba(255,255,255,.07);
+  border-radius:9px;
+  background:#101010;
+  color:#777;
+  font-size:10px;
+  font-weight:800;
+  cursor:pointer;
+}
+
+.wallet-pro-wallet-tabs button.active{
+  color:#f5d76e;
+  border-color:rgba(212,175,55,.35);
+  background:rgba(212,175,55,.1);
+}
+
+.wallet-pro-actions{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:8px;
+  margin-bottom:12px;
+}
+
+.wallet-pro-actions button{
+  padding:12px;
+  border-radius:10px;
+  font-size:11px;
+  font-weight:900;
+  cursor:pointer;
+}
+
+.wallet-pro-actions .deposit-action{
+  border:1px solid rgba(60,205,130,.25);
+  background:rgba(60,205,130,.08);
+  color:#48d889;
+}
+
+.wallet-pro-actions .withdraw-action{
+  border:1px solid rgba(212,175,55,.3);
+  background:rgba(212,175,55,.08);
+  color:#f5d76e;
+}
+
+.wallet-pro-actions .transfer-action{
+  border:1px solid rgba(100,150,220,.22);
+  background:rgba(100,150,220,.07);
+  color:#9ab7e8;
+}
+
+.wallet-pro-main-grid{
+  display:grid;
+  grid-template-columns:1.5fr .85fr;
+  gap:12px;
+  margin-bottom:12px;
+}
+
+.wallet-pro-assets-card,
+.wallet-pro-action-card,
+.wallet-pro-history-card,
+.wallet-pro-security-card{
+  border:1px solid rgba(212,175,55,.14);
+  border-radius:16px;
+  background:linear-gradient(145deg,#111,#090909);
+  box-shadow:0 12px 35px rgba(0,0,0,.22);
+}
+
+.wallet-pro-assets-card{
+  overflow:hidden;
+}
+
+.wallet-pro-card-header{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:10px;
+  padding:14px;
+  border-bottom:1px solid rgba(255,255,255,.06);
+}
+
+.wallet-pro-card-header strong,
+.wallet-pro-card-header span{
+  display:block;
+}
+
+.wallet-pro-card-header strong{
+  color:#eee;
+  font-size:13px;
+}
+
+.wallet-pro-card-header span{
+  margin-top:3px;
+  color:#666;
+  font-size:9px;
+}
+
+.wallet-pro-card-header input{
+  width:150px;
+  padding:8px 10px;
+  border:1px solid rgba(255,255,255,.08);
+  border-radius:8px;
+  background:#0b0b0b;
+  color:#eee;
+  outline:none;
+  font-size:9px;
+}
+
+.wallet-pro-card-header button{
+  padding:7px 10px;
+  border:1px solid rgba(212,175,55,.2);
+  border-radius:7px;
+  background:rgba(212,175,55,.06);
+  color:#d4af37;
+  font-size:9px;
+  cursor:pointer;
+}
+
+.wallet-pro-asset-head,
+.wallet-pro-asset-row{
+  display:grid;
+  grid-template-columns:1.5fr 1fr 1fr 1fr 1fr;
+  gap:10px;
+  align-items:center;
+  padding:10px 14px;
+}
+
+.wallet-pro-asset-head{
+  color:#555;
+  font-size:8px;
+  border-bottom:1px solid rgba(255,255,255,.045);
+}
+
+.wallet-pro-asset-row{
+  min-height:58px;
+  border-bottom:1px solid rgba(255,255,255,.035);
+  font-size:10px;
+}
+
+.wallet-pro-asset-row:last-child{
+  border-bottom:0;
+}
+
+.wallet-pro-asset-row>strong{
+  color:#ddd;
+}
+
+.wallet-pro-asset-row>span{
+  color:#999;
+}
+
+.wallet-pro-asset-name{
+  display:flex;
+  align-items:center;
+  gap:8px;
+}
+
+.wallet-pro-asset-name strong,
+.wallet-pro-asset-name span{
+  display:block;
+}
+
+.wallet-pro-asset-name strong{
+  color:#eee;
+}
+
+.wallet-pro-asset-name span{
+  margin-top:2px;
+  color:#666;
+  font-size:8px;
+}
+
+.wallet-pro-coin-icon{
+  width:31px;
+  height:31px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  flex:0 0 31px;
+  border-radius:50%;
+  border:1px solid rgba(212,175,55,.28);
+  background:rgba(212,175,55,.09);
+  color:#f5d76e;
+  font-weight:900;
+}
+
+.wallet-pro-action-card{
+  padding:0 14px 14px;
+}
+
+.wallet-pro-action-tabs{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:4px;
+  padding:10px 0;
+  border-bottom:1px solid rgba(255,255,255,.06);
+}
+
+.wallet-pro-action-tabs button{
+  padding:8px;
+  border:0;
+  border-radius:7px;
+  background:transparent;
+  color:#777;
+  font-size:9px;
+  font-weight:800;
+  cursor:pointer;
+}
+
+.wallet-pro-action-tabs button.active{
+  background:rgba(212,175,55,.1);
+  color:#f5d76e;
+}
+
+.wallet-pro-form{
+  padding-top:12px;
+}
+
+.wallet-pro-form label{
+  display:block;
+  margin-bottom:9px;
+}
+
+.wallet-pro-form label>span{
+  display:block;
+  margin-bottom:4px;
+  color:#777;
+  font-size:9px;
+}
+
+.wallet-pro-form input,
+.wallet-pro-form select{
+  width:100%;
+  padding:10px;
+  border:1px solid rgba(255,255,255,.08);
+  border-radius:9px;
+  background:#0b0b0b;
+  color:#eee;
+  outline:none;
+  font-size:10px;
+}
+
+.wallet-pro-form input:focus,
+.wallet-pro-form select:focus{
+  border-color:rgba(212,175,55,.4);
+}
+
+.wallet-pro-address-box{
+  padding:12px;
+  margin-bottom:10px;
+  border:1px dashed rgba(212,175,55,.25);
+  border-radius:10px;
+  background:rgba(212,175,55,.035);
+}
+
+.wallet-pro-address-box span,
+.wallet-pro-address-box strong,
+.wallet-pro-address-box small{
+  display:block;
+}
+
+.wallet-pro-address-box span{
+  color:#777;
+  font-size:9px;
+}
+
+.wallet-pro-address-box strong{
+  margin-top:8px;
+  color:#d4af37;
+  font-size:11px;
+}
+
+.wallet-pro-address-box small{
+  margin-top:5px;
+  color:#555;
+  font-size:8px;
+}
+
+.wallet-pro-fee-box{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:6px;
+  margin:10px 0;
+}
+
+.wallet-pro-fee-box>div{
+  padding:9px;
+  border-radius:8px;
+  background:#0b0b0b;
+  border:1px solid rgba(255,255,255,.05);
+}
+
+.wallet-pro-fee-box span,
+.wallet-pro-fee-box strong{
+  display:block;
+}
+
+.wallet-pro-fee-box span{
+  color:#666;
+  font-size:8px;
+}
+
+.wallet-pro-fee-box strong{
+  margin-top:4px;
+  color:#bbb;
+  font-size:9px;
+}
+
+.wallet-pro-primary-action{
+  width:100%;
+  padding:12px;
+  border:0;
+  border-radius:10px;
+  background:linear-gradient(135deg,#b88b16,#d4af37,#f0cf61);
+  color:#090909;
+  font-weight:950;
+  font-size:10px;
+  cursor:pointer;
+}
+
+.wallet-pro-message{
+  margin-top:8px;
+  padding:9px;
+  border-radius:8px;
+  border:1px solid rgba(212,175,55,.2);
+  background:rgba(212,175,55,.05);
+  color:#d4af37;
+  font-size:9px;
+  line-height:1.4;
+}
+
+.wallet-pro-security-strip{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:8px;
+  margin-bottom:12px;
+}
+
+.wallet-pro-security-strip>div{
+  padding:11px;
+  border:1px solid rgba(255,255,255,.06);
+  border-radius:10px;
+  background:#0d0d0d;
+}
+
+.wallet-pro-security-strip span,
+.wallet-pro-security-strip strong{
+  display:block;
+}
+
+.wallet-pro-security-strip span{
+  color:#666;
+  font-size:8px;
+}
+
+.wallet-pro-security-strip strong{
+  margin-top:4px;
+  color:#d4af37;
+  font-size:10px;
+}
+
+.wallet-pro-history-card{
+  margin-bottom:12px;
+  overflow:hidden;
+}
+
+.wallet-pro-history-grid{
+  display:grid;
+  grid-template-columns:1.2fr 1fr 1fr 1fr 1fr;
+  gap:0;
+}
+
+.wallet-pro-history-grid>*{
+  padding:10px 14px;
+  border-bottom:1px solid rgba(255,255,255,.04);
+  font-size:9px;
+}
+
+.wallet-pro-history-grid>span{
+  color:#555;
+}
+
+.wallet-pro-history-grid>strong{
+  color:#ddd;
+}
+
+.wallet-pro-history-grid>b{
+  font-size:9px;
+}
+
+.wallet-pro-security-card{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  padding:14px;
+}
+
+.wallet-pro-security-card strong,
+.wallet-pro-security-card span{
+  display:block;
+}
+
+.wallet-pro-security-card strong{
+  color:#eee;
+  font-size:12px;
+}
+
+.wallet-pro-security-card span{
+  margin-top:4px;
+  color:#666;
+  font-size:9px;
+}
+
+.wallet-pro-security-card button{
+  padding:9px 12px;
+  border:1px solid rgba(212,175,55,.25);
+  border-radius:8px;
+  background:rgba(212,175,55,.07);
+  color:#d4af37;
+  font-size:9px;
+  font-weight:800;
+  cursor:pointer;
+}
+
+.wallet-pro-settings-overlay{
+  position:fixed;
+  inset:0;
+  z-index:9999;
+  display:flex;
+  justify-content:flex-end;
+  background:rgba(0,0,0,.72);
+}
+
+.wallet-pro-settings-drawer{
+  width:min(430px,100%);
+  height:100%;
+  overflow-y:auto;
+  padding:20px;
+  background:#090909;
+  border-left:1px solid rgba(212,175,55,.22);
+  box-shadow:-15px 0 50px rgba(0,0,0,.55);
+}
+
+.wallet-pro-settings-header{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:10px;
+  margin-bottom:15px;
+  padding-bottom:15px;
+  border-bottom:1px solid rgba(255,255,255,.07);
+}
+
+.wallet-pro-settings-header strong,
+.wallet-pro-settings-header span{
+  display:block;
+}
+
+.wallet-pro-settings-header strong{
+  color:#f5d76e;
+  font-size:17px;
+}
+
+.wallet-pro-settings-header span{
+  margin-top:4px;
+  color:#666;
+  font-size:9px;
+}
+
+.wallet-pro-settings-header button{
+  width:32px;
+  height:32px;
+  border:1px solid rgba(255,255,255,.08);
+  border-radius:8px;
+  background:#111;
+  color:#aaa;
+  font-size:20px;
+  cursor:pointer;
+}
+
+.wallet-pro-setting-group{
+  padding:13px;
+  margin-bottom:10px;
+  border:1px solid rgba(255,255,255,.06);
+  border-radius:11px;
+  background:#0e0e0e;
+}
+
+.wallet-pro-setting-group>strong{
+  display:block;
+  margin-bottom:9px;
+  color:#d4af37;
+  font-size:11px;
+}
+
+.wallet-pro-setting-group label{
+  display:flex;
+  align-items:center;
+  gap:7px;
+  min-height:32px;
+  margin:0;
+  border-bottom:1px solid rgba(255,255,255,.035);
+  color:#999;
+  font-size:10px;
+}
+
+.wallet-pro-setting-group label:last-child{
+  border-bottom:0;
+}
+
+.wallet-pro-setting-group input{
+  accent-color:#d4af37;
+}
+
+/* =========================
+   WALLET DESKTOP
+   ========================= */
+
+@media(min-width:701px){
+
+  .wallet-pro-screen{
+    max-width:1450px;
+    margin:0 auto;
+  }
+
+}
+
+/* =========================
+   WALLET MOBILE
+   ========================= */
+
+@media(max-width:700px){
+
+  .wallet-pro-header{
+    align-items:stretch;
+    flex-direction:column;
+  }
+
+  .wallet-pro-settings{
+    width:100%;
+  }
+
+  .wallet-pro-balance-hero{
+    grid-template-columns:1fr;
+    padding:15px;
+  }
+
+  .wallet-pro-total strong{
+    font-size:26px;
+  }
+
+  .wallet-pro-balance-stats{
+    grid-template-columns:repeat(3,1fr);
+  }
+
+  .wallet-pro-actions{
+    grid-template-columns:1fr 1fr 1fr;
+  }
+
+  .wallet-pro-main-grid{
+    grid-template-columns:1fr;
+  }
+
+  .wallet-pro-asset-head{
+    display:none;
+  }
+
+  .wallet-pro-asset-row{
+    grid-template-columns:1.5fr 1fr;
+    gap:7px;
+    padding:12px;
+  }
+
+  .wallet-pro-asset-row>span,
+  .wallet-pro-asset-row>strong:not(:last-child){
+    font-size:9px;
+  }
+
+  .wallet-pro-asset-row>span:nth-child(3)::before{
+    content:"Available ";
+    color:#555;
+  }
+
+  .wallet-pro-asset-row>span:nth-child(4)::before{
+    content:"Frozen ";
+    color:#555;
+  }
+
+  .wallet-pro-asset-row>strong:last-child{
+    grid-column:2;
+    color:#f5d76e;
+  }
+
+  .wallet-pro-card-header{
+    align-items:stretch;
+    flex-direction:column;
+  }
+
+  .wallet-pro-card-header input{
+    width:100%;
+  }
+
+  .wallet-pro-security-strip{
+    grid-template-columns:1fr 1fr;
+  }
+
+  .wallet-pro-history-grid{
+    grid-template-columns:1fr 1fr;
+  }
+
+  .wallet-pro-history-grid>*{
+    padding:9px 10px;
+  }
+
+  .wallet-pro-history-grid>span:nth-child(3),
+  .wallet-pro-history-grid>span:nth-child(4),
+  .wallet-pro-history-grid>span:nth-child(5){
+    display:none;
+  }
+
+  .wallet-pro-history-grid>strong:nth-of-type(n),
+  .wallet-pro-history-grid>b{
+    font-size:9px;
+  }
+
+  .wallet-pro-security-card{
+    align-items:stretch;
+    flex-direction:column;
+  }
+
+  .wallet-pro-security-card button{
+    width:100%;
+  }
+
+  .wallet-pro-settings-drawer{
+    width:100%;
+  }
+
+}
+
+@media(max-width:380px){
+
+  .wallet-pro-balance-hero{
+    padding:12px;
+  }
+
+  .wallet-pro-total strong{
+    font-size:22px;
+  }
+
+  .wallet-pro-balance-stats{
+    gap:4px;
+  }
+
+  .wallet-pro-balance-stats>div{
+    padding:7px;
+  }
+
+  .wallet-pro-balance-stats strong{
+    font-size:9px;
+  }
+
+  .wallet-pro-actions button{
+    padding:10px 5px;
+    font-size:9px;
+  }
+
+  .wallet-pro-action-card{
+    padding:0 10px 10px;
+  }
+
+}
+
+/* =========================================================
+   END BITLORA WALLET PRO
+   ========================================================= */
+
+/* ===== BITLORA FUTURES + WALLET TEXT FIX ===== */
+
+.futures-screen {
+  font-size: 14px;
+}
+
+.futures-screen button,
+.futures-screen input,
+.futures-screen select {
+  font-size: 13px;
+}
+
+.futures-screen .futures-pair {
+  font-size: 17px;
+}
+
+.futures-screen .futures-price {
+  font-size: 26px;
+  line-height: 1.2;
+}
+
+.futures-screen .futures-card-title {
+  font-size: 15px;
+}
+
+.wallet-pro-screen {
+  font-size: 14px;
+}
+
+.wallet-pro-screen button,
+.wallet-pro-screen input,
+.wallet-pro-screen select,
+.wallet-pro-screen textarea {
+  font-size: 13px;
+}
+
+.wallet-pro-screen .wallet-pro-title {
+  font-size: 20px;
+}
+
+.wallet-pro-screen .wallet-pro-balance {
+  font-size: 30px;
+  line-height: 1.2;
+}
+
+.wallet-pro-screen .wallet-pro-card-title {
+  font-size: 15px;
+}
+
+@media (max-width: 700px) {
+  .futures-screen {
+    font-size: 13px;
+  }
+
+  .futures-screen .futures-pair {
+    font-size: 16px;
+  }
+
+  .futures-screen .futures-price {
+    font-size: 22px;
+  }
+
+  .wallet-pro-screen {
+    font-size: 13px;
+  }
+
+  .wallet-pro-screen .wallet-pro-title {
+    font-size: 18px;
+  }
+
+  .wallet-pro-screen .wallet-pro-balance {
+    font-size: 25px;
+  }
+
+  .wallet-pro-screen .wallet-pro-card-title {
+    font-size: 14px;
+  }
+}
+
+/* ===== END FUTURES + WALLET TEXT FIX ===== */
+
+
+/* =========================================================
+   BITLORA PREMIUM FUTURES + WALLET TYPOGRAPHY
+   Scoped only to Futures and Wallet
+   ========================================================= */
+
+/* ================= FUTURES ================= */
+
+.futures-screen {
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+.futures-screen h1,
+.futures-screen h2,
+.futures-screen h3,
+.futures-screen h4,
+.futures-screen p {
+  margin-top: 0;
+}
+
+.futures-screen button,
+.futures-screen input,
+.futures-screen select {
+  font-family: inherit;
+  font-size: 13px;
+  line-height: 1.2;
+}
+
+.futures-screen button {
+  font-weight: 650;
+}
+
+.futures-screen input,
+.futures-screen select {
+  min-height: 42px;
+}
+
+.futures-screen small {
+  font-size: 11px;
+  line-height: 1.3;
+}
+
+.futures-screen .futures-pair {
+  font-size: 18px;
+  font-weight: 800;
+  line-height: 1.2;
+}
+
+.futures-screen .futures-price {
+  font-size: 28px;
+  font-weight: 850;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+}
+
+.futures-screen .futures-account-grid {
+  font-size: 12px;
+  line-height: 1.35;
+}
+
+.futures-screen .futures-account-grid strong {
+  font-size: 15px;
+  font-weight: 750;
+}
+
+.futures-screen .futures-contract-tabs button,
+.futures-screen .futures-timeframes button,
+.futures-screen .futures-data-tabs button {
+  font-size: 12px;
+  font-weight: 750;
+  white-space: nowrap;
+}
+
+.futures-screen .futures-card-title {
+  font-size: 16px;
+  font-weight: 800;
+  line-height: 1.25;
+}
+
+.futures-screen .futures-order-card label,
+.futures-screen .futures-chart-card label,
+.futures-screen .futures-risk-card label {
+  font-size: 11px;
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+.futures-screen .futures-order-card input,
+.futures-screen .futures-order-card select {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.futures-screen .futures-side button {
+  font-size: 14px;
+  font-weight: 800;
+}
+
+.futures-screen .futures-size-presets button {
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.futures-screen .futures-submit {
+  min-height: 46px;
+  font-size: 15px;
+  font-weight: 850;
+}
+
+.futures-screen .futures-position-row,
+.futures-screen .futures-order-row {
+  font-size: 12px;
+  line-height: 1.4;
+}
+
+.futures-screen .futures-position-row strong,
+.futures-screen .futures-order-row strong {
+  font-size: 13px;
+  font-weight: 750;
+}
+
+.futures-screen .futures-risk-value,
+.futures-screen .futures-liquidation-price {
+  font-size: 14px;
+  font-weight: 800;
+}
+
+
+/* ================= WALLET ================= */
+
+.wallet-pro-screen {
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+.wallet-pro-screen h1,
+.wallet-pro-screen h2,
+.wallet-pro-screen h3,
+.wallet-pro-screen h4,
+.wallet-pro-screen p {
+  margin-top: 0;
+}
+
+.wallet-pro-screen button,
+.wallet-pro-screen input,
+.wallet-pro-screen select,
+.wallet-pro-screen textarea {
+  font-family: inherit;
+  font-size: 13px;
+  line-height: 1.2;
+}
+
+.wallet-pro-screen button {
+  font-weight: 650;
+}
+
+.wallet-pro-screen input,
+.wallet-pro-screen select,
+.wallet-pro-screen textarea {
+  min-height: 42px;
+}
+
+.wallet-pro-screen small {
+  font-size: 11px;
+  line-height: 1.3;
+}
+
+.wallet-pro-screen .wallet-pro-title {
+  font-size: 21px;
+  font-weight: 850;
+  line-height: 1.2;
+}
+
+.wallet-pro-screen .wallet-pro-subtitle {
+  font-size: 12px;
+  line-height: 1.35;
+}
+
+.wallet-pro-screen .wallet-pro-balance {
+  font-size: 32px;
+  font-weight: 850;
+  line-height: 1.1;
+  letter-spacing: -0.025em;
+}
+
+.wallet-pro-screen .wallet-pro-balance-label {
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.wallet-pro-screen .wallet-pro-stat {
+  font-size: 12px;
+  line-height: 1.35;
+}
+
+.wallet-pro-screen .wallet-pro-stat strong {
+  font-size: 15px;
+  font-weight: 800;
+}
+
+.wallet-pro-screen .wallet-pro-tabs button {
+  font-size: 12px;
+  font-weight: 750;
+  white-space: nowrap;
+}
+
+.wallet-pro-screen .wallet-pro-action button {
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.wallet-pro-screen .wallet-pro-card-title {
+  font-size: 16px;
+  font-weight: 800;
+  line-height: 1.25;
+}
+
+.wallet-pro-screen .wallet-pro-asset-name {
+  font-size: 14px;
+  font-weight: 800;
+}
+
+.wallet-pro-screen .wallet-pro-asset-symbol {
+  font-size: 11px;
+  line-height: 1.3;
+}
+
+.wallet-pro-screen .wallet-pro-asset-balance {
+  font-size: 14px;
+  font-weight: 800;
+}
+
+.wallet-pro-screen .wallet-pro-asset-value {
+  font-size: 12px;
+}
+
+.wallet-pro-screen label {
+  font-size: 11px;
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+.wallet-pro-screen input,
+.wallet-pro-screen select,
+.wallet-pro-screen textarea {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.wallet-pro-screen .wallet-pro-submit {
+  min-height: 46px;
+  font-size: 14px;
+  font-weight: 850;
+}
+
+.wallet-pro-screen .wallet-pro-fee,
+.wallet-pro-screen .wallet-pro-limit {
+  font-size: 12px;
+  line-height: 1.4;
+}
+
+.wallet-pro-screen .wallet-pro-security-title {
+  font-size: 14px;
+  font-weight: 800;
+}
+
+.wallet-pro-screen .wallet-pro-security-text {
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.wallet-pro-screen .wallet-pro-history {
+  font-size: 12px;
+  line-height: 1.4;
+}
+
+
+/* ================= MOBILE ================= */
+
+@media (max-width: 700px) {
+
+  .futures-screen {
+    font-size: 13px;
+  }
+
+  .futures-screen .futures-pair {
+    font-size: 17px;
+  }
+
+  .futures-screen .futures-price {
+    font-size: 24px;
+  }
+
+  .futures-screen .futures-account-grid {
+    font-size: 11px;
+  }
+
+  .futures-screen .futures-account-grid strong {
+    font-size: 13px;
+  }
+
+  .futures-screen .futures-card-title {
+    font-size: 15px;
+  }
+
+  .futures-screen .futures-order-card input,
+  .futures-screen .futures-order-card select {
+    font-size: 13px;
+  }
+
+  .futures-screen .futures-submit {
+    min-height: 44px;
+    font-size: 14px;
+  }
+
+  .wallet-pro-screen {
+    font-size: 13px;
+  }
+
+  .wallet-pro-screen .wallet-pro-title {
+    font-size: 19px;
+  }
+
+  .wallet-pro-screen .wallet-pro-balance {
+    font-size: 27px;
+  }
+
+  .wallet-pro-screen .wallet-pro-stat strong {
+    font-size: 13px;
+  }
+
+  .wallet-pro-screen .wallet-pro-card-title {
+    font-size: 15px;
+  }
+
+  .wallet-pro-screen .wallet-pro-asset-name {
+    font-size: 13px;
+  }
+
+  .wallet-pro-screen .wallet-pro-asset-balance {
+    font-size: 13px;
+  }
+
+  .wallet-pro-screen input,
+  .wallet-pro-screen select,
+  .wallet-pro-screen textarea {
+    font-size: 13px;
+  }
+
+  .wallet-pro-screen .wallet-pro-submit {
+    min-height: 44px;
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 380px) {
+
+  .futures-screen .futures-price {
+    font-size: 22px;
+  }
+
+  .futures-screen .futures-pair {
+    font-size: 16px;
+  }
+
+  .wallet-pro-screen .wallet-pro-title {
+    font-size: 18px;
+  }
+
+  .wallet-pro-screen .wallet-pro-balance {
+    font-size: 24px;
+  }
+}
+
+/* ===== END BITLORA PREMIUM FUTURES + WALLET TYPOGRAPHY ===== */
+
+
+/* =========================================================
+   BITLORA FINAL FUTURES + WALLET TYPOGRAPHY
+   Gold/Black Premium UI
+   Scoped ONLY to Futures + Wallet
+   ========================================================= */
+
+/* ================= FUTURES ================= */
+
+.futures-screen {
+  font-size: 15px;
+  line-height: 1.45;
+}
+
+.futures-screen h1,
+.futures-screen h2,
+.futures-screen h3,
+.futures-screen h4 {
+  margin: 0;
+  line-height: 1.2;
+}
+
+.futures-screen button {
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.futures-screen input,
+.futures-screen select {
+  font-family: inherit;
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.futures-screen small {
+  font-size: 12px;
+  line-height: 1.3;
+}
+
+.futures-screen .futures-pair {
+  font-size: clamp(17px, 2vw, 20px);
+  font-weight: 850;
+}
+
+.futures-screen .futures-price {
+  font-size: clamp(26px, 3.5vw, 36px);
+  font-weight: 850;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+.futures-screen .futures-account-grid {
+  font-size: 13px;
+}
+
+.futures-screen .futures-account-grid strong {
+  font-size: 16px;
+  font-weight: 800;
+}
+
+.futures-screen .futures-contract-tabs button,
+.futures-screen .futures-timeframes button,
+.futures-screen .futures-data-tabs button {
+  font-size: 13px;
+  font-weight: 750;
+  min-height: 38px;
+}
+
+.futures-screen .futures-card-title {
+  font-size: 17px;
+  font-weight: 850;
+  line-height: 1.25;
+}
+
+.futures-screen .futures-order-card label,
+.futures-screen .futures-chart-card label,
+.futures-screen .futures-risk-card label {
+  font-size: 12px;
+  font-weight: 750;
+}
+
+.futures-screen .futures-order-card input,
+.futures-screen .futures-order-card select {
+  font-size: 15px;
+  min-height: 44px;
+}
+
+.futures-screen .futures-side button {
+  font-size: 15px;
+  font-weight: 850;
+  min-height: 44px;
+}
+
+.futures-screen .futures-size-presets button {
+  font-size: 12px;
+  min-height: 34px;
+}
+
+.futures-screen .futures-submit {
+  min-height: 50px;
+  font-size: 16px;
+  font-weight: 850;
+}
+
+.futures-screen .futures-position-row,
+.futures-screen .futures-order-row {
+  font-size: 13px;
+  line-height: 1.45;
+}
+
+.futures-screen .futures-position-row strong,
+.futures-screen .futures-order-row strong {
+  font-size: 14px;
+  font-weight: 800;
+}
+
+.futures-screen .futures-risk-value,
+.futures-screen .futures-liquidation-price {
+  font-size: 15px;
+  font-weight: 800;
+}
+
+
+/* ================= WALLET ================= */
+
+.wallet-pro-screen {
+  font-size: 15px;
+  line-height: 1.45;
+}
+
+.wallet-pro-screen h1,
+.wallet-pro-screen h2,
+.wallet-pro-screen h3,
+.wallet-pro-screen h4 {
+  margin: 0;
+  line-height: 1.2;
+}
+
+.wallet-pro-screen button {
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.wallet-pro-screen input,
+.wallet-pro-screen select,
+.wallet-pro-screen textarea {
+  font-family: inherit;
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1.25;
+}
+
+.wallet-pro-screen small {
+  font-size: 12px;
+}
+
+.wallet-pro-screen .wallet-pro-title {
+  font-size: clamp(20px, 2.5vw, 26px);
+  font-weight: 850;
+  line-height: 1.15;
+}
+
+.wallet-pro-screen .wallet-pro-subtitle {
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+.wallet-pro-screen .wallet-pro-balance {
+  font-size: clamp(30px, 4vw, 42px);
+  font-weight: 900;
+  line-height: 1.05;
+  letter-spacing: -0.025em;
+}
+
+.wallet-pro-screen .wallet-pro-balance-label {
+  font-size: 12px;
+  font-weight: 750;
+}
+
+.wallet-pro-screen .wallet-pro-stat {
+  font-size: 13px;
+  line-height: 1.35;
+}
+
+.wallet-pro-screen .wallet-pro-stat strong {
+  font-size: 16px;
+  font-weight: 850;
+}
+
+.wallet-pro-screen .wallet-pro-tabs button {
+  font-size: 13px;
+  font-weight: 750;
+  min-height: 40px;
+}
+
+.wallet-pro-screen .wallet-pro-action button {
+  font-size: 14px;
+  font-weight: 800;
+  min-height: 44px;
+}
+
+.wallet-pro-screen .wallet-pro-card-title {
+  font-size: 17px;
+  font-weight: 850;
+  line-height: 1.25;
+}
+
+.wallet-pro-screen .wallet-pro-asset-name {
+  font-size: 15px;
+  font-weight: 850;
+}
+
+.wallet-pro-screen .wallet-pro-asset-symbol {
+  font-size: 12px;
+}
+
+.wallet-pro-screen .wallet-pro-asset-balance {
+  font-size: 15px;
+  font-weight: 850;
+}
+
+.wallet-pro-screen .wallet-pro-asset-value {
+  font-size: 13px;
+}
+
+.wallet-pro-screen label {
+  font-size: 12px;
+  font-weight: 750;
+}
+
+.wallet-pro-screen input,
+.wallet-pro-screen select,
+.wallet-pro-screen textarea {
+  min-height: 44px;
+}
+
+.wallet-pro-screen .wallet-pro-submit {
+  min-height: 50px;
+  font-size: 15px;
+  font-weight: 850;
+}
+
+.wallet-pro-screen .wallet-pro-fee,
+.wallet-pro-screen .wallet-pro-limit {
+  font-size: 13px;
+}
+
+.wallet-pro-screen .wallet-pro-security-title {
+  font-size: 15px;
+  font-weight: 850;
+}
+
+.wallet-pro-screen .wallet-pro-security-text {
+  font-size: 13px;
+  line-height: 1.55;
+}
+
+.wallet-pro-screen .wallet-pro-history {
+  font-size: 13px;
+  line-height: 1.45;
+}
+
+
+/* ================= MOBILE ================= */
+
+@media (max-width: 700px) {
+
+  .futures-screen {
+    font-size: 14px;
+  }
+
+  .futures-screen button {
+    font-size: 13px;
+  }
+
+  .futures-screen input,
+  .futures-screen select {
+    font-size: 16px;
+  }
+
+  .futures-screen .futures-pair {
+    font-size: 18px;
+  }
+
+  .futures-screen .futures-price {
+    font-size: 25px;
+  }
+
+  .futures-screen .futures-account-grid {
+    font-size: 12px;
+  }
+
+  .futures-screen .futures-account-grid strong {
+    font-size: 14px;
+  }
+
+  .futures-screen .futures-card-title {
+    font-size: 16px;
+  }
+
+  .futures-screen .futures-submit {
+    min-height: 48px;
+    font-size: 15px;
+  }
+
+  .wallet-pro-screen {
+    font-size: 14px;
+  }
+
+  .wallet-pro-screen button {
+    font-size: 13px;
+  }
+
+  .wallet-pro-screen input,
+  .wallet-pro-screen select,
+  .wallet-pro-screen textarea {
+    font-size: 16px;
+  }
+
+  .wallet-pro-screen .wallet-pro-title {
+    font-size: 20px;
+  }
+
+  .wallet-pro-screen .wallet-pro-balance {
+    font-size: 28px;
+  }
+
+  .wallet-pro-screen .wallet-pro-stat {
+    font-size: 12px;
+  }
+
+  .wallet-pro-screen .wallet-pro-stat strong {
+    font-size: 14px;
+  }
+
+  .wallet-pro-screen .wallet-pro-card-title {
+    font-size: 16px;
+  }
+
+  .wallet-pro-screen .wallet-pro-asset-name {
+    font-size: 14px;
+  }
+
+  .wallet-pro-screen .wallet-pro-asset-balance {
+    font-size: 14px;
+  }
+
+  .wallet-pro-screen .wallet-pro-submit {
+    min-height: 48px;
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 380px) {
+
+  .futures-screen .futures-price {
+    font-size: 23px;
+  }
+
+  .futures-screen .futures-pair {
+    font-size: 17px;
+  }
+
+  .wallet-pro-screen .wallet-pro-title {
+    font-size: 19px;
+  }
+
+  .wallet-pro-screen .wallet-pro-balance {
+    font-size: 26px;
+  }
+}
+
+/* ===== END BITLORA FINAL FUTURES + WALLET TYPOGRAPHY ===== */
+
+
+/* =========================================================
+   BITLORA FINAL FUTURES + WALLET UI TEXT
+   Actual component classes
+   Trade / Markets untouched
+   ========================================================= */
+
+/* ================= FUTURES ================= */
+
+.futures-screen {
+  font-size: 14px !important;
+  line-height: 1.4;
+}
+
+.futures-screen button {
+  font-size: 13px !important;
+  line-height: 1.2;
+}
+
+.futures-screen input,
+.futures-screen select {
+  font-size: 14px !important;
+  line-height: 1.2;
+}
+
+.futures-topbar {
+  font-size: 13px;
+}
+
+.futures-pair-area {
+  font-size: 15px;
+}
+
+.futures-pair-select {
+  font-size: 17px !important;
+  font-weight: 800;
+}
+
+.futures-contract-badge {
+  font-size: 11px !important;
+  font-weight: 750;
+}
+
+.futures-price-card {
+  font-size: 13px;
+}
+
+.futures-main-price {
+  font-size: clamp(26px, 7vw, 36px) !important;
+  font-weight: 850;
+  line-height: 1.1;
+}
+
+.futures-stat {
+  font-size: 12px !important;
+  line-height: 1.35;
+}
+
+.futures-account-grid {
+  font-size: 12px !important;
+}
+
+.futures-account-grid strong {
+  font-size: 15px !important;
+}
+
+.futures-contract-tabs button,
+.futures-side-tabs button,
+.futures-order-types button,
+.futures-timeframes button,
+.futures-data-tabs button {
+  font-size: 12px !important;
+  font-weight: 750;
+}
+
+.futures-chart-header,
+.futures-chart-footer,
+.futures-chart-labels {
+  font-size: 11px !important;
+}
+
+.futures-field label,
+.futures-order-card label {
+  font-size: 11px !important;
+  font-weight: 700;
+}
+
+.futures-field input,
+.futures-field select {
+  font-size: 14px !important;
+  font-weight: 600;
+  min-height: 42px;
+}
+
+.futures-size-presets button {
+  font-size: 11px !important;
+  font-weight: 700;
+}
+
+.futures-advanced-row,
+.futures-trigger-row,
+.futures-tpsl-grid {
+  font-size: 12px;
+}
+
+.futures-order-summary {
+  font-size: 12px;
+  line-height: 1.45;
+}
+
+.futures-order-summary strong {
+  font-size: 13px;
+}
+
+.futures-order-note {
+  font-size: 11px !important;
+  line-height: 1.4;
+}
+
+.futures-submit,
+.futures-order-card button[type="button"] {
+  font-size: 14px !important;
+  font-weight: 800;
+}
+
+.futures-message {
+  font-size: 12px !important;
+}
+
+.futures-position {
+  font-size: 13px;
+}
+
+.futures-position strong {
+  font-size: 14px;
+}
+
+.futures-close-button {
+  font-size: 12px !important;
+}
+
+.futures-data-card,
+.futures-table-wrap,
+.open-orders-list,
+.order-history-filters {
+  font-size: 12px;
+}
+
+.futures-empty {
+  font-size: 13px;
+}
+
+
+/* ================= WALLET ================= */
+
+.wallet-pro-screen {
+  font-size: 14px !important;
+  line-height: 1.4;
+}
+
+.wallet-pro-header {
+  font-size: 14px;
+}
+
+.wallet-pro-header h1,
+.wallet-pro-header h2,
+.wallet-pro-header h3 {
+  font-size: 20px !important;
+  line-height: 1.2;
+}
+
+.wallet-pro-settings {
+  font-size: 13px !important;
+}
+
+.wallet-pro-balance-hero {
+  font-size: 13px;
+}
+
+.wallet-pro-total {
+  font-size: clamp(30px, 8vw, 42px) !important;
+  font-weight: 900;
+  line-height: 1.05;
+}
+
+.wallet-pro-balance-stats {
+  font-size: 12px !important;
+}
+
+.wallet-pro-balance-stats strong {
+  font-size: 15px !important;
+}
+
+.wallet-pro-wallet-tabs button {
+  font-size: 12px !important;
+  font-weight: 750;
+}
+
+.wallet-pro-actions button {
+  font-size: 13px !important;
+  font-weight: 800;
+}
+
+.wallet-pro-card-header {
+  font-size: 15px;
+}
+
+.wallet-pro-card-header strong,
+.wallet-pro-card-header h3,
+.wallet-pro-card-header h4 {
+  font-size: 16px !important;
+}
+
+.wallet-pro-asset-head {
+  font-size: 11px !important;
+}
+
+.wallet-pro-asset-row {
+  font-size: 13px;
+}
+
+.wallet-pro-asset-name {
+  font-size: 14px !important;
+  font-weight: 800;
+}
+
+.wallet-pro-coin-icon {
+  font-size: 14px;
+}
+
+.wallet-pro-action-tabs button {
+  font-size: 13px !important;
+  font-weight: 750;
+}
+
+.wallet-pro-form {
+  font-size: 13px;
+}
+
+.wallet-pro-form label {
+  font-size: 11px !important;
+  font-weight: 700;
+}
+
+.wallet-pro-form input,
+.wallet-pro-form select,
+.wallet-pro-form textarea {
+  font-size: 14px !important;
+  font-weight: 600;
+  min-height: 42px;
+}
+
+.wallet-pro-address-box,
+.wallet-pro-fee-box {
+  font-size: 12px !important;
+  line-height: 1.45;
+}
+
+.wallet-pro-primary-action {
+  font-size: 14px !important;
+  font-weight: 850;
+  min-height: 46px;
+}
+
+.wallet-pro-message {
+  font-size: 12px !important;
+}
+
+.wallet-pro-security-strip {
+  font-size: 12px !important;
+  line-height: 1.45;
+}
+
+.wallet-pro-history-card {
+  font-size: 13px;
+}
+
+.wallet-pro-history-grid {
+  font-size: 12px;
+}
+
+.wallet-pro-security-card {
+  font-size: 13px;
+}
+
+.wallet-pro-settings-overlay,
+.wallet-pro-settings-drawer {
+  font-size: 13px;
+}
+
+.wallet-pro-settings-header {
+  font-size: 16px;
+  font-weight: 800;
+}
+
+.wallet-pro-setting-group {
+  font-size: 13px;
+  line-height: 1.45;
+}
+
+.wallet-pro-setting-group label {
+  font-size: 12px !important;
+  font-weight: 700;
+}
+
+
+/* ================= MOBILE ================= */
+
+@media (max-width: 700px) {
+
+  .futures-screen {
+    font-size: 13px !important;
+  }
+
+  .futures-topbar {
+    font-size: 12px;
+  }
+
+  .futures-pair-select {
+    font-size: 16px !important;
+  }
+
+  .futures-main-price {
+    font-size: 25px !important;
+  }
+
+  .futures-account-grid {
+    font-size: 11px !important;
+  }
+
+  .futures-account-grid strong {
+    font-size: 13px !important;
+  }
+
+  .futures-contract-tabs button,
+  .futures-side-tabs button,
+  .futures-order-types button,
+  .futures-timeframes button,
+  .futures-data-tabs button {
+    font-size: 11px !important;
+  }
+
+  .futures-field input,
+  .futures-field select {
+    font-size: 16px !important;
+  }
+
+  .futures-position {
+    font-size: 12px;
+  }
+
+  .wallet-pro-screen {
+    font-size: 13px !important;
+  }
+
+  .wallet-pro-header h1,
+  .wallet-pro-header h2,
+  .wallet-pro-header h3 {
+    font-size: 19px !important;
+  }
+
+  .wallet-pro-total {
+    font-size: 28px !important;
+  }
+
+  .wallet-pro-balance-stats {
+    font-size: 11px !important;
+  }
+
+  .wallet-pro-balance-stats strong {
+    font-size: 13px !important;
+  }
+
+  .wallet-pro-wallet-tabs button {
+    font-size: 11px !important;
+  }
+
+  .wallet-pro-actions button {
+    font-size: 12px !important;
+  }
+
+  .wallet-pro-card-header strong,
+  .wallet-pro-card-header h3,
+  .wallet-pro-card-header h4 {
+    font-size: 15px !important;
+  }
+
+  .wallet-pro-asset-row {
+    font-size: 12px;
+  }
+
+  .wallet-pro-asset-name {
+    font-size: 13px !important;
+  }
+
+  .wallet-pro-form input,
+  .wallet-pro-form select,
+  .wallet-pro-form textarea {
+    font-size: 16px !important;
+  }
+
+  .wallet-pro-primary-action {
+    font-size: 13px !important;
+  }
+}
+
+@media (max-width: 380px) {
+
+  .futures-main-price {
+    font-size: 23px !important;
+  }
+
+  .wallet-pro-total {
+    font-size: 25px !important;
+  }
+}
+
+/* ===== END BITLORA FINAL FUTURES + WALLET UI TEXT ===== */
+
+/* MOBILE — MOVE MAIN CONTENT UP 40PX */
+@media (max-width: 700px) {
+  .balance,
+  .actions,
+  .section {
+    transform: translateY(-40px);
   }
 }
