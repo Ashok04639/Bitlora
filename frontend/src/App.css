@@ -7747,3 +7747,5721 @@ input:focus {
     max-width: calc(100vw - 20px) !important;
   }
 }
+
+/* =========================================================
+   BITLORA PREMIUM MOBILE BACKGROUND FIX
+   Mobile only — Desktop untouched
+   ========================================================= */
+
+@media (max-width: 699px) {
+
+  html,
+  body,
+  #root {
+    min-height: 100%;
+    background: #050b16 !important;
+  }
+
+  body {
+    background:
+      radial-gradient(
+        circle at 50% -10%,
+        rgba(38, 140, 255, 0.18),
+        transparent 38%
+      ),
+      radial-gradient(
+        circle at 100% 45%,
+        rgba(30, 90, 180, 0.10),
+        transparent 32%
+      ),
+      linear-gradient(
+        180deg,
+        #050b16 0%,
+        #07111f 48%,
+        #050a13 100%
+      ) !important;
+    background-attachment: fixed;
+  }
+
+  .app {
+    min-height: 100vh;
+    background:
+      radial-gradient(
+        circle at 50% 0%,
+        rgba(38, 140, 255, 0.10),
+        transparent 30%
+      ),
+      linear-gradient(
+        180deg,
+        rgba(5, 11, 22, 0.96) 0%,
+        rgba(5, 11, 22, 0.99) 100%
+      ) !important;
+  }
+
+  /* Keep individual screens transparent so the premium
+     background continues smoothly behind the content. */
+  .home-pro,
+  .markets-screen,
+  .trade-screen,
+  .futures-screen,
+  .wallet-pro-screen,
+  .wallet-screen {
+    background: transparent !important;
+  }
+
+  /* Soft premium glow behind the main mobile content */
+  .home-pro::before,
+  .markets-screen::before,
+  .trade-screen::before,
+  .futures-screen::before,
+  .wallet-pro-screen::before,
+  .wallet-screen::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 50%;
+    width: 420px;
+    height: 420px;
+    transform: translateX(-50%);
+    pointer-events: none;
+    z-index: 0;
+    background: radial-gradient(
+      circle,
+      rgba(38, 140, 255, 0.055) 0%,
+      rgba(38, 140, 255, 0.018) 38%,
+      transparent 70%
+    );
+  }
+
+  /* Content stays above the background glow */
+  .home-pro > *,
+  .markets-screen > *,
+  .trade-screen > *,
+  .futures-screen > *,
+  .wallet-pro-screen > *,
+  .wallet-screen > * {
+    position: relative;
+    z-index: 1;
+  }
+}
+
+
+/* =========================================================
+   BITLORA — FINAL TRADE MOBILE THEME
+   BLUE / BLACK PREMIUM EXCHANGE
+   MOBILE ONLY — DESKTOP UNTOUCHED
+   HEADER UNTOUCHED
+   ========================================================= */
+
+@media (max-width:700px){
+
+  /* ---------- TRADE MASTER ---------- */
+  .trade-screen{
+    color:#eef6ff !important;
+    background:transparent !important;
+  }
+
+  /* ---------- TRADE HERO ---------- */
+  .trade-pro-hero{
+    border-color:rgba(38,140,255,.28) !important;
+    background:
+      radial-gradient(circle at 85% 15%,rgba(38,140,255,.16),transparent 32%),
+      linear-gradient(145deg,#0b1a30,#050a12) !important;
+    box-shadow:
+      0 18px 45px rgba(0,0,0,.55),
+      inset 0 1px rgba(255,255,255,.06) !important;
+  }
+
+  .trade-pro-pair span,
+  .trade-pro-live{
+    color:#63b5ff !important;
+  }
+
+  .trade-pro-nav button{
+    border-color:rgba(38,140,255,.16) !important;
+    background:#081321 !important;
+    color:#8da4c2 !important;
+  }
+
+  .trade-pro-nav button:first-child{
+    color:#63b5ff !important;
+    background:rgba(38,140,255,.12) !important;
+    border-color:rgba(38,140,255,.28) !important;
+  }
+
+  /* ---------- PAIR / PRICE ---------- */
+  .trade-pair-button{
+    border-color:rgba(38,140,255,.28) !important;
+    background:rgba(38,140,255,.10) !important;
+    color:#63b5ff !important;
+  }
+
+  .trade-price-bar{
+    border-color:rgba(38,140,255,.22) !important;
+    background:
+      radial-gradient(circle at 90% 0%,rgba(38,140,255,.10),transparent 35%),
+      linear-gradient(145deg,#0b1a30,#060c15) !important;
+  }
+
+  /* ---------- TIMEFRAME ---------- */
+  .trade-timeframes{
+    background:#081321 !important;
+    border-color:rgba(38,140,255,.14) !important;
+  }
+
+  .trade-timeframes button{
+    color:#8197b5 !important;
+    background:transparent !important;
+  }
+
+  .trade-timeframes button.active{
+    background:linear-gradient(135deg,#268cff,#1766c2) !important;
+    color:#ffffff !important;
+    border-color:#63b5ff !important;
+    box-shadow:0 5px 18px rgba(38,140,255,.25) !important;
+  }
+
+  /* ---------- CHART ---------- */
+  .trade-chart{
+    border-color:rgba(38,140,255,.20) !important;
+    background:#050b16 !important;
+  }
+
+  .trade-chart .chart-toolbar{
+    background:#081321 !important;
+    border-bottom-color:rgba(38,140,255,.12) !important;
+  }
+
+  .trade-chart .chart-tool.active{
+    color:#63b5ff !important;
+    background:rgba(38,140,255,.10) !important;
+    border-color:rgba(38,140,255,.22) !important;
+  }
+
+  /* ---------- PREMIUM STATS ---------- */
+  .trade-premium-stat{
+    border-color:rgba(38,140,255,.15) !important;
+    background:linear-gradient(145deg,#0b1a30,#07101c) !important;
+  }
+
+  /* ---------- ADVANCED TOOLBAR ---------- */
+  .trade-advanced-toolbar{
+    background:#081321 !important;
+    border-color:rgba(38,140,255,.14) !important;
+  }
+
+  .trade-advanced-button.active{
+    color:#63b5ff !important;
+    background:rgba(38,140,255,.10) !important;
+    border-color:rgba(38,140,255,.24) !important;
+  }
+
+  /* ---------- SPOT / FUTURES SWITCH ---------- */
+  .trade-mode-switch{
+    border-color:rgba(38,140,255,.20) !important;
+    background:rgba(255,255,255,.025) !important;
+  }
+
+  .trade-mode-switch button{
+    color:#8197b5 !important;
+  }
+
+  .trade-mode-switch button.active.spot-mode{
+    background:rgba(38,140,255,.14) !important;
+    color:#63b5ff !important;
+    box-shadow:inset 0 0 0 1px rgba(38,140,255,.30) !important;
+  }
+
+  .trade-mode-switch button.active.futures-mode{
+    background:rgba(38,140,255,.14) !important;
+    color:#63b5ff !important;
+    box-shadow:inset 0 0 0 1px rgba(38,140,255,.30) !important;
+  }
+
+  /* ---------- MARKET / ORDER CARDS ---------- */
+  .trade-market-section,
+  .trade-order-section{
+    border-color:rgba(38,140,255,.14) !important;
+    background:linear-gradient(145deg,#0b1a30,#060d17) !important;
+    box-shadow:0 12px 30px rgba(0,0,0,.40) !important;
+  }
+
+  /* ---------- ORDER CURRENT PRICE ---------- */
+  .order-current{
+    border-top-color:rgba(38,140,255,.14) !important;
+    border-bottom-color:rgba(38,140,255,.14) !important;
+    background:rgba(38,140,255,.045) !important;
+  }
+
+  .order-current strong{
+    color:#63b5ff !important;
+  }
+
+  /* ---------- BUY / SELL TABS ---------- */
+  .trade-tabs,
+  .premium-order-tabs{
+    background:#050b16 !important;
+    border-color:rgba(38,140,255,.12) !important;
+  }
+
+  .trade-tabs button:not(.active){
+    background:#081321 !important;
+    color:#8197b5 !important;
+  }
+
+  /* BUY stays GREEN */
+  .trade-tabs button.active:first-child{
+    background:linear-gradient(135deg,#19d98b,#07945c) !important;
+    color:#04110a !important;
+    border-color:#35e9a3 !important;
+  }
+
+  /* SELL stays RED */
+  .trade-tabs button.active:last-child{
+    background:linear-gradient(135deg,#ff5365,#c9243b) !important;
+    color:#180508 !important;
+    border-color:#ff7180 !important;
+  }
+
+  /* ---------- ORDER TYPE ---------- */
+  .premium-order-tabs button{
+    background:#081321 !important;
+    color:#8197b5 !important;
+    border-color:rgba(38,140,255,.10) !important;
+  }
+
+  .premium-order-tabs button.active{
+    color:#ffffff !important;
+    background:rgba(38,140,255,.16) !important;
+    border-color:rgba(38,140,255,.30) !important;
+  }
+
+  /* ---------- INPUTS ---------- */
+  .order-field>div{
+    background:#050b16 !important;
+    border-color:rgba(38,140,255,.14) !important;
+  }
+
+  .order-field>div:focus-within{
+    border-color:rgba(38,140,255,.55) !important;
+    box-shadow:0 0 0 2px rgba(38,140,255,.08) !important;
+  }
+
+  .order-field>div>span{
+    color:#63b5ff !important;
+  }
+
+  /* ---------- PERCENT BUTTONS ---------- */
+  .trade-percent-buttons button{
+    background:#081321 !important;
+    border-color:rgba(38,140,255,.12) !important;
+    color:#9ab0ca !important;
+  }
+
+  .trade-percent-buttons button:active,
+  .trade-percent-buttons button:hover{
+    background:rgba(38,140,255,.12) !important;
+    border-color:rgba(38,140,255,.30) !important;
+    color:#63b5ff !important;
+  }
+
+  /* ---------- BALANCE ---------- */
+  .premium-trade-balance{
+    border-color:rgba(38,140,255,.16) !important;
+    background:linear-gradient(
+      135deg,
+      rgba(38,140,255,.08),
+      rgba(255,255,255,.015)
+    ) !important;
+  }
+
+  /* ---------- ORDER BOOK ---------- */
+  .order-book-label.sell-label{
+    color:#ff4d5e !important;
+  }
+
+  .order-book-label.buy-label{
+    color:#19d98b !important;
+  }
+
+  .order-row.ask span:first-child{
+    color:#ff4d5e !important;
+  }
+
+  .order-row.bid span:first-child{
+    color:#19d98b !important;
+  }
+
+  .order-row.ask span:nth-child(2),
+  .order-row.ask span:nth-child(3),
+  .order-row.bid span:nth-child(2),
+  .order-row.bid span:nth-child(3){
+    color:#d9e5f3 !important;
+  }
+
+  /* ---------- MAIN BUY / SELL ---------- */
+  .buy-button{
+    background:linear-gradient(135deg,#19d98b,#07945c) !important;
+    color:#04110a !important;
+    border-color:#35e9a3 !important;
+  }
+
+  .sell-button{
+    background:linear-gradient(135deg,#ff5365,#c9243b) !important;
+    color:#180508 !important;
+    border-color:#ff7180 !important;
+  }
+
+  /* ---------- ESTIMATE ---------- */
+  .trade-estimate>div{
+    background:#07111f !important;
+    border-color:rgba(38,140,255,.10) !important;
+  }
+
+  /* ---------- HISTORY / ORDERS ---------- */
+  .trade-bottom-header{
+    border-color:rgba(38,140,255,.15) !important;
+    background:linear-gradient(
+      145deg,
+      rgba(38,140,255,.08),
+      rgba(255,255,255,.015)
+    ) !important;
+  }
+
+  .trade-refresh-button{
+    color:#63b5ff !important;
+    border-color:rgba(38,140,255,.24) !important;
+    background:rgba(38,140,255,.07) !important;
+  }
+
+  .premium-trade-orders{
+    border-color:rgba(38,140,255,.12) !important;
+    background:#07111f !important;
+  }
+
+  .premium-trade-orders button.active{
+    color:#63b5ff !important;
+    background:rgba(38,140,255,.10) !important;
+  }
+
+  .open-order-row{
+    background:rgba(255,255,255,.018) !important;
+    border-color:rgba(38,140,255,.08) !important;
+  }
+
+  /* ---------- DROPDOWNS / CONTROLS ---------- */
+  .order-book-dropdown-button,
+  .order-book-controls button,
+  .trade-section-title button{
+    background:#081321 !important;
+    border-color:rgba(38,140,255,.14) !important;
+    color:#9ab0ca !important;
+  }
+
+  /* ---------- REMOVE GOLD FROM TRADE ONLY ---------- */
+  .trade-screen [style*="gold"],
+  .trade-screen [style*="#d4af37"],
+  .trade-screen [style*="212,175,55"]{
+    color:#63b5ff !important;
+    border-color:rgba(38,140,255,.25) !important;
+    background-color:rgba(38,140,255,.08) !important;
+  }
+
+}
+
+/* =========================================================
+   BITLORA — FINAL FUTURES MOBILE THEME
+   BLUE / BLACK PREMIUM EXCHANGE
+   MOBILE ONLY — DESKTOP UNTOUCHED
+   ========================================================= */
+
+@media (max-width:700px){
+
+  .futures-screen{
+    color:#eef6ff !important;
+    background:transparent !important;
+  }
+
+  .futures-topbar,
+  .futures-price-card,
+  .futures-account-grid > div,
+  .futures-chart-card,
+  .futures-order-card,
+  .futures-data-card,
+  .futures-risk-card,
+  .futures-protection-card{
+    border-color:rgba(38,140,255,.15) !important;
+    background:linear-gradient(145deg,#0b1a30,#060d17) !important;
+    box-shadow:0 12px 30px rgba(0,0,0,.38) !important;
+  }
+
+  .futures-pair-select,
+  .futures-settings-button,
+  .futures-order-controls select,
+  .futures-field input,
+  .futures-field select,
+  .futures-tpsl-grid input{
+    background:#050b16 !important;
+    border-color:rgba(38,140,255,.18) !important;
+    color:#eef6ff !important;
+  }
+
+  .futures-contract-badge,
+  .futures-live-dot{
+    color:#63b5ff !important;
+  }
+
+  .futures-contract-tabs button,
+  .futures-data-tabs button{
+    background:#081321 !important;
+    border-color:rgba(38,140,255,.14) !important;
+    color:#8197b5 !important;
+  }
+
+  .futures-contract-tabs button.active,
+  .futures-data-tabs button.active{
+    background:rgba(38,140,255,.14) !important;
+    border-color:rgba(38,140,255,.35) !important;
+    color:#63b5ff !important;
+  }
+
+  .futures-chart-header{
+    border-bottom-color:rgba(38,140,255,.12) !important;
+  }
+
+  .futures-timeframes button{
+    color:#8197b5 !important;
+  }
+
+  .futures-timeframes button.active{
+    color:#63b5ff !important;
+    background:rgba(38,140,255,.12) !important;
+  }
+
+  .futures-chart-price-line{
+    background:#081321 !important;
+    border-color:rgba(38,140,255,.30) !important;
+    color:#63b5ff !important;
+  }
+
+  .futures-chart{
+    background:
+      linear-gradient(rgba(70,130,190,.055) 1px,transparent 1px),
+      linear-gradient(90deg,rgba(70,130,190,.055) 1px,transparent 1px) !important;
+    background-size:55px 55px !important;
+  }
+
+  .futures-order-controls label,
+  .futures-field>span,
+  .futures-trigger-row span{
+    color:#8197b5 !important;
+  }
+
+  .futures-field>b,
+  .futures-field select{
+    color:#63b5ff !important;
+  }
+
+  .futures-field input:focus,
+  .futures-tpsl-grid input:focus{
+    border-color:rgba(38,140,255,.55) !important;
+    box-shadow:0 0 0 2px rgba(38,140,255,.08) !important;
+  }
+
+  .futures-side-tabs button,
+  .futures-order-types button,
+  .futures-size-presets button,
+  .futures-trigger-row button{
+    background:#081321 !important;
+    border-color:rgba(38,140,255,.12) !important;
+    color:#8197b5 !important;
+  }
+
+  .futures-order-types button.active,
+  .futures-trigger-row button.active{
+    background:rgba(38,140,255,.13) !important;
+    border-color:rgba(38,140,255,.30) !important;
+    color:#63b5ff !important;
+  }
+
+  .futures-size-presets button:hover{
+    border-color:rgba(38,140,255,.30) !important;
+    color:#63b5ff !important;
+  }
+
+  .futures-advanced-row input,
+  .futures-setting-group input{
+    accent-color:#268cff !important;
+  }
+
+  .futures-order-summary{
+    background:#050b16 !important;
+    border:1px solid rgba(38,140,255,.10) !important;
+  }
+
+  .futures-submit-button.long-action{
+    background:linear-gradient(135deg,#19d98b,#07945c) !important;
+    border:1px solid #35e9a3 !important;
+    color:#04110a !important;
+  }
+
+  .futures-submit-button.short-action{
+    background:linear-gradient(135deg,#ff5365,#c9243b) !important;
+    border:1px solid #ff7180 !important;
+    color:#180508 !important;
+  }
+
+  .futures-message{
+    border-color:rgba(38,140,255,.22) !important;
+    background:rgba(38,140,255,.07) !important;
+    color:#63b5ff !important;
+  }
+
+  .futures-order-note{
+    background:rgba(38,140,255,.035) !important;
+    color:#8197b5 !important;
+  }
+
+  .futures-position{
+    background:#081321 !important;
+    border-color:rgba(38,140,255,.12) !important;
+  }
+
+  .futures-risk-meter{
+    background:#101d2d !important;
+  }
+
+  .futures-risk-meter span{
+    background:linear-gradient(
+      90deg,
+      #19d98b,
+      #268cff,
+      #ff5365
+    ) !important;
+  }
+
+  .futures-settings-overlay{
+    background:rgba(0,5,12,.78) !important;
+  }
+
+  .futures-settings-drawer{
+    background:
+      radial-gradient(
+        circle at 100% 0%,
+        rgba(38,140,255,.12),
+        transparent 32%
+      ),
+      #050b16 !important;
+    border-left-color:rgba(38,140,255,.25) !important;
+  }
+
+  .futures-settings-header strong,
+  .futures-setting-group>strong{
+    color:#63b5ff !important;
+  }
+
+  .futures-setting-group{
+    background:#081321 !important;
+    border-color:rgba(38,140,255,.12) !important;
+  }
+
+  .futures-settings-header button{
+    background:#0b1a30 !important;
+    border-color:rgba(38,140,255,.18) !important;
+    color:#9ab0ca !important;
+  }
+
+  /* Legacy/inline Gold cleanup — Futures mobile only */
+  .futures-screen [style*="gold"],
+  .futures-screen [style*="#d4af37"],
+  .futures-screen [style*="212,175,55"]{
+    color:#63b5ff !important;
+    border-color:rgba(38,140,255,.25) !important;
+    background-color:rgba(38,140,255,.08) !important;
+  }
+}
+
+
+/* =========================================================
+   BITLORA — FINAL WALLET MOBILE THEME
+   BLUE / BLACK PREMIUM EXCHANGE
+   MOBILE ONLY — DESKTOP UNTOUCHED
+   ========================================================= */
+
+@media (max-width:700px){
+
+  .wallet-pro-screen{
+    color:#eef6ff !important;
+    background:transparent !important;
+  }
+
+  .wallet-pro-header h3,
+  .wallet-pro-settings,
+  .wallet-pro-total strong{
+    color:#63b5ff !important;
+  }
+
+  .wallet-pro-settings{
+    background:rgba(38,140,255,.08) !important;
+    border-color:rgba(38,140,255,.28) !important;
+  }
+
+  .wallet-pro-balance-hero{
+    border-color:rgba(38,140,255,.22) !important;
+    background:
+      radial-gradient(
+        circle at top right,
+        rgba(38,140,255,.16),
+        transparent 45%
+      ),
+      linear-gradient(145deg,#0b1a30,#050a12) !important;
+    box-shadow:0 15px 40px rgba(0,0,0,.48) !important;
+  }
+
+  .wallet-pro-balance-stats>div{
+    background:rgba(38,140,255,.045) !important;
+    border-color:rgba(38,140,255,.12) !important;
+  }
+
+  .wallet-pro-balance-stats strong{
+    color:#d9e8f8 !important;
+  }
+
+  .wallet-pro-wallet-tabs button{
+    background:#081321 !important;
+    border-color:rgba(38,140,255,.14) !important;
+    color:#8197b5 !important;
+  }
+
+  .wallet-pro-wallet-tabs button.active{
+    color:#63b5ff !important;
+    border-color:rgba(38,140,255,.34) !important;
+    background:rgba(38,140,255,.13) !important;
+  }
+
+  .wallet-pro-actions .withdraw-action{
+    border-color:rgba(38,140,255,.28) !important;
+    background:rgba(38,140,255,.08) !important;
+    color:#63b5ff !important;
+  }
+
+  .wallet-pro-actions .transfer-action{
+    border-color:rgba(38,140,255,.20) !important;
+    background:rgba(38,140,255,.06) !important;
+    color:#9ab7e8 !important;
+  }
+
+  .wallet-pro-assets-card,
+  .wallet-pro-action-card,
+  .wallet-pro-history-card,
+  .wallet-pro-security-card{
+    border-color:rgba(38,140,255,.14) !important;
+    background:linear-gradient(145deg,#0b1a30,#060d17) !important;
+    box-shadow:0 12px 30px rgba(0,0,0,.40) !important;
+  }
+
+  .wallet-pro-card-header{
+    border-bottom-color:rgba(38,140,255,.10) !important;
+  }
+
+  .wallet-pro-card-header input,
+  .wallet-pro-form input,
+  .wallet-pro-form select{
+    background:#050b16 !important;
+    border-color:rgba(38,140,255,.15) !important;
+    color:#eef6ff !important;
+  }
+
+  .wallet-pro-card-header input:focus,
+  .wallet-pro-form input:focus,
+  .wallet-pro-form select:focus{
+    border-color:rgba(38,140,255,.55) !important;
+    box-shadow:0 0 0 2px rgba(38,140,255,.08) !important;
+  }
+
+  .wallet-pro-card-header button{
+    background:rgba(38,140,255,.07) !important;
+    border-color:rgba(38,140,255,.24) !important;
+    color:#63b5ff !important;
+  }
+
+  .wallet-pro-asset-row{
+    border-bottom-color:rgba(38,140,255,.07) !important;
+  }
+
+  .wallet-pro-asset-row>strong,
+  .wallet-pro-asset-name strong{
+    color:#eef6ff !important;
+  }
+
+  .wallet-pro-asset-row>span{
+    color:#9ab0ca !important;
+  }
+
+  .wallet-pro-asset-name span{
+    color:#7186a0 !important;
+  }
+
+  .wallet-pro-coin-icon{
+    border-color:rgba(38,140,255,.30) !important;
+    background:rgba(38,140,255,.10) !important;
+    color:#63b5ff !important;
+  }
+
+  .wallet-pro-action-tabs{
+    border-bottom-color:rgba(38,140,255,.10) !important;
+  }
+
+  .wallet-pro-action-tabs button{
+    color:#8197b5 !important;
+  }
+
+  .wallet-pro-action-tabs button.active{
+    background:rgba(38,140,255,.13) !important;
+    color:#63b5ff !important;
+  }
+
+  .wallet-pro-form label>span{
+    color:#8197b5 !important;
+  }
+
+  .wallet-pro-address-box{
+    border-color:rgba(38,140,255,.28) !important;
+    background:rgba(38,140,255,.045) !important;
+  }
+
+  .wallet-pro-address-box strong{
+    color:#63b5ff !important;
+  }
+
+  .wallet-pro-fee-box>div{
+    background:#050b16 !important;
+    border-color:rgba(38,140,255,.10) !important;
+  }
+
+  .wallet-pro-fee-box strong{
+    color:#d9e5f3 !important;
+  }
+
+  .wallet-pro-primary-action{
+    background:linear-gradient(135deg,#268cff,#1766c2) !important;
+    border:1px solid #63b5ff !important;
+    color:#ffffff !important;
+    box-shadow:0 8px 24px rgba(38,140,255,.22) !important;
+  }
+
+  .wallet-pro-message{
+    border-color:rgba(38,140,255,.22) !important;
+    background:rgba(38,140,255,.06) !important;
+    color:#63b5ff !important;
+  }
+
+  .wallet-pro-security-strip>div{
+    background:#081321 !important;
+    border-color:rgba(38,140,255,.12) !important;
+  }
+
+  .wallet-pro-security-strip strong{
+    color:#63b5ff !important;
+  }
+
+  .wallet-pro-history-grid>*{
+    border-bottom-color:rgba(38,140,255,.07) !important;
+  }
+
+  .wallet-pro-history-grid>strong{
+    color:#d9e5f3 !important;
+  }
+
+  .wallet-pro-security-card button{
+    background:rgba(38,140,255,.07) !important;
+    border-color:rgba(38,140,255,.25) !important;
+    color:#63b5ff !important;
+  }
+
+  .wallet-pro-settings-overlay{
+    background:rgba(0,5,12,.78) !important;
+  }
+
+  .wallet-pro-settings-drawer{
+    background:
+      radial-gradient(
+        circle at 100% 0%,
+        rgba(38,140,255,.12),
+        transparent 32%
+      ),
+      #050b16 !important;
+    border-left-color:rgba(38,140,255,.25) !important;
+    box-shadow:-15px 0 50px rgba(0,0,0,.60) !important;
+  }
+
+  .wallet-pro-settings-header{
+    border-bottom-color:rgba(38,140,255,.10) !important;
+  }
+
+  .wallet-pro-settings-header strong,
+  .wallet-pro-setting-group>strong{
+    color:#63b5ff !important;
+  }
+
+  .wallet-pro-settings-header button{
+    background:#0b1a30 !important;
+    border-color:rgba(38,140,255,.18) !important;
+    color:#9ab0ca !important;
+  }
+
+  .wallet-pro-setting-group{
+    background:#081321 !important;
+    border-color:rgba(38,140,255,.12) !important;
+  }
+
+  .wallet-pro-setting-group input{
+    accent-color:#268cff !important;
+  }
+
+  /* Legacy / inline Gold cleanup — Wallet mobile only */
+  .wallet-pro-screen [style*="gold"],
+  .wallet-pro-screen [style*="#d4af37"],
+  .wallet-pro-screen [style*="212,175,55"]{
+    color:#63b5ff !important;
+    border-color:rgba(38,140,255,.25) !important;
+    background-color:rgba(38,140,255,.08) !important;
+  }
+}
+
+
+/* =========================================================
+   BITLORA HOME — PREMIUM MOBILE V2
+   Mobile only — Desktop untouched
+   ========================================================= */
+
+@media (max-width:700px){
+
+  .home-pro{
+    width:100% !important;
+    max-width:none !important;
+    box-sizing:border-box !important;
+    padding:12px 10px 118px !important;
+    color:#eef6ff !important;
+  }
+
+  /* ---------- BALANCE HERO ---------- */
+
+  .home-balance-card{
+    position:relative !important;
+    overflow:hidden !important;
+    padding:20px !important;
+    border:1px solid rgba(38,140,255,.24) !important;
+    border-radius:20px !important;
+    background:
+      radial-gradient(circle at 88% 8%,rgba(38,140,255,.20),transparent 34%),
+      radial-gradient(circle at 5% 100%,rgba(38,140,255,.07),transparent 38%),
+      linear-gradient(145deg,#0d1d33,#060c15) !important;
+    box-shadow:
+      0 18px 42px rgba(0,0,0,.50),
+      inset 0 1px rgba(255,255,255,.06) !important;
+  }
+
+  .home-balance-card::after{
+    content:"";
+    position:absolute;
+    right:-70px;
+    bottom:-90px;
+    width:190px;
+    height:190px;
+    border-radius:50%;
+    background:rgba(38,140,255,.055);
+    pointer-events:none;
+  }
+
+  .home-balance-top{
+    position:relative !important;
+    z-index:1 !important;
+    align-items:center !important;
+  }
+
+  .home-eyebrow{
+    color:#7188a5 !important;
+    font-size:9px !important;
+    letter-spacing:1.4px !important;
+    font-weight:800 !important;
+  }
+
+  .home-balance-card h2{
+    position:relative !important;
+    z-index:1 !important;
+    margin-top:3px !important;
+    color:#ffffff !important;
+    font-size:32px !important;
+    line-height:1.12 !important;
+    letter-spacing:-.8px !important;
+    font-weight:900 !important;
+  }
+
+  .home-balance-menu{
+    width:38px !important;
+    height:38px !important;
+    border-radius:11px !important;
+    border:1px solid rgba(38,140,255,.24) !important;
+    background:rgba(38,140,255,.08) !important;
+    color:#63b5ff !important;
+  }
+
+  .home-balance-meta{
+    position:relative !important;
+    z-index:1 !important;
+    gap:8px !important;
+    margin-top:14px !important;
+  }
+
+  .home-balance-meta span{
+    padding:6px 9px !important;
+    border:1px solid rgba(255,255,255,.06) !important;
+    border-radius:8px !important;
+    background:rgba(255,255,255,.025) !important;
+    color:#91a3bb !important;
+    font-size:9px !important;
+  }
+
+  .home-balance-meta strong{
+    padding:6px 9px !important;
+    border:1px solid rgba(25,217,139,.18) !important;
+    border-radius:8px !important;
+    background:rgba(25,217,139,.07) !important;
+    color:#35e9a3 !important;
+    font-size:9px !important;
+  }
+
+  .home-balance-footer{
+    position:relative !important;
+    z-index:1 !important;
+    margin-top:18px !important;
+    padding-top:12px !important;
+    border-top-color:rgba(38,140,255,.10) !important;
+    color:#5f718a !important;
+    font-size:8px !important;
+  }
+
+  /* ---------- SECTIONS ---------- */
+
+  .home-quick-actions,
+  .home-market-section,
+  .home-insight-card,
+  .home-announce-card{
+    border-color:rgba(38,140,255,.13) !important;
+    background:linear-gradient(145deg,#0b1a2d,#060d17) !important;
+    box-shadow:0 10px 26px rgba(0,0,0,.32) !important;
+  }
+
+  .home-quick-actions,
+  .home-market-section{
+    margin-top:13px !important;
+    padding:14px !important;
+    border-radius:16px !important;
+  }
+
+  .home-section-heading{
+    margin-bottom:12px !important;
+  }
+
+  .home-section-heading h3{
+    color:#f1f6fc !important;
+    font-size:14px !important;
+    font-weight:850 !important;
+  }
+
+  .home-section-heading p{
+    color:#687d97 !important;
+    font-size:8px !important;
+  }
+
+  .home-section-heading>button{
+    color:#63b5ff !important;
+    font-weight:800 !important;
+  }
+
+  /* ---------- QUICK ACTIONS ---------- */
+
+  .home-action-grid{
+    grid-template-columns:repeat(4,1fr) !important;
+    gap:7px !important;
+  }
+
+  .home-action-grid button{
+    min-height:86px !important;
+    padding:11px 7px !important;
+    border:1px solid rgba(38,140,255,.12) !important;
+    border-radius:12px !important;
+    background:linear-gradient(145deg,#0d1b2e,#08111e) !important;
+    color:#e9f0f8 !important;
+    box-shadow:0 7px 18px rgba(0,0,0,.25) !important;
+    transition:transform .15s ease,border-color .15s ease !important;
+  }
+
+  .home-action-grid button:active{
+    transform:scale(.97) !important;
+    border-color:rgba(38,140,255,.38) !important;
+  }
+
+  .home-action-icon{
+    width:32px !important;
+    height:32px !important;
+    margin-bottom:9px !important;
+    border-radius:10px !important;
+    background:rgba(38,140,255,.10) !important;
+    color:#63b5ff !important;
+    font-size:15px !important;
+  }
+
+  .home-action-grid strong{
+    color:#edf4fb !important;
+    font-size:10px !important;
+    font-weight:850 !important;
+  }
+
+  .home-action-grid small{
+    margin-top:4px !important;
+    color:#657a94 !important;
+    font-size:7px !important;
+  }
+
+  /* ---------- MARKET LIST ---------- */
+
+  .home-market-list{
+    border-color:rgba(38,140,255,.10) !important;
+    border-radius:12px !important;
+  }
+
+  .home-market-row{
+    min-height:58px !important;
+    padding:10px !important;
+    background:#07111e !important;
+    border-bottom-color:rgba(38,140,255,.07) !important;
+  }
+
+  .home-market-row:active{
+    background:rgba(38,140,255,.07) !important;
+  }
+
+  .home-market-main{
+    gap:9px !important;
+  }
+
+  .home-coin-icon{
+    width:32px !important;
+    height:32px !important;
+    flex-basis:32px !important;
+    background:rgba(38,140,255,.10) !important;
+    border:1px solid rgba(38,140,255,.18) !important;
+    color:#63b5ff !important;
+    font-weight:900 !important;
+  }
+
+  .home-market-main strong{
+    color:#edf3fa !important;
+    font-size:10px !important;
+  }
+
+  .home-market-main small{
+    color:#61748d !important;
+    font-size:7px !important;
+  }
+
+  .home-market-price strong{
+    color:#edf4fb !important;
+    font-size:10px !important;
+  }
+
+  /* ---------- DISCOVER ---------- */
+
+  .home-discover-grid{
+    gap:8px !important;
+    margin-top:13px !important;
+  }
+
+  .home-feature-card{
+    min-height:70px !important;
+    padding:12px !important;
+    border-color:rgba(38,140,255,.12) !important;
+    border-radius:13px !important;
+    background:linear-gradient(145deg,#0b1a2d,#07101b) !important;
+  }
+
+  .home-feature-icon{
+    width:32px !important;
+    height:32px !important;
+    background:rgba(38,140,255,.10) !important;
+    color:#63b5ff !important;
+  }
+
+  .home-feature-card strong{
+    color:#eaf1f8 !important;
+    font-size:10px !important;
+  }
+
+  .home-feature-card span{
+    color:#657a94 !important;
+    font-size:7px !important;
+  }
+
+  .home-feature-card b{
+    color:#7188a5 !important;
+  }
+
+  /* ---------- INSIGHTS ---------- */
+
+  .home-insights-grid{
+    grid-template-columns:1fr !important;
+    gap:9px !important;
+    margin-top:13px !important;
+  }
+
+  .home-insight-card{
+    padding:14px !important;
+    border-radius:14px !important;
+  }
+
+  .home-insight-heading strong{
+    color:#edf4fb !important;
+    font-size:11px !important;
+  }
+
+  .home-insight-heading span,
+  .home-insight-heading button{
+    color:#66809f !important;
+  }
+
+  .home-mover-row,
+  .home-activity-row{
+    border-top-color:rgba(38,140,255,.07) !important;
+  }
+
+  .home-mover-row span,
+  .home-activity-row span{
+    color:#c7d4e3 !important;
+  }
+
+  .home-activity-row small{
+    color:#647991 !important;
+  }
+
+  /* ---------- ANNOUNCEMENT ---------- */
+
+  .home-announce-card{
+    margin-top:13px !important;
+    padding:13px !important;
+    border-radius:14px !important;
+  }
+
+  .home-announce-icon{
+    width:32px !important;
+    height:32px !important;
+    background:rgba(38,140,255,.10) !important;
+    color:#63b5ff !important;
+  }
+
+  .home-announce-card strong{
+    color:#edf4fb !important;
+  }
+
+  .home-announce-card span{
+    color:#657a94 !important;
+  }
+
+  .home-announce-card button{
+    color:#7188a5 !important;
+  }
+
+  /* ---------- SECURITY ---------- */
+
+  .home-security-card{
+    margin-top:9px !important;
+    padding:12px 13px !important;
+    border-color:rgba(25,217,139,.12) !important;
+    border-radius:13px !important;
+    background:linear-gradient(145deg,#0a1a18,#07120f) !important;
+  }
+
+  .home-security-icon{
+    background:rgba(25,217,139,.09) !important;
+    color:#35e9a3 !important;
+  }
+
+  .home-security-main strong{
+    color:#dce9e5 !important;
+  }
+
+  .home-security-main small{
+    color:#607970 !important;
+  }
+
+  .home-security-card>button{
+    border-color:rgba(25,217,139,.20) !important;
+    background:rgba(25,217,139,.06) !important;
+    color:#35e9a3 !important;
+  }
+
+  /* ---------- INLINE LEGACY GOLD SAFETY ---------- */
+
+  .home-pro [style*="gold"],
+  .home-pro [style*="#d4af37"],
+  .home-pro [style*="212,175,55"]{
+    color:#63b5ff !important;
+    border-color:rgba(38,140,255,.25) !important;
+    background-color:rgba(38,140,255,.08) !important;
+  }
+}
+
+/* Small phones */
+@media (max-width:380px){
+
+  .home-pro{
+    padding-left:7px !important;
+    padding-right:7px !important;
+  }
+
+  .home-balance-card{
+    padding:17px !important;
+  }
+
+  .home-balance-card h2{
+    font-size:28px !important;
+  }
+
+  .home-action-grid{
+    gap:5px !important;
+  }
+
+  .home-action-grid button{
+    min-height:82px !important;
+    padding:9px 5px !important;
+  }
+
+  .home-action-grid strong{
+    font-size:9px !important;
+  }
+
+}
+
+
+/* =========================================================
+   BITLORA HOME — MARKET OVERVIEW PREMIUM MOBILE V2.2
+   MOBILE ONLY — DESKTOP SAFE
+   ========================================================= */
+
+@media (max-width:760px){
+
+  .home-market-section{
+    position:relative;
+    overflow:hidden;
+    margin-top:14px!important;
+    padding:15px!important;
+    border:1px solid rgba(71,111,165,.28)!important;
+    border-radius:15px!important;
+    background:
+      linear-gradient(145deg,rgba(17,29,46,.98),rgba(9,16,27,.98))!important;
+    box-shadow:
+      0 12px 30px rgba(0,0,0,.22),
+      inset 0 1px 0 rgba(255,255,255,.025)!important;
+  }
+
+  .home-market-section::before{
+    content:"";
+    position:absolute;
+    top:-100px;
+    right:-100px;
+    width:220px;
+    height:220px;
+    border-radius:50%;
+    pointer-events:none;
+    background:radial-gradient(
+      circle,
+      rgba(38,140,255,.12) 0%,
+      rgba(38,140,255,.035) 38%,
+      transparent 72%
+    );
+  }
+
+  .home-market-section .home-section-heading{
+    position:relative;
+    z-index:2;
+    margin-bottom:13px!important;
+    padding:0 1px;
+  }
+
+  .home-market-section .home-section-heading h3{
+    font-size:18px!important;
+    line-height:1.2;
+    letter-spacing:-.2px;
+    color:#f1f5fb!important;
+  }
+
+  .home-market-section .home-section-heading p{
+    margin-top:5px!important;
+    color:#728198!important;
+    font-size:10px!important;
+  }
+
+  .home-market-section .home-section-heading>button{
+    flex:0 0 auto;
+    padding:7px 10px;
+    border:1px solid rgba(82,145,214,.24);
+    border-radius:8px;
+    background:rgba(25,58,91,.28);
+    color:#72baff!important;
+    font-size:10px!important;
+    font-weight:700;
+    line-height:1;
+  }
+
+  .home-market-list{
+    position:relative;
+    z-index:2;
+    display:grid;
+    gap:0;
+    overflow:hidden;
+    border:1px solid rgba(57,86,120,.34)!important;
+    border-radius:12px!important;
+    background:#0a111b!important;
+    box-shadow:0 8px 20px rgba(0,0,0,.18);
+  }
+
+  .home-market-row{
+    position:relative;
+    min-height:64px;
+    box-sizing:border-box;
+    padding:10px 11px!important;
+    border:0!important;
+    border-bottom:1px solid rgba(50,70,96,.30)!important;
+    background:
+      linear-gradient(
+        90deg,
+        rgba(16,27,42,.98),
+        rgba(11,19,31,.98)
+      )!important;
+    transition:
+      background .16s ease,
+      transform .12s ease;
+  }
+
+  .home-market-row:last-child{
+    border-bottom:0!important;
+  }
+
+  .home-market-row::after{
+    content:"›";
+    position:absolute;
+    right:5px;
+    top:50%;
+    transform:translateY(-50%);
+    color:#40536c;
+    font-size:18px;
+    font-weight:400;
+    pointer-events:none;
+  }
+
+  .home-market-row:active{
+    transform:scale(.992);
+    background:#132238!important;
+  }
+
+  .home-market-main{
+    min-width:0;
+    gap:10px!important;
+    padding-right:12px;
+  }
+
+  .home-coin-icon{
+    position:relative;
+    width:34px!important;
+    height:34px!important;
+    flex-basis:34px!important;
+    border:1px solid rgba(79,145,214,.25);
+    background:
+      radial-gradient(
+        circle at 35% 30%,
+        rgba(73,166,255,.30),
+        rgba(19,39,63,.92) 65%
+      )!important;
+    color:#78c1ff!important;
+    font-size:12px!important;
+    font-weight:800;
+    box-shadow:
+      0 4px 12px rgba(0,0,0,.22),
+      inset 0 1px 0 rgba(255,255,255,.05);
+  }
+
+  .home-market-main>div{
+    min-width:0;
+  }
+
+  .home-market-main strong{
+    overflow:hidden;
+    text-overflow:ellipsis;
+    white-space:nowrap;
+    color:#edf3fa!important;
+    font-size:13px!important;
+    font-weight:750;
+    letter-spacing:.05px;
+  }
+
+  .home-market-main small{
+    margin-top:4px!important;
+    color:#64758c!important;
+    font-size:9px!important;
+    font-weight:500;
+  }
+
+  .home-market-price{
+    flex:0 0 auto;
+    min-width:92px;
+    padding-right:12px;
+    text-align:right!important;
+  }
+
+  .home-market-price strong{
+    color:#f0f4f9!important;
+    font-size:12px!important;
+    font-weight:700;
+    line-height:1.15;
+    font-variant-numeric:tabular-nums;
+  }
+
+  .home-market-price span{
+    display:inline-flex!important;
+    align-items:center;
+    justify-content:center;
+    min-width:45px;
+    margin-top:5px!important;
+    padding:3px 6px;
+    border-radius:5px;
+    font-size:9px!important;
+    font-weight:750!important;
+    line-height:1;
+    font-variant-numeric:tabular-nums;
+    background:rgba(67,220,145,.10);
+  }
+
+  .home-market-price span.green{
+    color:#43dc91!important;
+    background:rgba(67,220,145,.10)!important;
+  }
+
+  .home-market-price span.red{
+    color:#ff6575!important;
+    background:rgba(255,86,105,.10)!important;
+  }
+}
+
+/* ===== SMALL PHONE REFINEMENT ===== */
+
+@media(max-width:380px){
+
+  .home-market-section{
+    padding:12px!important;
+    border-radius:14px!important;
+  }
+
+  .home-market-section .home-section-heading{
+    margin-bottom:11px!important;
+  }
+
+  .home-market-section .home-section-heading h3{
+    font-size:16px!important;
+  }
+
+  .home-market-section .home-section-heading p{
+    font-size:9px!important;
+  }
+
+  .home-market-section .home-section-heading>button{
+    padding:6px 8px;
+    font-size:9px!important;
+  }
+
+  .home-market-row{
+    min-height:60px;
+    padding:9px 9px!important;
+  }
+
+  .home-coin-icon{
+    width:31px!important;
+    height:31px!important;
+    flex-basis:31px!important;
+  }
+
+  .home-market-main{
+    gap:8px!important;
+  }
+
+  .home-market-main strong{
+    font-size:12px!important;
+  }
+
+  .home-market-main small{
+    font-size:8px!important;
+  }
+
+  .home-market-price{
+    min-width:82px;
+    padding-right:11px;
+  }
+
+  .home-market-price strong{
+    font-size:11px!important;
+  }
+
+  .home-market-price span{
+    margin-top:4px!important;
+    padding:3px 5px;
+    font-size:8px!important;
+  }
+}
+
+/* =========================================================
+   END MARKET OVERVIEW PREMIUM MOBILE V2.2
+   ========================================================= */
+
+
+/* =========================================================
+   BITLORA HOME — DISCOVER CARDS PREMIUM MOBILE V2.3
+   MOBILE ONLY — DESKTOP SAFE
+   ========================================================= */
+
+@media(max-width:760px){
+
+  .home-discover-grid{
+    display:grid;
+    grid-template-columns:1fr!important;
+    gap:10px!important;
+    margin-top:14px!important;
+  }
+
+  .home-feature-card{
+    position:relative;
+    min-height:76px!important;
+    box-sizing:border-box;
+    display:grid!important;
+    grid-template-columns:auto minmax(0,1fr) auto!important;
+    align-items:center;
+    gap:12px!important;
+    overflow:hidden;
+    padding:15px 14px!important;
+    border:1px solid rgba(67,108,157,.30)!important;
+    border-radius:14px!important;
+    background:
+      linear-gradient(
+        135deg,
+        rgba(17,31,49,.98),
+        rgba(9,17,29,.98)
+      )!important;
+    box-shadow:
+      0 10px 25px rgba(0,0,0,.20),
+      inset 0 1px 0 rgba(255,255,255,.025);
+    color:inherit;
+    transition:
+      transform .15s ease,
+      border-color .15s ease,
+      background .15s ease;
+  }
+
+  .home-feature-card::before{
+    content:"";
+    position:absolute;
+    top:-70px;
+    left:-55px;
+    width:170px;
+    height:170px;
+    border-radius:50%;
+    pointer-events:none;
+    background:radial-gradient(
+      circle,
+      rgba(38,140,255,.12),
+      transparent 68%
+    );
+  }
+
+  .home-feature-card:active{
+    transform:scale(.988);
+    border-color:rgba(82,157,231,.48)!important;
+    background:#112238!important;
+  }
+
+  .home-feature-icon{
+    position:relative;
+    z-index:1;
+    display:flex!important;
+    align-items:center;
+    justify-content:center;
+    width:42px!important;
+    height:42px!important;
+    border:1px solid rgba(85,153,220,.28);
+    border-radius:11px!important;
+    background:
+      linear-gradient(
+        145deg,
+        rgba(30,67,103,.80),
+        rgba(17,35,57,.92)
+      )!important;
+    color:#71bbff!important;
+    font-size:20px!important;
+    font-weight:800;
+    box-shadow:
+      0 5px 14px rgba(0,0,0,.20),
+      inset 0 1px 0 rgba(255,255,255,.05);
+  }
+
+  .home-feature-card:nth-child(2) .home-feature-icon{
+    color:#83c6ff!important;
+    background:
+      linear-gradient(
+        145deg,
+        rgba(26,61,94,.82),
+        rgba(15,32,52,.94)
+      )!important;
+  }
+
+  .home-feature-card>div:nth-child(2){
+    position:relative;
+    z-index:1;
+    min-width:0;
+  }
+
+  .home-feature-card strong{
+    display:block;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    white-space:nowrap;
+    color:#f0f4f9!important;
+    font-size:14px!important;
+    font-weight:750;
+    letter-spacing:-.05px;
+  }
+
+  .home-feature-card span{
+    display:block;
+    margin-top:5px!important;
+    overflow:hidden;
+    color:#718097!important;
+    font-size:10px!important;
+    line-height:1.4!important;
+  }
+
+  .home-feature-card>b{
+    position:relative;
+    z-index:1;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    width:28px;
+    height:28px;
+    border:1px solid rgba(68,105,142,.25);
+    border-radius:8px;
+    background:rgba(19,34,52,.70);
+    color:#6d89a7!important;
+    font-size:20px!important;
+    line-height:1;
+    font-weight:400!important;
+  }
+
+  .home-feature-card:first-child>b{
+    color:#6fbaff!important;
+    border-color:rgba(76,145,213,.24);
+  }
+}
+
+/* ===== SMALL PHONE REFINEMENT ===== */
+
+@media(max-width:380px){
+
+  .home-discover-grid{
+    gap:8px!important;
+    margin-top:12px!important;
+  }
+
+  .home-feature-card{
+    min-height:70px!important;
+    gap:10px!important;
+    padding:13px 11px!important;
+    border-radius:12px!important;
+  }
+
+  .home-feature-icon{
+    width:38px!important;
+    height:38px!important;
+    border-radius:10px!important;
+    font-size:18px!important;
+  }
+
+  .home-feature-card strong{
+    font-size:13px!important;
+  }
+
+  .home-feature-card span{
+    margin-top:4px!important;
+    font-size:9px!important;
+  }
+
+  .home-feature-card>b{
+    width:25px;
+    height:25px;
+    font-size:18px!important;
+  }
+}
+
+/* =========================================================
+   END DISCOVER CARDS PREMIUM MOBILE V2.3
+   ========================================================= */
+
+
+/* =========================================================
+   BITLORA HOME — PREMIUM MOBILE POLISH V2.4
+   Mobile-only refinement — header untouched
+   ========================================================= */
+
+@media (max-width:760px){
+
+  /* ---------- Overall Home depth ---------- */
+  .home-pro{
+    position:relative;
+    isolation:isolate;
+  }
+
+  .home-pro > *{
+    position:relative;
+    z-index:1;
+  }
+
+  /* ---------- Section headings ---------- */
+  .home-section-heading{
+    align-items:center;
+    gap:10px;
+  }
+
+  .home-section-heading h3{
+    letter-spacing:.15px;
+    line-height:1.2;
+    text-shadow:0 1px 10px rgba(70,140,255,.12);
+  }
+
+  .home-section-heading p{
+    margin-top:4px;
+    opacity:.72;
+    letter-spacing:.1px;
+  }
+
+  .home-section-heading button{
+    min-height:34px;
+    padding:0 12px;
+    border-radius:10px;
+    font-size:10px;
+    font-weight:800;
+    letter-spacing:.25px;
+    transition:transform .18s ease,opacity .18s ease;
+  }
+
+  .home-section-heading button:active{
+    transform:scale(.96);
+    opacity:.82;
+  }
+
+  /* ---------- Market Overview polish ---------- */
+  .home-market-section{
+    overflow:hidden;
+    backdrop-filter:blur(12px);
+    -webkit-backdrop-filter:blur(12px);
+  }
+
+  .home-market-section::after{
+    content:"";
+    position:absolute;
+    left:12%;
+    right:12%;
+    bottom:-28px;
+    height:55px;
+    background:radial-gradient(
+      ellipse,
+      rgba(55,125,255,.10) 0%,
+      rgba(55,125,255,0) 72%
+    );
+    pointer-events:none;
+  }
+
+  .home-market-list{
+    overflow:hidden;
+    box-shadow:
+      0 10px 28px rgba(0,0,0,.18),
+      inset 0 1px 0 rgba(255,255,255,.025);
+  }
+
+  .home-market-row{
+    position:relative;
+    min-height:66px;
+    padding:10px 12px;
+    transition:
+      transform .16s ease,
+      background .16s ease,
+      border-color .16s ease;
+  }
+
+  .home-market-row::before{
+    content:"";
+    position:absolute;
+    left:0;
+    top:13px;
+    bottom:13px;
+    width:2px;
+    border-radius:2px;
+    background:transparent;
+    transition:background .16s ease;
+  }
+
+  .home-market-row:active{
+    transform:scale(.985);
+  }
+
+  .home-market-row:active::before{
+    background:rgba(70,145,255,.75);
+  }
+
+  .home-coin-icon{
+    flex:0 0 auto;
+    box-shadow:
+      0 4px 12px rgba(0,0,0,.22),
+      inset 0 1px 0 rgba(255,255,255,.08);
+  }
+
+  .home-market-main{
+    min-width:0;
+    gap:10px;
+  }
+
+  .home-market-main strong{
+    display:block;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    white-space:nowrap;
+    line-height:1.15;
+  }
+
+  .home-market-main small{
+    display:block;
+    margin-top:3px;
+    opacity:.62;
+    line-height:1.1;
+    letter-spacing:.1px;
+  }
+
+  .home-market-price{
+    flex:0 0 auto;
+    min-width:72px;
+    text-align:right;
+  }
+
+  .home-market-price strong{
+    display:block;
+    line-height:1.15;
+    font-variant-numeric:tabular-nums;
+  }
+
+  .home-market-price span{
+    display:block;
+    margin-top:3px;
+    font-weight:800;
+    font-variant-numeric:tabular-nums;
+  }
+
+  /* ---------- Discover Cards polish ---------- */
+  .home-discover-grid{
+    gap:10px;
+  }
+
+  .home-feature-card{
+    position:relative;
+    overflow:hidden;
+    isolation:isolate;
+    min-height:78px;
+    transition:
+      transform .18s ease,
+      border-color .18s ease,
+      box-shadow .18s ease;
+  }
+
+  .home-feature-card::after{
+    content:"";
+    position:absolute;
+    right:-22px;
+    bottom:-28px;
+    width:72px;
+    height:72px;
+    border-radius:50%;
+    background:radial-gradient(
+      circle,
+      rgba(255,255,255,.045) 0%,
+      rgba(255,255,255,0) 70%
+    );
+    pointer-events:none;
+    z-index:-1;
+  }
+
+  .home-feature-card:active{
+    transform:scale(.975);
+  }
+
+  .home-feature-icon{
+    box-shadow:
+      0 6px 16px rgba(0,0,0,.22),
+      inset 0 1px 0 rgba(255,255,255,.08);
+  }
+
+  .home-feature-card strong{
+    letter-spacing:.1px;
+    line-height:1.15;
+  }
+
+  .home-feature-card small{
+    margin-top:4px;
+    line-height:1.25;
+    opacity:.64;
+  }
+
+  /* ---------- Better visual rhythm below sections ---------- */
+  .home-market-section,
+  .home-discover-grid{
+    margin-bottom:12px;
+  }
+
+  /* ---------- Small-screen refinement ---------- */
+  @media(max-width:380px){
+
+    .home-section-heading{
+      gap:7px;
+    }
+
+    .home-section-heading h3{
+      font-size:16px!important;
+    }
+
+    .home-section-heading p{
+      font-size:9px!important;
+    }
+
+    .home-section-heading button{
+      min-height:32px;
+      padding:0 9px;
+      font-size:9px;
+    }
+
+    .home-market-row{
+      min-height:62px;
+      padding:9px 10px;
+    }
+
+    .home-market-main{
+      gap:8px;
+    }
+
+    .home-market-price{
+      min-width:66px;
+    }
+
+    .home-feature-card{
+      min-height:74px;
+      padding:10px!important;
+    }
+
+    .home-feature-icon{
+      width:38px!important;
+      height:38px!important;
+    }
+  }
+}
+
+
+/* =========================================================
+   BITLORA HOME — MOBILE EDGE SPACING FIX V2.5
+   Data-based outer spacing correction
+   Header untouched / Desktop untouched
+   ========================================================= */
+
+@media (max-width:700px){
+  .home-pro{
+    padding-left:6px !important;
+    padding-right:6px !important;
+  }
+}
+
+@media (max-width:380px){
+  .home-pro{
+    padding-left:5px !important;
+    padding-right:5px !important;
+  }
+}
+
+
+/* =========================================================
+   BITLORA FUTURES PLUS — PREMIUM MOBILE V1
+   MOBILE ONLY — DESKTOP UNTOUCHED — HEADER UNTOUCHED
+   ========================================================= */
+@media (max-width:700px){
+
+  /* ---------- FUTURES SCREEN DEPTH ---------- */
+  .futures-screen{
+    padding-bottom:118px !important;
+    background:
+      radial-gradient(circle at 92% 7%,rgba(38,140,255,.10),transparent 28%),
+      radial-gradient(circle at 8% 42%,rgba(38,140,255,.055),transparent 30%),
+      #050b16 !important;
+  }
+
+  /* ---------- TOP MARKET / PRICE AREA ---------- */
+  .futures-topbar,
+  .futures-price-card,
+  .futures-account-card{
+    border-radius:15px !important;
+    border:1px solid rgba(99,181,255,.16) !important;
+    background:linear-gradient(145deg,#0c1b2f,#060d17) !important;
+    box-shadow:
+      0 10px 28px rgba(0,0,0,.38),
+      inset 0 1px rgba(255,255,255,.035) !important;
+  }
+
+  .futures-price-card{
+    position:relative !important;
+    overflow:hidden !important;
+  }
+
+  .futures-price-card::after{
+    content:"" !important;
+    position:absolute !important;
+    width:150px !important;
+    height:150px !important;
+    right:-75px !important;
+    top:-75px !important;
+    border-radius:50% !important;
+    background:rgba(38,140,255,.09) !important;
+    pointer-events:none !important;
+  }
+
+  .futures-price-card > *,
+  .futures-account-card > *{
+    position:relative !important;
+    z-index:1 !important;
+  }
+
+  /* ---------- MARKET PRICE TYPOGRAPHY ---------- */
+  .futures-price-card h1,
+  .futures-price-card h2,
+  .futures-price-card .price{
+    color:#ffffff !important;
+    font-weight:900 !important;
+    letter-spacing:-.7px !important;
+  }
+
+  .futures-price-card small,
+  .futures-price-card span{
+    color:#7890aa !important;
+  }
+
+  /* ---------- ACCOUNT SUMMARY ---------- */
+  .futures-account-card{
+    margin-top:9px !important;
+    padding:12px !important;
+  }
+
+  .futures-account-card strong{
+    color:#eef6ff !important;
+    font-weight:850 !important;
+  }
+
+  /* ---------- LEVERAGE / MARGIN CONTROLS ---------- */
+  .futures-order-controls,
+  .futures-order-card,
+  .futures-risk-card,
+  .futures-protection-card{
+    border-radius:16px !important;
+    border:1px solid rgba(99,181,255,.13) !important;
+    background:linear-gradient(145deg,#0a192b,#060d17) !important;
+    box-shadow:0 10px 25px rgba(0,0,0,.30) !important;
+  }
+
+  .futures-order-controls button,
+  .futures-order-card button{
+    min-height:38px !important;
+    border-radius:10px !important;
+    border-color:rgba(99,181,255,.14) !important;
+    background:linear-gradient(145deg,#10243c,#081321) !important;
+    color:#bcd4ec !important;
+    font-weight:800 !important;
+  }
+
+  .futures-order-controls button:active,
+  .futures-order-card button:active{
+    transform:scale(.97) !important;
+  }
+
+  /* ---------- ACTIVE SELECT / BUTTON ---------- */
+  .futures-order-controls button.active,
+  .futures-order-card button.active,
+  .futures-order-controls button[aria-pressed="true"],
+  .futures-order-card button[aria-pressed="true"]{
+    color:#ffffff !important;
+    border-color:rgba(38,140,255,.60) !important;
+    background:linear-gradient(145deg,#1766c2,#0b3f82) !important;
+    box-shadow:
+      0 5px 16px rgba(38,140,255,.20),
+      inset 0 1px rgba(255,255,255,.10) !important;
+  }
+
+  /* ---------- INPUTS ---------- */
+  .futures-screen input,
+  .futures-screen select{
+    min-height:42px !important;
+    border-radius:10px !important;
+    border:1px solid rgba(99,181,255,.14) !important;
+    background:#07111f !important;
+    color:#f1f7ff !important;
+    box-shadow:inset 0 1px rgba(255,255,255,.025) !important;
+  }
+
+  .futures-screen input:focus,
+  .futures-screen select:focus{
+    border-color:rgba(38,140,255,.60) !important;
+    outline:none !important;
+    box-shadow:
+      0 0 0 2px rgba(38,140,255,.09),
+      inset 0 1px rgba(255,255,255,.03) !important;
+  }
+
+  /* ---------- SIZE / ORDER TYPE ROW ---------- */
+  .futures-side-buttons,
+  .futures-order-type,
+  .futures-size-buttons{
+    gap:6px !important;
+  }
+
+  .futures-side-buttons button,
+  .futures-order-type button,
+  .futures-size-buttons button{
+    border-radius:9px !important;
+    min-height:36px !important;
+    font-size:10px !important;
+    font-weight:850 !important;
+  }
+
+  /* ---------- LONG / SHORT ACTIONS ---------- */
+  .futures-screen button[class*="long"],
+  .futures-screen button[class*="Long"]{
+    border-radius:12px !important;
+    min-height:46px !important;
+    font-weight:900 !important;
+    box-shadow:0 8px 20px rgba(25,217,139,.12) !important;
+  }
+
+  .futures-screen button[class*="short"],
+  .futures-screen button[class*="Short"]{
+    border-radius:12px !important;
+    min-height:46px !important;
+    font-weight:900 !important;
+    box-shadow:0 8px 20px rgba(255,83,101,.12) !important;
+  }
+
+  /* ---------- ORDER SUMMARY ---------- */
+  .futures-order-summary{
+    margin-top:10px !important;
+    padding:11px !important;
+    border-radius:12px !important;
+    border:1px solid rgba(99,181,255,.10) !important;
+    background:rgba(3,10,18,.62) !important;
+  }
+
+  .futures-order-summary strong{
+    color:#ffffff !important;
+  }
+
+  .futures-order-summary span{
+    color:#7188a5 !important;
+  }
+
+  /* ---------- RISK METER ---------- */
+  .futures-risk-meter{
+    height:7px !important;
+    border-radius:99px !important;
+    background:#101d2d !important;
+    overflow:hidden !important;
+  }
+
+  .futures-risk-meter > *{
+    border-radius:99px !important;
+  }
+
+  /* ---------- POSITIONS ---------- */
+  .futures-position,
+  .futures-position-card,
+  .futures-positions-card{
+    border-radius:15px !important;
+    border:1px solid rgba(99,181,255,.14) !important;
+    background:linear-gradient(145deg,#0b1a2d,#060d17) !important;
+    box-shadow:0 9px 23px rgba(0,0,0,.28) !important;
+  }
+
+  .futures-position strong,
+  .futures-position-card strong,
+  .futures-positions-card strong{
+    color:#f3f8ff !important;
+  }
+
+  /* ---------- POSITION PROFIT / LOSS ---------- */
+  .futures-screen .positive,
+  .futures-screen .profit{
+    color:#35e9a3 !important;
+    font-weight:850 !important;
+  }
+
+  .futures-screen .negative,
+  .futures-screen .loss{
+    color:#ff6474 !important;
+    font-weight:850 !important;
+  }
+
+  /* ---------- DATA / CONTRACT TABS ---------- */
+  .futures-screen [role="tablist"]{
+    padding:4px !important;
+    border-radius:12px !important;
+    background:#07111e !important;
+    border:1px solid rgba(99,181,255,.10) !important;
+  }
+
+  .futures-screen [role="tab"]{
+    min-height:34px !important;
+    border-radius:8px !important;
+    color:#7188a5 !important;
+    font-size:10px !important;
+    font-weight:850 !important;
+  }
+
+  .futures-screen [role="tab"][aria-selected="true"]{
+    color:#ffffff !important;
+    background:#12365d !important;
+    box-shadow:0 4px 12px rgba(0,0,0,.25) !important;
+  }
+
+  /* ---------- SETTINGS DRAWER ---------- */
+  .futures-settings-overlay{
+    backdrop-filter:blur(8px) !important;
+    background:rgba(0,0,0,.64) !important;
+  }
+
+  .futures-settings-drawer,
+  .futures-settings-modal{
+    border:1px solid rgba(99,181,255,.20) !important;
+    border-radius:20px 20px 0 0 !important;
+    background:linear-gradient(155deg,#0c1d32,#050b16) !important;
+    box-shadow:0 -18px 50px rgba(0,0,0,.55) !important;
+  }
+
+  .futures-settings-group{
+    border:1px solid rgba(99,181,255,.10) !important;
+    border-radius:13px !important;
+    background:rgba(7,17,30,.72) !important;
+  }
+
+  /* ---------- SMALL MOBILE ---------- */
+  @media (max-width:380px){
+    .futures-screen{
+      padding-left:8px !important;
+      padding-right:8px !important;
+    }
+
+    .futures-price-card,
+    .futures-account-card,
+    .futures-order-controls,
+    .futures-order-card{
+      border-radius:13px !important;
+    }
+
+    .futures-order-controls button,
+    .futures-order-card button{
+      min-height:35px !important;
+      font-size:9px !important;
+    }
+
+    .futures-screen input,
+    .futures-screen select{
+      min-height:39px !important;
+      font-size:11px !important;
+    }
+  }
+}
+
+/* END FUTURES PLUS MOBILE V1 */
+
+/* =========================================================
+   BITLORA FUTURES PLUS — POSITION / RISK / EXECUTION V2
+   MOBILE ONLY — DESKTOP UNTOUCHED — HEADER UNTOUCHED
+   ========================================================= */
+@media (max-width:700px){
+
+  /* ---------- POSITION SECTION ---------- */
+  .futures-position,
+  .futures-position-card,
+  .futures-positions-card{
+    position:relative !important;
+    overflow:hidden !important;
+    padding:13px !important;
+  }
+
+  .futures-position::before,
+  .futures-position-card::before,
+  .futures-positions-card::before{
+    content:"" !important;
+    position:absolute !important;
+    left:0 !important;
+    top:0 !important;
+    bottom:0 !important;
+    width:3px !important;
+    background:linear-gradient(180deg,#268cff,#63b5ff) !important;
+    border-radius:3px !important;
+  }
+
+  .futures-position > *,
+  .futures-position-card > *,
+  .futures-positions-card > *{
+    position:relative !important;
+    z-index:1 !important;
+  }
+
+  /* ---------- POSITION HEADER ---------- */
+  .futures-position-header,
+  .futures-position-card-header{
+    display:flex !important;
+    align-items:center !important;
+    justify-content:space-between !important;
+    gap:8px !important;
+    margin-bottom:10px !important;
+  }
+
+  .futures-position-header strong,
+  .futures-position-card-header strong{
+    color:#f4f8ff !important;
+    font-size:12px !important;
+    font-weight:900 !important;
+  }
+
+  /* ---------- POSITION DATA GRID ---------- */
+  .futures-position-grid,
+  .futures-position-stats{
+    display:grid !important;
+    grid-template-columns:repeat(2,minmax(0,1fr)) !important;
+    gap:7px !important;
+  }
+
+  .futures-position-grid > *,
+  .futures-position-stats > *{
+    min-width:0 !important;
+    padding:9px !important;
+    border-radius:10px !important;
+    border:1px solid rgba(99,181,255,.08) !important;
+    background:rgba(5,13,24,.62) !important;
+  }
+
+  .futures-position-grid small,
+  .futures-position-stats small{
+    display:block !important;
+    margin-bottom:3px !important;
+    color:#627993 !important;
+    font-size:8px !important;
+    font-weight:750 !important;
+  }
+
+  .futures-position-grid strong,
+  .futures-position-stats strong{
+    color:#eaf3fc !important;
+    font-size:11px !important;
+    font-weight:850 !important;
+  }
+
+  /* ---------- PNL EMPHASIS ---------- */
+  .futures-position .positive,
+  .futures-position-card .positive,
+  .futures-positions-card .positive{
+    color:#35e9a3 !important;
+    font-weight:900 !important;
+  }
+
+  .futures-position .negative,
+  .futures-position-card .negative,
+  .futures-positions-card .negative{
+    color:#ff6474 !important;
+    font-weight:900 !important;
+  }
+
+  /* ---------- RISK PANEL ---------- */
+  .futures-risk-card{
+    position:relative !important;
+    overflow:hidden !important;
+  }
+
+  .futures-risk-card::after{
+    content:"" !important;
+    position:absolute !important;
+    right:-60px !important;
+    top:-70px !important;
+    width:145px !important;
+    height:145px !important;
+    border-radius:50% !important;
+    background:rgba(38,140,255,.07) !important;
+    pointer-events:none !important;
+  }
+
+  .futures-risk-card > *{
+    position:relative !important;
+    z-index:1 !important;
+  }
+
+  .futures-risk-card h3,
+  .futures-risk-card h4{
+    color:#f0f6fd !important;
+    font-weight:900 !important;
+  }
+
+  .futures-risk-card small,
+  .futures-risk-card span{
+    color:#7289a3 !important;
+  }
+
+  /* ---------- RISK LEVEL BADGE ---------- */
+  .futures-risk-level{
+    display:inline-flex !important;
+    align-items:center !important;
+    min-height:24px !important;
+    padding:4px 9px !important;
+    border-radius:999px !important;
+    border:1px solid rgba(25,217,139,.18) !important;
+    background:rgba(25,217,139,.07) !important;
+    color:#35e9a3 !important;
+    font-size:9px !important;
+    font-weight:900 !important;
+  }
+
+  /* ---------- RISK STAT ROWS ---------- */
+  .futures-risk-row{
+    display:flex !important;
+    align-items:center !important;
+    justify-content:space-between !important;
+    gap:10px !important;
+    padding:8px 0 !important;
+    border-bottom:1px solid rgba(255,255,255,.045) !important;
+  }
+
+  .futures-risk-row:last-child{
+    border-bottom:0 !important;
+  }
+
+  .futures-risk-row span{
+    font-size:9px !important;
+  }
+
+  .futures-risk-row strong{
+    color:#edf5fd !important;
+    font-size:10px !important;
+    font-weight:850 !important;
+  }
+
+  /* ---------- RISK METER ---------- */
+  .futures-risk-meter{
+    position:relative !important;
+    height:8px !important;
+    margin-top:8px !important;
+    border-radius:999px !important;
+    background:
+      linear-gradient(
+        90deg,
+        rgba(25,217,139,.16) 0%,
+        rgba(25,217,139,.16) 45%,
+        rgba(255,194,71,.15) 70%,
+        rgba(255,83,101,.15) 100%
+      ) !important;
+    border:1px solid rgba(255,255,255,.04) !important;
+    overflow:hidden !important;
+  }
+
+  .futures-risk-meter > *{
+    height:100% !important;
+    border-radius:999px !important;
+    box-shadow:0 0 12px rgba(38,140,255,.28) !important;
+  }
+
+  /* ---------- EXECUTION SUMMARY ---------- */
+  .futures-order-summary{
+    position:relative !important;
+    overflow:hidden !important;
+    padding:12px !important;
+    border-radius:13px !important;
+    border:1px solid rgba(99,181,255,.12) !important;
+    background:
+      linear-gradient(145deg,rgba(12,31,52,.92),rgba(4,11,20,.94)) !important;
+  }
+
+  .futures-order-summary::before{
+    content:"ORDER PREVIEW" !important;
+    display:block !important;
+    margin-bottom:8px !important;
+    color:#4f9de2 !important;
+    font-size:8px !important;
+    font-weight:900 !important;
+    letter-spacing:1.2px !important;
+  }
+
+  .futures-order-summary > *{
+    position:relative !important;
+    z-index:1 !important;
+  }
+
+  .futures-order-summary strong{
+    color:#ffffff !important;
+    font-weight:900 !important;
+  }
+
+  .futures-order-summary span{
+    color:#7087a1 !important;
+  }
+
+  /* ---------- PROTECTION PANEL ---------- */
+  .futures-protection-card{
+    position:relative !important;
+    overflow:hidden !important;
+  }
+
+  .futures-protection-card h3,
+  .futures-protection-card h4{
+    color:#edf5fd !important;
+    font-weight:900 !important;
+  }
+
+  .futures-protection-card input,
+  .futures-protection-card select{
+    background:#06101d !important;
+    border-color:rgba(99,181,255,.13) !important;
+  }
+
+  /* ---------- EXECUTION MESSAGE ---------- */
+  .futures-message{
+    margin-top:8px !important;
+    padding:9px 10px !important;
+    border-radius:10px !important;
+    border:1px solid rgba(38,140,255,.12) !important;
+    background:rgba(38,140,255,.045) !important;
+    color:#8da6c0 !important;
+    font-size:9px !important;
+    line-height:1.45 !important;
+  }
+
+  /* ---------- REDUCE ONLY / POST ONLY ---------- */
+  .futures-screen input[type="checkbox"]{
+    width:16px !important;
+    height:16px !important;
+    min-height:16px !important;
+    accent-color:#268cff !important;
+  }
+
+  .futures-screen label{
+    color:#8ca3bc !important;
+    font-size:9px !important;
+    font-weight:750 !important;
+  }
+
+  /* ---------- EXECUTION BUTTON AREA ---------- */
+  .futures-submit-row{
+    display:grid !important;
+    grid-template-columns:repeat(2,minmax(0,1fr)) !important;
+    gap:7px !important;
+    margin-top:9px !important;
+  }
+
+  .futures-submit-row button{
+    min-height:47px !important;
+    border-radius:12px !important;
+    font-size:11px !important;
+    font-weight:950 !important;
+    letter-spacing:.15px !important;
+  }
+
+  /* ---------- POSITION CLOSE BUTTON ---------- */
+  .futures-position button{
+    min-height:34px !important;
+    border-radius:9px !important;
+    border:1px solid rgba(255,83,101,.18) !important;
+    background:rgba(255,83,101,.055) !important;
+    color:#ff7280 !important;
+    font-size:9px !important;
+    font-weight:900 !important;
+  }
+
+  .futures-position button:active{
+    transform:scale(.97) !important;
+  }
+
+  /* ---------- EMPTY STATE ---------- */
+  .futures-empty-state{
+    padding:22px 12px !important;
+    text-align:center !important;
+    border-radius:14px !important;
+    border:1px dashed rgba(99,181,255,.12) !important;
+    background:rgba(7,17,30,.48) !important;
+  }
+
+  .futures-empty-state strong{
+    display:block !important;
+    color:#dbe9f7 !important;
+    font-size:11px !important;
+    font-weight:900 !important;
+  }
+
+  .futures-empty-state span,
+  .futures-empty-state small{
+    display:block !important;
+    margin-top:4px !important;
+    color:#617893 !important;
+    font-size:8px !important;
+  }
+
+  /* ---------- 380PX REFINEMENT ---------- */
+  @media (max-width:380px){
+
+    .futures-position,
+    .futures-position-card,
+    .futures-positions-card,
+    .futures-risk-card,
+    .futures-order-summary{
+      border-radius:12px !important;
+    }
+
+    .futures-position-grid,
+    .futures-position-stats{
+      gap:5px !important;
+    }
+
+    .futures-position-grid > *,
+    .futures-position-stats > *{
+      padding:8px !important;
+    }
+
+    .futures-position-grid strong,
+    .futures-position-stats strong{
+      font-size:10px !important;
+    }
+
+    .futures-submit-row button{
+      min-height:44px !important;
+      font-size:10px !important;
+    }
+  }
+}
+
+/* END FUTURES PLUS V2 */
+
+/* =========================================================
+   BITLORA WALLET PLUS — PREMIUM MOBILE V1
+   MOBILE ONLY — DESKTOP UNTOUCHED — HEADER UNTOUCHED
+   ========================================================= */
+@media (max-width:700px){
+
+  /* ---------- WALLET SCREEN ---------- */
+  .wallet-pro-screen,
+  .wallet-screen{
+    padding-bottom:118px !important;
+    background:
+      radial-gradient(circle at 92% 5%,rgba(38,140,255,.10),transparent 28%),
+      radial-gradient(circle at 8% 40%,rgba(38,140,255,.05),transparent 30%),
+      #050b16 !important;
+  }
+
+  /* ---------- TOTAL BALANCE HERO ---------- */
+  .wallet-total,
+  .wallet-total-card,
+  .wallet-balance-hero,
+  .wallet-hero{
+    position:relative !important;
+    overflow:hidden !important;
+    border-radius:19px !important;
+    border:1px solid rgba(99,181,255,.18) !important;
+    background:
+      radial-gradient(circle at 88% 8%,rgba(38,140,255,.19),transparent 34%),
+      radial-gradient(circle at 5% 100%,rgba(38,140,255,.07),transparent 38%),
+      linear-gradient(145deg,#0d1e34,#060c15) !important;
+    box-shadow:
+      0 17px 40px rgba(0,0,0,.46),
+      inset 0 1px rgba(255,255,255,.045) !important;
+  }
+
+  .wallet-total::after,
+  .wallet-total-card::after,
+  .wallet-balance-hero::after,
+  .wallet-hero::after{
+    content:"" !important;
+    position:absolute !important;
+    width:180px !important;
+    height:180px !important;
+    right:-85px !important;
+    bottom:-100px !important;
+    border-radius:50% !important;
+    background:rgba(38,140,255,.055) !important;
+    pointer-events:none !important;
+  }
+
+  .wallet-total > *,
+  .wallet-total-card > *,
+  .wallet-balance-hero > *,
+  .wallet-hero > *{
+    position:relative !important;
+    z-index:1 !important;
+  }
+
+  /* ---------- BALANCE TYPOGRAPHY ---------- */
+  .wallet-total h1,
+  .wallet-total h2,
+  .wallet-total-card h1,
+  .wallet-total-card h2,
+  .wallet-balance-hero h1,
+  .wallet-balance-hero h2,
+  .wallet-hero h1,
+  .wallet-hero h2{
+    color:#ffffff !important;
+    font-weight:950 !important;
+    letter-spacing:-.9px !important;
+  }
+
+  .wallet-total small,
+  .wallet-total-card small,
+  .wallet-balance-hero small,
+  .wallet-hero small{
+    color:#7087a1 !important;
+    font-size:8px !important;
+    letter-spacing:.8px !important;
+  }
+
+  /* ---------- BALANCE STATS ---------- */
+  .wallet-balance-stats,
+  .wallet-stats,
+  .wallet-balance-grid{
+    display:grid !important;
+    grid-template-columns:repeat(2,minmax(0,1fr)) !important;
+    gap:7px !important;
+    margin-top:9px !important;
+  }
+
+  .wallet-balance-stats > *,
+  .wallet-stats > *,
+  .wallet-balance-grid > *{
+    min-width:0 !important;
+    padding:10px !important;
+    border-radius:11px !important;
+    border:1px solid rgba(99,181,255,.09) !important;
+    background:rgba(7,17,30,.72) !important;
+  }
+
+  .wallet-balance-stats small,
+  .wallet-stats small,
+  .wallet-balance-grid small{
+    display:block !important;
+    margin-bottom:3px !important;
+    color:#637b96 !important;
+    font-size:8px !important;
+  }
+
+  .wallet-balance-stats strong,
+  .wallet-stats strong,
+  .wallet-balance-grid strong{
+    color:#edf5fd !important;
+    font-size:11px !important;
+    font-weight:900 !important;
+  }
+
+  /* ---------- WALLET TABS ---------- */
+  .wallet-tabs{
+    display:grid !important;
+    grid-template-columns:repeat(3,1fr) !important;
+    gap:5px !important;
+    padding:4px !important;
+    margin-top:11px !important;
+    border-radius:12px !important;
+    border:1px solid rgba(99,181,255,.10) !important;
+    background:#07111e !important;
+  }
+
+  .wallet-tabs button{
+    min-height:36px !important;
+    border:0 !important;
+    border-radius:8px !important;
+    background:transparent !important;
+    color:#687f99 !important;
+    font-size:9px !important;
+    font-weight:900 !important;
+  }
+
+  .wallet-tabs button.active,
+  .wallet-tabs button[aria-selected="true"]{
+    color:#ffffff !important;
+    background:linear-gradient(145deg,#1766c2,#0b3f82) !important;
+    box-shadow:0 5px 14px rgba(38,140,255,.18) !important;
+  }
+
+  /* ---------- DEPOSIT / WITHDRAW / TRANSFER ---------- */
+  .wallet-action-buttons,
+  .wallet-actions{
+    display:grid !important;
+    grid-template-columns:repeat(3,minmax(0,1fr)) !important;
+    gap:7px !important;
+    margin-top:10px !important;
+  }
+
+  .wallet-action-buttons button,
+  .wallet-actions button{
+    min-height:48px !important;
+    padding:7px 4px !important;
+    border-radius:11px !important;
+    border:1px solid rgba(99,181,255,.13) !important;
+    background:linear-gradient(145deg,#0e2137,#081321) !important;
+    color:#dceafa !important;
+    font-size:9px !important;
+    font-weight:900 !important;
+    box-shadow:0 7px 18px rgba(0,0,0,.25) !important;
+  }
+
+  .wallet-action-buttons button:active,
+  .wallet-actions button:active{
+    transform:scale(.97) !important;
+    border-color:rgba(38,140,255,.45) !important;
+  }
+
+  /* ---------- ASSET / BALANCE CARDS ---------- */
+  .wallet-assets-card,
+  .wallet-asset-card,
+  .wallet-assets,
+  .wallet-card{
+    position:relative !important;
+    overflow:hidden !important;
+    margin-top:10px !important;
+    border-radius:15px !important;
+    border:1px solid rgba(99,181,255,.12) !important;
+    background:linear-gradient(145deg,#0b1a2d,#060d17) !important;
+    box-shadow:0 10px 26px rgba(0,0,0,.30) !important;
+  }
+
+  .wallet-assets-card > *,
+  .wallet-asset-card > *,
+  .wallet-assets > *,
+  .wallet-card > *{
+    position:relative !important;
+    z-index:1 !important;
+  }
+
+  /* ---------- CARD HEADERS ---------- */
+  .wallet-card-header,
+  .wallet-assets-header,
+  .wallet-section-header{
+    display:flex !important;
+    align-items:center !important;
+    justify-content:space-between !important;
+    gap:8px !important;
+    padding:12px !important;
+  }
+
+  .wallet-card-header strong,
+  .wallet-assets-header strong,
+  .wallet-section-header strong{
+    color:#edf5fd !important;
+    font-size:12px !important;
+    font-weight:900 !important;
+  }
+
+  .wallet-card-header span,
+  .wallet-assets-header span,
+  .wallet-section-header span{
+    color:#63809d !important;
+    font-size:8px !important;
+  }
+
+  /* ---------- ASSET ROWS ---------- */
+  .wallet-asset-row,
+  .wallet-assets-row{
+    min-height:62px !important;
+    padding:9px 11px !important;
+    border-top:1px solid rgba(255,255,255,.045) !important;
+    background:linear-gradient(90deg,rgba(13,30,49,.50),rgba(6,13,23,.30)) !important;
+  }
+
+  .wallet-asset-row:active,
+  .wallet-assets-row:active{
+    background:rgba(38,140,255,.08) !important;
+  }
+
+  .wallet-asset-row strong,
+  .wallet-assets-row strong{
+    color:#f0f6fc !important;
+    font-size:11px !important;
+    font-weight:900 !important;
+  }
+
+  .wallet-asset-row small,
+  .wallet-assets-row small{
+    color:#657c96 !important;
+    font-size:8px !important;
+  }
+
+  /* ---------- ASSET ICON ---------- */
+  .wallet-coin-icon,
+  .wallet-asset-icon{
+    width:34px !important;
+    height:34px !important;
+    min-width:34px !important;
+    border-radius:50% !important;
+    border:1px solid rgba(99,181,255,.16) !important;
+    background:linear-gradient(145deg,#12345a,#091523) !important;
+    box-shadow:0 5px 14px rgba(0,0,0,.25) !important;
+  }
+
+  /* ---------- SEARCH ---------- */
+  .wallet-search,
+  .wallet-assets-search{
+    min-height:40px !important;
+    border-radius:10px !important;
+    border:1px solid rgba(99,181,255,.12) !important;
+    background:#07111e !important;
+    color:#edf5fd !important;
+    font-size:10px !important;
+  }
+
+  .wallet-search:focus,
+  .wallet-assets-search:focus{
+    border-color:rgba(38,140,255,.55) !important;
+    outline:none !important;
+    box-shadow:0 0 0 2px rgba(38,140,255,.08) !important;
+  }
+
+  /* ---------- DEPOSIT / WITHDRAW FORM ---------- */
+  .wallet-action-card,
+  .wallet-deposit-card,
+  .wallet-withdraw-card,
+  .wallet-transfer-card{
+    padding:12px !important;
+    border-radius:15px !important;
+    border:1px solid rgba(99,181,255,.13) !important;
+    background:linear-gradient(145deg,#0b1a2d,#060d17) !important;
+    box-shadow:0 10px 25px rgba(0,0,0,.30) !important;
+  }
+
+  .wallet-screen input,
+  .wallet-screen select,
+  .wallet-pro-screen input,
+  .wallet-pro-screen select{
+    min-height:42px !important;
+    border-radius:10px !important;
+    border:1px solid rgba(99,181,255,.14) !important;
+    background:#06101d !important;
+    color:#f1f7ff !important;
+  }
+
+  .wallet-screen input:focus,
+  .wallet-screen select:focus,
+  .wallet-pro-screen input:focus,
+  .wallet-pro-screen select:focus{
+    border-color:rgba(38,140,255,.58) !important;
+    outline:none !important;
+    box-shadow:0 0 0 2px rgba(38,140,255,.08) !important;
+  }
+
+  /* ---------- ADDRESS / NETWORK / FEE ---------- */
+  .wallet-address-box,
+  .wallet-network-box,
+  .wallet-fee-box{
+    padding:10px !important;
+    border-radius:10px !important;
+    border:1px solid rgba(99,181,255,.09) !important;
+    background:rgba(4,11,20,.65) !important;
+  }
+
+  .wallet-address-box small,
+  .wallet-network-box small,
+  .wallet-fee-box small{
+    color:#617994 !important;
+    font-size:8px !important;
+  }
+
+  .wallet-address-box strong,
+  .wallet-network-box strong,
+  .wallet-fee-box strong{
+    color:#eaf3fc !important;
+    font-size:10px !important;
+    font-weight:850 !important;
+  }
+
+  /* ---------- PRIMARY WALLET ACTION ---------- */
+  .wallet-primary-action{
+    min-height:46px !important;
+    width:100% !important;
+    margin-top:9px !important;
+    border-radius:12px !important;
+    border:1px solid rgba(38,140,255,.38) !important;
+    background:linear-gradient(145deg,#268cff,#125cb0) !important;
+    color:#ffffff !important;
+    font-size:11px !important;
+    font-weight:950 !important;
+    box-shadow:0 9px 22px rgba(38,140,255,.18) !important;
+  }
+
+  .wallet-primary-action:active{
+    transform:scale(.985) !important;
+  }
+
+  /* ---------- WALLET MESSAGE ---------- */
+  .wallet-message{
+    margin-top:8px !important;
+    padding:9px 10px !important;
+    border-radius:10px !important;
+    border:1px solid rgba(38,140,255,.11) !important;
+    background:rgba(38,140,255,.045) !important;
+    color:#8ca5bf !important;
+    font-size:9px !important;
+    line-height:1.45 !important;
+  }
+
+  /* ---------- HISTORY ---------- */
+  .wallet-history-card,
+  .wallet-history{
+    margin-top:10px !important;
+    border-radius:15px !important;
+    border:1px solid rgba(99,181,255,.12) !important;
+    background:linear-gradient(145deg,#0b1a2d,#060d17) !important;
+    overflow:hidden !important;
+  }
+
+  .wallet-history-row{
+    min-height:58px !important;
+    padding:9px 11px !important;
+    border-top:1px solid rgba(255,255,255,.045) !important;
+  }
+
+  .wallet-history-row strong{
+    color:#edf5fd !important;
+    font-size:10px !important;
+  }
+
+  .wallet-history-row small{
+    color:#617993 !important;
+    font-size:8px !important;
+  }
+
+  /* ---------- SECURITY ---------- */
+  .wallet-security-card,
+  .wallet-security{
+    margin-top:10px !important;
+    padding:12px !important;
+    border-radius:15px !important;
+    border:1px solid rgba(25,217,139,.12) !important;
+    background:linear-gradient(145deg,#0a1c1b,#060d17) !important;
+    box-shadow:0 10px 25px rgba(0,0,0,.28) !important;
+  }
+
+  .wallet-security-card strong,
+  .wallet-security strong{
+    color:#eaf8f2 !important;
+    font-weight:900 !important;
+  }
+
+  .wallet-security-card small,
+  .wallet-security small{
+    color:#6f8d84 !important;
+    font-size:8px !important;
+  }
+
+  .wallet-security-card input[type="checkbox"],
+  .wallet-security input[type="checkbox"]{
+    width:16px !important;
+    height:16px !important;
+    min-height:16px !important;
+    accent-color:#268cff !important;
+  }
+
+  /* ---------- SETTINGS DRAWER ---------- */
+  .wallet-settings-overlay{
+    backdrop-filter:blur(8px) !important;
+    background:rgba(0,0,0,.64) !important;
+  }
+
+  .wallet-settings-drawer,
+  .wallet-settings-modal{
+    border:1px solid rgba(99,181,255,.20) !important;
+    border-radius:20px 20px 0 0 !important;
+    background:linear-gradient(155deg,#0c1d32,#050b16) !important;
+    box-shadow:0 -18px 50px rgba(0,0,0,.55) !important;
+  }
+
+  .wallet-settings-group{
+    padding:10px !important;
+    border-radius:12px !important;
+    border:1px solid rgba(99,181,255,.09) !important;
+    background:rgba(7,17,30,.72) !important;
+  }
+
+  /* ---------- SMALL MOBILE ---------- */
+  @media (max-width:380px){
+
+    .wallet-total,
+    .wallet-total-card,
+    .wallet-balance-hero,
+    .wallet-hero{
+      border-radius:15px !important;
+    }
+
+    .wallet-action-buttons,
+    .wallet-actions{
+      gap:5px !important;
+    }
+
+    .wallet-action-buttons button,
+    .wallet-actions button{
+      min-height:44px !important;
+      font-size:8px !important;
+    }
+
+    .wallet-balance-stats,
+    .wallet-stats,
+    .wallet-balance-grid{
+      gap:5px !important;
+    }
+
+    .wallet-balance-stats > *,
+    .wallet-stats > *,
+    .wallet-balance-grid > *{
+      padding:8px !important;
+    }
+
+    .wallet-asset-row,
+    .wallet-assets-row{
+      min-height:58px !important;
+      padding:8px !important;
+    }
+  }
+}
+
+/* END WALLET PLUS V1 */
+
+/* =========================================================
+   BITLORA WALLET PLUS — DEPOSIT / WITHDRAW / TRANSFER V2
+   MOBILE ONLY — DESKTOP UNTOUCHED — HEADER UNTOUCHED
+   ========================================================= */
+@media (max-width:700px){
+
+  /* ---------- ACTION MODE SWITCHER ---------- */
+  .wallet-action-tabs,
+  .wallet-operation-tabs{
+    display:grid !important;
+    grid-template-columns:repeat(3,minmax(0,1fr)) !important;
+    gap:5px !important;
+    padding:4px !important;
+    margin-top:10px !important;
+    border-radius:12px !important;
+    border:1px solid rgba(99,181,255,.10) !important;
+    background:#07111e !important;
+  }
+
+  .wallet-action-tabs button,
+  .wallet-operation-tabs button{
+    min-height:37px !important;
+    border:0 !important;
+    border-radius:8px !important;
+    background:transparent !important;
+    color:#687f99 !important;
+    font-size:9px !important;
+    font-weight:900 !important;
+  }
+
+  .wallet-action-tabs button.active,
+  .wallet-operation-tabs button.active,
+  .wallet-action-tabs button[aria-selected="true"],
+  .wallet-operation-tabs button[aria-selected="true"]{
+    color:#ffffff !important;
+    background:linear-gradient(145deg,#1766c2,#0b3f82) !important;
+    box-shadow:0 5px 14px rgba(38,140,255,.18) !important;
+  }
+
+  /* ---------- OPERATION CARD ---------- */
+  .wallet-action-card,
+  .wallet-deposit-card,
+  .wallet-withdraw-card,
+  .wallet-transfer-card{
+    position:relative !important;
+    overflow:hidden !important;
+    margin-top:10px !important;
+    padding:13px !important;
+    border-radius:17px !important;
+    border:1px solid rgba(99,181,255,.15) !important;
+    background:
+      radial-gradient(circle at 95% 0%,rgba(38,140,255,.09),transparent 30%),
+      linear-gradient(145deg,#0c1d32,#060d17) !important;
+    box-shadow:
+      0 13px 30px rgba(0,0,0,.36),
+      inset 0 1px rgba(255,255,255,.035) !important;
+  }
+
+  .wallet-action-card::after,
+  .wallet-deposit-card::after,
+  .wallet-withdraw-card::after,
+  .wallet-transfer-card::after{
+    content:"" !important;
+    position:absolute !important;
+    right:-70px !important;
+    bottom:-80px !important;
+    width:160px !important;
+    height:160px !important;
+    border-radius:50% !important;
+    background:rgba(38,140,255,.045) !important;
+    pointer-events:none !important;
+  }
+
+  .wallet-action-card > *,
+  .wallet-deposit-card > *,
+  .wallet-withdraw-card > *,
+  .wallet-transfer-card > *{
+    position:relative !important;
+    z-index:1 !important;
+  }
+
+  /* ---------- OPERATION HEADERS ---------- */
+  .wallet-action-card h3,
+  .wallet-action-card h4,
+  .wallet-deposit-card h3,
+  .wallet-withdraw-card h3,
+  .wallet-transfer-card h3{
+    color:#f2f7fc !important;
+    font-size:14px !important;
+    font-weight:950 !important;
+    letter-spacing:-.2px !important;
+  }
+
+  .wallet-action-card p,
+  .wallet-deposit-card p,
+  .wallet-withdraw-card p,
+  .wallet-transfer-card p{
+    color:#6f86a0 !important;
+    font-size:8px !important;
+    line-height:1.5 !important;
+  }
+
+  /* ---------- ASSET SELECTOR ---------- */
+  .wallet-asset-selector,
+  .wallet-asset-select{
+    display:flex !important;
+    align-items:center !important;
+    justify-content:space-between !important;
+    gap:8px !important;
+    min-height:48px !important;
+    padding:8px 10px !important;
+    margin-top:8px !important;
+    border-radius:11px !important;
+    border:1px solid rgba(99,181,255,.13) !important;
+    background:#071321 !important;
+  }
+
+  .wallet-asset-selector strong,
+  .wallet-asset-select strong{
+    color:#edf5fd !important;
+    font-size:11px !important;
+    font-weight:900 !important;
+  }
+
+  .wallet-asset-selector small,
+  .wallet-asset-select small{
+    color:#607995 !important;
+    font-size:8px !important;
+  }
+
+  /* ---------- NETWORK SELECTOR ---------- */
+  .wallet-network-selector,
+  .wallet-network-select{
+    margin-top:8px !important;
+    padding:10px !important;
+    border-radius:11px !important;
+    border:1px solid rgba(99,181,255,.12) !important;
+    background:#071321 !important;
+  }
+
+  .wallet-network-selector strong,
+  .wallet-network-select strong{
+    color:#eaf3fc !important;
+    font-size:10px !important;
+    font-weight:850 !important;
+  }
+
+  .wallet-network-selector small,
+  .wallet-network-select small{
+    display:block !important;
+    margin-top:2px !important;
+    color:#637b95 !important;
+    font-size:8px !important;
+  }
+
+  /* ---------- ADDRESS BOX ---------- */
+  .wallet-address-box{
+    position:relative !important;
+    margin-top:8px !important;
+    padding:11px !important;
+    border-radius:11px !important;
+    border:1px solid rgba(38,140,255,.18) !important;
+    background:
+      linear-gradient(145deg,rgba(16,43,72,.65),rgba(5,14,24,.80)) !important;
+  }
+
+  .wallet-address-box strong{
+    display:block !important;
+    margin-top:4px !important;
+    color:#dfeefe !important;
+    font-size:9px !important;
+    line-height:1.45 !important;
+    word-break:break-all !important;
+  }
+
+  /* ---------- COPY / MAX ACTIONS ---------- */
+  .wallet-copy-button,
+  .wallet-max-button{
+    min-height:31px !important;
+    padding:5px 9px !important;
+    border-radius:8px !important;
+    border:1px solid rgba(99,181,255,.16) !important;
+    background:rgba(38,140,255,.07) !important;
+    color:#63b5ff !important;
+    font-size:8px !important;
+    font-weight:900 !important;
+  }
+
+  .wallet-copy-button:active,
+  .wallet-max-button:active{
+    transform:scale(.96) !important;
+  }
+
+  /* ---------- AMOUNT INPUT ---------- */
+  .wallet-amount-field{
+    position:relative !important;
+    margin-top:8px !important;
+  }
+
+  .wallet-amount-field input{
+    width:100% !important;
+    min-height:47px !important;
+    padding-right:55px !important;
+    border-radius:11px !important;
+    border:1px solid rgba(99,181,255,.15) !important;
+    background:#06101d !important;
+    color:#ffffff !important;
+    font-size:14px !important;
+    font-weight:850 !important;
+  }
+
+  .wallet-amount-field span{
+    position:absolute !important;
+    right:10px !important;
+    top:50% !important;
+    transform:translateY(-50%) !important;
+    color:#63b5ff !important;
+    font-size:9px !important;
+    font-weight:900 !important;
+    pointer-events:none !important;
+  }
+
+  /* ---------- AVAILABLE BALANCE ---------- */
+  .wallet-available-balance{
+    display:flex !important;
+    align-items:center !important;
+    justify-content:space-between !important;
+    gap:8px !important;
+    margin-top:7px !important;
+    padding:7px 9px !important;
+    border-radius:9px !important;
+    background:rgba(25,217,139,.035) !important;
+    border:1px solid rgba(25,217,139,.08) !important;
+  }
+
+  .wallet-available-balance span{
+    color:#69827b !important;
+    font-size:8px !important;
+  }
+
+  .wallet-available-balance strong{
+    color:#35e9a3 !important;
+    font-size:9px !important;
+    font-weight:900 !important;
+  }
+
+  /* ---------- FEE / RECEIVING SUMMARY ---------- */
+  .wallet-fee-box,
+  .wallet-receive-box{
+    margin-top:8px !important;
+    padding:10px !important;
+    border-radius:11px !important;
+    border:1px solid rgba(99,181,255,.09) !important;
+    background:rgba(4,11,20,.68) !important;
+  }
+
+  .wallet-fee-row,
+  .wallet-summary-row{
+    display:flex !important;
+    justify-content:space-between !important;
+    gap:10px !important;
+    padding:5px 0 !important;
+  }
+
+  .wallet-fee-row span,
+  .wallet-summary-row span{
+    color:#627993 !important;
+    font-size:8px !important;
+  }
+
+  .wallet-fee-row strong,
+  .wallet-summary-row strong{
+    color:#dceafa !important;
+    font-size:9px !important;
+    font-weight:850 !important;
+  }
+
+  /* ---------- TRANSFER DESTINATION ---------- */
+  .wallet-transfer-destinations{
+    display:grid !important;
+    grid-template-columns:repeat(3,minmax(0,1fr)) !important;
+    gap:6px !important;
+    margin-top:9px !important;
+  }
+
+  .wallet-transfer-destinations button{
+    min-height:43px !important;
+    border-radius:10px !important;
+    border:1px solid rgba(99,181,255,.11) !important;
+    background:#081522 !important;
+    color:#7890aa !important;
+    font-size:8px !important;
+    font-weight:900 !important;
+  }
+
+  .wallet-transfer-destinations button.active{
+    color:#ffffff !important;
+    border-color:rgba(38,140,255,.48) !important;
+    background:linear-gradient(145deg,#155da9,#0b315c) !important;
+  }
+
+  /* ---------- PRIMARY CONFIRM ---------- */
+  .wallet-confirm-action,
+  .wallet-submit-action{
+    width:100% !important;
+    min-height:48px !important;
+    margin-top:10px !important;
+    border-radius:12px !important;
+    border:1px solid rgba(38,140,255,.40) !important;
+    background:linear-gradient(145deg,#268cff,#125cb0) !important;
+    color:#ffffff !important;
+    font-size:11px !important;
+    font-weight:950 !important;
+    box-shadow:0 9px 23px rgba(38,140,255,.19) !important;
+  }
+
+  .wallet-confirm-action:active,
+  .wallet-submit-action:active{
+    transform:scale(.985) !important;
+  }
+
+  /* ---------- WITHDRAW SECURITY NOTICE ---------- */
+  .wallet-withdraw-warning{
+    display:flex !important;
+    gap:8px !important;
+    align-items:flex-start !important;
+    margin-top:9px !important;
+    padding:9px !important;
+    border-radius:10px !important;
+    border:1px solid rgba(255,194,71,.13) !important;
+    background:rgba(255,194,71,.045) !important;
+    color:#b6a16d !important;
+    font-size:8px !important;
+    line-height:1.45 !important;
+  }
+
+  /* ---------- OPERATION STATUS ---------- */
+  .wallet-operation-status{
+    margin-top:8px !important;
+    padding:10px !important;
+    border-radius:10px !important;
+    border:1px solid rgba(38,140,255,.12) !important;
+    background:rgba(38,140,255,.045) !important;
+    color:#8ca5bf !important;
+    font-size:9px !important;
+    line-height:1.45 !important;
+  }
+
+  .wallet-operation-status.success{
+    border-color:rgba(25,217,139,.14) !important;
+    background:rgba(25,217,139,.045) !important;
+    color:#52dba9 !important;
+  }
+
+  .wallet-operation-status.error{
+    border-color:rgba(255,83,101,.15) !important;
+    background:rgba(255,83,101,.045) !important;
+    color:#ff7280 !important;
+  }
+
+  /* ---------- 380PX REFINEMENT ---------- */
+  @media (max-width:380px){
+
+    .wallet-action-card,
+    .wallet-deposit-card,
+    .wallet-withdraw-card,
+    .wallet-transfer-card{
+      padding:11px !important;
+      border-radius:14px !important;
+    }
+
+    .wallet-transfer-destinations{
+      gap:4px !important;
+    }
+
+    .wallet-transfer-destinations button{
+      min-height:40px !important;
+      font-size:7px !important;
+    }
+
+    .wallet-amount-field input{
+      min-height:44px !important;
+      font-size:13px !important;
+    }
+
+    .wallet-confirm-action,
+    .wallet-submit-action{
+      min-height:45px !important;
+      font-size:10px !important;
+    }
+  }
+}
+
+/* END WALLET PLUS V2 */
+
+/* =========================================================
+   BITLORA WALLET PLUS — SECURITY + HISTORY + SETTINGS V3
+   MOBILE ONLY — DESKTOP UNTOUCHED — HEADER UNTOUCHED
+   ========================================================= */
+
+@media (max-width:700px){
+
+  /* ---------- HISTORY ---------- */
+
+  .wallet-history,
+  .wallet-history-card{
+    position:relative !important;
+    overflow:hidden !important;
+    border:1px solid rgba(72,150,255,.22) !important;
+    border-radius:16px !important;
+    background:
+      radial-gradient(circle at 100% 0%,rgba(38,140,255,.10),transparent 32%),
+      linear-gradient(145deg,#0b1625,#07101c) !important;
+    box-shadow:0 14px 34px rgba(0,0,0,.28) !important;
+  }
+
+  .wallet-history::before,
+  .wallet-history-card::before{
+    content:"" !important;
+    position:absolute !important;
+    top:0 !important;
+    left:0 !important;
+    right:0 !important;
+    height:1px !important;
+    background:linear-gradient(90deg,transparent,#3e9eff,transparent) !important;
+    opacity:.7 !important;
+  }
+
+  .wallet-history-row{
+    position:relative !important;
+    min-height:62px !important;
+    padding:11px 12px !important;
+    border-bottom:1px solid rgba(255,255,255,.055) !important;
+    background:rgba(255,255,255,.012) !important;
+    transition:background .18s ease,transform .18s ease !important;
+  }
+
+  .wallet-history-row:last-child{
+    border-bottom:0 !important;
+  }
+
+  .wallet-history-row:active{
+    background:rgba(38,140,255,.08) !important;
+    transform:scale(.995) !important;
+  }
+
+  .wallet-history-row strong,
+  .wallet-history-row b{
+    color:#edf6ff !important;
+    font-weight:800 !important;
+    letter-spacing:.1px !important;
+  }
+
+  .wallet-history-row small,
+  .wallet-history-row span{
+    color:#8295aa !important;
+    font-size:10px !important;
+  }
+
+  /* transaction amount hierarchy */
+  .wallet-history-row .positive,
+  .wallet-history-row .profit,
+  .wallet-history-row [class*="positive"]{
+    color:#19d98b !important;
+    font-weight:900 !important;
+  }
+
+  .wallet-history-row .negative,
+  .wallet-history-row .loss,
+  .wallet-history-row [class*="negative"]{
+    color:#ff5365 !important;
+    font-weight:900 !important;
+  }
+
+  /* status badges */
+  .wallet-history-row [class*="status"],
+  .wallet-history-row [class*="badge"]{
+    border-radius:999px !important;
+    padding:4px 8px !important;
+    font-size:9px !important;
+    font-weight:800 !important;
+    letter-spacing:.35px !important;
+    background:rgba(38,140,255,.10) !important;
+    border:1px solid rgba(72,150,255,.20) !important;
+    color:#8bc7ff !important;
+  }
+
+  /* ---------- SECURITY ---------- */
+
+  .wallet-security,
+  .wallet-security-card{
+    position:relative !important;
+    overflow:hidden !important;
+    border:1px solid rgba(72,150,255,.23) !important;
+    border-radius:16px !important;
+    background:
+      radial-gradient(circle at 0% 0%,rgba(38,140,255,.12),transparent 34%),
+      linear-gradient(145deg,#0b1727,#07101b) !important;
+    box-shadow:0 15px 36px rgba(0,0,0,.30) !important;
+  }
+
+  .wallet-security::after,
+  .wallet-security-card::after{
+    content:"" !important;
+    position:absolute !important;
+    top:0 !important;
+    right:0 !important;
+    width:90px !important;
+    height:90px !important;
+    background:radial-gradient(circle,rgba(38,140,255,.12),transparent 68%) !important;
+    pointer-events:none !important;
+  }
+
+  .wallet-security-strip{
+    margin:10px 0 !important;
+    padding:11px 12px !important;
+    border-radius:12px !important;
+    border:1px solid rgba(25,217,139,.18) !important;
+    background:linear-gradient(135deg,rgba(25,217,139,.08),rgba(38,140,255,.05)) !important;
+    color:#b9d8d0 !important;
+    font-size:10px !important;
+    line-height:1.45 !important;
+  }
+
+  .wallet-security-card .wallet-card-header,
+  .wallet-security .wallet-card-header{
+    padding-bottom:10px !important;
+    border-bottom:1px solid rgba(255,255,255,.055) !important;
+  }
+
+  .wallet-security-card h3,
+  .wallet-security h3{
+    color:#eef6ff !important;
+    font-size:15px !important;
+    font-weight:850 !important;
+  }
+
+  .wallet-security-card p,
+  .wallet-security p{
+    color:#7f92a7 !important;
+    font-size:10px !important;
+    line-height:1.45 !important;
+  }
+
+  /* ---------- SETTINGS ---------- */
+
+  .wallet-settings-overlay{
+    background:rgba(1,7,14,.76) !important;
+    backdrop-filter:blur(10px) !important;
+    -webkit-backdrop-filter:blur(10px) !important;
+  }
+
+  .wallet-settings-drawer,
+  .wallet-settings-modal{
+    background:
+      radial-gradient(circle at 100% 0%,rgba(38,140,255,.10),transparent 30%),
+      linear-gradient(160deg,#0a1524,#050c15) !important;
+    border:1px solid rgba(72,150,255,.25) !important;
+    box-shadow:0 -20px 55px rgba(0,0,0,.50) !important;
+  }
+
+  .wallet-settings-header{
+    min-height:54px !important;
+    padding:12px 14px !important;
+    border-bottom:1px solid rgba(255,255,255,.07) !important;
+  }
+
+  .wallet-settings-header h3,
+  .wallet-settings-header strong{
+    color:#eef6ff !important;
+    font-size:16px !important;
+    font-weight:900 !important;
+    letter-spacing:.1px !important;
+  }
+
+  .wallet-settings-group{
+    margin:10px 0 !important;
+    padding:10px !important;
+    border-radius:14px !important;
+    border:1px solid rgba(72,150,255,.13) !important;
+    background:rgba(255,255,255,.018) !important;
+  }
+
+  .wallet-settings-group > h4,
+  .wallet-settings-group > strong{
+    display:block !important;
+    margin:2px 2px 9px !important;
+    color:#70baff !important;
+    font-size:10px !important;
+    font-weight:850 !important;
+    text-transform:uppercase !important;
+    letter-spacing:.65px !important;
+  }
+
+  .wallet-settings-row{
+    min-height:52px !important;
+    padding:9px 4px !important;
+    display:flex !important;
+    align-items:center !important;
+    justify-content:space-between !important;
+    gap:12px !important;
+    border-bottom:1px solid rgba(255,255,255,.045) !important;
+  }
+
+  .wallet-settings-row:last-child{
+    border-bottom:0 !important;
+  }
+
+  .wallet-settings-row label,
+  .wallet-settings-row span,
+  .wallet-settings-row p{
+    color:#d8e5f2 !important;
+    font-size:11px !important;
+    font-weight:700 !important;
+    line-height:1.35 !important;
+  }
+
+  .wallet-settings-row small{
+    display:block !important;
+    margin-top:3px !important;
+    color:#71859b !important;
+    font-size:9px !important;
+    font-weight:500 !important;
+  }
+
+  .wallet-settings-row input[type="checkbox"]{
+    width:19px !important;
+    height:19px !important;
+    min-width:19px !important;
+    accent-color:#268cff !important;
+    cursor:pointer !important;
+  }
+
+  /* settings close/action buttons */
+  .wallet-settings-header button,
+  .wallet-settings-drawer button{
+    min-height:36px !important;
+    border-radius:10px !important;
+    border:1px solid rgba(72,150,255,.20) !important;
+    background:rgba(38,140,255,.08) !important;
+    color:#a9d5ff !important;
+    font-weight:800 !important;
+  }
+
+  .wallet-settings-header button:active,
+  .wallet-settings-drawer button:active{
+    background:rgba(38,140,255,.16) !important;
+    transform:scale(.97) !important;
+  }
+
+  /* ---------- SMALL STATUS / SECURITY STATES ---------- */
+
+  .wallet-security-card .success,
+  .wallet-security .success{
+    color:#19d98b !important;
+  }
+
+  .wallet-security-card .warning,
+  .wallet-security .warning{
+    color:#ffca62 !important;
+  }
+
+  .wallet-security-card .danger,
+  .wallet-security .danger{
+    color:#ff5365 !important;
+  }
+
+  /* ---------- 380PX REFINEMENT ---------- */
+
+  @media(max-width:380px){
+
+    .wallet-history-row{
+      min-height:58px !important;
+      padding:9px 10px !important;
+    }
+
+    .wallet-settings-group{
+      padding:8px !important;
+    }
+
+    .wallet-settings-row{
+      min-height:49px !important;
+      gap:8px !important;
+    }
+
+    .wallet-settings-row label,
+    .wallet-settings-row span{
+      font-size:10px !important;
+    }
+
+    .wallet-security-strip{
+      padding:9px 10px !important;
+      font-size:9px !important;
+    }
+  }
+}
+
+/* =========================================================
+   END WALLET PLUS V3
+   ========================================================= */
+
+/* =========================================================
+   BITLORA WALLET PLUS — ADVANCED ASSET + BALANCE V4
+   MOBILE ONLY — DESKTOP UNTOUCHED — HEADER UNTOUCHED
+   ========================================================= */
+
+@media (max-width:700px){
+
+  /* ---------- BALANCE HERO ---------- */
+
+  .wallet-total,
+  .wallet-balance-hero,
+  .wallet-balance-card{
+    position:relative !important;
+    overflow:hidden !important;
+    border:1px solid rgba(72,150,255,.28) !important;
+    border-radius:18px !important;
+    background:
+      radial-gradient(circle at 90% 0%,rgba(38,140,255,.18),transparent 35%),
+      radial-gradient(circle at 0% 100%,rgba(30,100,190,.10),transparent 40%),
+      linear-gradient(145deg,#0c1929,#050c15) !important;
+    box-shadow:
+      0 18px 42px rgba(0,0,0,.34),
+      inset 0 1px 0 rgba(255,255,255,.035) !important;
+  }
+
+  .wallet-total::before,
+  .wallet-balance-hero::before,
+  .wallet-balance-card::before{
+    content:"" !important;
+    position:absolute !important;
+    left:0 !important;
+    right:0 !important;
+    top:0 !important;
+    height:1px !important;
+    background:linear-gradient(90deg,transparent,#55adff,#268cff,transparent) !important;
+    opacity:.8 !important;
+  }
+
+  .wallet-total strong,
+  .wallet-balance-hero strong,
+  .wallet-balance-card strong{
+    color:#f2f8ff !important;
+    font-weight:900 !important;
+    letter-spacing:-.3px !important;
+  }
+
+  .wallet-total small,
+  .wallet-balance-hero small,
+  .wallet-balance-card small{
+    color:#7f95aa !important;
+    font-size:9px !important;
+    letter-spacing:.35px !important;
+  }
+
+  /* ---------- BALANCE STATS ---------- */
+
+  .wallet-balance-stats{
+    gap:8px !important;
+    margin-top:9px !important;
+  }
+
+  .wallet-balance-stats > *,
+  .wallet-balance-stat{
+    position:relative !important;
+    overflow:hidden !important;
+    min-height:58px !important;
+    padding:10px !important;
+    border:1px solid rgba(72,150,255,.14) !important;
+    border-radius:12px !important;
+    background:linear-gradient(145deg,#0b1726,#07101a) !important;
+  }
+
+  .wallet-balance-stats > *::after,
+  .wallet-balance-stat::after{
+    content:"" !important;
+    position:absolute !important;
+    width:45px !important;
+    height:45px !important;
+    right:-18px !important;
+    top:-18px !important;
+    border-radius:50% !important;
+    background:rgba(38,140,255,.08) !important;
+  }
+
+  .wallet-balance-stats strong,
+  .wallet-balance-stat strong{
+    color:#dcecff !important;
+    font-size:12px !important;
+    font-weight:850 !important;
+  }
+
+  /* ---------- ASSET SECTION ---------- */
+
+  .wallet-assets,
+  .wallet-assets-card,
+  .wallet-asset-list{
+    position:relative !important;
+    overflow:hidden !important;
+    border:1px solid rgba(72,150,255,.18) !important;
+    border-radius:16px !important;
+    background:
+      radial-gradient(circle at 100% 0%,rgba(38,140,255,.08),transparent 30%),
+      linear-gradient(150deg,#0a1624,#060e17) !important;
+    box-shadow:0 14px 34px rgba(0,0,0,.25) !important;
+  }
+
+  .wallet-assets .wallet-card-header,
+  .wallet-assets-card .wallet-card-header{
+    min-height:48px !important;
+    padding:11px 12px !important;
+    border-bottom:1px solid rgba(255,255,255,.055) !important;
+  }
+
+  .wallet-assets h3,
+  .wallet-assets-card h3{
+    color:#eef6ff !important;
+    font-size:14px !important;
+    font-weight:900 !important;
+  }
+
+  /* ---------- ASSET ROWS ---------- */
+
+  .wallet-asset-row,
+  .wallet-assets .asset-row,
+  .wallet-assets-card .asset-row{
+    position:relative !important;
+    min-height:68px !important;
+    padding:10px 12px !important;
+    border-bottom:1px solid rgba(255,255,255,.05) !important;
+    background:rgba(255,255,255,.012) !important;
+    transition:background .18s ease,transform .18s ease !important;
+  }
+
+  .wallet-asset-row:last-child,
+  .wallet-assets .asset-row:last-child,
+  .wallet-assets-card .asset-row:last-child{
+    border-bottom:0 !important;
+  }
+
+  .wallet-asset-row:active,
+  .wallet-assets .asset-row:active,
+  .wallet-assets-card .asset-row:active{
+    background:rgba(38,140,255,.08) !important;
+    transform:scale(.995) !important;
+  }
+
+  /* ---------- COIN ICON ---------- */
+
+  .wallet-asset-icon,
+  .wallet-coin-icon,
+  .wallet-assets .coin-icon{
+    width:38px !important;
+    height:38px !important;
+    min-width:38px !important;
+    border-radius:50% !important;
+    display:flex !important;
+    align-items:center !important;
+    justify-content:center !important;
+    border:1px solid rgba(115,180,255,.22) !important;
+    background:
+      radial-gradient(circle at 35% 25%,rgba(255,255,255,.10),transparent 35%),
+      linear-gradient(145deg,#102844,#071321) !important;
+    box-shadow:0 6px 15px rgba(0,0,0,.28) !important;
+    color:#a9d8ff !important;
+    font-weight:900 !important;
+  }
+
+  /* ---------- ASSET TYPOGRAPHY ---------- */
+
+  .wallet-asset-row strong,
+  .wallet-assets .asset-row strong{
+    color:#edf6ff !important;
+    font-size:12px !important;
+    font-weight:850 !important;
+  }
+
+  .wallet-asset-row small,
+  .wallet-assets .asset-row small{
+    color:#71869b !important;
+    font-size:9px !important;
+  }
+
+  .wallet-asset-row .amount,
+  .wallet-assets .asset-row .amount{
+    color:#e7f2ff !important;
+    font-size:12px !important;
+    font-weight:900 !important;
+  }
+
+  .wallet-asset-row .usd,
+  .wallet-assets .asset-row .usd{
+    color:#71869b !important;
+    font-size:9px !important;
+  }
+
+  /* ---------- SEARCH ---------- */
+
+  .wallet-search,
+  .wallet-assets input[type="search"]{
+    min-height:40px !important;
+    border-radius:11px !important;
+    border:1px solid rgba(72,150,255,.17) !important;
+    background:#07111c !important;
+    color:#e8f4ff !important;
+    outline:none !important;
+    box-shadow:inset 0 1px 5px rgba(0,0,0,.22) !important;
+  }
+
+  .wallet-search:focus,
+  .wallet-assets input[type="search"]:focus{
+    border-color:rgba(70,165,255,.55) !important;
+    box-shadow:
+      0 0 0 3px rgba(38,140,255,.08),
+      inset 0 1px 5px rgba(0,0,0,.22) !important;
+  }
+
+  /* ---------- HIDE SMALL BALANCE CONTROL ---------- */
+
+  .wallet-hide-small,
+  .wallet-small-balance-toggle{
+    border:1px solid rgba(72,150,255,.15) !important;
+    border-radius:10px !important;
+    background:rgba(38,140,255,.055) !important;
+    color:#8fb8dc !important;
+    font-size:9px !important;
+    font-weight:800 !important;
+  }
+
+  /* ---------- USD VALUE ---------- */
+
+  .wallet-usd-value{
+    color:#8aa1b8 !important;
+    font-size:9px !important;
+    font-weight:650 !important;
+  }
+
+  /* ---------- EMPTY STATE ---------- */
+
+  .wallet-empty,
+  .wallet-assets .empty-state,
+  .wallet-assets-card .empty-state{
+    min-height:105px !important;
+    display:flex !important;
+    flex-direction:column !important;
+    align-items:center !important;
+    justify-content:center !important;
+    gap:5px !important;
+    color:#72879d !important;
+    font-size:10px !important;
+  }
+
+  /* ---------- 380PX ---------- */
+
+  @media(max-width:380px){
+
+    .wallet-total,
+    .wallet-balance-hero,
+    .wallet-balance-card{
+      border-radius:16px !important;
+    }
+
+    .wallet-balance-stats{
+      gap:6px !important;
+    }
+
+    .wallet-balance-stats > *,
+    .wallet-balance-stat{
+      min-height:54px !important;
+      padding:8px !important;
+    }
+
+    .wallet-asset-row,
+    .wallet-assets .asset-row,
+    .wallet-assets-card .asset-row{
+      min-height:63px !important;
+      padding:8px 10px !important;
+    }
+
+    .wallet-asset-icon,
+    .wallet-coin-icon,
+    .wallet-assets .coin-icon{
+      width:34px !important;
+      height:34px !important;
+      min-width:34px !important;
+    }
+  }
+}
+
+/* =========================================================
+   END WALLET PLUS V4
+   ========================================================= */
+
+/* =========================================================
+   BITLORA WALLET PLUS V5
+   TARGETED WALLET-PRO JSX POLISH
+   MOBILE ONLY — DESKTOP UNTOUCHED — HEADER UNTOUCHED
+   ========================================================= */
+
+@media (max-width:700px){
+
+  /* ---------- BALANCE HERO ---------- */
+
+  .wallet-pro-balance-hero{
+    position:relative !important;
+    overflow:hidden !important;
+    margin-top:12px !important;
+    padding:16px !important;
+    border:1px solid rgba(72,150,255,.28) !important;
+    border-radius:18px !important;
+    background:
+      radial-gradient(circle at 92% 0%,rgba(38,140,255,.19),transparent 34%),
+      radial-gradient(circle at 0% 100%,rgba(20,90,170,.10),transparent 38%),
+      linear-gradient(145deg,#0c1929,#050c15) !important;
+    box-shadow:0 18px 42px rgba(0,0,0,.34),inset 0 1px 0 rgba(255,255,255,.035) !important;
+  }
+
+  .wallet-pro-balance-hero::before{
+    content:"" !important;
+    position:absolute !important;
+    left:0 !important;
+    right:0 !important;
+    top:0 !important;
+    height:1px !important;
+    background:linear-gradient(90deg,transparent,#55adff,#268cff,transparent) !important;
+  }
+
+  .wallet-pro-total{
+    padding:2px 1px 13px !important;
+  }
+
+  .wallet-pro-total > span{
+    color:#7f95aa !important;
+    font-size:9px !important;
+    font-weight:700 !important;
+    text-transform:uppercase !important;
+    letter-spacing:.55px !important;
+  }
+
+  .wallet-pro-total > strong{
+    display:block !important;
+    margin-top:5px !important;
+    color:#f3f8ff !important;
+    font-size:27px !important;
+    line-height:1.05 !important;
+    font-weight:900 !important;
+    letter-spacing:-.8px !important;
+  }
+
+  .wallet-pro-total > small{
+    display:block !important;
+    margin-top:5px !important;
+    color:#80a0bd !important;
+    font-size:9px !important;
+  }
+
+  /* ---------- BALANCE STATS ---------- */
+
+  .wallet-pro-balance-stats{
+    display:grid !important;
+    grid-template-columns:repeat(3,minmax(0,1fr)) !important;
+    gap:7px !important;
+  }
+
+  .wallet-pro-balance-stats > div{
+    min-width:0 !important;
+    min-height:58px !important;
+    padding:9px 8px !important;
+    border:1px solid rgba(72,150,255,.14) !important;
+    border-radius:12px !important;
+    background:rgba(255,255,255,.018) !important;
+  }
+
+  .wallet-pro-balance-stats > div > span{
+    display:block !important;
+    color:#71869b !important;
+    font-size:8px !important;
+    font-weight:700 !important;
+    text-transform:uppercase !important;
+    letter-spacing:.25px !important;
+  }
+
+  .wallet-pro-balance-stats > div > strong{
+    display:block !important;
+    margin-top:6px !important;
+    color:#dcecff !important;
+    font-size:11px !important;
+    font-weight:900 !important;
+    white-space:nowrap !important;
+  }
+
+  .wallet-pro-balance-stats .green{
+    color:#19d98b !important;
+  }
+
+  /* ---------- WALLET TABS ---------- */
+
+  .wallet-pro-wallet-tabs{
+    display:flex !important;
+    gap:5px !important;
+    margin:10px 0 !important;
+    padding:4px !important;
+    overflow-x:auto !important;
+    scrollbar-width:none !important;
+    border:1px solid rgba(72,150,255,.13) !important;
+    border-radius:12px !important;
+    background:#07111c !important;
+  }
+
+  .wallet-pro-wallet-tabs::-webkit-scrollbar{
+    display:none !important;
+  }
+
+  .wallet-pro-wallet-tabs button{
+    flex:1 0 auto !important;
+    min-height:34px !important;
+    padding:0 12px !important;
+    border:0 !important;
+    border-radius:9px !important;
+    background:transparent !important;
+    color:#71879d !important;
+    font-size:9px !important;
+    font-weight:800 !important;
+  }
+
+  .wallet-pro-wallet-tabs button.active{
+    color:#eef7ff !important;
+    background:linear-gradient(135deg,#1766c2,#268cff) !important;
+    box-shadow:0 5px 14px rgba(38,140,255,.20) !important;
+  }
+
+  /* ---------- QUICK ACTIONS ---------- */
+
+  .wallet-pro-actions{
+    display:grid !important;
+    grid-template-columns:repeat(3,1fr) !important;
+    gap:7px !important;
+    margin-bottom:11px !important;
+  }
+
+  .wallet-pro-actions button{
+    min-height:42px !important;
+    border-radius:11px !important;
+    font-size:10px !important;
+    font-weight:900 !important;
+    letter-spacing:.1px !important;
+    border:1px solid rgba(72,150,255,.18) !important;
+    box-shadow:0 7px 18px rgba(0,0,0,.20) !important;
+  }
+
+  .wallet-pro-actions button:active{
+    transform:scale(.97) !important;
+  }
+
+  /* ---------- ASSET CARD ---------- */
+
+  .wallet-pro-assets-card,
+  .wallet-pro-action-card,
+  .wallet-pro-history-card,
+  .wallet-pro-security-card{
+    position:relative !important;
+    overflow:hidden !important;
+    border:1px solid rgba(72,150,255,.18) !important;
+    border-radius:16px !important;
+    background:
+      radial-gradient(circle at 100% 0%,rgba(38,140,255,.08),transparent 30%),
+      linear-gradient(150deg,#0a1624,#060e17) !important;
+    box-shadow:0 14px 34px rgba(0,0,0,.26) !important;
+  }
+
+  .wallet-pro-card-header{
+    padding:12px !important;
+    min-height:52px !important;
+    border-bottom:1px solid rgba(255,255,255,.055) !important;
+  }
+
+  .wallet-pro-card-header strong{
+    color:#edf6ff !important;
+    font-size:14px !important;
+    font-weight:900 !important;
+  }
+
+  .wallet-pro-card-header span{
+    display:block !important;
+    margin-top:3px !important;
+    color:#70859b !important;
+    font-size:9px !important;
+  }
+
+  .wallet-pro-card-header input[type="search"]{
+    min-height:34px !important;
+    margin-top:8px !important;
+    border-radius:9px !important;
+    border:1px solid rgba(72,150,255,.17) !important;
+    background:#07111c !important;
+    color:#eaf5ff !important;
+    padding:0 10px !important;
+    outline:none !important;
+  }
+
+  .wallet-pro-card-header input[type="search"]:focus{
+    border-color:rgba(70,165,255,.55) !important;
+    box-shadow:0 0 0 3px rgba(38,140,255,.07) !important;
+  }
+
+  /* ---------- ASSET HEAD ---------- */
+
+  .wallet-pro-asset-head{
+    display:grid !important;
+    grid-template-columns:1.35fr .8fr .8fr .65fr .8fr !important;
+    gap:5px !important;
+    padding:8px 10px !important;
+    border-bottom:1px solid rgba(255,255,255,.045) !important;
+    background:rgba(38,140,255,.025) !important;
+  }
+
+  .wallet-pro-asset-head span{
+    color:#62778c !important;
+    font-size:7px !important;
+    font-weight:800 !important;
+    text-transform:uppercase !important;
+    letter-spacing:.25px !important;
+  }
+
+  /* ---------- ASSET ROW ---------- */
+
+  .wallet-pro-asset-list{
+    overflow:hidden !important;
+  }
+
+  .wallet-pro-asset-row{
+    display:grid !important;
+    grid-template-columns:1.35fr .8fr .8fr .65fr .8fr !important;
+    align-items:center !important;
+    gap:5px !important;
+    min-height:67px !important;
+    padding:9px 10px !important;
+    border-bottom:1px solid rgba(255,255,255,.045) !important;
+    background:rgba(255,255,255,.008) !important;
+    transition:background .18s ease,transform .18s ease !important;
+  }
+
+  .wallet-pro-asset-row:last-child{
+    border-bottom:0 !important;
+  }
+
+  .wallet-pro-asset-row:active{
+    background:rgba(38,140,255,.075) !important;
+    transform:scale(.995) !important;
+  }
+
+  .wallet-pro-asset-row > strong,
+  .wallet-pro-asset-row > span{
+    min-width:0 !important;
+    overflow:hidden !important;
+    text-overflow:ellipsis !important;
+    white-space:nowrap !important;
+    font-size:9px !important;
+  }
+
+  .wallet-pro-asset-row > strong{
+    color:#e7f2ff !important;
+    font-weight:900 !important;
+  }
+
+  .wallet-pro-asset-row > span{
+    color:#7d92a7 !important;
+    font-weight:650 !important;
+  }
+
+  .wallet-pro-asset-row > strong:last-child{
+    color:#b9d8f4 !important;
+  }
+
+  .wallet-pro-asset-name{
+    display:flex !important;
+    align-items:center !important;
+    min-width:0 !important;
+    gap:8px !important;
+  }
+
+  .wallet-pro-asset-name > div:last-child{
+    min-width:0 !important;
+  }
+
+  .wallet-pro-asset-name strong{
+    display:block !important;
+    color:#eef6ff !important;
+    font-size:11px !important;
+    font-weight:900 !important;
+  }
+
+  .wallet-pro-asset-name span{
+    display:block !important;
+    margin-top:2px !important;
+    color:#71869b !important;
+    font-size:8px !important;
+    overflow:hidden !important;
+    text-overflow:ellipsis !important;
+    white-space:nowrap !important;
+  }
+
+  .wallet-pro-coin-icon{
+    width:34px !important;
+    height:34px !important;
+    min-width:34px !important;
+    display:flex !important;
+    align-items:center !important;
+    justify-content:center !important;
+    border-radius:50% !important;
+    border:1px solid rgba(95,173,255,.25) !important;
+    background:
+      radial-gradient(circle at 32% 24%,rgba(255,255,255,.13),transparent 32%),
+      linear-gradient(145deg,#102b48,#071321) !important;
+    color:#a9d7ff !important;
+    font-size:12px !important;
+    font-weight:900 !important;
+    box-shadow:0 6px 14px rgba(0,0,0,.25) !important;
+  }
+
+  /* ---------- ACTION FORM ---------- */
+
+  .wallet-pro-action-tabs{
+    display:grid !important;
+    grid-template-columns:repeat(3,1fr) !important;
+    gap:5px !important;
+    padding:6px !important;
+    border-bottom:1px solid rgba(255,255,255,.055) !important;
+    background:#07111c !important;
+  }
+
+  .wallet-pro-action-tabs button{
+    min-height:34px !important;
+    border:0 !important;
+    border-radius:8px !important;
+    background:transparent !important;
+    color:#71869b !important;
+    font-size:9px !important;
+    font-weight:850 !important;
+  }
+
+  .wallet-pro-action-tabs button.active{
+    color:#eef7ff !important;
+    background:#1766c2 !important;
+  }
+
+  .wallet-pro-form{
+    padding:12px !important;
+  }
+
+  .wallet-pro-form label{
+    display:block !important;
+    margin-bottom:10px !important;
+  }
+
+  .wallet-pro-form label > span{
+    display:block !important;
+    margin-bottom:5px !important;
+    color:#8da2b7 !important;
+    font-size:9px !important;
+    font-weight:750 !important;
+  }
+
+  .wallet-pro-form input,
+  .wallet-pro-form select{
+    width:100% !important;
+    min-height:40px !important;
+    box-sizing:border-box !important;
+    border:1px solid rgba(72,150,255,.17) !important;
+    border-radius:10px !important;
+    background:#07111c !important;
+    color:#eaf5ff !important;
+    padding:0 10px !important;
+    outline:none !important;
+    font-size:11px !important;
+  }
+
+  .wallet-pro-form input:focus,
+  .wallet-pro-form select:focus{
+    border-color:rgba(70,165,255,.55) !important;
+    box-shadow:0 0 0 3px rgba(38,140,255,.07) !important;
+  }
+
+  .wallet-pro-address-box,
+  .wallet-pro-fee-box{
+    margin:8px 0 11px !important;
+    padding:11px !important;
+    border:1px solid rgba(72,150,255,.15) !important;
+    border-radius:11px !important;
+    background:rgba(38,140,255,.035) !important;
+  }
+
+  .wallet-pro-address-box span,
+  .wallet-pro-fee-box span{
+    color:#72879d !important;
+    font-size:8px !important;
+  }
+
+  .wallet-pro-address-box strong,
+  .wallet-pro-fee-box strong{
+    display:block !important;
+    margin-top:4px !important;
+    color:#b9dcff !important;
+    font-size:10px !important;
+    font-weight:850 !important;
+  }
+
+  .wallet-pro-address-box small{
+    display:block !important;
+    margin-top:5px !important;
+    color:#64798d !important;
+    font-size:8px !important;
+  }
+
+  .wallet-pro-primary-action{
+    width:100% !important;
+    min-height:44px !important;
+    margin-top:3px !important;
+    border:1px solid rgba(102,183,255,.35) !important;
+    border-radius:11px !important;
+    background:linear-gradient(135deg,#1766c2,#268cff) !important;
+    color:#fff !important;
+    font-size:10px !important;
+    font-weight:900 !important;
+    letter-spacing:.45px !important;
+    box-shadow:0 9px 22px rgba(38,140,255,.18) !important;
+  }
+
+  .wallet-pro-primary-action:active{
+    transform:scale(.985) !important;
+  }
+
+  .wallet-pro-message{
+    margin-top:9px !important;
+    padding:9px 10px !important;
+    border-radius:9px !important;
+    border:1px solid rgba(72,150,255,.18) !important;
+    background:rgba(38,140,255,.055) !important;
+    color:#9acbfa !important;
+    font-size:9px !important;
+    line-height:1.4 !important;
+  }
+
+  /* ---------- SECURITY STRIP ---------- */
+
+  .wallet-pro-security-strip{
+    display:grid !important;
+    grid-template-columns:repeat(2,1fr) !important;
+    gap:7px !important;
+    margin:11px 0 !important;
+    padding:10px !important;
+    border:1px solid rgba(72,150,255,.17) !important;
+    border-radius:14px !important;
+    background:linear-gradient(145deg,#091522,#06101a) !important;
+  }
+
+  .wallet-pro-security-strip > div{
+    min-height:47px !important;
+    padding:8px !important;
+    border:1px solid rgba(255,255,255,.045) !important;
+    border-radius:9px !important;
+    background:rgba(255,255,255,.012) !important;
+  }
+
+  .wallet-pro-security-strip span{
+    display:block !important;
+    color:#6f8499 !important;
+    font-size:8px !important;
+  }
+
+  .wallet-pro-security-strip strong{
+    display:block !important;
+    margin-top:4px !important;
+    color:#9fc8e9 !important;
+    font-size:10px !important;
+    font-weight:900 !important;
+  }
+
+  .wallet-pro-security-strip .green{
+    color:#19d98b !important;
+  }
+
+  /* ---------- HISTORY ---------- */
+
+  .wallet-pro-history-grid{
+    display:grid !important;
+    grid-template-columns:.9fr .65fr .8fr .8fr .9fr !important;
+    gap:4px !important;
+    padding:9px 10px !important;
+    overflow-x:auto !important;
+  }
+
+  .wallet-pro-history-grid > span{
+    color:#61778c !important;
+    font-size:7px !important;
+    font-weight:800 !important;
+    text-transform:uppercase !important;
+    letter-spacing:.25px !important;
+  }
+
+  .wallet-pro-history-grid > strong,
+  .wallet-pro-history-grid > b,
+  .wallet-pro-history-grid > span:nth-child(n+6){
+    color:#d9e9f8 !important;
+    font-size:8px !important;
+    font-weight:750 !important;
+    padding-top:6px !important;
+    white-space:nowrap !important;
+  }
+
+  .wallet-pro-history-grid .green{
+    color:#19d98b !important;
+    font-weight:900 !important;
+  }
+
+  /* ---------- SECURITY CARD ---------- */
+
+  .wallet-pro-security-card{
+    display:flex !important;
+    align-items:center !important;
+    justify-content:space-between !important;
+    gap:10px !important;
+    margin-top:11px !important;
+    padding:13px !important;
+  }
+
+  .wallet-pro-security-card > div{
+    min-width:0 !important;
+  }
+
+  .wallet-pro-security-card strong{
+    display:block !important;
+    color:#edf6ff !important;
+    font-size:12px !important;
+    font-weight:900 !important;
+  }
+
+  .wallet-pro-security-card span{
+    display:block !important;
+    margin-top:3px !important;
+    color:#70859a !important;
+    font-size:8px !important;
+  }
+
+  .wallet-pro-security-card button{
+    flex:0 0 auto !important;
+    min-height:35px !important;
+    padding:0 10px !important;
+    border:1px solid rgba(72,150,255,.23) !important;
+    border-radius:9px !important;
+    background:rgba(38,140,255,.08) !important;
+    color:#9dccf5 !important;
+    font-size:9px !important;
+    font-weight:850 !important;
+  }
+
+  /* ---------- SETTINGS DRAWER ---------- */
+
+  .wallet-pro-settings-overlay{
+    background:rgba(1,6,12,.78) !important;
+    backdrop-filter:blur(10px) !important;
+    -webkit-backdrop-filter:blur(10px) !important;
+  }
+
+  .wallet-pro-settings-drawer{
+    width:min(100%,430px) !important;
+    max-height:92vh !important;
+    overflow-y:auto !important;
+    border:1px solid rgba(72,150,255,.25) !important;
+    border-radius:20px 20px 0 0 !important;
+    background:
+      radial-gradient(circle at 100% 0%,rgba(38,140,255,.12),transparent 30%),
+      linear-gradient(160deg,#0a1524,#050c15) !important;
+    box-shadow:0 -22px 60px rgba(0,0,0,.55) !important;
+  }
+
+  .wallet-pro-settings-header{
+    position:sticky !important;
+    top:0 !important;
+    z-index:3 !important;
+    display:flex !important;
+    align-items:center !important;
+    justify-content:space-between !important;
+    gap:10px !important;
+    min-height:58px !important;
+    padding:11px 13px !important;
+    border-bottom:1px solid rgba(255,255,255,.065) !important;
+    background:rgba(7,15,25,.94) !important;
+    backdrop-filter:blur(12px) !important;
+    -webkit-backdrop-filter:blur(12px) !important;
+  }
+
+  .wallet-pro-settings-header strong{
+    display:block !important;
+    color:#eef7ff !important;
+    font-size:15px !important;
+    font-weight:900 !important;
+  }
+
+  .wallet-pro-settings-header span{
+    display:block !important;
+    margin-top:3px !important;
+    color:#70859b !important;
+    font-size:8px !important;
+  }
+
+  .wallet-pro-settings-header button{
+    width:34px !important;
+    height:34px !important;
+    min-width:34px !important;
+    border:1px solid rgba(72,150,255,.20) !important;
+    border-radius:9px !important;
+    background:rgba(38,140,255,.07) !important;
+    color:#a9d6ff !important;
+    font-size:18px !important;
+  }
+
+  .wallet-pro-setting-group{
+    margin:10px 11px !important;
+    padding:9px !important;
+    border:1px solid rgba(72,150,255,.13) !important;
+    border-radius:13px !important;
+    background:rgba(255,255,255,.016) !important;
+  }
+
+  .wallet-pro-setting-group > strong{
+    display:block !important;
+    margin:2px 3px 7px !important;
+    color:#6fb8ff !important;
+    font-size:9px !important;
+    font-weight:900 !important;
+    text-transform:uppercase !important;
+    letter-spacing:.65px !important;
+  }
+
+  .wallet-pro-setting-group > label{
+    display:flex !important;
+    align-items:center !important;
+    gap:9px !important;
+    min-height:42px !important;
+    margin:0 !important;
+    padding:7px 3px !important;
+    border-bottom:1px solid rgba(255,255,255,.04) !important;
+    color:#d7e5f2 !important;
+    font-size:10px !important;
+    font-weight:700 !important;
+  }
+
+  .wallet-pro-setting-group > label:last-child{
+    border-bottom:0 !important;
+  }
+
+  .wallet-pro-setting-group input[type="checkbox"]{
+    width:18px !important;
+    height:18px !important;
+    min-width:18px !important;
+    margin:0 !important;
+    accent-color:#268cff !important;
+  }
+
+  /* ---------- 380PX ---------- */
+
+  @media(max-width:380px){
+
+    .wallet-pro-balance-hero{
+      padding:13px !important;
+    }
+
+    .wallet-pro-total > strong{
+      font-size:24px !important;
+    }
+
+    .wallet-pro-balance-stats{
+      gap:5px !important;
+    }
+
+    .wallet-pro-balance-stats > div{
+      padding:8px 6px !important;
+    }
+
+    .wallet-pro-balance-stats > div > strong{
+      font-size:10px !important;
+    }
+
+    .wallet-pro-asset-head,
+    .wallet-pro-asset-row{
+      grid-template-columns:1.3fr .75fr .75fr .6fr .75fr !important;
+      gap:3px !important;
+    }
+
+    .wallet-pro-asset-row{
+      padding:8px !important;
+    }
+
+    .wallet-pro-coin-icon{
+      width:31px !important;
+      height:31px !important;
+      min-width:31px !important;
+      font-size:11px !important;
+    }
+
+    .wallet-pro-asset-name{
+      gap:6px !important;
+    }
+
+    .wallet-pro-asset-name strong{
+      font-size:10px !important;
+    }
+
+    .wallet-pro-security-strip{
+      gap:5px !important;
+      padding:8px !important;
+    }
+  }
+}
+
+/* =========================================================
+   END WALLET PLUS V5
+   ========================================================= */
+
+/* =========================================================
+   BITLORA WALLET PLUS V6 — MOBILE TYPOGRAPHY & ALIGNMENT
+   ========================================================= */
+@media (max-width: 767px) {
+
+  /* Wallet top section */
+  .wallet-pro-screen .wallet-pro-header {
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+    align-items: center !important;
+  }
+
+  .wallet-pro-screen .wallet-pro-header h3 {
+    font-size: 22px !important;
+    line-height: 1.2 !important;
+    letter-spacing: -0.2px !important;
+  }
+
+  .wallet-pro-screen .wallet-pro-header p {
+    font-size: 13px !important;
+    line-height: 1.45 !important;
+    margin-top: 5px !important;
+  }
+
+  .wallet-pro-settings {
+    font-size: 12px !important;
+    min-height: 36px !important;
+    padding: 8px 11px !important;
+  }
+
+  /* Total balance */
+  .wallet-pro-total span {
+    font-size: 13px !important;
+  }
+
+  .wallet-pro-total strong {
+    font-size: 30px !important;
+    line-height: 1.15 !important;
+  }
+
+  .wallet-pro-total small {
+    font-size: 12px !important;
+  }
+
+  .wallet-pro-balance-stats span {
+    font-size: 11px !important;
+  }
+
+  .wallet-pro-balance-stats strong {
+    font-size: 14px !important;
+  }
+
+  /* Wallet tabs */
+  .wallet-pro-wallet-tabs button {
+    font-size: 13px !important;
+    min-height: 40px !important;
+    padding: 9px 13px !important;
+  }
+
+  /* Main Deposit / Withdraw / Transfer buttons */
+  .wallet-pro-actions button {
+    font-size: 15px !important;
+    font-weight: 800 !important;
+    min-height: 48px !important;
+  }
+
+  /* Assets card */
+  .wallet-pro-card-header strong {
+    font-size: 17px !important;
+  }
+
+  .wallet-pro-card-header span {
+    font-size: 12px !important;
+    line-height: 1.4 !important;
+  }
+
+  .wallet-pro-card-header input {
+    font-size: 13px !important;
+    min-height: 40px !important;
+  }
+
+  .wallet-pro-asset-head {
+    font-size: 10px !important;
+    font-weight: 700 !important;
+  }
+
+  .wallet-pro-asset-row {
+    font-size: 13px !important;
+    min-height: 62px !important;
+  }
+
+  .wallet-pro-asset-name strong {
+    font-size: 14px !important;
+  }
+
+  .wallet-pro-asset-name span {
+    font-size: 11px !important;
+  }
+
+  .wallet-pro-coin-icon {
+    font-size: 15px !important;
+  }
+
+  /* Deposit / Withdraw / Transfer operation tabs */
+  .wallet-pro-action-tabs button {
+    font-size: 14px !important;
+    font-weight: 800 !important;
+    min-height: 44px !important;
+  }
+
+  /* Form labels */
+  .wallet-pro-form label > span {
+    font-size: 13px !important;
+    font-weight: 700 !important;
+  }
+
+  .wallet-pro-form select,
+  .wallet-pro-form input {
+    font-size: 14px !important;
+    min-height: 46px !important;
+  }
+
+  .wallet-pro-form select option {
+    font-size: 14px !important;
+  }
+
+  /* Deposit address */
+  .wallet-pro-address-box {
+    padding: 14px !important;
+  }
+
+  .wallet-pro-address-box span {
+    font-size: 12px !important;
+  }
+
+  .wallet-pro-address-box strong {
+    font-size: 14px !important;
+  }
+
+  .wallet-pro-address-box small {
+    font-size: 11px !important;
+  }
+
+  /* Fee / limit information */
+  .wallet-pro-fee-box {
+    font-size: 12px !important;
+  }
+
+  .wallet-pro-fee-box span {
+    font-size: 11px !important;
+  }
+
+  .wallet-pro-fee-box strong {
+    font-size: 12px !important;
+  }
+
+  /* Primary wallet action */
+  .wallet-pro-primary-action {
+    font-size: 14px !important;
+    font-weight: 900 !important;
+    min-height: 50px !important;
+    letter-spacing: .2px !important;
+  }
+
+  .wallet-pro-message {
+    font-size: 13px !important;
+    line-height: 1.45 !important;
+  }
+
+  /* Security strip */
+  .wallet-pro-security-strip {
+    gap: 10px !important;
+  }
+
+  .wallet-pro-security-strip span {
+    font-size: 10px !important;
+  }
+
+  .wallet-pro-security-strip strong {
+    font-size: 12px !important;
+  }
+
+  /* History */
+  .wallet-pro-history-card .wallet-pro-card-header button {
+    font-size: 12px !important;
+  }
+
+  .wallet-pro-history-grid {
+    font-size: 12px !important;
+  }
+
+  .wallet-pro-history-grid span {
+    font-size: 11px !important;
+  }
+
+  .wallet-pro-history-grid strong,
+  .wallet-pro-history-grid b {
+    font-size: 12px !important;
+  }
+
+  /* Wallet security card */
+  .wallet-pro-security-card strong {
+    font-size: 16px !important;
+  }
+
+  .wallet-pro-security-card span {
+    font-size: 12px !important;
+    line-height: 1.4 !important;
+  }
+
+  .wallet-pro-security-card button {
+    font-size: 12px !important;
+    min-height: 38px !important;
+  }
+
+  /* Settings drawer */
+  .wallet-pro-settings-header strong {
+    font-size: 18px !important;
+  }
+
+  .wallet-pro-settings-header span {
+    font-size: 12px !important;
+    line-height: 1.4 !important;
+  }
+
+  .wallet-pro-setting-group > strong {
+    font-size: 14px !important;
+  }
+
+  .wallet-pro-setting-group label {
+    font-size: 13px !important;
+    line-height: 1.4 !important;
+  }
+
+  .wallet-pro-setting-group input[type="checkbox"] {
+    width: 18px !important;
+    height: 18px !important;
+  }
+
+  /* Very small phones */
+  @media (max-width: 380px) {
+    .wallet-pro-screen .wallet-pro-header h3 {
+      font-size: 20px !important;
+    }
+
+    .wallet-pro-total strong {
+      font-size: 27px !important;
+    }
+
+    .wallet-pro-actions button {
+      font-size: 13px !important;
+    }
+
+    .wallet-pro-wallet-tabs button {
+      font-size: 12px !important;
+      padding-left: 9px !important;
+      padding-right: 9px !important;
+    }
+
+    .wallet-pro-asset-row {
+      font-size: 12px !important;
+    }
+  }
+}
+
+/* =========================================================
+   END WALLET PLUS V6
+   ========================================================= */
+
+
+/* =========================================================
+   BITLORA WALLET PLUS V7 — SETTINGS BUTTON + SMALL TEXT FIX
+   ========================================================= */
+@media (max-width: 767px) {
+
+  /* Settings button — same premium filled treatment as wallet tabs */
+  .wallet-pro-settings {
+    appearance: none !important;
+    border: 1px solid rgba(255,255,255,.12) !important;
+    border-radius: 10px !important;
+    background: rgba(255,255,255,.07) !important;
+    color: #fff !important;
+    font-size: 13px !important;
+    font-weight: 800 !important;
+    line-height: 1 !important;
+    min-height: 40px !important;
+    padding: 10px 13px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    white-space: nowrap !important;
+    box-shadow: 0 4px 14px rgba(0,0,0,.18) !important;
+  }
+
+  .wallet-pro-settings:active {
+    transform: scale(.97) !important;
+  }
+
+  /* Wallet section micro typography cleanup */
+  .wallet-pro-screen p,
+  .wallet-pro-screen small {
+    font-size: 12px !important;
+  }
+
+  .wallet-pro-screen .wallet-pro-header p {
+    font-size: 13px !important;
+  }
+
+  /* Balance labels */
+  .wallet-pro-balance-stats div span {
+    font-size: 12px !important;
+  }
+
+  .wallet-pro-balance-stats div strong {
+    font-size: 14px !important;
+  }
+
+  /* Asset table text */
+  .wallet-pro-asset-head span {
+    font-size: 10px !important;
+  }
+
+  .wallet-pro-asset-row > span,
+  .wallet-pro-asset-row > strong {
+    font-size: 13px !important;
+  }
+
+  .wallet-pro-asset-name span {
+    font-size: 12px !important;
+  }
+
+  /* Form helper / secondary text */
+  .wallet-pro-form label small,
+  .wallet-pro-form .hint,
+  .wallet-pro-form .helper {
+    font-size: 12px !important;
+    line-height: 1.4 !important;
+  }
+
+  /* Address and fee information */
+  .wallet-pro-address-box span {
+    font-size: 12px !important;
+  }
+
+  .wallet-pro-address-box strong {
+    font-size: 14px !important;
+  }
+
+  .wallet-pro-address-box small {
+    font-size: 12px !important;
+  }
+
+  .wallet-pro-fee-box span {
+    font-size: 12px !important;
+  }
+
+  .wallet-pro-fee-box strong {
+    font-size: 13px !important;
+  }
+
+  /* Security strip */
+  .wallet-pro-security-strip span {
+    font-size: 11px !important;
+  }
+
+  .wallet-pro-security-strip strong {
+    font-size: 13px !important;
+  }
+
+  /* History */
+  .wallet-pro-history-grid {
+    font-size: 13px !important;
+  }
+
+  .wallet-pro-history-grid span {
+    font-size: 12px !important;
+  }
+
+  .wallet-pro-history-grid strong,
+  .wallet-pro-history-grid b {
+    font-size: 13px !important;
+  }
+
+  /* Security card */
+  .wallet-pro-security-card span {
+    font-size: 13px !important;
+  }
+
+  .wallet-pro-security-card button {
+    font-size: 13px !important;
+  }
+
+  /* Settings drawer text */
+  .wallet-pro-settings-header span {
+    font-size: 13px !important;
+  }
+
+  .wallet-pro-setting-group > strong {
+    font-size: 15px !important;
+  }
+
+  .wallet-pro-setting-group label {
+    font-size: 14px !important;
+  }
+
+  /* Small phone */
+  @media (max-width: 380px) {
+    .wallet-pro-settings {
+      font-size: 12px !important;
+      min-height: 38px !important;
+      padding: 9px 11px !important;
+    }
+
+    .wallet-pro-security-strip span,
+    .wallet-pro-asset-head span {
+      font-size: 10px !important;
+    }
+
+    .wallet-pro-history-grid span {
+      font-size: 11px !important;
+    }
+  }
+}
+
+/* =========================================================
+   END WALLET PLUS V7
+   ========================================================= */
+
+/* =========================================================
+   BITLORA WALLET PLUS V8 — SOLID SETTINGS BUTTON
+   Match Wallet Overview / Spot / Futures / Funding / Earn
+   ========================================================= */
+@media (max-width: 767px) {
+
+  .wallet-pro-header .wallet-pro-settings {
+    appearance: none !important;
+    -webkit-appearance: none !important;
+
+    background: linear-gradient(
+      180deg,
+      rgba(255,255,255,.16) 0%,
+      rgba(255,255,255,.10) 100%
+    ) !important;
+
+    border: 1px solid rgba(255,255,255,.20) !important;
+    color: #ffffff !important;
+
+    border-radius: 10px !important;
+    min-height: 40px !important;
+    padding: 10px 14px !important;
+
+    font-size: 13px !important;
+    font-weight: 800 !important;
+    line-height: 1 !important;
+
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+
+    opacity: 1 !important;
+    visibility: visible !important;
+
+    box-shadow:
+      inset 0 1px 0 rgba(255,255,255,.08),
+      0 4px 14px rgba(0,0,0,.22) !important;
+  }
+
+  .wallet-pro-header .wallet-pro-settings:hover,
+  .wallet-pro-header .wallet-pro-settings:focus,
+  .wallet-pro-header .wallet-pro-settings:active {
+    background: linear-gradient(
+      180deg,
+      rgba(255,255,255,.20) 0%,
+      rgba(255,255,255,.13) 100%
+    ) !important;
+
+    border-color: rgba(255,255,255,.26) !important;
+    color: #ffffff !important;
+  }
+
+  .wallet-pro-header .wallet-pro-settings:active {
+    transform: scale(.97) !important;
+  }
+
+  @media (max-width: 380px) {
+    .wallet-pro-header .wallet-pro-settings {
+      min-height: 38px !important;
+      padding: 9px 12px !important;
+      font-size: 12px !important;
+    }
+  }
+}
+
+/* =========================================================
+   END WALLET PLUS V8
+   ========================================================= */
+
+/* =========================================================
+   BITLORA WALLET PLUS V9 — SETTINGS MATCH ACTIVE TAB
+   Exact same filled blue treatment as Overview / Spot / Futures
+   ========================================================= */
+@media (max-width:700px){
+
+  .wallet-pro-header .wallet-pro-settings{
+    appearance:none !important;
+    -webkit-appearance:none !important;
+
+    background:linear-gradient(135deg,#1766c2,#268cff) !important;
+    border:1px solid rgba(102,183,255,.35) !important;
+    color:#eef7ff !important;
+
+    border-radius:9px !important;
+    min-height:34px !important;
+    padding:0 12px !important;
+
+    display:inline-flex !important;
+    align-items:center !important;
+    justify-content:center !important;
+
+    font-size:10px !important;
+    font-weight:900 !important;
+    line-height:1 !important;
+    white-space:nowrap !important;
+
+    box-shadow:0 5px 14px rgba(38,140,255,.20) !important;
+    opacity:1 !important;
+  }
+
+  .wallet-pro-header .wallet-pro-settings:hover,
+  .wallet-pro-header .wallet-pro-settings:focus,
+  .wallet-pro-header .wallet-pro-settings:active{
+    background:linear-gradient(135deg,#1766c2,#268cff) !important;
+    border-color:rgba(102,183,255,.45) !important;
+    color:#ffffff !important;
+  }
+
+  .wallet-pro-header .wallet-pro-settings:active{
+    transform:scale(.97) !important;
+  }
+
+  @media(max-width:380px){
+    .wallet-pro-header .wallet-pro-settings{
+      min-height:34px !important;
+      padding:0 10px !important;
+      font-size:9px !important;
+    }
+  }
+}
+
+/* =========================================================
+   END WALLET PLUS V9
+   ========================================================= */
+
+/* =========================================================
+   BITLORA WALLET SETTINGS — INLINE PREMIUM MOBILE V1
+   Mobile only — desktop untouched
+   ========================================================= */
+
+@media (max-width:700px){
+
+  .wallet-inline-settings{
+    width:100% !important;
+    margin:10px 0 0 !important;
+    padding:14px !important;
+    box-sizing:border-box !important;
+    border:1px solid rgba(67,137,205,.22) !important;
+    border-radius:14px !important;
+    background:linear-gradient(180deg,#0b1724,#08111b) !important;
+    box-shadow:0 10px 28px rgba(0,0,0,.24) !important;
+    overflow:hidden !important;
+  }
+
+  .wallet-inline-settings-header{
+    display:flex !important;
+    align-items:center !important;
+    justify-content:space-between !important;
+    gap:10px !important;
+    padding:2px 0 13px !important;
+    margin-bottom:12px !important;
+    border-bottom:1px solid rgba(90,145,190,.16) !important;
+  }
+
+  .wallet-inline-settings-header > div{
+    min-width:0 !important;
+    display:flex !important;
+    flex-direction:column !important;
+    gap:4px !important;
+  }
+
+  .wallet-inline-settings-header strong{
+    color:#eef7ff !important;
+    font-size:13px !important;
+    font-weight:900 !important;
+    letter-spacing:.2px !important;
+  }
+
+  .wallet-inline-settings-header span{
+    color:#70869a !important;
+    font-size:9px !important;
+    line-height:1.35 !important;
+  }
+
+  .wallet-inline-settings-header > button{
+    flex:0 0 30px !important;
+    width:30px !important;
+    height:30px !important;
+    padding:0 !important;
+    border:1px solid rgba(96,151,199,.22) !important;
+    border-radius:9px !important;
+    background:#101e2b !important;
+    color:#9db2c4 !important;
+    font-size:18px !important;
+    font-weight:500 !important;
+    line-height:1 !important;
+    display:flex !important;
+    align-items:center !important;
+    justify-content:center !important;
+  }
+
+  .wallet-pro-setting-group{
+    margin:0 0 11px !important;
+    padding:11px !important;
+    border:1px solid rgba(75,133,180,.13) !important;
+    border-radius:11px !important;
+    background:rgba(14,28,41,.72) !important;
+  }
+
+  .wallet-pro-setting-group:last-child{
+    margin-bottom:0 !important;
+  }
+
+  .wallet-pro-setting-group > strong{
+    display:block !important;
+    margin:0 0 8px !important;
+    color:#80c3ff !important;
+    font-size:9px !important;
+    font-weight:900 !important;
+    text-transform:uppercase !important;
+    letter-spacing:.65px !important;
+  }
+
+  .wallet-pro-setting-group label{
+    min-height:36px !important;
+    margin:0 !important;
+    padding:7px 2px !important;
+    display:flex !important;
+    align-items:center !important;
+    gap:9px !important;
+    box-sizing:border-box !important;
+    border-top:1px solid rgba(85,137,176,.09) !important;
+    color:#c4d2df !important;
+    font-size:10px !important;
+    font-weight:700 !important;
+    line-height:1.25 !important;
+  }
+
+  .wallet-pro-setting-group label:first-of-type{
+    border-top:0 !important;
+  }
+
+  .wallet-pro-setting-group input[type="checkbox"]{
+    appearance:none !important;
+    -webkit-appearance:none !important;
+    flex:0 0 18px !important;
+    width:18px !important;
+    height:18px !important;
+    margin:0 !important;
+    border:1px solid #3b566d !important;
+    border-radius:6px !important;
+    background:#0a1520 !important;
+    position:relative !important;
+  }
+
+  .wallet-pro-setting-group input[type="checkbox"]:checked{
+    border-color:#2d8cff !important;
+    background:linear-gradient(135deg,#1766c2,#268cff) !important;
+    box-shadow:0 3px 10px rgba(38,140,255,.20) !important;
+  }
+
+  .wallet-pro-setting-group input[type="checkbox"]:checked::after{
+    content:"✓" !important;
+    position:absolute !important;
+    left:50% !important;
+    top:50% !important;
+    transform:translate(-50%,-53%) !important;
+    color:#fff !important;
+    font-size:11px !important;
+    font-weight:900 !important;
+  }
+
+  .wallet-inline-settings-toggle{
+    appearance:none !important;
+    -webkit-appearance:none !important;
+    min-height:34px !important;
+    padding:0 12px !important;
+    border:1px solid rgba(102,183,255,.35) !important;
+    border-radius:9px !important;
+    background:linear-gradient(135deg,#1766c2,#268cff) !important;
+    color:#eef7ff !important;
+    font-size:9px !important;
+    font-weight:900 !important;
+    line-height:1 !important;
+    white-space:nowrap !important;
+    box-shadow:0 5px 14px rgba(38,140,255,.20) !important;
+  }
+
+  .wallet-inline-settings-toggle:active{
+    transform:scale(.97) !important;
+  }
+
+  .wallet-pro-security-card{
+    gap:10px !important;
+    flex-wrap:wrap !important;
+  }
+
+  .wallet-pro-security-card > div{
+    min-width:0 !important;
+    flex:1 1 150px !important;
+  }
+
+  @media(max-width:380px){
+    .wallet-inline-settings{
+      padding:11px !important;
+    }
+
+    .wallet-inline-settings-header strong{
+      font-size:12px !important;
+    }
+
+    .wallet-inline-settings-toggle{
+      min-height:32px !important;
+      padding:0 9px !important;
+      font-size:8px !important;
+    }
+
+    .wallet-pro-setting-group{
+      padding:9px !important;
+    }
+
+    .wallet-pro-setting-group label{
+      font-size:9px !important;
+    }
+  }
+}
+
+
+/* =========================================================
+   WALLET HISTORY — PREMIUM MOBILE TEXT FIX
+   Mobile only — Desktop untouched
+   ========================================================= */
+@media (max-width: 700px) {
+
+  .wallet-pro-history-card .wallet-pro-card-header strong {
+    font-size: 15px !important;
+    line-height: 1.25 !important;
+  }
+
+  .wallet-pro-history-card .wallet-pro-card-header span {
+    font-size: 11px !important;
+    line-height: 1.35 !important;
+  }
+
+  .wallet-pro-history-card .wallet-pro-card-header button {
+    font-size: 12px !important;
+  }
+
+  .wallet-pro-history-grid {
+    font-size: 12px !important;
+    line-height: 1.35 !important;
+    gap: 0 !important;
+  }
+
+  .wallet-pro-history-grid > span {
+    font-size: 11px !important;
+    line-height: 1.3 !important;
+    font-weight: 800 !important;
+    white-space: nowrap !important;
+  }
+
+  .wallet-pro-history-grid > strong {
+    font-size: 12px !important;
+    line-height: 1.35 !important;
+    font-weight: 800 !important;
+    white-space: nowrap !important;
+  }
+
+  .wallet-pro-history-grid > b {
+    font-size: 11px !important;
+    line-height: 1.35 !important;
+    font-weight: 800 !important;
+    white-space: nowrap !important;
+  }
+
+  .wallet-pro-history-grid > * {
+    padding: 10px 8px !important;
+  }
+}

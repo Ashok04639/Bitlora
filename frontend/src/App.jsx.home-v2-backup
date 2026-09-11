@@ -854,17 +854,10 @@ const [orderBookSide, setOrderBookSide] = useState("All");
           <section className="home-balance-card">
             <div className="home-balance-top">
               <div>
-                <span className="home-eyebrow">TOTAL PORTFOLIO BALANCE</span>
+                <span className="home-eyebrow">Portfolio Balance</span>
                 <h2>{formattedBalance}</h2>
               </div>
-
-              <button
-                type="button"
-                className="home-balance-menu"
-                aria-label="Balance options"
-              >
-                •••
-              </button>
+              <button type="button" className="home-balance-menu">•••</button>
             </div>
 
             <div className="home-balance-meta">
@@ -882,9 +875,8 @@ const [orderBookSide, setOrderBookSide] = useState("All");
             <div className="home-section-heading">
               <div>
                 <h3>Quick Actions</h3>
-                <p>Fast access to your account</p>
+                <p>Manage your account instantly</p>
               </div>
-              <span className="home-section-badge">4 ACTIONS</span>
             </div>
 
             <div className="home-action-grid">
@@ -2351,7 +2343,13 @@ const [orderBookSide, setOrderBookSide] = useState("All");
         <p>Manage assets, deposits, withdrawals and transfers</p>
       </div>
 
-
+      <button
+        type="button"
+        className="wallet-pro-settings"
+        onClick={() => setWalletSettingsOpen(true)}
+      >
+        ⚙ Settings
+      </button>
 
     </div>
 
@@ -2403,6 +2401,66 @@ const [orderBookSide, setOrderBookSide] = useState("All");
     </div>
 
 
+    <div className="wallet-pro-wallet-tabs">
+
+      {[
+        "Overview",
+        "Spot",
+        "Futures",
+        "Funding",
+        "Earn"
+      ].map((tab) => (
+        <button
+          type="button"
+          key={tab}
+          className={walletActiveTab === tab ? "active" : ""}
+          onClick={() => setWalletActiveTab(tab)}
+        >
+          {tab}
+        </button>
+      ))}
+
+    </div>
+
+
+    <div className="wallet-pro-actions">
+
+      <button
+        type="button"
+        className="deposit-action"
+        onClick={() => {
+          setWalletAction("Deposit");
+          setWalletMessage("");
+        }}
+      >
+        ↓ Deposit
+      </button>
+
+      <button
+        type="button"
+        className="withdraw-action"
+        onClick={() => {
+          setWalletAction("Withdraw");
+          setWalletMessage("");
+        }}
+      >
+        ↑ Withdraw
+      </button>
+
+      <button
+        type="button"
+        className="transfer-action"
+        onClick={() => {
+          setWalletAction("Transfer");
+          setWalletMessage("");
+        }}
+      >
+        ⇄ Transfer
+      </button>
+
+    </div>
+
+
     <div className="wallet-pro-main-grid">
 
 
@@ -2412,7 +2470,7 @@ const [orderBookSide, setOrderBookSide] = useState("All");
 
           <div>
             <strong>Assets</strong>
-
+            <span>Your cryptocurrency balances</span>
           </div>
 
           <input
@@ -2422,6 +2480,15 @@ const [orderBookSide, setOrderBookSide] = useState("All");
             onChange={(e) => setWalletSearch(e.target.value)}
           />
 
+        </div>
+
+
+        <div className="wallet-pro-asset-head">
+          <span>Asset</span>
+          <span>Total Balance</span>
+          <span>Available</span>
+          <span>Frozen</span>
+          <span>Value</span>
         </div>
 
 
@@ -2477,9 +2544,9 @@ const [orderBookSide, setOrderBookSide] = useState("All");
               key={action}
               className={walletAction === action ? "active" : ""}
               onClick={() => {
-                              setWalletAction(walletAction === action ? "" : action);
-                              setWalletMessage("");
-                            }}
+                setWalletAction(action);
+                setWalletMessage("");
+              }}
             >
               {action}
             </button>
@@ -2489,8 +2556,7 @@ const [orderBookSide, setOrderBookSide] = useState("All");
         </div>
 
 
-        {walletAction && (
-<div className="wallet-pro-form">
+        <div className="wallet-pro-form">
 
           <label>
             <span>Asset</span>
@@ -2675,7 +2741,6 @@ const [orderBookSide, setOrderBookSide] = useState("All");
           )}
 
         </div>
-        )}
 
       </div>
 
@@ -2751,7 +2816,8 @@ const [orderBookSide, setOrderBookSide] = useState("All");
     </div>
 
 
-        <div className="wallet-pro-security-card">
+    <div className="wallet-pro-security-card">
+
       <div>
         <strong>Wallet Security</strong>
         <span>Protect your assets and withdrawals</span>
@@ -2759,143 +2825,182 @@ const [orderBookSide, setOrderBookSide] = useState("All");
 
       <button
         type="button"
-        className="wallet-inline-settings-toggle"
-        onClick={() => setWalletSettingsOpen(!walletSettingsOpen)}
+        onClick={() => setWalletSettingsOpen(true)}
       >
-        ⚙ Wallet Settings
+        Manage Security
       </button>
+
     </div>
 
+
     {walletSettingsOpen && (
-      <div className="wallet-inline-settings">
-        <div className="wallet-inline-settings-header">
-          <div>
-            <strong>Wallet Settings</strong>
-            <span>Security, display and withdrawal preferences</span>
+
+      <div
+        className="wallet-pro-settings-overlay"
+        onClick={() => setWalletSettingsOpen(false)}
+      >
+
+        <div
+          className="wallet-pro-settings-drawer"
+          onClick={(e) => e.stopPropagation()}
+        >
+
+          <div className="wallet-pro-settings-header">
+
+            <div>
+              <strong>Wallet Settings</strong>
+              <span>Security, display and withdrawal preferences</span>
+            </div>
+
+            <button
+              type="button"
+              onClick={() => setWalletSettingsOpen(false)}
+            >
+              ×
+            </button>
+
           </div>
 
-          <button
-            type="button"
-            onClick={() => setWalletSettingsOpen(false)}
-          >
-            ×
-          </button>
+
+          <div className="wallet-pro-setting-group">
+
+            <strong>Security</strong>
+
+            <label>
+              <input
+                type="checkbox"
+                checked={walletConfirmWithdrawal}
+                onChange={(e) =>
+                  setWalletConfirmWithdrawal(e.target.checked)
+                }
+              />
+              Confirm withdrawals
+            </label>
+
+            <label>
+              <input
+                type="checkbox"
+                checked={walletWhitelistOnly}
+                onChange={(e) =>
+                  setWalletWhitelistOnly(e.target.checked)
+                }
+              />
+              Withdrawal whitelist only
+            </label>
+
+            <label>
+              <input
+                type="checkbox"
+                checked={walletNewAddressLock}
+                onChange={(e) =>
+                  setWalletNewAddressLock(e.target.checked)
+                }
+              />
+              New-address protection
+            </label>
+
+            <label>
+              <input type="checkbox" defaultChecked />
+              Require 2FA for withdrawal
+            </label>
+
+            <label>
+              <input type="checkbox" defaultChecked />
+              Email confirmation
+            </label>
+
+          </div>
+
+
+          <div className="wallet-pro-setting-group">
+
+            <strong>Display</strong>
+
+            <label>
+              <input
+                type="checkbox"
+                checked={walletShowUsd}
+                onChange={(e) =>
+                  setWalletShowUsd(e.target.checked)
+                }
+              />
+              Show USD estimated value
+            </label>
+
+            <label>
+              <input
+                type="checkbox"
+                checked={walletHideSmall}
+                onChange={(e) =>
+                  setWalletHideSmall(e.target.checked)
+                }
+              />
+              Hide small balances
+            </label>
+
+          </div>
+
+
+          <div className="wallet-pro-setting-group">
+
+            <strong>Withdrawal Protection</strong>
+
+            <label>
+              <input type="checkbox" defaultChecked />
+              Daily withdrawal limit
+            </label>
+
+            <label>
+              <input type="checkbox" defaultChecked />
+              Address risk screening
+            </label>
+
+            <label>
+              <input type="checkbox" defaultChecked />
+              Network validation
+            </label>
+
+            <label>
+              <input type="checkbox" defaultChecked />
+              Suspicious withdrawal protection
+            </label>
+
+          </div>
+
+
+          <div className="wallet-pro-setting-group">
+
+            <strong>Notifications</strong>
+
+            <label>
+              <input type="checkbox" defaultChecked />
+              Deposit notifications
+            </label>
+
+            <label>
+              <input type="checkbox" defaultChecked />
+              Withdrawal notifications
+            </label>
+
+            <label>
+              <input type="checkbox" defaultChecked />
+              Transfer notifications
+            </label>
+
+            <label>
+              <input type="checkbox" defaultChecked />
+              Security alerts
+            </label>
+
+          </div>
+
         </div>
 
-        <div className="wallet-pro-setting-group">
-          <strong>Security</strong>
-
-          <label>
-            <input
-              type="checkbox"
-              checked={walletConfirmWithdrawal}
-              onChange={(e) => setWalletConfirmWithdrawal(e.target.checked)}
-            />
-            Confirm withdrawals
-          </label>
-
-          <label>
-            <input
-              type="checkbox"
-              checked={walletWhitelistOnly}
-              onChange={(e) => setWalletWhitelistOnly(e.target.checked)}
-            />
-            Withdrawal whitelist only
-          </label>
-
-          <label>
-            <input
-              type="checkbox"
-              checked={walletNewAddressLock}
-              onChange={(e) => setWalletNewAddressLock(e.target.checked)}
-            />
-            New-address protection
-          </label>
-
-          <label>
-            <input type="checkbox" defaultChecked />
-            Require 2FA for withdrawal
-          </label>
-
-          <label>
-            <input type="checkbox" defaultChecked />
-            Email confirmation
-          </label>
-        </div>
-
-        <div className="wallet-pro-setting-group">
-          <strong>Display</strong>
-
-          <label>
-            <input
-              type="checkbox"
-              checked={walletShowUsd}
-              onChange={(e) => setWalletShowUsd(e.target.checked)}
-            />
-            Show USD estimated value
-          </label>
-
-          <label>
-            <input
-              type="checkbox"
-              checked={walletHideSmall}
-              onChange={(e) => setWalletHideSmall(e.target.checked)}
-            />
-            Hide small balances
-          </label>
-        </div>
-
-        <div className="wallet-pro-setting-group">
-          <strong>Withdrawal Protection</strong>
-
-          <label>
-            <input type="checkbox" defaultChecked />
-            Daily withdrawal limit
-          </label>
-
-          <label>
-            <input type="checkbox" defaultChecked />
-            Address risk screening
-          </label>
-
-          <label>
-            <input type="checkbox" defaultChecked />
-            Network validation
-          </label>
-
-          <label>
-            <input type="checkbox" defaultChecked />
-            Suspicious withdrawal protection
-          </label>
-        </div>
-
-        <div className="wallet-pro-setting-group">
-          <strong>Notifications</strong>
-
-          <label>
-            <input type="checkbox" defaultChecked />
-            Deposit notifications
-          </label>
-
-          <label>
-            <input type="checkbox" defaultChecked />
-            Withdrawal notifications
-          </label>
-
-          <label>
-            <input type="checkbox" defaultChecked />
-            Transfer notifications
-          </label>
-
-          <label>
-            <input type="checkbox" defaultChecked />
-            Security alerts
-          </label>
-        </div>
       </div>
+
     )}
 
-</section>
+  </section>
 )}
 
 <nav className="bottom">
