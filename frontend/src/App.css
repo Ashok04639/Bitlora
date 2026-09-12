@@ -710,374 +710,6 @@ button {
 
 
 /* Trade Screen */
-.trade-screen {
-  padding: 18px 0 105px;
-}
-
-.trade-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 14px;
-  border: 1px solid #263149;
-  border-radius: 16px;
-  background: #151c2b;
-}
-
-.trade-header > div {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-}
-
-.trade-header strong {
-  color: #ffffff;
-  font-size: 16px;
-}
-
-.trade-header span {
-  color: #68758d;
-  font-size: 10px;
-}
-
-.trade-pair-button {
-  width: 34px;
-  height: 34px;
-  border: 1px solid #263149;
-  border-radius: 10px;
-  background: #202a3f;
-  color: #ffffff;
-}
-
-.trade-price-card {
-  display: flex;
-  align-items: flex-end;
-  justify-content: space-between;
-  margin: 12px 0;
-  padding: 14px 2px;
-}
-
-.trade-price-card > div {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-}
-
-.trade-price-card strong {
-  color: #ffffff;
-  font-size: 21px;
-  white-space: nowrap;
-}
-
-.trade-price-card span {
-  font-size: 10px;
-}
-
-.trade-price-card > span {
-  font-weight: 700;
-}
-
-.trade-layout {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
-.trade-panel,
-.order-book {
-  padding: 14px;
-  border: 1px solid #263149;
-  border-radius: 16px;
-  background: #151c2b;
-}
-
-.trade-tabs,
-.order-tabs {
-  display: grid;
-  gap: 6px;
-}
-
-.trade-tabs {
-  grid-template-columns: 1fr 1fr;
-  margin-bottom: 14px;
-}
-
-.order-tabs {
-  grid-template-columns: 1fr 1fr;
-  margin-bottom: 14px;
-}
-
-.trade-tabs button,
-.order-tabs button {
-  border: 0;
-  border-radius: 10px;
-  background: transparent;
-  color: #68758d;
-  padding: 10px;
-  font-size: 12px;
-  font-weight: 700;
-}
-
-.trade-tabs button.active {
-  background: #173b2c;
-  color: #43dc91;
-}
-
-.order-tabs button.active {
-  background: #202a3f;
-  color: #ffffff;
-}
-
-.order-field {
-  margin-bottom: 10px;
-}
-
-.order-field label {
-  display: block;
-  margin-bottom: 6px;
-  color: #8f9bb3;
-  font-size: 10px;
-}
-
-.order-field > div {
-  display: flex;
-  align-items: center;
-  height: 44px;
-  padding: 0 12px;
-  border: 1px solid #263149;
-  border-radius: 10px;
-  background: #101724;
-}
-
-.order-field input {
-  width: 100%;
-  border: 0;
-  outline: 0;
-  background: transparent;
-  color: #ffffff;
-  font-size: 12px;
-}
-
-.order-field input::placeholder {
-  color: #68758d;
-}
-
-.order-field > div span {
-  color: #8f9bb3;
-  font-size: 10px;
-  font-weight: 600;
-}
-
-.trade-balance {
-  display: flex;
-  justify-content: space-between;
-  margin: 12px 0;
-}
-
-.trade-balance span {
-  color: #68758d;
-  font-size: 10px;
-}
-
-.trade-balance strong {
-  color: #ffffff;
-  font-size: 10px;
-}
-
-.buy-button {
-  width: 100%;
-  border: 0;
-  border-radius: 11px;
-  background: #43dc91;
-  color: #07130d;
-  padding: 13px;
-  font-size: 13px;
-  font-weight: 800;
-}
-
-.order-book-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 12px;
-}
-
-.order-book-header strong {
-  color: #ffffff;
-  font-size: 13px;
-}
-
-.order-book-header span {
-  color: #68758d;
-  font-size: 9px;
-}
-
-.order-book-rows {
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-}
-
-.order-book-rows > div {
-  display: flex;
-  justify-content: space-between;
-  padding: 7px 4px;
-  color: #8f9bb3;
-  font-size: 10px;
-}
-
-.order-book-current {
-  margin: 5px 0;
-  border-top: 1px solid #263149;
-  border-bottom: 1px solid #263149;
-}
-
-.order-book-current strong {
-  color: #43dc91;
-  font-size: 13px;
-}
-
-.order-book-current span {
-  color: #68758d;
-  font-size: 9px;
-}
-
-@media (min-width: 700px) {
-  .trade-layout {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    align-items: start;
-  }
-}
-
-
-@media (max-width: 699px) {
-  .trade-price-card {
-    align-items: center;
-    gap: 10px;
-  }
-
-  .trade-price-card > div {
-    min-width: 0;
-    flex: 1;
-  }
-
-  .trade-price-card strong {
-    font-size: 20px;
-    letter-spacing: -0.4px;
-  }
-
-  .trade-price-card > span {
-    flex: 0 0 auto;
-  }
-}
-
-@media (max-width: 699px) {
-  .trade-price-card > div {
-    padding-left: 6px;
-  }
-}
-
-@media (max-width: 699px) {
-  .trade-price-card > div {
-    padding-left: 10px;
-  }
-}
-
-@media (max-width: 699px) {
-  .trade-price-card > div {
-    padding-left: 26px;
-  }
-}
-
-.favorite-button {
-  color: #68758d;
-  transition: color 0.15s ease, transform 0.15s ease;
-}
-
-.favorite-button.active {
-  color: #63b5ff;
-}
-
-/* Market Overview 3x3 Grid */
-.section .cards {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 10px;
-}
-
-.section .cards .market {
-  min-width: 0;
-  flex-direction: column;
-  align-items: stretch;
-  gap: 12px;
-}
-
-.section .cards .market-left {
-  min-width: 0;
-}
-
-.section .cards .market-value {
-  align-items: flex-start;
-}
-
-@media (max-width: 380px) {
-  .section .cards {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 7px;
-  }
-
-  .section .cards .market {
-    padding: 10px 8px;
-  }
-}
-
-.section .cards .market {
-  cursor: pointer;
-  transition: transform 0.15s ease, border-color 0.15s ease;
-}
-
-.section .cards .market:hover {
-  transform: translateY(-1px);
-  border-color: #3a4863;
-}
-
-/* Buy Options */
-.buy-options {
-  display: grid;
-  gap: 8px;
-  margin: -4px 0 16px;
-  padding: 10px;
-  border: 1px solid #263149;
-  border-radius: 14px;
-  background: #151c2b;
-}
-
-.buy-options button {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  width: 100%;
-  min-height: 44px;
-  padding: 10px 12px;
-  border: 1px solid #263149;
-  border-radius: 10px;
-  background: #202a3f;
-  color: #ffffff;
-  font-size: 12px;
-  font-weight: 600;
-  text-align: left;
-}
-
-.buy-options button span {
-  font-size: 17px;
-}
-
-.buy-options button:active {
-  transform: scale(0.98);
-}
-
-/* Binance-style Trade Screen */
 .trade-screen{padding:0 0 105px;background:#0b0f16}
 .trade-header{display:flex;align-items:center;justify-content:space-between;min-height:58px;padding:10px 0;border-bottom:1px solid #20283a}
 .trade-pair-info{display:flex;flex-direction:column;gap:4px}
@@ -13465,3 +13097,1136 @@ input:focus {
     padding: 10px 8px !important;
   }
 }
+
+/* =========================================================
+   BITLORA PRO TRADE UI — SAFE VISUAL LAYER
+   Does not replace existing trading logic.
+   ========================================================= */
+
+.trade-pro-screen {
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 18px;
+  box-sizing: border-box;
+}
+
+.trade-pro-screen * {
+  box-sizing: border-box;
+}
+
+.tp-top,
+.tp-hero {
+  background:
+    radial-gradient(circle at 80% 0%, rgba(0,82,255,.14), transparent 35%),
+    linear-gradient(145deg, #171b21, #101318);
+  border: 1px solid #2b313a;
+  border-radius: 14px;
+  box-shadow: 0 12px 35px rgba(0,0,0,.28);
+}
+
+.tp-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 16px 18px;
+  margin-bottom: 12px;
+}
+
+.tp-pair {
+  font-size: 21px;
+  font-weight: 900;
+  letter-spacing: .2px;
+}
+
+.tp-sub {
+  color: #848e9c;
+  font-size: 10px;
+  letter-spacing: .7px;
+}
+
+.tp-live {
+  color: #0ecb81;
+  font-size: 11px;
+  font-weight: 800;
+}
+
+.tp-hero {
+  padding: 16px;
+  margin-bottom: 12px;
+}
+
+.tp-price {
+  font-size: clamp(25px, 4vw, 36px);
+  font-weight: 900;
+  letter-spacing: -.8px;
+}
+
+.tp-change {
+  font-size: 15px;
+  font-weight: 900;
+}
+
+.tp-chart {
+  min-height: 330px;
+  border-radius: 12px;
+  box-shadow: inset 0 0 35px rgba(0,0,0,.35);
+}
+
+.tp-trading-grid {
+  gap: 12px !important;
+}
+
+.tp-book,
+.tp-order,
+.tp-history {
+  box-shadow: 0 10px 28px rgba(0,0,0,.22);
+  transition: border-color .2s ease, transform .2s ease;
+}
+
+.tp-book:hover,
+.tp-order:hover {
+  border-color: #3b4350;
+}
+
+.tp-side button,
+.tp-order-tabs button,
+.tp-percent button,
+.tp-book-controls button,
+.tp-time button {
+  transition: all .18s ease;
+}
+
+.tp-side button:hover,
+.tp-order-tabs button:hover,
+.tp-percent button:hover,
+.tp-book-controls button:hover,
+.tp-time button:hover {
+  border-color: #4b5563;
+  transform: translateY(-1px);
+}
+
+.tp-field-wrap {
+  min-height: 42px;
+}
+
+.tp-field input {
+  width: 100%;
+  font-size: 13px !important;
+}
+
+.tp-submit {
+  min-height: 44px;
+  font-size: 13px;
+  letter-spacing: .2px;
+  cursor: pointer;
+  transition: transform .18s ease, filter .18s ease;
+}
+
+.tp-submit:hover {
+  filter: brightness(1.08);
+  transform: translateY(-1px);
+}
+
+.tp-history {
+  overflow: hidden;
+}
+
+@media (max-width: 900px) {
+  .trade-pro-screen {
+    padding: 10px;
+  }
+
+  .tp-top {
+    align-items: flex-start;
+    padding: 13px;
+  }
+
+  .tp-chart {
+    min-height: 270px;
+  }
+}
+
+@media (max-width: 600px) {
+  .trade-pro-screen {
+    padding: 7px;
+  }
+
+  .tp-top {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 8px;
+  }
+
+  .tp-pair {
+    font-size: 18px;
+  }
+
+  .tp-chart {
+    min-height: 235px;
+  }
+
+  .tp-history-row {
+    grid-template-columns: 1fr 1fr !important;
+  }
+}
+
+
+/* ===== BITLORA TRADINGVIEW PRO CHART ===== */
+
+.tp-chart {
+  padding: 0 !important;
+  overflow: hidden;
+  background: #0b0e11 !important;
+  min-height: 420px;
+}
+
+.bitlora-tv-chart {
+  width: 100%;
+  height: 100%;
+  min-height: 420px;
+  background: #0b0e11;
+  overflow: hidden;
+}
+
+.bitlora-tv-chart iframe {
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-height: 420px;
+  border: 0;
+}
+
+@media (max-width: 900px) {
+  .tp-chart,
+  .bitlora-tv-chart,
+  .bitlora-tv-chart iframe {
+    min-height: 330px;
+  }
+}
+
+@media (max-width: 600px) {
+  .tp-chart,
+  .bitlora-tv-chart,
+  .bitlora-tv-chart iframe {
+    min-height: 280px;
+  }
+}
+
+
+/* =========================================================
+   BITLORA PRO — REAL TRADINGVIEW CHART
+   ========================================================= */
+
+.tp-chart {
+  padding: 0 !important;
+  min-height: 440px !important;
+  height: 440px !important;
+  overflow: hidden !important;
+  background: #0b0e11 !important;
+  border-radius: 12px !important;
+}
+
+.bitlora-tv-chart {
+  width: 100%;
+  height: 100%;
+  min-height: 440px;
+  background: #0b0e11;
+  overflow: hidden;
+}
+
+.bitlora-tv-chart iframe {
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-height: 440px;
+  border: 0;
+}
+
+@media (max-width: 900px) {
+  .tp-chart,
+  .bitlora-tv-chart,
+  .bitlora-tv-chart iframe {
+    min-height: 350px !important;
+    height: 350px !important;
+  }
+}
+
+@media (max-width: 600px) {
+  .tp-chart,
+  .bitlora-tv-chart,
+  .bitlora-tv-chart iframe {
+    min-height: 300px !important;
+    height: 300px !important;
+  }
+}
+
+
+/* ===== BITLORA REAL TRADINGVIEW CHART ===== */
+
+.trade-chart.bitlora-real-chart {
+  width: 100%;
+  min-height: 520px;
+  overflow: hidden;
+}
+
+.bitlora-tv-chart {
+  width: 100%;
+  height: 460px;
+  min-height: 460px;
+  overflow: hidden;
+  background: #0b0e11;
+  border-radius: 0 0 12px 12px;
+}
+
+.bitlora-tv-chart iframe {
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-height: 460px;
+  border: 0;
+}
+
+@media (max-width: 700px) {
+  .trade-chart.bitlora-real-chart {
+    min-height: 430px;
+  }
+
+  .bitlora-tv-chart {
+    height: 370px;
+    min-height: 370px;
+  }
+
+  .bitlora-tv-chart iframe {
+    min-height: 370px;
+  }
+}
+
+/* =========================================================
+   BITLORA PRO - REFERENCE TRADE LAYOUT
+   Visual layer only - existing React/API logic untouched
+   ========================================================= */
+
+.trade-screen{
+  background:#0b0e11 !important;
+  color:#eaecef;
+}
+
+/* Main 2-column trading workspace */
+.trade-workspace{
+  display:grid !important;
+  grid-template-columns:minmax(0,1fr) 310px !important;
+  gap:6px !important;
+  padding:6px 0 !important;
+  align-items:start !important;
+}
+
+/* Left chart/history side */
+.trade-market-section{
+  background:#151921 !important;
+  border:1px solid #262c36 !important;
+  border-radius:6px !important;
+  overflow:hidden !important;
+  min-width:0 !important;
+}
+
+/* Right orderbook + execution side */
+.trade-order-section{
+  background:transparent !important;
+  border:0 !important;
+  padding:0 !important;
+  min-width:0 !important;
+  display:flex !important;
+  flex-direction:column !important;
+  gap:6px !important;
+}
+
+/* =========================================================
+   ORDER BOOK
+   ========================================================= */
+
+.trade-order-section .order-book,
+.trade-order-section .order-book-wrapper{
+  background:#151921 !important;
+  border:1px solid #262c36 !important;
+  border-radius:6px !important;
+}
+
+.trade-order-section .order-book-label{
+  color:#eaecef !important;
+  font-size:13px !important;
+  font-weight:700 !important;
+  padding:10px !important;
+}
+
+.trade-order-section .order-book-columns{
+  color:#848e9c !important;
+  font-size:10px !important;
+  padding:6px 10px !important;
+}
+
+.trade-order-section .order-book-row{
+  min-height:23px !important;
+  padding:3px 10px !important;
+  font-size:10px !important;
+}
+
+.trade-order-section .ask,
+.trade-order-section .sell,
+.trade-order-section .asks{
+  color:#f6465d !important;
+}
+
+.trade-order-section .bid,
+.trade-order-section .buy,
+.trade-order-section .bids{
+  color:#0ecb81 !important;
+}
+
+/* =========================================================
+   BUY / SELL EXECUTION PANEL
+   ========================================================= */
+
+.trade-order-section .trade-form,
+.trade-order-section .trade-panel,
+.trade-order-section .execution-card{
+  background:#151921 !important;
+  border:1px solid #262c36 !important;
+  border-radius:6px !important;
+}
+
+/* Buy / Sell tabs */
+.trade-order-section .trade-side-tabs,
+.trade-order-section .side-mode-tabs{
+  display:grid !important;
+  grid-template-columns:1fr 1fr !important;
+  gap:6px !important;
+  padding:10px !important;
+  margin:0 !important;
+}
+
+.trade-order-section .trade-side-tabs button,
+.trade-order-section .side-mode-tabs button{
+  min-height:38px !important;
+  border:0 !important;
+  border-radius:4px !important;
+  background:#1e2329 !important;
+  color:#848e9c !important;
+  font-size:12px !important;
+  font-weight:700 !important;
+}
+
+.trade-order-section .trade-side-tabs button.active:first-child,
+.trade-order-section .side-mode-tabs .buy-mode.active{
+  background:#0ecb81 !important;
+  color:#fff !important;
+}
+
+.trade-order-section .trade-side-tabs button.active:last-child,
+.trade-order-section .side-mode-tabs .sell-mode.active{
+  background:#f6465d !important;
+  color:#fff !important;
+}
+
+/* Limit / Market */
+.trade-order-section .order-type-tabs{
+  display:flex !important;
+  gap:20px !important;
+  padding:8px 10px !important;
+  border-bottom:1px solid #262c36 !important;
+}
+
+.trade-order-section .order-type-tabs button{
+  background:none !important;
+  border:0 !important;
+  color:#848e9c !important;
+  font-size:11px !important;
+}
+
+.trade-order-section .order-type-tabs button.active{
+  color:#eaecef !important;
+}
+
+/* Input boxes */
+.trade-order-section .order-field{
+  margin:8px 10px !important;
+  background:#1e2329 !important;
+  border:1px solid #262c36 !important;
+  border-radius:4px !important;
+}
+
+.trade-order-section .order-field input{
+  background:transparent !important;
+  border:0 !important;
+  color:#eaecef !important;
+  min-height:38px !important;
+  font-size:12px !important;
+}
+
+/* Percentage buttons */
+.trade-order-section .percentage-buttons,
+.trade-order-section .percent-grid{
+  display:grid !important;
+  grid-template-columns:repeat(4,1fr) !important;
+  gap:4px !important;
+  margin:8px 10px !important;
+}
+
+.trade-order-section .percentage-buttons button,
+.trade-order-section .percent-grid button{
+  background:#1e2329 !important;
+  border:1px solid #262c36 !important;
+  color:#848e9c !important;
+  border-radius:3px !important;
+  min-height:27px !important;
+  font-size:10px !important;
+}
+
+.trade-order-section .percentage-buttons button:hover,
+.trade-order-section .percent-grid button:hover{
+  color:#eaecef !important;
+  border-color:#5b6675 !important;
+}
+
+/* Balance */
+.trade-order-section .trade-balance,
+.trade-order-section .available-balance-row{
+  padding:8px 10px !important;
+  color:#848e9c !important;
+  font-size:10px !important;
+}
+
+.trade-order-section .trade-balance strong,
+.trade-order-section .available-balance-row strong{
+  color:#eaecef !important;
+}
+
+/* Buy / Sell submit */
+.trade-order-section .buy-button,
+.trade-order-section .action-submit-btn{
+  width:calc(100% - 20px) !important;
+  margin:8px 10px 12px !important;
+  min-height:42px !important;
+  border:0 !important;
+  border-radius:4px !important;
+  font-size:13px !important;
+  font-weight:700 !important;
+}
+
+.trade-order-section .buy-button{
+  background:#0ecb81 !important;
+  color:#fff !important;
+}
+
+.trade-order-section .sell-button,
+.trade-order-section .sell-theme-btn{
+  background:#f6465d !important;
+  color:#fff !important;
+}
+
+/* =========================================================
+   OPEN ORDERS / HISTORY
+   ========================================================= */
+
+.trade-orders{
+  background:#151921 !important;
+  border-top:1px solid #262c36 !important;
+  padding:12px 10px !important;
+}
+
+.trade-orders button{
+  color:#848e9c !important;
+  background:none !important;
+  border:0 !important;
+}
+
+.trade-orders button.active{
+  color:#eaecef !important;
+}
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media(max-width:900px){
+  .trade-workspace{
+    grid-template-columns:1fr !important;
+  }
+
+  .trade-order-section{
+    width:100% !important;
+  }
+}
+
+
+/* FINAL DESKTOP TRADE LAYOUT */
+@media (min-width: 761px) {
+  .trade-workspace {
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) minmax(320px, 380px) !important;
+    gap: 12px !important;
+    align-items: start !important;
+  }
+
+  .trade-workspace .trade-order-section {
+    grid-column: 1 !important;
+    grid-row: 1 !important;
+  }
+
+  .trade-workspace .trade-market-section {
+    grid-column: 2 !important;
+    grid-row: 1 !important;
+  }
+}
+
+/* FINAL TRADE LAYOUT OVERRIDE */
+
+.trade-workspace {
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 0.92fr) !important;
+  gap: 14px !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  align-items: start !important;
+  overflow: visible !important;
+}
+
+.trade-order-section {
+  grid-column: 1 !important;
+  grid-row: 1 !important;
+  width: 100% !important;
+  min-width: 0 !important;
+  max-width: none !important;
+  order: 1 !important;
+}
+
+.trade-market-section {
+  grid-column: 2 !important;
+  grid-row: 1 !important;
+  width: 100% !important;
+  min-width: 0 !important;
+  max-width: none !important;
+  order: 2 !important;
+}
+
+.trade-market-section .trade-section-title {
+  width: 100% !important;
+  box-sizing: border-box !important;
+}
+
+.trade-market-section .order-book {
+  width: 100% !important;
+  box-sizing: border-box !important;
+}
+
+.trade-market-section .order-book-controls {
+  width: 100% !important;
+  display: grid !important;
+  grid-template-columns: 1fr 1fr !important;
+  gap: 10px !important;
+  box-sizing: border-box !important;
+}
+
+.trade-market-section .order-book-dropdown {
+  min-width: 0 !important;
+  width: 100% !important;
+}
+
+.trade-market-section .order-book-dropdown-button {
+  width: 100% !important;
+  box-sizing: border-box !important;
+}
+
+.trade-order-section .trade-tabs {
+  width: 100% !important;
+  display: grid !important;
+  grid-template-columns: 1fr 1fr !important;
+}
+
+.trade-order-section .order-tabs {
+  width: 100% !important;
+}
+
+.trade-order-section .order-field,
+.trade-order-section .order-field > div,
+.trade-order-section .order-field input {
+  max-width: 100% !important;
+  box-sizing: border-box !important;
+}
+
+.trade-order-section .trade-percent-buttons {
+  width: 100% !important;
+  display: grid !important;
+  grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+  gap: 6px !important;
+}
+
+.trade-order-section .trade-percent-buttons button {
+  min-width: 0 !important;
+  padding-left: 4px !important;
+  padding-right: 4px !important;
+}
+
+.trade-order-section .buy-button,
+.trade-order-section .sell-button {
+  width: 100% !important;
+  box-sizing: border-box !important;
+}
+
+/* Mobile trade workspace */
+@media (max-width: 768px) {
+  .trade-workspace {
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 0.92fr) !important;
+    gap: 8px !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    box-sizing: border-box !important;
+    align-items: start !important;
+    overflow: visible !important;
+  }
+
+  .trade-order-section {
+    grid-column: 1 !important;
+    grid-row: 1 !important;
+    width: 100% !important;
+    min-width: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  .trade-market-section {
+    grid-column: 2 !important;
+    grid-row: 1 !important;
+    width: 100% !important;
+    min-width: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  .trade-market-section .trade-section-title {
+    padding: 8px 6px !important;
+    font-size: 11px !important;
+    min-height: 34px !important;
+  }
+
+  .trade-market-section .order-book-columns {
+    gap: 3px !important;
+    font-size: 8px !important;
+  }
+
+  .trade-market-section .order-book {
+    width: 100% !important;
+    min-width: 0 !important;
+    overflow: hidden !important;
+  }
+
+  .trade-market-section .order-book-label {
+    font-size: 10px !important;
+    padding: 8px 6px !important;
+  }
+
+  .trade-market-section .order-row {
+    grid-template-columns: 1fr 1fr 1fr !important;
+    gap: 2px !important;
+    padding: 6px 4px !important;
+    font-size: 8px !important;
+    min-width: 0 !important;
+  }
+
+  .trade-market-section .order-current {
+    padding: 12px 4px !important;
+    text-align: center !important;
+  }
+
+  .trade-market-section .order-current strong {
+    font-size: 15px !important;
+    line-height: 1.15 !important;
+    word-break: break-word !important;
+  }
+
+  .trade-market-section .order-current span {
+    font-size: 7px !important;
+  }
+
+  .trade-market-section .order-book-controls {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 5px !important;
+    padding: 5px !important;
+  }
+
+  .trade-market-section .order-book-dropdown-button {
+    min-height: 32px !important;
+    padding: 5px !important;
+    font-size: 9px !important;
+  }
+
+  .trade-order-section .trade-tabs {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 4px !important;
+  }
+
+  .trade-order-section .trade-tabs button {
+    min-width: 0 !important;
+    padding: 9px 3px !important;
+    font-size: 10px !important;
+  }
+
+  .trade-order-section .order-tabs {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+  }
+
+  .trade-order-section .order-tabs button {
+    min-width: 0 !important;
+    padding: 8px 3px !important;
+    font-size: 9px !important;
+  }
+
+  .trade-order-section .order-field {
+    margin-bottom: 8px !important;
+    min-width: 0 !important;
+  }
+
+  .trade-order-section .order-field label {
+    font-size: 8px !important;
+  }
+
+  .trade-order-section .order-field > div {
+    width: 100% !important;
+    min-width: 0 !important;
+  }
+
+  .trade-order-section .order-field input {
+    width: 100% !important;
+    min-width: 0 !important;
+    padding: 10px 6px !important;
+    font-size: 10px !important;
+  }
+
+  .trade-order-section .order-field span {
+    font-size: 8px !important;
+    right: 6px !important;
+  }
+
+  .trade-order-section .trade-percent-buttons {
+    display: grid !important;
+    grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+    gap: 3px !important;
+  }
+
+  .trade-order-section .trade-percent-buttons button {
+    min-width: 0 !important;
+    padding: 7px 1px !important;
+    font-size: 7px !important;
+  }
+
+  .trade-order-section .trade-balance {
+    font-size: 8px !important;
+    gap: 4px !important;
+  }
+
+  .trade-order-section .buy-button,
+  .trade-order-section .sell-button {
+    width: 100% !important;
+    min-width: 0 !important;
+    padding: 11px 3px !important;
+    font-size: 10px !important;
+  }
+}
+
+/* Very narrow phones */
+@media (max-width: 380px) {
+  .trade-workspace {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 0.9fr) !important;
+    gap: 5px !important;
+  }
+
+  .trade-market-section .trade-section-title {
+    font-size: 9px !important;
+    padding-left: 4px !important;
+    padding-right: 4px !important;
+  }
+
+  .trade-market-section .order-book-columns {
+    font-size: 6px !important;
+  }
+
+  .trade-market-section .order-current strong {
+    font-size: 12px !important;
+  }
+
+  .trade-order-section .trade-tabs button {
+    font-size: 8px !important;
+    padding: 8px 1px !important;
+  }
+
+  .trade-order-section .order-tabs button {
+    font-size: 8px !important;
+  }
+
+  .trade-order-section .order-field input {
+    font-size: 8px !important;
+    padding: 9px 4px !important;
+  }
+
+  .trade-order-section .buy-button,
+  .trade-order-section .sell-button {
+    font-size: 8px !important;
+  }
+}
+
+/* FINAL MOBILE TRADE LAYOUT */
+@media (max-width: 768px) {
+
+  .trade-workspace {
+    width: 100%;
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) !important;
+    gap: 8px !important;
+    align-items: start !important;
+    box-sizing: border-box !important;
+  }
+
+  .trade-market-section,
+  .trade-order-section {
+    width: 100% !important;
+    min-width: 0 !important;
+    max-width: none !important;
+    box-sizing: border-box !important;
+    margin: 0 !important;
+  }
+
+  /* Compact order book */
+  .trade-market-section {
+    min-height: 0 !important;
+  }
+
+  .trade-market-section .trade-section-title {
+    min-height: 42px !important;
+    padding: 8px 8px !important;
+    font-size: 14px !important;
+    box-sizing: border-box !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+  }
+
+  .trade-market-section .trade-section-title strong {
+    font-size: 16px !important;
+  }
+
+  .order-book-columns {
+    gap: 8px !important;
+    font-size: 7px !important;
+  }
+
+  .order-book {
+    min-height: 175px !important;
+    max-height: 175px !important;
+    overflow: hidden !important;
+    box-sizing: border-box !important;
+  }
+
+  .order-book-label {
+    padding: 8px !important;
+    font-size: 14px !important;
+    line-height: 1.1 !important;
+  }
+
+  .order-current {
+    min-height: 52px !important;
+    padding: 8px 4px !important;
+  }
+
+  .order-current strong {
+    font-size: 17px !important;
+  }
+
+  .order-current span {
+    font-size: 7px !important;
+  }
+
+  .order-row {
+    min-height: 24px !important;
+    padding: 4px 6px !important;
+    font-size: 8px !important;
+  }
+
+  .order-book-controls {
+    gap: 6px !important;
+    padding: 8px !important;
+  }
+
+  .order-book-dropdown,
+  .order-book-dropdown-button {
+    min-width: 0 !important;
+    width: 100% !important;
+  }
+
+  .order-book-dropdown-button {
+    height: 42px !important;
+    padding: 0 8px !important;
+    font-size: 11px !important;
+  }
+
+  /* Trade form becomes compact */
+  .trade-order-section {
+    display: flex !important;
+    flex-direction: column !important;
+    min-height: 0 !important;
+    padding: 0 !important;
+  }
+
+  /* Buy/Sell tabs move from top to bottom */
+  .trade-tabs {
+    order: 20 !important;
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 6px !important;
+    width: 100% !important;
+    margin-top: 10px !important;
+    margin-bottom: 6px !important;
+  }
+
+  .trade-tabs button {
+    width: 100% !important;
+    min-width: 0 !important;
+    height: 46px !important;
+    padding: 0 !important;
+    font-size: 13px !important;
+    font-weight: 700 !important;
+    box-sizing: border-box !important;
+  }
+
+  .order-tabs {
+    order: 1 !important;
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    width: 100% !important;
+    min-height: 42px !important;
+    margin: 0 0 8px 0 !important;
+  }
+
+  .order-tabs button {
+    min-width: 0 !important;
+    height: 42px !important;
+    padding: 0 !important;
+    font-size: 12px !important;
+  }
+
+  .market-order-note {
+    order: 2 !important;
+    font-size: 9px !important;
+    padding: 6px !important;
+  }
+
+  .order-field {
+    order: 3 !important;
+    margin-bottom: 7px !important;
+  }
+
+  .order-field label {
+    display: block !important;
+    margin: 0 0 3px 3px !important;
+    font-size: 9px !important;
+    line-height: 1.1 !important;
+  }
+
+  .order-field > div {
+    min-height: 52px !important;
+    height: 52px !important;
+    box-sizing: border-box !important;
+  }
+
+  .order-field input {
+    height: 52px !important;
+    min-height: 52px !important;
+    padding: 0 10px !important;
+    font-size: 11px !important;
+    box-sizing: border-box !important;
+  }
+
+  .order-field > div > span {
+    right: 9px !important;
+    font-size: 9px !important;
+  }
+
+  .trade-percent-buttons {
+    order: 4 !important;
+    display: grid !important;
+    grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+    gap: 4px !important;
+    width: 100% !important;
+    margin: 5px 0 8px 0 !important;
+  }
+
+  .trade-percent-buttons button {
+    min-width: 0 !important;
+    height: 36px !important;
+    padding: 0 2px !important;
+    font-size: 9px !important;
+  }
+
+  .trade-balance {
+    order: 5 !important;
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    min-height: 38px !important;
+    margin: 3px 2px 5px !important;
+    font-size: 8px !important;
+  }
+
+  .trade-balance strong {
+    font-size: 13px !important;
+  }
+
+  /* Buy/Sell buttons now appear below the fields */
+  .trade-tabs + .market-order-note {
+    margin-bottom: 0 !important;
+  }
+
+  .buy-button,
+  .sell-button {
+    order: 21 !important;
+    width: 100% !important;
+    min-width: 0 !important;
+    height: 48px !important;
+    min-height: 48px !important;
+    margin: 4px 0 0 0 !important;
+    padding: 0 !important;
+    font-size: 12px !important;
+    box-sizing: border-box !important;
+  }
+
+  /* Keep the whole workspace inside the phone */
+  .trade-workspace * {
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+
+  /* Prevent long numbers from pushing the layout */
+  .trade-market-section,
+  .trade-order-section {
+    overflow: hidden !important;
+  }
+
+  /* Make lower order/history area fit better */
+  .trade-orders {
+    width: 100% !important;
+    overflow-x: auto !important;
+    white-space: nowrap !important;
+    margin-top: 10px !important;
+  }
+
+  .trade-orders button {
+    font-size: 9px !important;
+    padding: 8px 10px !important;
+  }
+}
+
