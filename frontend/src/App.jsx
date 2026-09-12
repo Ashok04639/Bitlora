@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import "./App.css";
+import TradingViewChart from "./TradingViewChart";
 
 function App() {
   const [active, setActive] = useState("Home");
@@ -1248,42 +1249,29 @@ const [orderBookSide, setOrderBookSide] = useState("All");
               ))}
           </div>
 
-          <div className="trade-chart">
-                <div className="chart-toolbar">
-                  <div className="chart-toolbar-left">
-                    <button type="button" className={`chart-tool ${chartType === "Candles" ? "active" : ""}`} onClick={() => setChartType("Candles")}>Candles</button>
-                    <button type="button" className={`chart-tool ${chartType === "Line" ? "active" : ""}`} onClick={() => setChartType("Line")}>Line</button>
-                    <button type="button" className={`chart-tool ${chartType === "Indicators" ? "active" : ""}`} onClick={() => setChartType("Indicators")}>Indicators</button>
-                  </div>
-                  <div className="chart-toolbar-right">
-                    <button type="button" className="chart-tool">⌗</button>
-                    <button type="button" className="chart-tool">⛶</button>
-                  </div>
-                </div>
-            <div className="chart-grid">
-              <span>$67,000</span>
-              <span>$66,900</span>
-              <span>$66,800</span>
-              <span>$66,700</span>
+          <div className="trade-chart bitlora-real-chart">
+            <div className="chart-toolbar">
+              <div className="chart-toolbar-left">
+                <button type="button" className="chart-tool active">
+                  TradingView
+                </button>
+                <button type="button" className="chart-tool">
+                  Candles
+                </button>
+                <button type="button" className="chart-tool">
+                  Indicators
+                </button>
+              </div>
+
+              <div className="chart-toolbar-right">
+                <button type="button" className="chart-tool">⌗</button>
+                <button type="button" className="chart-tool">⛶</button>
+              </div>
             </div>
-              {chartType === "Candles" ? (
-                <div className="candles">
-                  {liveCandles.map((candle,index)=><i key={index} className={`candle ${candle.up?"up":"down"}`} style={{height:`${candle.height}%`}}></i>)}
-                </div>
-              ) : (
-                <div className="line-chart">
-                  {liveCandles.map((candle,index)=><i key={index} style={{height:`${candle.height}%`}}></i>)}
-                </div>
-              )}
-              {chartType === "Indicators" && <div className="chart-indicator"></div>}
-            <div className="chart-line"></div>
-            <div className="chart-time">
-              <span>12:00</span>
-              <span>14:00</span>
-              <span>16:00</span>
-              <span>18:00</span>
-            </div>
+
+            <TradingViewChart pair={selectedPair} />
           </div>
+
 
           <div className="trade-user-selector"><label>User</label><select value={activeUserId} onChange={(e) => setActiveUserId(Number(e.target.value))}><option value={1}>User 1</option><option value={2}>User 2</option></select></div>
 
