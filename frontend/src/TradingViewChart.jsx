@@ -1,12 +1,28 @@
 import React from "react";
 
-export default function TradingViewChart({ pair = "BTC/USDT" }) {
+export default function TradingViewChart({ pair = "BTC/USDT", timeframe = "15m" }) {
+  const intervalMap = {
+    "1s": "1S",
+    "1m": "1",
+    "5m": "5",
+    "15m": "15",
+    "30m": "30",
+    "1H": "60",
+    "4H": "240",
+    "1D": "D",
+    "1Mth": "1M",
+  };
+
+  const interval = intervalMap[timeframe] || "15";
+
+
   const symbol = `BINANCE:${pair.replace("/", "")}`;
 
   const src =
     `https://www.tradingview.com/widgetembed/?symbol=${encodeURIComponent(symbol)}` +
-    `&interval=15` +
+    `&interval=${encodeURIComponent(interval)}` +
     `&hidesidetoolbar=0` +
+    `&hide_top_toolbar=1` +
     `&symboledit=1` +
     `&saveimage=0` +
     `&toolbarbg=%23141a22` +

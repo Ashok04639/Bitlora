@@ -635,7 +635,7 @@ button {
   border-radius: 50%;
   background: #202a3f;
   color: #63b5ff;
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 700;
 }
 
@@ -648,13 +648,13 @@ button {
 
 .market-pair strong {
   color: #ffffff;
-  font-size: 12px;
+  font-size: 13px;
   white-space: nowrap;
 }
 
 .market-pair span {
   color: #68758d;
-  font-size: 10px;
+  font-size: 11px;
 }
 
 .market-price {
@@ -666,13 +666,13 @@ button {
 
 .market-price strong {
   color: #ffffff;
-  font-size: 12px;
+  font-size: 13px;
   white-space: nowrap;
 }
 
 .market-price span {
   color: #68758d;
-  font-size: 9px;
+  font-size: 10px;
 }
 
 .market-change {
@@ -710,66 +710,6 @@ button {
 
 
 /* Trade Screen */
-.trade-screen{padding:0 0 105px;background:#0b0f16}
-.trade-header{display:flex;align-items:center;justify-content:space-between;min-height:58px;padding:10px 0;border-bottom:1px solid #20283a}
-.trade-pair-info{display:flex;flex-direction:column;gap:4px}
-.trade-pair-info strong{color:#fff;font-size:18px;font-weight:700}
-.trade-pair-info span{color:#68758d;font-size:10px}
-.trade-pair-button{width:34px;height:34px;border:1px solid #263149;border-radius:10px;background:#151c2b;color:#fff;font-size:16px}
-.trade-price-bar{display:flex;align-items:center;justify-content:space-between;padding:14px 0}
-.trade-price-bar>div{display:flex;flex-direction:column;gap:4px}
-.trade-price-bar strong{color:#fff;font-size:21px}
-.trade-price-bar span{color:#68758d;font-size:9px}
-.trade-change{align-items:flex-end}
-.trade-change strong{font-size:13px}
-.trade-timeframes{display:flex;gap:16px;overflow-x:auto;padding:4px 0 10px;scrollbar-width:none}
-.trade-timeframes::-webkit-scrollbar{display:none}
-.trade-timeframes button{flex:0 0 auto;padding:4px 0;border:0;background:transparent;color:#68758d;font-size:11px}
-.trade-timeframes button.active{color:#fff;font-weight:700}
-.trade-chart{position:relative;height:235px;overflow:hidden;border-top:1px solid #20283a;border-bottom:1px solid #20283a;background:linear-gradient(rgba(38,49,73,.35) 1px,transparent 1px),linear-gradient(90deg,rgba(38,49,73,.25) 1px,transparent 1px);background-size:100% 47px,58px 100%}
-.chart-grid{position:absolute;inset:10px 8px auto auto;z-index:2;display:flex;height:180px;flex-direction:column;justify-content:space-between;color:#68758d;font-size:8px}
-.candles{position:absolute;left:10px;right:45px;bottom:28px;height:175px;display:flex;align-items:flex-end;justify-content:space-around}
-.candle{position:relative;width:7px;border-radius:1px}
-.candle::before{content:"";position:absolute;left:3px;top:-9px;width:1px;height:calc(100% + 18px);background:currentColor}
-.candle.up{background:#43dc91;color:#43dc91}
-.candle.down{background:#ff647c;color:#ff647c}
-.h1{height:55px}.h2{height:85px}.h3{height:110px}.h4{height:72px}.h5{height:125px}.h6{height:95px}.h7{height:135px}.h8{height:105px}.h9{height:150px}.h10{height:118px}.h11{height:142px}.h12{height:128px}.h13{height:158px}.h14{height:135px}.h15{height:165px}
-.chart-line{position:absolute;left:8px;right:42px;bottom:95px;height:1px;border-top:1px dashed #63b5ff;opacity:.8}
-.chart-time{position:absolute;left:8px;right:42px;bottom:7px;display:flex;justify-content:space-between;color:#68758d;font-size:8px}
-.trade-market-section{padding:14px 0;border-bottom:1px solid #20283a}
-.trade-section-title{display:grid;grid-template-columns:auto minmax(0,1fr);align-items:center;column-gap:12px;margin-bottom:8px}
-.trade-section-title strong{color:#fff;font-size:14px}
-.trade-section-title span{color:#68758d;font-size:9px}
-.order-book-columns{display:grid;grid-template-columns:1.2fr 0.9fr 1fr;gap:6px;width:100%;text-align:right;min-width:0}
-.order-book-columns span:first-child{text-align:left}
-.order-book-columns span{font-variant-numeric:tabular-nums}
-.order-book{display:grid;gap:2px}
-.order-row{display:grid;grid-template-columns:1.2fr 0.9fr 1fr;gap:6px;text-align:right;padding:5px 6px;font-size:11px;line-height:1.25}
-.order-row.ask span:first-child{color:#ff647c}
-.order-row.bid span:first-child{color:#43dc91}
-.order-row span:last-child{color:#8f9bb3}
-.order-current{display:flex;flex-direction:column;align-items:flex-end;justify-content:center;margin:4px 0;padding:8px 6px;border-top:1px solid #263149;border-bottom:1px solid #263149}
-.order-current strong{color:#ff647c;font-size:13px}
-.order-current span{color:#68758d;font-size:9px}
-.trade-order-section{padding:16px 0}
-.trade-tabs,.order-tabs{display:flex;gap:20px;border-bottom:1px solid #20283a}
-.trade-tabs button,.order-tabs button{position:relative;padding:9px 0;border:0;background:transparent;color:#68758d;font-size:13px;font-weight:600}
-.trade-tabs button.active,.order-tabs button.active{color:#fff}
-.trade-tabs button.active::after,.order-tabs button.active::after{content:"";position:absolute;left:0;right:0;bottom:-1px;height:2px;background:#63b5ff}
-.order-tabs{gap:18px;margin-bottom:12px}
-.order-tabs button{font-size:11px}
-.trade-percent-buttons{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin:8px 0}
-.trade-percent-buttons button{border:1px solid #263149;background:#111827;color:#8f9bb3;border-radius:4px;padding:5px 0;font-size:10px;cursor:pointer}
-.trade-percent-buttons button:hover{background:#182238;color:#fff}
-.trade-percent-buttons button:active{background:#202d47}
-.trade-balance{display:flex;align-items:center;justify-content:space-between;margin:4px 0 12px;color:#68758d;font-size:10px}.trade-balance strong{color:#fff;font-size:11px}.buy-button{width:100%;min-height:44px;border:0;border-radius:10px;background:#43dc91;color:#07110c;font-size:13px;font-weight:700}.trade-orders{display:flex;gap:20px;padding:14px 0;border-top:1px solid #20283a}.trade-orders button{padding:0;border:0;background:transparent;color:#68758d;font-size:11px;font-weight:600}.trade-orders button.active{color:#fff}
-@media (max-width:380px){.trade-screen{padding-bottom:100px}.trade-price-bar strong{font-size:19px}.trade-timeframes{gap:13px}.trade-chart{height:220px}.candles{height:160px;left:6px;right:40px}.order-field input{padding:10px}.trade-orders{gap:14px}}
-.order-field{display:grid;gap:6px;margin-bottom:10px}.order-field label{color:#8f9bb3;font-size:10px}.order-field>div{display:flex;align-items:center;border:1px solid #263149;border-radius:10px;background:#151c2b;overflow:hidden}.order-field input{width:100%;min-width:0;padding:11px 12px;border:0;outline:0;background:transparent;color:#fff;font-size:12px}.order-field input::placeholder{color:#68758d}.order-field>div>span{padding:0 11px;color:#8f9bb3;font-size:10px;font-weight:600}
-.sell-button{width:100%;min-height:44px;border:0;border-radius:10px;background:#ff647c;color:#fff;font-size:13px;font-weight:700}
-.trade-screen{padding-left:30px;padding-right:30px}
-.trade-screen{padding-left:15px;padding-right:15px}
-.trade-message{margin-top:8px;text-align:center;color:#63b5ff;font-size:10px;line-height:1.4}
-
 .trade-workspace{display:grid;grid-template-columns:calc(50% + 7.5px) calc(50% - 7.5px);gap:12px;align-items:stretch}
 .trade-workspace{width:100%;}
 .trade-workspace .trade-market-section,.trade-workspace .trade-order-section{min-width:0}
@@ -811,20 +751,6 @@ button {
   position:relative;
 }
 
-.order-book-dropdown-button{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:10px;
-  min-width:72px;
-  padding:6px 9px;
-  border:1px solid #263149;
-  border-radius:6px;
-  background:#111827;
-  color:#cbd5e1;
-  font-size:10px;
-  cursor:pointer;
-}
 
 .order-book-dropdown-button span{
   color:#68758d;
@@ -844,18 +770,6 @@ button {
   z-index:50;
 }
 
-.order-book-dropdown-menu button{
-  display:block;
-  width:100%;
-  padding:6px 8px;
-  border:0;
-  border-radius:4px;
-  background:transparent;
-  color:#8f9bb3;
-  font-size:10px;
-  text-align:left;
-  cursor:pointer;
-}
 
 .order-book-dropdown-menu button:hover,
 .order-book-dropdown-menu button.active{
@@ -863,9 +777,6 @@ button {
   color:#fff;
 }
 
-.order-book-dropdown{
-  position:relative;
-}
 
 .order-book-dropdown-button{
   display:flex;
@@ -908,16 +819,11 @@ button {
   border-radius:4px;
   background:transparent;
   color:#8f9bb3;
-  font-size:10px;
+  font-size: 10px;
   text-align:left;
   cursor:pointer;
 }
 
-.order-book-dropdown-menu button:hover,
-.order-book-dropdown-menu button.active{
-  background:#1b2538;
-  color:#fff;
-}
 
 .buy-label{
   font-size:13px !important;
@@ -952,13 +858,13 @@ button {
 }
 
 .open-order-row strong{
-  font-size:10px;
+  font-size: 10px;
   font-weight:600;
   color:#cbd5e1;
 }
 
 .open-order-row span{
-  font-size:9px;
+  font-size: 9px;
   line-height:1.2;
 }
 
@@ -968,7 +874,7 @@ button {
   border-radius:4px;
   background:#111827;
   color:#8f9bb3;
-  font-size:9px;
+  font-size: 9px;
   cursor:pointer;
 }
 
@@ -978,7 +884,6 @@ button {
   color:#68758d;
   font-size:10px;
 }
-
 
 
 .trade-history-list{
@@ -1045,7 +950,7 @@ button {
   border:0;
   background:transparent;
   color:#68758d;
-  font-size:9px;
+  font-size: 10px;
   font-weight:600;
   cursor:pointer;
 }
@@ -1072,7 +977,7 @@ button {
 }
 
 .trade-pair-info strong{
-  font-size:19px;
+  font-size: 18px;
   letter-spacing:.2px;
 }
 
@@ -1104,7 +1009,7 @@ button {
 }
 
 .trade-price-bar strong{
-  font-size:23px;
+  font-size: 21px;
   letter-spacing:.2px;
 }
 
@@ -1114,7 +1019,7 @@ button {
 }
 
 .trade-change strong{
-  font-size:14px;
+  font-size: 13px;
 }
 
 .trade-timeframes{
@@ -1129,7 +1034,7 @@ button {
 .trade-timeframes button{
   padding:5px 2px;
   color:#7d889d;
-  font-size:10px;
+  font-size: 11px;
   font-weight:600;
   transition:.15s ease;
 }
@@ -1210,7 +1115,7 @@ button {
 }
 
 .trade-section-title strong{
-  font-size:13px;
+  font-size: 14px;
 }
 
 .order-book{
@@ -1227,7 +1132,7 @@ button {
 
 .order-row{
   padding:5px 6px;
-  font-size:10px;
+  font-size: 11px;
   border-radius:3px;
 }
 
@@ -1244,11 +1149,11 @@ button {
 }
 
 .order-current strong{
-  font-size:13px;
+  font-size: 16px;
 }
 
 .order-current span{
-  font-size:8px;
+  font-size: 9px;
 }
 
 .order-book-controls{
@@ -1267,7 +1172,7 @@ button {
 }
 
 .trade-tabs button{
-  font-size:13px;
+  font-size: 13px;
 }
 
 .order-tabs{
@@ -1275,7 +1180,7 @@ button {
 }
 
 .order-tabs button{
-  font-size:10px;
+  font-size: 11px;
 }
 
 .order-field{
@@ -1283,7 +1188,7 @@ button {
 }
 
 .order-field label{
-  font-size:9px;
+  font-size: 10px;
   color:#7d889d;
 }
 
@@ -1301,11 +1206,11 @@ button {
 
 .order-field input{
   padding:10px 11px;
-  font-size:11px;
+  font-size: 14px;
 }
 
 .order-field>div>span{
-  font-size:9px;
+  font-size: 10px;
   color:#8c97aa;
 }
 
@@ -1319,7 +1224,7 @@ button {
   border-radius:5px;
   background:#121923;
   border-color:#293246;
-  font-size:9px;
+  font-size: 10px;
 }
 
 .trade-balance{
@@ -1355,7 +1260,7 @@ button {
 }
 
 .trade-orders button{
-  font-size:10px;
+  font-size: 11px;
 }
 
 .open-orders-list{
@@ -1414,7 +1319,7 @@ button {
   }
 
   .trade-price-bar strong{
-    font-size:20px;
+    font-size: 21px;
   }
 
   .trade-timeframes{
@@ -1561,7 +1466,7 @@ button {
   border-radius:6px;
   background:#121923;
   color:#cbd5e1;
-  font-size:9px;
+  font-size: 10px;
   font-weight:600;
   transition:border-color .15s ease,background .15s ease;
 }
@@ -1612,7 +1517,7 @@ button {
   .order-book-controls .order-book-dropdown-button{
     padding-left:6px;
     padding-right:6px;
-    font-size:8px;
+    font-size: 10px;
   }
 }
 
@@ -1629,7 +1534,7 @@ button {
 .trade-tabs button{
   min-width:58px;
   padding:9px 2px;
-  font-size:13px;
+  font-size: 13px;
 }
 
 .trade-tabs button.active{
@@ -1644,7 +1549,7 @@ button {
 .order-tabs button{
   padding:7px 0;
   color:#69758a;
-  font-size:10px;
+  font-size: 11px;
 }
 
 .order-tabs button.active{
@@ -1669,7 +1574,7 @@ button {
 
 .order-field label{
   color:#78859a;
-  font-size:9px;
+  font-size: 10px;
   font-weight:600;
 }
 
@@ -1691,7 +1596,7 @@ button {
 
 .order-field input{
   padding:10px 11px;
-  font-size:11px;
+  font-size: 14px;
   font-variant-numeric:tabular-nums;
 }
 
@@ -1700,7 +1605,7 @@ button {
   text-align:right;
   padding:0 10px;
   color:#9aa6b9;
-  font-size:9px;
+  font-size: 10px;
   font-weight:700;
 }
 
@@ -1716,7 +1621,7 @@ button {
   border-radius:5px;
   background:#121923;
   color:#7f8ba1;
-  font-size:9px;
+  font-size: 10px;
   font-weight:600;
   transition:border-color .15s ease,background .15s ease,color .15s ease;
 }
@@ -1731,12 +1636,12 @@ button {
   margin:2px 0 12px;
   padding:5px 0;
   color:#69758a;
-  font-size:9px;
+  font-size: 10px;
 }
 
 .trade-balance strong{
   color:#dfe5ee;
-  font-size:10px;
+  font-size: 11px;
   font-variant-numeric:tabular-nums;
 }
 
@@ -1778,7 +1683,7 @@ button {
 
 .trade-orders button{
   padding:8px 2px;
-  font-size:10px;
+  font-size: 11px;
   color:#707c91;
   transition:color .15s ease;
 }
@@ -1815,9 +1720,6 @@ button {
   background:#131b27;
 }
 
-.open-order-row:last-child{
-  border-bottom:0;
-}
 
 .open-order-row > div{
   min-width:0;
@@ -1828,13 +1730,13 @@ button {
 
 .open-order-row strong{
   color:#e5eaf2;
-  font-size:10px;
+  font-size: 10px;
   font-weight:700;
 }
 
 .open-order-row span{
   color:#77849a;
-  font-size:9px;
+  font-size: 9px;
   white-space:nowrap;
   overflow:hidden;
   text-overflow:ellipsis;
@@ -1849,7 +1751,7 @@ button {
   border-radius:4px;
   background:#17131a;
   color:#d77a8b;
-  font-size:8px;
+  font-size: 9px;
   cursor:pointer;
   transition:background .15s ease,border-color .15s ease,color .15s ease;
 }
@@ -1879,7 +1781,7 @@ button {
   border-radius:5px;
   background:#121923;
   color:#748198;
-  font-size:9px;
+  font-size: 10px;
   font-weight:600;
   cursor:pointer;
   transition:background .15s ease,border-color .15s ease,color .15s ease;
@@ -1910,7 +1812,7 @@ button {
   }
 
   .trade-orders button{
-    font-size:9px;
+    font-size: 11px;
   }
 
   .open-order-row{
@@ -1919,11 +1821,11 @@ button {
   }
 
   .open-order-row strong{
-    font-size:9px;
+    font-size: 10px;
   }
 
   .open-order-row span{
-    font-size:8px;
+    font-size: 9px;
   }
 }
 
@@ -2087,11 +1989,11 @@ button {
 
 
 /* ===== BITLORA HOME PROFESSIONAL ===== */
-.home-pro{width:100%;max-width:1180px;margin:0 auto;padding:18px 0 120px;box-sizing:border-box}.home-balance-card{padding:22px;border:1px solid #202735;border-radius:14px;background:linear-gradient(145deg,#141b27,#0e131c);box-shadow:0 10px 30px rgba(0,0,0,.18)}.home-balance-top{display:flex;align-items:flex-start;justify-content:space-between;gap:16px}.home-eyebrow{display:block;margin-bottom:8px;color:#7d899d;font-size:11px;font-weight:600;letter-spacing:.3px;text-transform:uppercase}.home-balance-card h2{margin:0;color:#f4f7fb;font-size:30px;line-height:1.15;font-weight:750}.home-balance-menu{width:34px;height:34px;border:1px solid #2a3447;border-radius:8px;background:#151d2a;color:#9ba7ba}.home-balance-meta{display:flex;gap:14px;margin-top:12px}.home-balance-meta span{color:#7d899d;font-size:11px}.home-balance-meta strong{color:#43dc91;font-size:11px}.home-balance-footer{display:flex;justify-content:space-between;margin-top:20px;padding-top:13px;border-top:1px solid #202a3a;color:#657188;font-size:9px}.home-quick-actions,.home-market-section{margin-top:16px;padding:16px;border:1px solid #202735;border-radius:12px;background:#10151f}.home-section-heading{display:flex;align-items:center;justify-content:space-between;gap:15px;margin-bottom:14px}.home-section-heading h3{margin:0;color:#edf1f7;font-size:14px;font-weight:700}.home-section-heading p{margin:4px 0 0;color:#69758a;font-size:9px}.home-section-heading>button{border:0;background:transparent;color:#63b5ff;font-size:10px;font-weight:600}.home-action-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:9px}.home-action-grid button{min-width:0;padding:13px 8px;border:1px solid #242e40;border-radius:9px;background:#121923;text-align:left;color:inherit}.home-action-icon{display:flex;align-items:center;justify-content:center;width:30px;height:30px;margin-bottom:10px;border-radius:8px;background:#1a2332;color:#63b5ff;font-size:16px;font-weight:700}.home-action-grid strong,.home-action-grid small{display:block}.home-action-grid strong{color:#e9edf4;font-size:11px}.home-action-grid small{margin-top:4px;color:#68758b;font-size:8px}.home-market-list{display:grid;gap:1px;overflow:hidden;border:1px solid #1e2736;border-radius:8px}.home-market-row{display:flex;align-items:center;justify-content:space-between;gap:12px;width:100%;padding:12px 11px;border:0;border-bottom:1px solid #1b2432;background:#0d121a;color:inherit;text-align:left}.home-market-row:last-child{border-bottom:0}.home-market-main{display:flex;align-items:center;gap:9px;min-width:0}.home-coin-icon{display:flex;align-items:center;justify-content:center;flex:0 0 30px;width:30px;height:30px;border-radius:50%;background:#182131;color:#63b5ff;font-size:11px}.home-market-main strong,.home-market-main small{display:block}.home-market-main strong{color:#e7ebf2;font-size:11px}.home-market-main small{margin-top:3px;color:#657188;font-size:8px}.home-market-price{text-align:right}.home-market-price strong,.home-market-price span{display:block}.home-market-price strong{color:#e9edf4;font-size:10px}.home-market-price span{margin-top:3px;font-size:9px;font-weight:600}.home-discover-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:16px}.home-feature-card{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:11px;width:100%;padding:14px;border:1px solid #202735;border-radius:11px;background:#10151f;color:inherit;text-align:left}.home-feature-icon{display:flex;align-items:center;justify-content:center;width:34px;height:34px;border-radius:8px;background:#192232;color:#63b5ff;font-size:16px;font-weight:700}.home-feature-card strong,.home-feature-card span{display:block}.home-feature-card strong{color:#e9edf4;font-size:11px}.home-feature-card span{margin-top:4px;color:#69758a;font-size:8px;line-height:1.35}.home-feature-card b{color:#667389;font-size:18px;font-weight:400}.home-status-card{display:flex;align-items:center;gap:9px;margin-top:16px;padding:11px 13px;border:1px solid #202735;border-radius:9px;background:#0f141d}.home-status-dot{width:7px;height:7px;flex:0 0 7px;border-radius:50%;background:#43dc91}.home-status-card div:nth-child(2){flex:1}.home-status-card strong,.home-status-card span{display:block}.home-status-card strong{color:#dfe5ee;font-size:9px}.home-status-card span{margin-top:2px;color:#657188;font-size:8px}.home-status-card>small{color:#43dc91;font-size:8px;font-weight:700}@media(max-width:760px){.home-pro{padding:12px 10px 105px}.home-balance-card{padding:18px}.home-balance-card h2{font-size:26px}.home-action-grid{grid-template-columns:repeat(2,1fr)}.home-discover-grid{grid-template-columns:1fr}}@media(max-width:380px){.home-pro{padding-left:7px;padding-right:7px}.home-balance-card{padding:16px}.home-balance-card h2{font-size:24px}}/* ===== END BITLORA HOME PROFESSIONAL ===== */
+.home-pro{width:100%;max-width:1180px;margin:0 auto;padding:18px 0 120px;box-sizing:border-box}.home-balance-card{padding:22px;border:1px solid #202735;border-radius:14px;background:linear-gradient(145deg,#141b27,#0e131c);box-shadow:0 10px 30px rgba(0,0,0,.18)}.home-balance-top{display:flex;align-items:flex-start;justify-content:space-between;gap:16px}.home-eyebrow{display:block;margin-bottom:8px;color:#7d899d;font-size: 11px;font-weight:600;letter-spacing:.3px;text-transform:uppercase}.home-balance-card h2{margin:0;color:#f4f7fb;font-size:30px;line-height:1.15;font-weight:750}.home-balance-menu{width:34px;height:34px;border:1px solid #2a3447;border-radius:8px;background:#151d2a;color:#9ba7ba}.home-balance-meta{display:flex;gap:14px;margin-top:12px}.home-balance-meta span{color:#7d899d;font-size: 11px}.home-balance-meta strong{color:#43dc91;font-size: 11px}.home-balance-footer{display:flex;justify-content:space-between;margin-top:20px;padding-top:13px;border-top:1px solid #202a3a;color:#657188;font-size: 10px}.home-quick-actions,.home-market-section{margin-top:16px;padding:16px;border:1px solid #202735;border-radius:12px;background:#10151f}.home-section-heading{display:flex;align-items:center;justify-content:space-between;gap:15px;margin-bottom:14px}.home-section-heading h3{margin:0;color:#edf1f7;font-size: 16px;font-weight:700}.home-section-heading p{margin:4px 0 0;color:#69758a;font-size: 10px}.home-section-heading>button{border:0;background:transparent;color:#63b5ff;font-size: 11px;font-weight:600}.home-action-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:9px}.home-action-grid button{min-width:0;padding:13px 8px;border:1px solid #242e40;border-radius:9px;background:#121923;text-align:left;color:inherit}.home-action-icon{display:flex;align-items:center;justify-content:center;width:30px;height:30px;margin-bottom:10px;border-radius:8px;background:#1a2332;color:#63b5ff;font-size:16px;font-weight:700}.home-action-grid strong,.home-action-grid small{display:block}.home-action-grid strong{color:#e9edf4;font-size: 13px}.home-action-grid small{margin-top:4px;color:#68758b;font-size: 10px}.home-market-list{display:grid;gap:1px;overflow:hidden;border:1px solid #1e2736;border-radius:8px}.home-market-row{display:flex;align-items:center;justify-content:space-between;gap:12px;width:100%;padding:12px 11px;border:0;border-bottom:1px solid #1b2432;background:#0d121a;color:inherit;text-align:left}.home-market-row:last-child{border-bottom:0}.home-market-main{display:flex;align-items:center;gap:9px;min-width:0}.home-coin-icon{display:flex;align-items:center;justify-content:center;flex:0 0 30px;width:30px;height:30px;border-radius:50%;background:#182131;color:#63b5ff;font-size: 12px}.home-market-main strong,.home-market-main small{display:block}.home-market-main strong{color:#e7ebf2;font-size: 13px}.home-market-main small{margin-top:3px;color:#657188;font-size: 10px}.home-market-price{text-align:right}.home-market-price strong,.home-market-price span{display:block}.home-market-price strong{color:#e9edf4;font-size: 13px}.home-market-price span{margin-top:3px;font-size: 10px;font-weight:600}.home-discover-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:16px}.home-feature-card{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:11px;width:100%;padding:14px;border:1px solid #202735;border-radius:11px;background:#10151f;color:inherit;text-align:left}.home-feature-icon{display:flex;align-items:center;justify-content:center;width:34px;height:34px;border-radius:8px;background:#192232;color:#63b5ff;font-size:16px;font-weight:700}.home-feature-card strong,.home-feature-card span{display:block}.home-feature-card strong{color:#e9edf4;font-size: 13px}.home-feature-card span{margin-top:4px;color:#69758a;font-size: 10px;line-height:1.35}.home-feature-card b{color:#667389;font-size:18px;font-weight:400}.home-status-card{display:flex;align-items:center;gap:9px;margin-top:16px;padding:11px 13px;border:1px solid #202735;border-radius:9px;background:#0f141d}.home-status-dot{width:7px;height:7px;flex:0 0 7px;border-radius:50%;background:#43dc91}.home-status-card div:nth-child(2){flex:1}.home-status-card strong,.home-status-card span{display:block}.home-status-card strong{color:#dfe5ee;font-size:9px}.home-status-card span{margin-top:2px;color:#657188;font-size:8px}.home-status-card>small{color:#43dc91;font-size:8px;font-weight:700}@media(max-width:760px){.home-pro{padding:12px 10px 105px}.home-balance-card{padding:18px}.home-balance-card h2{font-size:26px}.home-action-grid{grid-template-columns:repeat(2,1fr)}.home-discover-grid{grid-template-columns:1fr}}@media(max-width:380px){.home-pro{padding-left:7px;padding-right:7px}.home-balance-card{padding:16px}.home-balance-card h2{font-size:24px}}/* ===== END BITLORA HOME PROFESSIONAL ===== */
 
 
 /* ===== BITLORA HOME — RESPONSIVE INSIGHTS ===== */
-.home-insights-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin-top:16px}.home-insight-card{min-width:0;padding:16px;border:1px solid #202735;border-radius:12px;background:#10151f}.home-insight-heading{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}.home-insight-heading strong{color:#edf1f7;font-size:12px}.home-insight-heading span,.home-insight-heading button{border:0;background:transparent;color:#69758a;font-size:9px}.home-mover-row,.home-activity-row{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px 0;border-top:1px solid #1d2635}.home-mover-row:first-of-type,.home-activity-row:first-of-type{border-top:0}.home-mover-row span,.home-activity-row span{color:#cbd2dd;font-size:10px}.home-mover-row b{font-size:9px}.home-activity-row{align-items:flex-start}.home-activity-row small{color:#69758a;font-size:8px;text-align:right}.home-announce-card{display:flex;align-items:center;gap:11px;margin-top:16px;padding:14px 16px;border:1px solid #202735;border-radius:11px;background:#10151f}.home-announce-icon{display:flex;align-items:center;justify-content:center;flex:0 0 32px;width:32px;height:32px;border-radius:8px;background:#192232;color:#63b5ff;font-size:14px;font-weight:800}.home-announce-card div:nth-child(2){flex:1;min-width:0}.home-announce-card strong,.home-announce-card span{display:block}.home-announce-card strong{color:#e9edf4;font-size:10px}.home-announce-card span{margin-top:4px;color:#69758a;font-size:8px;line-height:1.4}.home-announce-card button{border:0;background:transparent;color:#69758a;font-size:18px}.home-security-card{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:10px;padding:13px 16px;border:1px solid #202735;border-radius:10px;background:#0f141d}.home-security-main{display:flex;align-items:center;gap:9px;min-width:0}.home-security-icon{display:flex;align-items:center;justify-content:center;width:25px;height:25px;border-radius:50%;background:#172b25;color:#43dc91;font-size:11px;font-weight:800}.home-security-main strong,.home-security-main small{display:block}.home-security-main strong{color:#dfe5ee;font-size:9px}.home-security-main small{margin-top:3px;color:#657188;font-size:8px}.home-security-card>button{padding:7px 12px;border:1px solid #2a3447;border-radius:7px;background:#151d2a;color:#d9dfe8;font-size:8px;font-weight:600}@media(max-width:760px){.home-insights-grid{grid-template-columns:1fr;gap:10px}.home-insight-card{padding:14px}.home-announce-card{padding:13px}.home-security-card{padding:12px 13px}}@media(min-width:761px){.home-pro{padding-top:24px}.home-balance-card h2{font-size:34px}.home-action-grid button{padding:16px 12px}.home-market-row{padding:13px 14px}.home-feature-card{padding:16px}}
+.home-insights-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin-top:16px}.home-insight-card{min-width:0;padding:16px;border:1px solid #202735;border-radius:12px;background:#10151f}.home-insight-heading{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}.home-insight-heading strong{color:#edf1f7;font-size: 14px}.home-insight-heading span,.home-insight-heading button{border:0;background:transparent;color:#69758a;font-size: 11px}.home-mover-row,.home-activity-row{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px 0;border-top:1px solid #1d2635}.home-mover-row:first-of-type,.home-activity-row:first-of-type{border-top:0}.home-mover-row span,.home-activity-row span{color:#cbd2dd;font-size: 12px}.home-mover-row b{font-size: 11px}.home-activity-row{align-items:flex-start}.home-activity-row small{color:#69758a;font-size: 10px;text-align:right}.home-announce-card{display:flex;align-items:center;gap:11px;margin-top:16px;padding:14px 16px;border:1px solid #202735;border-radius:11px;background:#10151f}.home-announce-icon{display:flex;align-items:center;justify-content:center;flex:0 0 32px;width:32px;height:32px;border-radius:8px;background:#192232;color:#63b5ff;font-size:14px;font-weight:800}.home-announce-card div:nth-child(2){flex:1;min-width:0}.home-announce-card strong,.home-announce-card span{display:block}.home-announce-card strong{color:#e9edf4;font-size: 13px}.home-announce-card span{margin-top:4px;color:#69758a;font-size: 10px;line-height:1.4}.home-announce-card button{border:0;background:transparent;color:#69758a;font-size:18px}.home-security-card{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:10px;padding:13px 16px;border:1px solid #202735;border-radius:10px;background:#0f141d}.home-security-main{display:flex;align-items:center;gap:9px;min-width:0}.home-security-icon{display:flex;align-items:center;justify-content:center;width:25px;height:25px;border-radius:50%;background:#172b25;color:#43dc91;font-size:11px;font-weight:800}.home-security-main strong,.home-security-main small{display:block}.home-security-main strong{color:#dfe5ee;font-size: 12px}.home-security-main small{margin-top:3px;color:#657188;font-size: 10px}.home-security-card>button{padding:7px 12px;border:1px solid #2a3447;border-radius:7px;background:#151d2a;color:#d9dfe8;font-size: 11px;font-weight:600}@media(max-width:760px){.home-insights-grid{grid-template-columns:1fr;gap:10px}.home-insight-card{padding:14px}.home-announce-card{padding:13px}.home-security-card{padding:12px 13px}}@media(min-width:761px){.home-pro{padding-top:24px}.home-balance-card h2{font-size:34px}.home-action-grid button{padding:16px 12px}.home-market-row{padding:13px 14px}.home-feature-card{padding:16px}}
 /* ===== END BITLORA HOME — RESPONSIVE INSIGHTS ===== */
 
 
@@ -2102,27 +2004,26 @@ button {
 
 /* ===== BITLORA HOME — MOBILE POLISH ===== */
 @media(max-width:760px){.home-pro{width:100%;box-sizing:border-box;padding:10px 10px 110px}.home-balance-card{padding:17px;border-radius:13px}.home-balance-card h2{font-size:27px}.home-balance-footer{margin-top:17px}.home-quick-actions,.home-market-section{margin-top:12px;padding:13px;border-radius:11px}.home-section-heading{margin-bottom:11px}.home-action-grid{gap:7px}.home-action-grid button{min-height:96px;padding:11px 9px;border-radius:9px}.home-action-icon{width:29px;height:29px;margin-bottom:8px;font-size:14px}.home-market-row{padding:11px 9px}.home-coin-icon{width:28px;height:28px;flex-basis:28px}.home-discover-grid{gap:8px;margin-top:12px}.home-feature-card{min-height:62px;padding:12px}.home-feature-icon{width:31px;height:31px}.home-insights-grid{margin-top:12px}.home-insight-card{padding:13px;border-radius:10px}.home-mover-row,.home-activity-row{padding:9px 0}.home-announce-card{margin-top:12px;padding:12px 13px}.home-security-card{margin-top:8px;padding:11px 13px}}
-@media(max-width:380px){.home-pro{padding-left:7px;padding-right:7px}.home-balance-card{padding:15px}.home-balance-card h2{font-size:24px}.home-quick-actions,.home-market-section{padding:11px}.home-action-grid button{min-height:91px;padding:10px 8px}.home-action-grid strong{font-size:10px}.home-action-grid small{font-size:7px}}
+@media(max-width:380px){.home-pro{padding-left:7px;padding-right:7px}.home-balance-card{padding:15px}.home-balance-card h2{font-size:24px}.home-quick-actions,.home-market-section{padding:11px}.home-action-grid button{min-height:91px;padding:10px 8px}.home-action-grid strong{font-size: 13px}.home-action-grid small{font-size: 10px}}
 /* ===== END BITLORA HOME — MOBILE POLISH ===== */
 
 
 /* ===== BITLORA HOME — MOBILE TYPOGRAPHY ===== */
-@media(max-width:760px){.home-eyebrow{font-size:12px}.home-balance-card h2{font-size:29px}.home-balance-meta span,.home-balance-meta strong{font-size:12px}.home-balance-footer{font-size:10px}.home-section-heading h3{font-size:15px}.home-section-heading p{font-size:10px}.home-section-heading>button{font-size:11px}.home-action-grid strong{font-size:12px}.home-action-grid small{font-size:9px}.home-action-icon{font-size:15px}.home-market-main strong{font-size:12px}.home-market-main small{font-size:9px}.home-market-price strong{font-size:11px}.home-market-price span{font-size:10px}.home-feature-card strong{font-size:12px}.home-feature-card span{font-size:9px}.home-feature-card b{font-size:20px}.home-insight-heading strong{font-size:13px}.home-insight-heading span,.home-insight-heading button{font-size:10px}.home-mover-row span,.home-activity-row span{font-size:11px}.home-mover-row b{font-size:10px}.home-activity-row small{font-size:9px}.home-announce-card strong{font-size:11px}.home-announce-card span{font-size:9px}.home-announce-card button{font-size:20px}.home-security-main strong{font-size:10px}.home-security-main small{font-size:9px}.home-security-card>button{font-size:9px}}
-@media(max-width:380px){.home-balance-card h2{font-size:27px}.home-section-heading h3{font-size:14px}.home-action-grid strong{font-size:11px}.home-action-grid small{font-size:8px}.home-market-main strong{font-size:11px}.home-market-main small{font-size:8px}.home-feature-card strong{font-size:11px}.home-feature-card span{font-size:8px}.home-mover-row span,.home-activity-row span{font-size:10px}.home-announce-card span{font-size:8px}}
+@media(max-width:760px){.home-eyebrow{font-size: 11px}.home-balance-card h2{font-size:29px}.home-balance-meta span,.home-balance-meta strong{font-size:12px}.home-balance-footer{font-size: 10px}.home-section-heading h3{font-size: 16px}.home-section-heading p{font-size: 10px}.home-section-heading>button{font-size: 11px}.home-action-grid strong{font-size: 13px}.home-action-grid small{font-size: 10px}.home-action-icon{font-size:15px}.home-market-main strong{font-size: 13px}.home-market-main small{font-size: 10px}.home-market-price strong{font-size: 13px}.home-market-price span{font-size: 10px}.home-feature-card strong{font-size: 13px}.home-feature-card span{font-size: 10px}.home-feature-card b{font-size:20px}.home-insight-heading strong{font-size: 14px}.home-insight-heading span,.home-insight-heading button{font-size: 11px}.home-mover-row span,.home-activity-row span{font-size: 12px}.home-mover-row b{font-size: 11px}.home-activity-row small{font-size: 10px}.home-announce-card strong{font-size: 13px}.home-announce-card span{font-size: 10px}.home-announce-card button{font-size:20px}.home-security-main strong{font-size: 12px}.home-security-main small{font-size: 10px}.home-security-card>button{font-size: 11px}}
+@media(max-width:380px){.home-balance-card h2{font-size:27px}.home-section-heading h3{font-size: 16px}.home-action-grid strong{font-size: 13px}.home-action-grid small{font-size: 10px}.home-market-main strong{font-size: 13px}.home-market-main small{font-size: 10px}.home-feature-card strong{font-size: 13px}.home-feature-card span{font-size: 10px}.home-mover-row span,.home-activity-row span{font-size: 12px}.home-announce-card span{font-size: 10px}}
 /* ===== END BITLORA HOME — MOBILE TYPOGRAPHY ===== */
 
 
 /* ===== BITLORA HOME — MOBILE READABLE TEXT ===== */
-@media(max-width:760px){.home-eyebrow{font-size:13px!important}.home-balance-card h2{font-size:32px!important}.home-balance-meta span,.home-balance-meta strong{font-size:13px!important}.home-balance-footer{font-size:11px!important}.home-section-heading h3{font-size:17px!important}.home-section-heading p{font-size:11px!important}.home-section-heading>button{font-size:12px!important}.home-action-grid strong{font-size:14px!important}.home-action-grid small{font-size:11px!important}.home-action-icon{font-size:17px!important}.home-market-main strong{font-size:14px!important}.home-market-main small{font-size:11px!important}.home-market-price strong{font-size:13px!important}.home-market-price span{font-size:11px!important}.home-feature-card strong{font-size:14px!important}.home-feature-card span{font-size:11px!important}.home-feature-card b{font-size:22px!important}.home-insight-heading strong{font-size:15px!important}.home-insight-heading span,.home-insight-heading button{font-size:11px!important}.home-mover-row span,.home-activity-row span{font-size:13px!important}.home-mover-row b{font-size:12px!important}.home-activity-row small{font-size:11px!important}.home-announce-card strong{font-size:13px!important}.home-announce-card span{font-size:11px!important}.home-announce-card button{font-size:22px!important}.home-security-main strong{font-size:12px!important}.home-security-main small{font-size:11px!important}.home-security-card>button{font-size:11px!important}}
-@media(max-width:380px){.home-balance-card h2{font-size:30px!important}.home-section-heading h3{font-size:16px!important}.home-action-grid strong{font-size:13px!important}.home-action-grid small{font-size:10px!important}.home-market-main strong{font-size:13px!important}.home-market-main small{font-size:10px!important}.home-feature-card strong{font-size:13px!important}.home-feature-card span{font-size:10px!important}.home-mover-row span,.home-activity-row span{font-size:12px!important}.home-activity-row small{font-size:10px!important}.home-announce-card span{font-size:10px!important}}
+@media(max-width:760px){.home-eyebrow{font-size: 11px !important}.home-balance-card h2{font-size:32px!important}.home-balance-meta span,.home-balance-meta strong{font-size:13px!important}.home-balance-footer{font-size: 10px !important}.home-section-heading h3{font-size: 16px !important}.home-section-heading p{font-size: 10px !important}.home-section-heading>button{font-size: 11px !important}.home-action-grid strong{font-size: 13px !important}.home-action-grid small{font-size: 10px !important}.home-action-icon{font-size:17px!important}.home-market-main strong{font-size: 13px !important}.home-market-main small{font-size: 10px !important}.home-market-price strong{font-size: 13px !important}.home-market-price span{font-size: 10px !important}.home-feature-card strong{font-size: 13px !important}.home-feature-card span{font-size: 10px !important}.home-feature-card b{font-size:22px!important}.home-insight-heading strong{font-size: 14px !important}.home-insight-heading span,.home-insight-heading button{font-size: 11px !important}.home-mover-row span,.home-activity-row span{font-size: 12px !important}.home-mover-row b{font-size: 11px !important}.home-activity-row small{font-size: 10px !important}.home-announce-card strong{font-size: 13px !important}.home-announce-card span{font-size: 10px !important}.home-announce-card button{font-size:22px!important}.home-security-main strong{font-size: 12px !important}.home-security-main small{font-size: 10px !important}.home-security-card>button{font-size: 11px !important}}
+@media(max-width:380px){.home-balance-card h2{font-size:30px!important}.home-section-heading h3{font-size: 16px !important}.home-action-grid strong{font-size: 13px !important}.home-action-grid small{font-size: 10px !important}.home-market-main strong{font-size: 13px !important}.home-market-main small{font-size: 10px !important}.home-feature-card strong{font-size: 13px !important}.home-feature-card span{font-size: 10px !important}.home-mover-row span,.home-activity-row span{font-size: 12px !important}.home-activity-row small{font-size: 10px !important}.home-announce-card span{font-size: 10px !important}}
 /* ===== END BITLORA HOME — MOBILE READABLE TEXT ===== */
 
 
 /* ===== BITLORA HOME — BELOW PORTFOLIO TEXT SCALE ===== */
-@media(max-width:760px){.home-quick-actions .home-section-heading h3,.home-market-section .home-section-heading h3{font-size:18px!important}.home-quick-actions .home-section-heading p,.home-market-section .home-section-heading p{font-size:12px!important}.home-quick-actions .home-section-heading>button,.home-market-section .home-section-heading>button{font-size:13px!important}.home-action-grid strong{font-size:15px!important}.home-action-grid small{font-size:12px!important}.home-market-main strong{font-size:15px!important}.home-market-main small{font-size:12px!important}.home-market-price strong{font-size:14px!important}.home-market-price span{font-size:12px!important}.home-feature-card strong{font-size:15px!important}.home-feature-card span{font-size:12px!important}.home-insight-heading strong{font-size:16px!important}.home-insight-heading span,.home-insight-heading button{font-size:12px!important}.home-mover-row span,.home-activity-row span{font-size:14px!important}.home-mover-row b{font-size:13px!important}.home-activity-row small{font-size:12px!important}.home-announce-card strong{font-size:14px!important}.home-announce-card span{font-size:12px!important}.home-security-main strong{font-size:13px!important}.home-security-main small{font-size:12px!important}.home-security-card>button{font-size:12px!important}}
-@media(max-width:380px){.home-action-grid strong{font-size:14px!important}.home-action-grid small{font-size:11px!important}.home-market-main strong{font-size:14px!important}.home-market-main small{font-size:11px!important}.home-feature-card strong{font-size:14px!important}.home-feature-card span{font-size:11px!important}.home-mover-row span,.home-activity-row span{font-size:13px!important}.home-activity-row small{font-size:11px!important}.home-announce-card span{font-size:11px!important}}
+@media(max-width:760px){.home-quick-actions .home-section-heading h3,.home-market-section .home-section-heading h3{font-size:18px!important}.home-quick-actions .home-section-heading p,.home-market-section .home-section-heading p{font-size:12px!important}.home-quick-actions .home-section-heading>button,.home-market-section .home-section-heading>button{font-size:13px!important}.home-action-grid strong{font-size: 13px !important}.home-action-grid small{font-size: 10px !important}.home-market-main strong{font-size: 13px !important}.home-market-main small{font-size: 10px !important}.home-market-price strong{font-size: 13px !important}.home-market-price span{font-size: 10px !important}.home-feature-card strong{font-size: 13px !important}.home-feature-card span{font-size: 10px !important}.home-insight-heading strong{font-size: 14px !important}.home-insight-heading span,.home-insight-heading button{font-size: 11px !important}.home-mover-row span,.home-activity-row span{font-size: 12px !important}.home-mover-row b{font-size: 11px !important}.home-activity-row small{font-size: 10px !important}.home-announce-card strong{font-size: 13px !important}.home-announce-card span{font-size: 10px !important}.home-security-main strong{font-size: 12px !important}.home-security-main small{font-size: 10px !important}.home-security-card>button{font-size: 11px !important}}
+@media(max-width:380px){.home-action-grid strong{font-size: 13px !important}.home-action-grid small{font-size: 10px !important}.home-market-main strong{font-size: 13px !important}.home-market-main small{font-size: 10px !important}.home-feature-card strong{font-size: 13px !important}.home-feature-card span{font-size: 10px !important}.home-mover-row span,.home-activity-row span{font-size: 12px !important}.home-activity-row small{font-size: 10px !important}.home-announce-card span{font-size: 10px !important}}
 /* ===== END BITLORA HOME — BELOW PORTFOLIO TEXT SCALE ===== */
-
 
 
 /* BITLORA PREMIUM LOGO — COMPACT HEADER */
@@ -2237,7 +2138,7 @@ button {
   }
 
   .markets-title h3 {
-    font-size: 18px;
+    font-size: 20px;
     font-weight: 800;
     letter-spacing: 0.1px;
   }
@@ -2257,7 +2158,7 @@ button {
   }
 
   .market-search span {
-    font-size: 19px;
+    font-size: 20px;
     line-height: 1;
   }
 
@@ -2275,7 +2176,7 @@ button {
     min-height: 34px;
     padding: 7px 13px;
     border-radius: 9px;
-    font-size: 11px;
+    font-size: 12px;
     font-weight: 700;
     white-space: nowrap;
   }
@@ -2296,7 +2197,7 @@ button {
     gap: 7px;
     min-height: 38px;
     padding: 11px 3px 8px;
-    font-size: 9px;
+    font-size: 10px;
     text-transform: uppercase;
     letter-spacing: 0.25px;
   }
@@ -2332,7 +2233,7 @@ button {
     width: 30px;
     height: 30px;
     flex: 0 0 30px;
-    font-size: 12px;
+    font-size: 13px;
   }
 
   .market-pair > div:last-child {
@@ -2340,12 +2241,12 @@ button {
   }
 
   .market-pair strong {
-    font-size: 12px;
+    font-size: 13px;
     font-weight: 800;
   }
 
   .market-pair span {
-    font-size: 9px;
+    font-size: 11px;
   }
 
   .market-price {
@@ -2353,12 +2254,12 @@ button {
   }
 
   .market-price strong {
-    font-size: 11px;
+    font-size: 13px;
     font-weight: 750;
   }
 
   .market-price span {
-    font-size: 9px;
+    font-size: 10px;
   }
 
   .market-change {
@@ -2383,7 +2284,7 @@ button {
   }
 
   .market-empty span {
-    font-size: 10px;
+    font-size: 11px;
   }
 }
 
@@ -2411,15 +2312,15 @@ button {
   }
 
   .market-pair strong {
-    font-size: 11px;
+    font-size: 13px;
   }
 
   .market-price strong {
-    font-size: 10px;
+    font-size: 13px;
   }
 
   .market-change {
-    font-size: 10px;
+    font-size: 11px;
   }
 }
 
@@ -2457,7 +2358,7 @@ button {
 
   .market-overview-head span {
     color: #77849a;
-    font-size: 10px;
+    font-size: 11px;
     font-weight: 800;
     letter-spacing: .7px;
   }
@@ -2476,7 +2377,7 @@ button {
     border: 1px solid #244334;
     border-radius: 7px;
     color: #43dc91;
-    font-size: 9px;
+    font-size: 10px;
     font-weight: 800;
   }
 
@@ -2510,7 +2411,7 @@ button {
 
   .market-stat span {
     color: #77849a;
-    font-size: 10px;
+    font-size: 11px;
     font-weight: 600;
   }
 
@@ -2528,7 +2429,7 @@ button {
   .market-stat small {
     margin-top: 4px;
     color: #647188;
-    font-size: 9px;
+    font-size: 10px;
   }
 
   .market-stat .green {
@@ -2563,11 +2464,11 @@ button {
   }
 
   .market-stat strong {
-    font-size: 14px !important;
+    font-size: 15px !important;
   }
 
   .market-stat small {
-    font-size: 8px;
+    font-size: 10px;
   }
 }
 
@@ -2596,7 +2497,7 @@ button {
   }
 
   .markets-title p {
-    font-size: 12px !important;
+    font-size: 11px !important;
   }
 
   /* Search */
@@ -2625,7 +2526,7 @@ button {
   }
 
   .market-pair span {
-    font-size: 12px !important;
+    font-size: 11px !important;
   }
 
   /* Price */
@@ -2635,7 +2536,7 @@ button {
   }
 
   .market-price span {
-    font-size: 12px !important;
+    font-size: 10px !important;
   }
 
   /* 24H change */
@@ -2655,7 +2556,7 @@ button {
   }
 
   .market-overview-head strong {
-    font-size: 16px !important;
+    font-size: 15px !important;
   }
 
   .market-live {
@@ -2691,7 +2592,7 @@ button {
 @media (max-width: 380px) {
 
   .markets-title h3 {
-    font-size: 16px !important;
+    font-size: 20px !important;
   }
 
   .markets-title p {
@@ -2724,11 +2625,11 @@ button {
   }
 
   .market-price span {
-    font-size: 11px !important;
+    font-size: 10px !important;
   }
 
   .market-change {
-    font-size: 12px !important;
+    font-size: 11px !important;
   }
 
   .favorite-button {
@@ -2736,7 +2637,7 @@ button {
   }
 
   .market-overview-head span {
-    font-size: 10px !important;
+    font-size: 11px !important;
   }
 
   .market-overview-head strong {
@@ -2744,19 +2645,19 @@ button {
   }
 
   .market-live {
-    font-size: 9px !important;
-  }
-
-  .market-stat span {
     font-size: 10px !important;
   }
 
+  .market-stat span {
+    font-size: 11px !important;
+  }
+
   .market-stat strong {
-    font-size: 14px !important;
+    font-size: 15px !important;
   }
 
   .market-stat small {
-    font-size: 9px !important;
+    font-size: 10px !important;
   }
 }
 
@@ -2912,27 +2813,27 @@ button {
 .trade-pro-hero{margin:0 0 10px;padding:16px;border:1px solid rgba(212,175,55,.32);border-radius:20px;background:radial-gradient(circle at 85% 15%,rgba(212,175,55,.18),transparent 30%),linear-gradient(145deg,#181818,#070707);box-shadow:0 18px 45px rgba(0,0,0,.55),inset 0 1px rgba(255,255,255,.07)}
 .trade-pro-top{display:flex;justify-content:space-between;align-items:center}
 .trade-pro-pair{display:flex;align-items:center;gap:8px}
-.trade-pro-pair strong{font-size:23px;font-weight:950}
+.trade-pro-pair strong{font-size: 20px;font-weight:950}
 .trade-pro-pair span{color:#d4af37;font-size:18px}
 .trade-pro-top small{display:block;margin-top:4px;color:#888;font-size:8px;letter-spacing:1.5px}
 .trade-pro-live{font-size:9px;color:#d4af37}
 .trade-pro-price{display:flex;justify-content:space-between;align-items:end;margin:18px 0 14px}
 .trade-pro-price small{display:block;color:#888;font-size:8px;margin-bottom:4px}
-.trade-pro-price strong{display:block;font-size:28px;font-weight:950}
+.trade-pro-price strong{display:block;font-size: 25px;font-weight:950}
 .trade-pro-price>div:last-child{text-align:right}
 .trade-pro-price>div:last-child strong{font-size:17px}
 .trade-pro-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}
 .trade-pro-stats span{padding:9px 6px;border-radius:10px;background:rgba(255,255,255,.035);border:1px solid rgba(255,255,255,.06);color:#777;font-size:7px}
 .trade-pro-stats b{display:block;color:#ddd;font-size:10px;margin-top:3px}
 .trade-pro-nav{display:grid;grid-template-columns:repeat(5,1fr);gap:5px;margin-top:10px}
-.trade-pro-nav button{min-height:34px;border:1px solid rgba(212,175,55,.12);border-radius:9px;background:#0d0d0d;color:#aaa;font-size:8px;font-weight:900}
+.trade-pro-nav button{min-height:34px;border:1px solid rgba(212,175,55,.12);border-radius:9px;background:#0d0d0d;color:#aaa;font-size: 10px;font-weight:900}
 .trade-pro-nav button:first-child{color:#d4af37;background:rgba(212,175,55,.09)}
 .trade-screen>.trade-header,.trade-screen>.trade-price-bar{display:none!important}
 }
 @media(max-width:380px){
 .trade-pro-hero{padding:13px}
-.trade-pro-price strong{font-size:24px}
-.trade-pro-pair strong{font-size:20px}
+.trade-pro-price strong{font-size: 25px}
+.trade-pro-pair strong{font-size: 20px}
 }
 
 /* BITLORA MOBILE ORDER BOOK EQUAL SIZE */
@@ -2981,7 +2882,7 @@ button {
 }
 
 .order-current strong{
-  font-size:17px!important;
+  font-size: 16px !important;
   font-weight:950!important;
 }
 
@@ -3014,13 +2915,13 @@ button {
   min-height:46px!important;
   height:46px!important;
   padding:0 11px!important;
-  font-size:14px!important;
+  font-size: 14px !important;
   font-weight:700!important;
   line-height:1!important;
 }
 
 .order-field>div>span{
-  font-size:11px!important;
+  font-size: 10px !important;
   font-weight:900!important;
   padding-right:10px!important;
 }
@@ -3037,7 +2938,7 @@ button {
   min-height:36px!important;
   height:36px!important;
   padding:0!important;
-  font-size:11px!important;
+  font-size: 10px !important;
   font-weight:900!important;
   border-radius:9px!important;
 }
@@ -3102,7 +3003,7 @@ button {
   width:100%!important;
   min-height:44px!important;
   height:44px!important;
-  font-size:14px!important;
+  font-size: 13px !important;
   font-weight:900!important;
 }
 
@@ -3241,7 +3142,7 @@ button {
   }
 
   .trade-pro-price strong{
-    font-size:29px !important;
+    font-size: 25px !important;
     font-weight:900 !important;
     letter-spacing:-.045em !important;
     line-height:1 !important;
@@ -3326,7 +3227,7 @@ button {
   }
 
   .order-row span{
-    font-size:10px !important;
+    font-size: 10px !important;
     line-height:1 !important;
     font-weight:650 !important;
   }
@@ -3336,14 +3237,14 @@ button {
   }
 
   .order-current strong{
-    font-size:17px !important;
+    font-size: 16px !important;
     font-weight:950 !important;
     letter-spacing:-.025em !important;
     font-variant-numeric:tabular-nums !important;
   }
 
   .order-current span{
-    font-size:7px !important;
+    font-size: 9px !important;
     font-weight:800 !important;
     letter-spacing:.11em !important;
     text-transform:uppercase !important;
@@ -3358,7 +3259,7 @@ button {
   }
 
   .order-book-dropdown-menu button{
-    font-size:10px !important;
+    font-size: 10px !important;
     font-weight:750 !important;
   }
 
@@ -3377,7 +3278,7 @@ button {
   .trade-tabs button{
     min-height:44px !important;
     border-radius:9px !important;
-    font-size:13px !important;
+    font-size: 13px !important;
     font-weight:950 !important;
     letter-spacing:.03em !important;
     text-transform:uppercase !important;
@@ -3431,14 +3332,14 @@ button {
   }
 
   .order-field input{
-    font-size:13px !important;
+    font-size: 14px !important;
     font-weight:750 !important;
     letter-spacing:-.015em !important;
     font-variant-numeric:tabular-nums !important;
   }
 
   .order-field>div>span{
-    font-size:9px !important;
+    font-size: 10px !important;
     font-weight:900 !important;
     letter-spacing:.05em !important;
   }
@@ -3507,7 +3408,7 @@ button {
   }
 
   .order-history-filters button{
-    font-size:8px !important;
+    font-size: 10px !important;
     font-weight:850 !important;
     letter-spacing:.06em !important;
     text-transform:uppercase !important;
@@ -3549,7 +3450,7 @@ button {
   }
 
   .open-order-row button{
-    font-size:8px !important;
+    font-size: 9px !important;
     font-weight:900 !important;
     letter-spacing:.05em !important;
     text-transform:uppercase !important;
@@ -3583,7 +3484,7 @@ button {
   }
 
   .trade-pro-nav button{
-    font-size:8px !important;
+    font-size: 10px !important;
     font-weight:900 !important;
     letter-spacing:.06em !important;
     text-transform:uppercase !important;
@@ -3622,11 +3523,11 @@ button {
 @media(max-width:380px){
 
   .trade-pro-pair strong{
-    font-size:20px !important;
+    font-size: 20px !important;
   }
 
   .trade-pro-price strong{
-    font-size:25px !important;
+    font-size: 25px !important;
   }
 
   .trade-section-title strong,
@@ -3635,7 +3536,7 @@ button {
   }
 
   .trade-tabs button{
-    font-size:12px !important;
+    font-size: 13px !important;
   }
 
   .order-book-label{
@@ -3643,7 +3544,7 @@ button {
   }
 
   .order-row span{
-    font-size:9px !important;
+    font-size: 10px !important;
   }
 
   .buy-button,
@@ -3819,7 +3720,7 @@ button {
 .futures-main-price strong{
   display:block;
   color:#f5d76e;
-  font-size:24px;
+  font-size: 24px;
   line-height:1.15;
 }
 
@@ -3867,7 +3768,7 @@ button {
 
 .futures-account-grid strong{
   color:#eee;
-  font-size:13px;
+  font-size: 14px;
 }
 
 .futures-contract-tabs,
@@ -4090,7 +3991,7 @@ button {
   border-radius:8px;
   background:#0b0b0b;
   color:#eee;
-  font-size:10px;
+  font-size: 11px;
   outline:none;
 }
 
@@ -4212,7 +4113,7 @@ button {
   border-radius:7px;
   background:#101010;
   color:#777;
-  font-size:9px;
+  font-size: 11px;
   cursor:pointer;
 }
 
@@ -4320,7 +4221,7 @@ button {
 .futures-order-summary strong{
   margin-top:3px;
   color:#ddd;
-  font-size:10px;
+  font-size: 13px;
 }
 
 .futures-submit-button{
@@ -4355,7 +4256,7 @@ button {
   border-radius:8px;
   background:rgba(212,175,55,.06);
   color:#d4af37;
-  font-size:9px;
+  font-size: 11px;
 }
 
 .futures-order-note{
@@ -4364,7 +4265,7 @@ button {
   border-radius:8px;
   background:rgba(255,170,0,.05);
   color:#777;
-  font-size:8px;
+  font-size: 10px;
   line-height:1.5;
 }
 
@@ -4441,7 +4342,7 @@ button {
   border-radius:7px;
   background:rgba(225,75,75,.08);
   color:#ef7272;
-  font-size:8px;
+  font-size: 11px;
   font-weight:900;
   cursor:pointer;
 }
@@ -4660,7 +4561,7 @@ button {
   }
 
   .futures-main-price strong{
-    font-size:22px;
+    font-size: 24px;
   }
 
   .futures-account-grid{
@@ -4722,7 +4623,7 @@ button {
   }
 
   .futures-main-price strong{
-    font-size:19px;
+    font-size: 24px;
   }
 
   .futures-account-grid{
@@ -4741,7 +4642,7 @@ button {
   }
 
   .futures-order-controls select{
-    font-size:9px;
+    font-size: 11px;
   }
 
   .futures-risk-stats{
@@ -4834,7 +4735,7 @@ button {
 .wallet-pro-total small{
   margin-top:5px;
   color:#666;
-  font-size:10px;
+  font-size: 11px;
 }
 
 .wallet-pro-balance-stats{
@@ -4858,13 +4759,13 @@ button {
 
 .wallet-pro-balance-stats span{
   color:#666;
-  font-size:9px;
+  font-size: 11px;
 }
 
 .wallet-pro-balance-stats strong{
   margin-top:5px;
   color:#ddd;
-  font-size:11px;
+  font-size: 14px;
 }
 
 .wallet-pro-wallet-tabs{
@@ -4886,7 +4787,7 @@ button {
   border-radius:9px;
   background:#101010;
   color:#777;
-  font-size:10px;
+  font-size: 12px;
   font-weight:800;
   cursor:pointer;
 }
@@ -4907,7 +4808,7 @@ button {
 .wallet-pro-actions button{
   padding:12px;
   border-radius:10px;
-  font-size:11px;
+  font-size: 12px;
   font-weight:900;
   cursor:pointer;
 }
@@ -4967,13 +4868,13 @@ button {
 
 .wallet-pro-card-header strong{
   color:#eee;
-  font-size:13px;
+  font-size: 15px;
 }
 
 .wallet-pro-card-header span{
   margin-top:3px;
   color:#666;
-  font-size:9px;
+  font-size: 11px;
 }
 
 .wallet-pro-card-header input{
@@ -4984,7 +4885,7 @@ button {
   background:#0b0b0b;
   color:#eee;
   outline:none;
-  font-size:9px;
+  font-size: 13px;
 }
 
 .wallet-pro-card-header button{
@@ -5008,14 +4909,14 @@ button {
 
 .wallet-pro-asset-head{
   color:#555;
-  font-size:8px;
+  font-size: 11px;
   border-bottom:1px solid rgba(255,255,255,.045);
 }
 
 .wallet-pro-asset-row{
   min-height:58px;
   border-bottom:1px solid rgba(255,255,255,.035);
-  font-size:10px;
+  font-size: 13px;
 }
 
 .wallet-pro-asset-row:last-child{
@@ -5048,7 +4949,7 @@ button {
 .wallet-pro-asset-name span{
   margin-top:2px;
   color:#666;
-  font-size:8px;
+  font-size: 11px;
 }
 
 .wallet-pro-coin-icon{
@@ -5083,7 +4984,7 @@ button {
   border-radius:7px;
   background:transparent;
   color:#777;
-  font-size:9px;
+  font-size: 12px;
   font-weight:800;
   cursor:pointer;
 }
@@ -5118,7 +5019,7 @@ button {
   background:#0b0b0b;
   color:#eee;
   outline:none;
-  font-size:10px;
+  font-size: 14px;
 }
 
 .wallet-pro-form input:focus,
@@ -5142,19 +5043,19 @@ button {
 
 .wallet-pro-address-box span{
   color:#777;
-  font-size:9px;
+  font-size: 11px;
 }
 
 .wallet-pro-address-box strong{
   margin-top:8px;
   color:#d4af37;
-  font-size:11px;
+  font-size: 13px;
 }
 
 .wallet-pro-address-box small{
   margin-top:5px;
   color:#555;
-  font-size:8px;
+  font-size: 10px;
 }
 
 .wallet-pro-fee-box{
@@ -5178,13 +5079,13 @@ button {
 
 .wallet-pro-fee-box span{
   color:#666;
-  font-size:8px;
+  font-size: 10px;
 }
 
 .wallet-pro-fee-box strong{
   margin-top:4px;
   color:#bbb;
-  font-size:9px;
+  font-size: 12px;
 }
 
 .wallet-pro-primary-action{
@@ -5195,7 +5096,7 @@ button {
   background:linear-gradient(135deg,#b88b16,#d4af37,#f0cf61);
   color:#090909;
   font-weight:950;
-  font-size:10px;
+  font-size: 14px;
   cursor:pointer;
 }
 
@@ -5206,7 +5107,7 @@ button {
   border:1px solid rgba(212,175,55,.2);
   background:rgba(212,175,55,.05);
   color:#d4af37;
-  font-size:9px;
+  font-size: 11px;
   line-height:1.4;
 }
 
@@ -5231,13 +5132,13 @@ button {
 
 .wallet-pro-security-strip span{
   color:#666;
-  font-size:8px;
+  font-size: 10px;
 }
 
 .wallet-pro-security-strip strong{
   margin-top:4px;
   color:#d4af37;
-  font-size:10px;
+  font-size: 12px;
 }
 
 .wallet-pro-history-card{
@@ -5284,13 +5185,13 @@ button {
 
 .wallet-pro-security-card strong{
   color:#eee;
-  font-size:12px;
+  font-size: 13px;
 }
 
 .wallet-pro-security-card span{
   margin-top:4px;
   color:#666;
-  font-size:9px;
+  font-size: 11px;
 }
 
 .wallet-pro-security-card button{
@@ -5299,7 +5200,7 @@ button {
   border-radius:8px;
   background:rgba(212,175,55,.07);
   color:#d4af37;
-  font-size:9px;
+  font-size: 12px;
   font-weight:800;
   cursor:pointer;
 }
@@ -5340,13 +5241,13 @@ button {
 
 .wallet-pro-settings-header strong{
   color:#f5d76e;
-  font-size:17px;
+  font-size: 16px;
 }
 
 .wallet-pro-settings-header span{
   margin-top:4px;
   color:#666;
-  font-size:9px;
+  font-size: 11px;
 }
 
 .wallet-pro-settings-header button{
@@ -5356,7 +5257,7 @@ button {
   border-radius:8px;
   background:#111;
   color:#aaa;
-  font-size:20px;
+  font-size: 20px;
   cursor:pointer;
 }
 
@@ -5383,7 +5284,7 @@ button {
   margin:0;
   border-bottom:1px solid rgba(255,255,255,.035);
   color:#999;
-  font-size:10px;
+  font-size: 12px;
 }
 
 .wallet-pro-setting-group label:last-child{
@@ -5539,12 +5440,12 @@ button {
   }
 
   .wallet-pro-balance-stats strong{
-    font-size:9px;
+    font-size: 14px;
   }
 
   .wallet-pro-actions button{
     padding:10px 5px;
-    font-size:9px;
+    font-size: 12px;
   }
 
   .wallet-pro-action-card{
@@ -5570,16 +5471,16 @@ button {
 }
 
 .futures-screen .futures-pair {
-  font-size: 17px;
+  font-size: 18px;
 }
 
 .futures-screen .futures-price {
-  font-size: 26px;
+  font-size: 28px;
   line-height: 1.2;
 }
 
 .futures-screen .futures-card-title {
-  font-size: 15px;
+  font-size: 16px;
 }
 
 .wallet-pro-screen {
@@ -5608,19 +5509,19 @@ button {
 
 @media (max-width: 700px) {
   .futures-screen {
-    font-size: 13px;
+    font-size: 14px;
   }
 
   .futures-screen .futures-pair {
-    font-size: 16px;
+    font-size: 18px;
   }
 
   .futures-screen .futures-price {
-    font-size: 22px;
+    font-size: 28px;
   }
 
   .wallet-pro-screen {
-    font-size: 13px;
+    font-size: 14px;
   }
 
   .wallet-pro-screen .wallet-pro-title {
@@ -5829,10 +5730,6 @@ button {
   font-weight: 700;
 }
 
-.wallet-pro-screen .wallet-pro-stat {
-  font-size: 12px;
-  line-height: 1.35;
-}
 
 .wallet-pro-screen .wallet-pro-stat strong {
   font-size: 15px;
@@ -5921,41 +5818,41 @@ button {
 @media (max-width: 700px) {
 
   .futures-screen {
-    font-size: 13px;
+    font-size: 14px;
   }
 
   .futures-screen .futures-pair {
-    font-size: 17px;
+    font-size: 18px;
   }
 
   .futures-screen .futures-price {
-    font-size: 24px;
+    font-size: 28px;
   }
 
   .futures-screen .futures-account-grid {
-    font-size: 11px;
+    font-size: 12px;
   }
 
   .futures-screen .futures-account-grid strong {
-    font-size: 13px;
+    font-size: 15px;
   }
 
   .futures-screen .futures-card-title {
-    font-size: 15px;
+    font-size: 16px;
   }
 
   .futures-screen .futures-order-card input,
   .futures-screen .futures-order-card select {
-    font-size: 13px;
+    font-size: 14px;
   }
 
   .futures-screen .futures-submit {
     min-height: 44px;
-    font-size: 14px;
+    font-size: 15px;
   }
 
   .wallet-pro-screen {
-    font-size: 13px;
+    font-size: 14px;
   }
 
   .wallet-pro-screen .wallet-pro-title {
@@ -5967,7 +5864,7 @@ button {
   }
 
   .wallet-pro-screen .wallet-pro-stat strong {
-    font-size: 13px;
+    font-size: 15px;
   }
 
   .wallet-pro-screen .wallet-pro-card-title {
@@ -5975,33 +5872,33 @@ button {
   }
 
   .wallet-pro-screen .wallet-pro-asset-name {
-    font-size: 13px;
+    font-size: 14px;
   }
 
   .wallet-pro-screen .wallet-pro-asset-balance {
-    font-size: 13px;
+    font-size: 14px;
   }
 
   .wallet-pro-screen input,
   .wallet-pro-screen select,
   .wallet-pro-screen textarea {
-    font-size: 13px;
+    font-size: 14px;
   }
 
   .wallet-pro-screen .wallet-pro-submit {
     min-height: 44px;
-    font-size: 13px;
+    font-size: 14px;
   }
 }
 
 @media (max-width: 380px) {
 
   .futures-screen .futures-price {
-    font-size: 22px;
+    font-size: 28px;
   }
 
   .futures-screen .futures-pair {
-    font-size: 16px;
+    font-size: 18px;
   }
 
   .wallet-pro-screen .wallet-pro-title {
@@ -6039,7 +5936,7 @@ button {
 
 .futures-screen button {
   font-family: inherit;
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 700;
   line-height: 1.2;
 }
@@ -6047,47 +5944,43 @@ button {
 .futures-screen input,
 .futures-screen select {
   font-family: inherit;
-  font-size: 15px;
+  font-size: 14px;
   font-weight: 600;
   line-height: 1.2;
 }
 
-.futures-screen small {
-  font-size: 12px;
-  line-height: 1.3;
-}
 
 .futures-screen .futures-pair {
-  font-size: clamp(17px, 2vw, 20px);
+  font-size: 18px;
   font-weight: 850;
 }
 
 .futures-screen .futures-price {
-  font-size: clamp(26px, 3.5vw, 36px);
+  font-size: 28px;
   font-weight: 850;
   line-height: 1.1;
   letter-spacing: -0.02em;
 }
 
 .futures-screen .futures-account-grid {
-  font-size: 13px;
+  font-size: 12px;
 }
 
 .futures-screen .futures-account-grid strong {
-  font-size: 16px;
+  font-size: 15px;
   font-weight: 800;
 }
 
 .futures-screen .futures-contract-tabs button,
 .futures-screen .futures-timeframes button,
 .futures-screen .futures-data-tabs button {
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 750;
   min-height: 38px;
 }
 
 .futures-screen .futures-card-title {
-  font-size: 17px;
+  font-size: 16px;
   font-weight: 850;
   line-height: 1.25;
 }
@@ -6095,48 +5988,42 @@ button {
 .futures-screen .futures-order-card label,
 .futures-screen .futures-chart-card label,
 .futures-screen .futures-risk-card label {
-  font-size: 12px;
+  font-size: 11px;
   font-weight: 750;
 }
 
 .futures-screen .futures-order-card input,
 .futures-screen .futures-order-card select {
-  font-size: 15px;
+  font-size: 14px;
   min-height: 44px;
 }
 
 .futures-screen .futures-side button {
-  font-size: 15px;
+  font-size: 14px;
   font-weight: 850;
   min-height: 44px;
 }
 
 .futures-screen .futures-size-presets button {
-  font-size: 12px;
+  font-size: 11px;
   min-height: 34px;
 }
 
 .futures-screen .futures-submit {
   min-height: 50px;
-  font-size: 16px;
+  font-size: 15px;
   font-weight: 850;
 }
 
 .futures-screen .futures-position-row,
 .futures-screen .futures-order-row {
-  font-size: 13px;
+  font-size: 12px;
   line-height: 1.45;
 }
 
 .futures-screen .futures-position-row strong,
 .futures-screen .futures-order-row strong {
-  font-size: 14px;
-  font-weight: 800;
-}
-
-.futures-screen .futures-risk-value,
-.futures-screen .futures-liquidation-price {
-  font-size: 15px;
+  font-size: 13px;
   font-weight: 800;
 }
 
@@ -6158,7 +6045,7 @@ button {
 
 .wallet-pro-screen button {
   font-family: inherit;
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 700;
   line-height: 1.2;
 }
@@ -6167,13 +6054,13 @@ button {
 .wallet-pro-screen select,
 .wallet-pro-screen textarea {
   font-family: inherit;
-  font-size: 15px;
+  font-size: 14px;
   font-weight: 600;
   line-height: 1.25;
 }
 
 .wallet-pro-screen small {
-  font-size: 12px;
+  font-size: 11px;
 }
 
 .wallet-pro-screen .wallet-pro-title {
@@ -6183,7 +6070,7 @@ button {
 }
 
 .wallet-pro-screen .wallet-pro-subtitle {
-  font-size: 13px;
+  font-size: 12px;
   line-height: 1.4;
 }
 
@@ -6195,28 +6082,28 @@ button {
 }
 
 .wallet-pro-screen .wallet-pro-balance-label {
-  font-size: 12px;
+  font-size: 11px;
   font-weight: 750;
 }
 
 .wallet-pro-screen .wallet-pro-stat {
-  font-size: 13px;
+  font-size: 12px;
   line-height: 1.35;
 }
 
 .wallet-pro-screen .wallet-pro-stat strong {
-  font-size: 16px;
+  font-size: 15px;
   font-weight: 850;
 }
 
 .wallet-pro-screen .wallet-pro-tabs button {
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 750;
   min-height: 40px;
 }
 
 .wallet-pro-screen .wallet-pro-action button {
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 800;
   min-height: 44px;
 }
@@ -6228,25 +6115,22 @@ button {
 }
 
 .wallet-pro-screen .wallet-pro-asset-name {
-  font-size: 15px;
+  font-size: 14px;
   font-weight: 850;
 }
 
 .wallet-pro-screen .wallet-pro-asset-symbol {
-  font-size: 12px;
+  font-size: 11px;
 }
 
 .wallet-pro-screen .wallet-pro-asset-balance {
-  font-size: 15px;
+  font-size: 14px;
   font-weight: 850;
 }
 
-.wallet-pro-screen .wallet-pro-asset-value {
-  font-size: 13px;
-}
 
 .wallet-pro-screen label {
-  font-size: 12px;
+  font-size: 11px;
   font-weight: 750;
 }
 
@@ -6258,27 +6142,27 @@ button {
 
 .wallet-pro-screen .wallet-pro-submit {
   min-height: 50px;
-  font-size: 15px;
+  font-size: 14px;
   font-weight: 850;
 }
 
 .wallet-pro-screen .wallet-pro-fee,
 .wallet-pro-screen .wallet-pro-limit {
-  font-size: 13px;
+  font-size: 12px;
 }
 
 .wallet-pro-screen .wallet-pro-security-title {
-  font-size: 15px;
+  font-size: 14px;
   font-weight: 850;
 }
 
 .wallet-pro-screen .wallet-pro-security-text {
-  font-size: 13px;
+  font-size: 12px;
   line-height: 1.55;
 }
 
 .wallet-pro-screen .wallet-pro-history {
-  font-size: 13px;
+  font-size: 12px;
   line-height: 1.45;
 }
 
@@ -6297,7 +6181,7 @@ button {
 
   .futures-screen input,
   .futures-screen select {
-    font-size: 16px;
+    font-size: 14px;
   }
 
   .futures-screen .futures-pair {
@@ -6305,7 +6189,7 @@ button {
   }
 
   .futures-screen .futures-price {
-    font-size: 25px;
+    font-size: 28px;
   }
 
   .futures-screen .futures-account-grid {
@@ -6313,7 +6197,7 @@ button {
   }
 
   .futures-screen .futures-account-grid strong {
-    font-size: 14px;
+    font-size: 15px;
   }
 
   .futures-screen .futures-card-title {
@@ -6336,7 +6220,7 @@ button {
   .wallet-pro-screen input,
   .wallet-pro-screen select,
   .wallet-pro-screen textarea {
-    font-size: 16px;
+    font-size: 14px;
   }
 
   .wallet-pro-screen .wallet-pro-title {
@@ -6352,7 +6236,7 @@ button {
   }
 
   .wallet-pro-screen .wallet-pro-stat strong {
-    font-size: 14px;
+    font-size: 15px;
   }
 
   .wallet-pro-screen .wallet-pro-card-title {
@@ -6376,11 +6260,11 @@ button {
 @media (max-width: 380px) {
 
   .futures-screen .futures-price {
-    font-size: 23px;
+    font-size: 28px;
   }
 
   .futures-screen .futures-pair {
-    font-size: 17px;
+    font-size: 18px;
   }
 
   .wallet-pro-screen .wallet-pro-title {
@@ -6442,7 +6326,7 @@ button {
 }
 
 .futures-main-price {
-  font-size: clamp(26px, 7vw, 36px) !important;
+  font-size: 28px !important;
   font-weight: 850;
   line-height: 1.1;
 }
@@ -6457,7 +6341,7 @@ button {
 }
 
 .futures-account-grid strong {
-  font-size: 15px !important;
+  font-size: 14px !important;
 }
 
 .futures-contract-tabs button,
@@ -6509,7 +6393,7 @@ button {
 }
 
 .futures-order-note {
-  font-size: 11px !important;
+  font-size: 10px !important;
   line-height: 1.4;
 }
 
@@ -6520,11 +6404,11 @@ button {
 }
 
 .futures-message {
-  font-size: 12px !important;
+  font-size: 11px !important;
 }
 
 .futures-position {
-  font-size: 13px;
+  font-size: 12px;
 }
 
 .futures-position strong {
@@ -6532,7 +6416,7 @@ button {
 }
 
 .futures-close-button {
-  font-size: 12px !important;
+  font-size: 11px !important;
 }
 
 .futures-data-card,
@@ -6584,7 +6468,7 @@ button {
 }
 
 .wallet-pro-balance-stats strong {
-  font-size: 15px !important;
+  font-size: 14px !important;
 }
 
 .wallet-pro-wallet-tabs button {
@@ -6593,7 +6477,7 @@ button {
 }
 
 .wallet-pro-actions button {
-  font-size: 13px !important;
+  font-size: 12px !important;
   font-weight: 800;
 }
 
@@ -6604,7 +6488,7 @@ button {
 .wallet-pro-card-header strong,
 .wallet-pro-card-header h3,
 .wallet-pro-card-header h4 {
-  font-size: 16px !important;
+  font-size: 15px !important;
 }
 
 .wallet-pro-asset-head {
@@ -6625,7 +6509,7 @@ button {
 }
 
 .wallet-pro-action-tabs button {
-  font-size: 13px !important;
+  font-size: 12px !important;
   font-weight: 750;
 }
 
@@ -6659,7 +6543,7 @@ button {
 }
 
 .wallet-pro-message {
-  font-size: 12px !important;
+  font-size: 11px !important;
 }
 
 .wallet-pro-security-strip {
@@ -6705,27 +6589,27 @@ button {
 @media (max-width: 700px) {
 
   .futures-screen {
-    font-size: 13px !important;
+    font-size: 14px !important;
   }
 
   .futures-topbar {
-    font-size: 12px;
+    font-size: 13px;
   }
 
   .futures-pair-select {
-    font-size: 16px !important;
+    font-size: 17px !important;
   }
 
   .futures-main-price {
-    font-size: 25px !important;
+    font-size: 28px !important;
   }
 
   .futures-account-grid {
-    font-size: 11px !important;
+    font-size: 12px !important;
   }
 
   .futures-account-grid strong {
-    font-size: 13px !important;
+    font-size: 14px !important;
   }
 
   .futures-contract-tabs button,
@@ -6733,12 +6617,12 @@ button {
   .futures-order-types button,
   .futures-timeframes button,
   .futures-data-tabs button {
-    font-size: 11px !important;
+    font-size: 12px !important;
   }
 
   .futures-field input,
   .futures-field select {
-    font-size: 16px !important;
+    font-size: 14px !important;
   }
 
   .futures-position {
@@ -6746,7 +6630,7 @@ button {
   }
 
   .wallet-pro-screen {
-    font-size: 13px !important;
+    font-size: 14px !important;
   }
 
   .wallet-pro-header h1,
@@ -6760,15 +6644,15 @@ button {
   }
 
   .wallet-pro-balance-stats {
-    font-size: 11px !important;
+    font-size: 12px !important;
   }
 
   .wallet-pro-balance-stats strong {
-    font-size: 13px !important;
+    font-size: 14px !important;
   }
 
   .wallet-pro-wallet-tabs button {
-    font-size: 11px !important;
+    font-size: 12px !important;
   }
 
   .wallet-pro-actions button {
@@ -6782,28 +6666,28 @@ button {
   }
 
   .wallet-pro-asset-row {
-    font-size: 12px;
+    font-size: 13px;
   }
 
   .wallet-pro-asset-name {
-    font-size: 13px !important;
+    font-size: 14px !important;
   }
 
   .wallet-pro-form input,
   .wallet-pro-form select,
   .wallet-pro-form textarea {
-    font-size: 16px !important;
+    font-size: 14px !important;
   }
 
   .wallet-pro-primary-action {
-    font-size: 13px !important;
+    font-size: 14px !important;
   }
 }
 
 @media (max-width: 380px) {
 
   .futures-main-price {
-    font-size: 23px !important;
+    font-size: 28px !important;
   }
 
   .wallet-pro-total {
@@ -7708,21 +7592,7 @@ input:focus {
   }
 
   /* ---------- ORDER BOOK ---------- */
-  .order-book-label.sell-label{
-    color:#ff4d5e !important;
-  }
 
-  .order-book-label.buy-label{
-    color:#19d98b !important;
-  }
-
-  .order-row.ask span:first-child{
-    color:#ff4d5e !important;
-  }
-
-  .order-row.bid span:first-child{
-    color:#19d98b !important;
-  }
 
   .order-row.ask span:nth-child(2),
   .order-row.ask span:nth-child(3),
@@ -7732,17 +7602,7 @@ input:focus {
   }
 
   /* ---------- MAIN BUY / SELL ---------- */
-  .buy-button{
-    background:linear-gradient(135deg,#19d98b,#07945c) !important;
-    color:#04110a !important;
-    border-color:#35e9a3 !important;
-  }
 
-  .sell-button{
-    background:linear-gradient(135deg,#ff5365,#c9243b) !important;
-    color:#180508 !important;
-    border-color:#ff7180 !important;
-  }
 
   /* ---------- ESTIMATE ---------- */
   .trade-estimate>div{
@@ -8314,7 +8174,7 @@ input:focus {
 
   .home-eyebrow{
     color:#7188a5 !important;
-    font-size:9px !important;
+    font-size: 11px !important;
     letter-spacing:1.4px !important;
     font-weight:800 !important;
   }
@@ -8352,7 +8212,7 @@ input:focus {
     border-radius:8px !important;
     background:rgba(255,255,255,.025) !important;
     color:#91a3bb !important;
-    font-size:9px !important;
+    font-size: 11px !important;
   }
 
   .home-balance-meta strong{
@@ -8361,7 +8221,7 @@ input:focus {
     border-radius:8px !important;
     background:rgba(25,217,139,.07) !important;
     color:#35e9a3 !important;
-    font-size:9px !important;
+    font-size: 11px !important;
   }
 
   .home-balance-footer{
@@ -8371,7 +8231,7 @@ input:focus {
     padding-top:12px !important;
     border-top-color:rgba(38,140,255,.10) !important;
     color:#5f718a !important;
-    font-size:8px !important;
+    font-size: 10px !important;
   }
 
   /* ---------- SECTIONS ---------- */
@@ -8398,13 +8258,13 @@ input:focus {
 
   .home-section-heading h3{
     color:#f1f6fc !important;
-    font-size:14px !important;
+    font-size: 16px !important;
     font-weight:850 !important;
   }
 
   .home-section-heading p{
     color:#687d97 !important;
-    font-size:8px !important;
+    font-size: 10px !important;
   }
 
   .home-section-heading>button{
@@ -8447,14 +8307,14 @@ input:focus {
 
   .home-action-grid strong{
     color:#edf4fb !important;
-    font-size:10px !important;
+    font-size: 13px !important;
     font-weight:850 !important;
   }
 
   .home-action-grid small{
     margin-top:4px !important;
     color:#657a94 !important;
-    font-size:7px !important;
+    font-size: 10px !important;
   }
 
   /* ---------- MARKET LIST ---------- */
@@ -8491,17 +8351,17 @@ input:focus {
 
   .home-market-main strong{
     color:#edf3fa !important;
-    font-size:10px !important;
+    font-size: 13px !important;
   }
 
   .home-market-main small{
     color:#61748d !important;
-    font-size:7px !important;
+    font-size: 10px !important;
   }
 
   .home-market-price strong{
     color:#edf4fb !important;
-    font-size:10px !important;
+    font-size: 13px !important;
   }
 
   /* ---------- DISCOVER ---------- */
@@ -8528,12 +8388,12 @@ input:focus {
 
   .home-feature-card strong{
     color:#eaf1f8 !important;
-    font-size:10px !important;
+    font-size: 13px !important;
   }
 
   .home-feature-card span{
     color:#657a94 !important;
-    font-size:7px !important;
+    font-size: 10px !important;
   }
 
   .home-feature-card b{
@@ -8555,7 +8415,7 @@ input:focus {
 
   .home-insight-heading strong{
     color:#edf4fb !important;
-    font-size:11px !important;
+    font-size: 14px !important;
   }
 
   .home-insight-heading span,
@@ -8670,7 +8530,7 @@ input:focus {
   }
 
   .home-action-grid strong{
-    font-size:9px !important;
+    font-size: 13px !important;
   }
 
 }
@@ -8816,7 +8676,7 @@ input:focus {
         rgba(19,39,63,.92) 65%
       )!important;
     color:#78c1ff!important;
-    font-size:12px!important;
+    font-size: 12px !important;
     font-weight:800;
     box-shadow:
       0 4px 12px rgba(0,0,0,.22),
@@ -8832,7 +8692,7 @@ input:focus {
     text-overflow:ellipsis;
     white-space:nowrap;
     color:#edf3fa!important;
-    font-size:13px!important;
+    font-size: 13px !important;
     font-weight:750;
     letter-spacing:.05px;
   }
@@ -8840,7 +8700,7 @@ input:focus {
   .home-market-main small{
     margin-top:4px!important;
     color:#64758c!important;
-    font-size:9px!important;
+    font-size: 10px !important;
     font-weight:500;
   }
 
@@ -8853,7 +8713,7 @@ input:focus {
 
   .home-market-price strong{
     color:#f0f4f9!important;
-    font-size:12px!important;
+    font-size: 13px !important;
     font-weight:700;
     line-height:1.15;
     font-variant-numeric:tabular-nums;
@@ -8867,7 +8727,7 @@ input:focus {
     margin-top:5px!important;
     padding:3px 6px;
     border-radius:5px;
-    font-size:9px!important;
+    font-size: 10px !important;
     font-weight:750!important;
     line-height:1;
     font-variant-numeric:tabular-nums;
@@ -8927,11 +8787,11 @@ input:focus {
   }
 
   .home-market-main strong{
-    font-size:12px!important;
+    font-size: 13px !important;
   }
 
   .home-market-main small{
-    font-size:8px!important;
+    font-size: 10px !important;
   }
 
   .home-market-price{
@@ -8940,13 +8800,13 @@ input:focus {
   }
 
   .home-market-price strong{
-    font-size:11px!important;
+    font-size: 13px !important;
   }
 
   .home-market-price span{
     margin-top:4px!important;
     padding:3px 5px;
-    font-size:8px!important;
+    font-size: 10px !important;
   }
 }
 
@@ -9065,7 +8925,7 @@ input:focus {
     text-overflow:ellipsis;
     white-space:nowrap;
     color:#f0f4f9!important;
-    font-size:14px!important;
+    font-size: 13px !important;
     font-weight:750;
     letter-spacing:-.05px;
   }
@@ -9075,7 +8935,7 @@ input:focus {
     margin-top:5px!important;
     overflow:hidden;
     color:#718097!important;
-    font-size:10px!important;
+    font-size: 10px !important;
     line-height:1.4!important;
   }
 
@@ -9126,12 +8986,12 @@ input:focus {
   }
 
   .home-feature-card strong{
-    font-size:13px!important;
+    font-size: 13px !important;
   }
 
   .home-feature-card span{
     margin-top:4px!important;
-    font-size:9px!important;
+    font-size: 10px !important;
   }
 
   .home-feature-card>b{
@@ -9371,11 +9231,11 @@ input:focus {
     }
 
     .home-section-heading h3{
-      font-size:16px!important;
+      font-size: 16px !important;
     }
 
     .home-section-heading p{
-      font-size:9px!important;
+      font-size: 10px !important;
     }
 
     .home-section-heading button{
@@ -9721,7 +9581,7 @@ input:focus {
     .futures-screen input,
     .futures-screen select{
       min-height:39px !important;
-      font-size:11px !important;
+      font-size: 14px !important;
     }
   }
 }
@@ -9809,7 +9669,7 @@ input:focus {
   .futures-position-grid strong,
   .futures-position-stats strong{
     color:#eaf3fc !important;
-    font-size:11px !important;
+    font-size: 11px !important;
     font-weight:850 !important;
   }
 
@@ -10014,7 +9874,7 @@ input:focus {
   .futures-submit-row button{
     min-height:47px !important;
     border-radius:12px !important;
-    font-size:11px !important;
+    font-size: 11px !important;
     font-weight:950 !important;
     letter-spacing:.15px !important;
   }
@@ -10081,12 +9941,12 @@ input:focus {
 
     .futures-position-grid strong,
     .futures-position-stats strong{
-      font-size:10px !important;
+      font-size: 11px !important;
     }
 
     .futures-submit-row button{
       min-height:44px !important;
-      font-size:10px !important;
+      font-size: 11px !important;
     }
   }
 }
@@ -11623,7 +11483,7 @@ input:focus {
     display:block !important;
     margin-top:5px !important;
     color:#f3f8ff !important;
-    font-size:27px !important;
+    font-size: 27px !important;
     line-height:1.05 !important;
     font-weight:900 !important;
     letter-spacing:-.8px !important;
@@ -11666,7 +11526,7 @@ input:focus {
     display:block !important;
     margin-top:6px !important;
     color:#dcecff !important;
-    font-size:11px !important;
+    font-size: 12px !important;
     font-weight:900 !important;
     white-space:nowrap !important;
   }
@@ -11701,7 +11561,7 @@ input:focus {
     border-radius:9px !important;
     background:transparent !important;
     color:#71879d !important;
-    font-size:9px !important;
+    font-size: 12px !important;
     font-weight:800 !important;
   }
 
@@ -11723,7 +11583,7 @@ input:focus {
   .wallet-pro-actions button{
     min-height:42px !important;
     border-radius:11px !important;
-    font-size:10px !important;
+    font-size: 12px !important;
     font-weight:900 !important;
     letter-spacing:.1px !important;
     border:1px solid rgba(72,150,255,.18) !important;
@@ -11758,7 +11618,7 @@ input:focus {
 
   .wallet-pro-card-header strong{
     color:#edf6ff !important;
-    font-size:14px !important;
+    font-size: 15px !important;
     font-weight:900 !important;
   }
 
@@ -11766,7 +11626,7 @@ input:focus {
     display:block !important;
     margin-top:3px !important;
     color:#70859b !important;
-    font-size:9px !important;
+    font-size: 11px !important;
   }
 
   .wallet-pro-card-header input[type="search"]{
@@ -11868,7 +11728,7 @@ input:focus {
   .wallet-pro-asset-name strong{
     display:block !important;
     color:#eef6ff !important;
-    font-size:11px !important;
+    font-size: 12px !important;
     font-weight:900 !important;
   }
 
@@ -11876,7 +11736,7 @@ input:focus {
     display:block !important;
     margin-top:2px !important;
     color:#71869b !important;
-    font-size:8px !important;
+    font-size: 11px !important;
     overflow:hidden !important;
     text-overflow:ellipsis !important;
     white-space:nowrap !important;
@@ -11917,7 +11777,7 @@ input:focus {
     border-radius:8px !important;
     background:transparent !important;
     color:#71869b !important;
-    font-size:9px !important;
+    font-size: 12px !important;
     font-weight:850 !important;
   }
 
@@ -11954,7 +11814,7 @@ input:focus {
     color:#eaf5ff !important;
     padding:0 10px !important;
     outline:none !important;
-    font-size:11px !important;
+    font-size: 14px !important;
   }
 
   .wallet-pro-form input:focus,
@@ -11991,7 +11851,7 @@ input:focus {
     display:block !important;
     margin-top:5px !important;
     color:#64798d !important;
-    font-size:8px !important;
+    font-size: 10px !important;
   }
 
   .wallet-pro-primary-action{
@@ -12002,7 +11862,7 @@ input:focus {
     border-radius:11px !important;
     background:linear-gradient(135deg,#1766c2,#268cff) !important;
     color:#fff !important;
-    font-size:10px !important;
+    font-size: 14px !important;
     font-weight:900 !important;
     letter-spacing:.45px !important;
     box-shadow:0 9px 22px rgba(38,140,255,.18) !important;
@@ -12019,7 +11879,7 @@ input:focus {
     border:1px solid rgba(72,150,255,.18) !important;
     background:rgba(38,140,255,.055) !important;
     color:#9acbfa !important;
-    font-size:9px !important;
+    font-size: 11px !important;
     line-height:1.4 !important;
   }
 
@@ -12047,14 +11907,14 @@ input:focus {
   .wallet-pro-security-strip span{
     display:block !important;
     color:#6f8499 !important;
-    font-size:8px !important;
+    font-size: 10px !important;
   }
 
   .wallet-pro-security-strip strong{
     display:block !important;
     margin-top:4px !important;
     color:#9fc8e9 !important;
-    font-size:10px !important;
+    font-size: 12px !important;
     font-weight:900 !important;
   }
 
@@ -12074,7 +11934,7 @@ input:focus {
 
   .wallet-pro-history-grid > span{
     color:#61778c !important;
-    font-size:7px !important;
+    font-size: 11px !important;
     font-weight:800 !important;
     text-transform:uppercase !important;
     letter-spacing:.25px !important;
@@ -12113,7 +11973,7 @@ input:focus {
   .wallet-pro-security-card strong{
     display:block !important;
     color:#edf6ff !important;
-    font-size:12px !important;
+    font-size: 13px !important;
     font-weight:900 !important;
   }
 
@@ -12121,7 +11981,7 @@ input:focus {
     display:block !important;
     margin-top:3px !important;
     color:#70859a !important;
-    font-size:8px !important;
+    font-size: 11px !important;
   }
 
   .wallet-pro-security-card button{
@@ -12132,7 +11992,7 @@ input:focus {
     border-radius:9px !important;
     background:rgba(38,140,255,.08) !important;
     color:#9dccf5 !important;
-    font-size:9px !important;
+    font-size: 12px !important;
     font-weight:850 !important;
   }
 
@@ -12175,7 +12035,7 @@ input:focus {
   .wallet-pro-settings-header strong{
     display:block !important;
     color:#eef7ff !important;
-    font-size:15px !important;
+    font-size: 16px !important;
     font-weight:900 !important;
   }
 
@@ -12183,7 +12043,7 @@ input:focus {
     display:block !important;
     margin-top:3px !important;
     color:#70859b !important;
-    font-size:8px !important;
+    font-size: 11px !important;
   }
 
   .wallet-pro-settings-header button{
@@ -12194,7 +12054,7 @@ input:focus {
     border-radius:9px !important;
     background:rgba(38,140,255,.07) !important;
     color:#a9d6ff !important;
-    font-size:18px !important;
+    font-size: 20px !important;
   }
 
   .wallet-pro-setting-group{
@@ -12209,7 +12069,7 @@ input:focus {
     display:block !important;
     margin:2px 3px 7px !important;
     color:#6fb8ff !important;
-    font-size:9px !important;
+    font-size: 14px !important;
     font-weight:900 !important;
     text-transform:uppercase !important;
     letter-spacing:.65px !important;
@@ -12249,7 +12109,7 @@ input:focus {
     }
 
     .wallet-pro-total > strong{
-      font-size:24px !important;
+      font-size: 27px !important;
     }
 
     .wallet-pro-balance-stats{
@@ -12261,7 +12121,7 @@ input:focus {
     }
 
     .wallet-pro-balance-stats > div > strong{
-      font-size:10px !important;
+      font-size: 12px !important;
     }
 
     .wallet-pro-asset-head,
@@ -12286,7 +12146,7 @@ input:focus {
     }
 
     .wallet-pro-asset-name strong{
-      font-size:10px !important;
+      font-size: 12px !important;
     }
 
     .wallet-pro-security-strip{
@@ -12313,7 +12173,7 @@ input:focus {
   }
 
   .wallet-pro-screen .wallet-pro-header h3 {
-    font-size: 22px !important;
+    font-size: 20px !important;
     line-height: 1.2 !important;
     letter-spacing: -0.2px !important;
   }
@@ -12325,7 +12185,7 @@ input:focus {
   }
 
   .wallet-pro-settings {
-    font-size: 12px !important;
+    font-size: 13px !important;
     min-height: 36px !important;
     padding: 8px 11px !important;
   }
@@ -12341,7 +12201,7 @@ input:focus {
   }
 
   .wallet-pro-total small {
-    font-size: 12px !important;
+    font-size: 11px !important;
   }
 
   .wallet-pro-balance-stats span {
@@ -12372,7 +12232,7 @@ input:focus {
   }
 
   .wallet-pro-card-header span {
-    font-size: 12px !important;
+    font-size: 11px !important;
     line-height: 1.4 !important;
   }
 
@@ -12382,7 +12242,7 @@ input:focus {
   }
 
   .wallet-pro-asset-head {
-    font-size: 10px !important;
+    font-size: 11px !important;
     font-weight: 700 !important;
   }
 
@@ -12392,7 +12252,7 @@ input:focus {
   }
 
   .wallet-pro-asset-name strong {
-    font-size: 14px !important;
+    font-size: 12px !important;
   }
 
   .wallet-pro-asset-name span {
@@ -12432,15 +12292,15 @@ input:focus {
   }
 
   .wallet-pro-address-box span {
-    font-size: 12px !important;
+    font-size: 11px !important;
   }
 
   .wallet-pro-address-box strong {
-    font-size: 14px !important;
+    font-size: 13px !important;
   }
 
   .wallet-pro-address-box small {
-    font-size: 11px !important;
+    font-size: 10px !important;
   }
 
   /* Fee / limit information */
@@ -12449,7 +12309,7 @@ input:focus {
   }
 
   .wallet-pro-fee-box span {
-    font-size: 11px !important;
+    font-size: 10px !important;
   }
 
   .wallet-pro-fee-box strong {
@@ -12465,7 +12325,7 @@ input:focus {
   }
 
   .wallet-pro-message {
-    font-size: 13px !important;
+    font-size: 11px !important;
     line-height: 1.45 !important;
   }
 
@@ -12492,12 +12352,12 @@ input:focus {
   }
 
   .wallet-pro-history-grid span {
-    font-size: 11px !important;
+    font-size: 12px !important;
   }
 
   .wallet-pro-history-grid strong,
   .wallet-pro-history-grid b {
-    font-size: 12px !important;
+    font-size: 13px !important;
   }
 
   /* Wallet security card */
@@ -12506,7 +12366,7 @@ input:focus {
   }
 
   .wallet-pro-security-card span {
-    font-size: 12px !important;
+    font-size: 11px !important;
     line-height: 1.4 !important;
   }
 
@@ -12521,7 +12381,7 @@ input:focus {
   }
 
   .wallet-pro-settings-header span {
-    font-size: 12px !important;
+    font-size: 11px !important;
     line-height: 1.4 !important;
   }
 
@@ -12530,7 +12390,7 @@ input:focus {
   }
 
   .wallet-pro-setting-group label {
-    font-size: 13px !important;
+    font-size: 12px !important;
     line-height: 1.4 !important;
   }
 
@@ -12550,7 +12410,7 @@ input:focus {
     }
 
     .wallet-pro-actions button {
-      font-size: 13px !important;
+      font-size: 12px !important;
     }
 
     .wallet-pro-wallet-tabs button {
@@ -12560,7 +12420,7 @@ input:focus {
     }
 
     .wallet-pro-asset-row {
-      font-size: 12px !important;
+      font-size: 13px !important;
     }
   }
 }
@@ -12628,7 +12488,7 @@ input:focus {
   }
 
   .wallet-pro-asset-name span {
-    font-size: 12px !important;
+    font-size: 11px !important;
   }
 
   /* Form helper / secondary text */
@@ -12645,19 +12505,19 @@ input:focus {
   }
 
   .wallet-pro-address-box strong {
-    font-size: 14px !important;
+    font-size: 13px !important;
   }
 
   .wallet-pro-address-box small {
-    font-size: 12px !important;
+    font-size: 10px !important;
   }
 
   .wallet-pro-fee-box span {
-    font-size: 12px !important;
+    font-size: 10px !important;
   }
 
   .wallet-pro-fee-box strong {
-    font-size: 13px !important;
+    font-size: 12px !important;
   }
 
   /* Security strip */
@@ -12666,7 +12526,7 @@ input:focus {
   }
 
   .wallet-pro-security-strip strong {
-    font-size: 13px !important;
+    font-size: 12px !important;
   }
 
   /* History */
@@ -12689,7 +12549,7 @@ input:focus {
   }
 
   .wallet-pro-security-card button {
-    font-size: 13px !important;
+    font-size: 12px !important;
   }
 
   /* Settings drawer text */
@@ -12698,17 +12558,17 @@ input:focus {
   }
 
   .wallet-pro-setting-group > strong {
-    font-size: 15px !important;
+    font-size: 14px !important;
   }
 
   .wallet-pro-setting-group label {
-    font-size: 14px !important;
+    font-size: 12px !important;
   }
 
   /* Small phone */
   @media (max-width: 380px) {
     .wallet-pro-settings {
-      font-size: 12px !important;
+      font-size: 13px !important;
       min-height: 38px !important;
       padding: 9px 11px !important;
     }
@@ -12719,7 +12579,7 @@ input:focus {
     }
 
     .wallet-pro-history-grid span {
-      font-size: 11px !important;
+      font-size: 12px !important;
     }
   }
 }
@@ -12751,7 +12611,7 @@ input:focus {
     min-height: 40px !important;
     padding: 10px 14px !important;
 
-    font-size: 13px !important;
+    font-size: 12px !important;
     font-weight: 800 !important;
     line-height: 1 !important;
 
@@ -12819,7 +12679,7 @@ input:focus {
     align-items:center !important;
     justify-content:center !important;
 
-    font-size:10px !important;
+    font-size: 12px !important;
     font-weight:900 !important;
     line-height:1 !important;
     white-space:nowrap !important;
@@ -12844,7 +12704,7 @@ input:focus {
     .wallet-pro-header .wallet-pro-settings{
       min-height:34px !important;
       padding:0 10px !important;
-      font-size:9px !important;
+      font-size: 12px !important;
     }
   }
 }
@@ -12891,7 +12751,7 @@ input:focus {
 
   .wallet-inline-settings-header strong{
     color:#eef7ff !important;
-    font-size:13px !important;
+    font-size: 13px !important;
     font-weight:900 !important;
     letter-spacing:.2px !important;
   }
@@ -12935,7 +12795,7 @@ input:focus {
     display:block !important;
     margin:0 0 8px !important;
     color:#80c3ff !important;
-    font-size:9px !important;
+    font-size: 14px !important;
     font-weight:900 !important;
     text-transform:uppercase !important;
     letter-spacing:.65px !important;
@@ -12951,7 +12811,7 @@ input:focus {
     box-sizing:border-box !important;
     border-top:1px solid rgba(85,137,176,.09) !important;
     color:#c4d2df !important;
-    font-size:10px !important;
+    font-size: 12px !important;
     font-weight:700 !important;
     line-height:1.25 !important;
   }
@@ -12999,7 +12859,7 @@ input:focus {
     border-radius:9px !important;
     background:linear-gradient(135deg,#1766c2,#268cff) !important;
     color:#eef7ff !important;
-    font-size:9px !important;
+    font-size: 10px !important;
     font-weight:900 !important;
     line-height:1 !important;
     white-space:nowrap !important;
@@ -13026,13 +12886,13 @@ input:focus {
     }
 
     .wallet-inline-settings-header strong{
-      font-size:12px !important;
+      font-size: 13px !important;
     }
 
     .wallet-inline-settings-toggle{
       min-height:32px !important;
       padding:0 9px !important;
-      font-size:8px !important;
+      font-size: 10px !important;
     }
 
     .wallet-pro-setting-group{
@@ -13040,7 +12900,7 @@ input:focus {
     }
 
     .wallet-pro-setting-group label{
-      font-size:9px !important;
+      font-size: 12px !important;
     }
   }
 }
@@ -13115,137 +12975,11 @@ input:focus {
   box-sizing: border-box;
 }
 
-.tp-top,
-.tp-hero {
-  background:
-    radial-gradient(circle at 80% 0%, rgba(0,82,255,.14), transparent 35%),
-    linear-gradient(145deg, #171b21, #101318);
-  border: 1px solid #2b313a;
-  border-radius: 14px;
-  box-shadow: 0 12px 35px rgba(0,0,0,.28);
-}
-
-.tp-top {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 20px;
-  padding: 16px 18px;
-  margin-bottom: 12px;
-}
-
-.tp-pair {
-  font-size: 21px;
-  font-weight: 900;
-  letter-spacing: .2px;
-}
-
-.tp-sub {
-  color: #848e9c;
-  font-size: 10px;
-  letter-spacing: .7px;
-}
-
-.tp-live {
-  color: #0ecb81;
-  font-size: 11px;
-  font-weight: 800;
-}
-
-.tp-hero {
-  padding: 16px;
-  margin-bottom: 12px;
-}
-
-.tp-price {
-  font-size: clamp(25px, 4vw, 36px);
-  font-weight: 900;
-  letter-spacing: -.8px;
-}
-
-.tp-change {
-  font-size: 15px;
-  font-weight: 900;
-}
-
-.tp-chart {
-  min-height: 330px;
-  border-radius: 12px;
-  box-shadow: inset 0 0 35px rgba(0,0,0,.35);
-}
-
-.tp-trading-grid {
-  gap: 12px !important;
-}
-
-.tp-book,
-.tp-order,
-.tp-history {
-  box-shadow: 0 10px 28px rgba(0,0,0,.22);
-  transition: border-color .2s ease, transform .2s ease;
-}
-
-.tp-book:hover,
-.tp-order:hover {
-  border-color: #3b4350;
-}
-
-.tp-side button,
-.tp-order-tabs button,
-.tp-percent button,
-.tp-book-controls button,
-.tp-time button {
-  transition: all .18s ease;
-}
-
-.tp-side button:hover,
-.tp-order-tabs button:hover,
-.tp-percent button:hover,
-.tp-book-controls button:hover,
-.tp-time button:hover {
-  border-color: #4b5563;
-  transform: translateY(-1px);
-}
-
-.tp-field-wrap {
-  min-height: 42px;
-}
-
-.tp-field input {
-  width: 100%;
-  font-size: 13px !important;
-}
-
-.tp-submit {
-  min-height: 44px;
-  font-size: 13px;
-  letter-spacing: .2px;
-  cursor: pointer;
-  transition: transform .18s ease, filter .18s ease;
-}
-
-.tp-submit:hover {
-  filter: brightness(1.08);
-  transform: translateY(-1px);
-}
-
-.tp-history {
-  overflow: hidden;
-}
-
 @media (max-width: 900px) {
   .trade-pro-screen {
     padding: 10px;
   }
 
-  .tp-top {
-    align-items: flex-start;
-    padding: 13px;
-  }
-
-  .tp-chart {
-    min-height: 270px;
-  }
 }
 
 @media (max-width: 600px) {
@@ -13253,34 +12987,10 @@ input:focus {
     padding: 7px;
   }
 
-  .tp-top {
-    flex-direction: column;
-    align-items: stretch;
-    gap: 8px;
-  }
-
-  .tp-pair {
-    font-size: 18px;
-  }
-
-  .tp-chart {
-    min-height: 235px;
-  }
-
-  .tp-history-row {
-    grid-template-columns: 1fr 1fr !important;
-  }
 }
 
 
 /* ===== BITLORA TRADINGVIEW PRO CHART ===== */
-
-.tp-chart {
-  padding: 0 !important;
-  overflow: hidden;
-  background: #0b0e11 !important;
-  min-height: 420px;
-}
 
 .bitlora-tv-chart {
   width: 100%;
@@ -13299,19 +13009,11 @@ input:focus {
 }
 
 @media (max-width: 900px) {
-  .tp-chart,
-  .bitlora-tv-chart,
-  .bitlora-tv-chart iframe {
-    min-height: 330px;
-  }
+
 }
 
 @media (max-width: 600px) {
-  .tp-chart,
-  .bitlora-tv-chart,
-  .bitlora-tv-chart iframe {
-    min-height: 280px;
-  }
+
 }
 
 
@@ -13319,15 +13021,6 @@ input:focus {
    BITLORA PRO — REAL TRADINGVIEW CHART
    ========================================================= */
 
-.tp-chart {
-  padding: 0 !important;
-  min-height: 440px !important;
-  height: 440px !important;
-  overflow: hidden !important;
-  background: #0b0e11 !important;
-  border-radius: 12px !important;
-}
-
 .bitlora-tv-chart {
   width: 100%;
   height: 100%;
@@ -13345,21 +13038,11 @@ input:focus {
 }
 
 @media (max-width: 900px) {
-  .tp-chart,
-  .bitlora-tv-chart,
-  .bitlora-tv-chart iframe {
-    min-height: 350px !important;
-    height: 350px !important;
-  }
+
 }
 
 @media (max-width: 600px) {
-  .tp-chart,
-  .bitlora-tv-chart,
-  .bitlora-tv-chart iframe {
-    min-height: 300px !important;
-    height: 300px !important;
-  }
+
 }
 
 
@@ -13403,830 +13086,154 @@ input:focus {
   }
 }
 
-/* =========================================================
-   BITLORA PRO - REFERENCE TRADE LAYOUT
-   Visual layer only - existing React/API logic untouched
-   ========================================================= */
+/* BITLORA TRADE LAYOUT OVERRIDES */
 
-.trade-screen{
-  background:#0b0e11 !important;
-  color:#eaecef;
+.trade-timeframes {
+  position: relative !important;
+  overflow: visible !important;
+  z-index: 20 !important;
 }
 
-/* Main 2-column trading workspace */
-.trade-workspace{
-  display:grid !important;
-  grid-template-columns:minmax(0,1fr) 310px !important;
-  gap:6px !important;
-  padding:6px 0 !important;
-  align-items:start !important;
+.trade-timeframe-picker {
+  position: relative;
+  display: inline-block;
 }
 
-/* Left chart/history side */
-.trade-market-section{
-  background:#151921 !important;
-  border:1px solid #262c36 !important;
-  border-radius:6px !important;
-  overflow:hidden !important;
-  min-width:0 !important;
+.trade-timeframe-trigger {
+  display: flex !important;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  min-width: 72px;
+  padding: 7px 10px !important;
+  border: 1px solid #29344a !important;
+  border-radius: 7px !important;
+  background: #111827 !important;
+  color: #ffffff !important;
+  cursor: pointer;
 }
 
-/* Right orderbook + execution side */
-.trade-order-section{
-  background:transparent !important;
-  border:0 !important;
-  padding:0 !important;
-  min-width:0 !important;
-  display:flex !important;
-  flex-direction:column !important;
-  gap:6px !important;
+.trade-timeframe-menu {
+  position: absolute !important;
+  top: calc(100% + 5px) !important;
+  left: 0 !important;
+  z-index: 1000 !important;
+  display: grid !important;
+  grid-template-columns: repeat(3, minmax(62px, 1fr));
+  gap: 4px;
+  min-width: 202px;
+  padding: 6px;
+  border: 1px solid #29344a;
+  border-radius: 8px;
+  background: #0d1422;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.35);
 }
 
-/* =========================================================
-   ORDER BOOK
-   ========================================================= */
-
-.trade-order-section .order-book,
-.trade-order-section .order-book-wrapper{
-  background:#151921 !important;
-  border:1px solid #262c36 !important;
-  border-radius:6px !important;
+.trade-timeframe-menu button {
+  min-height: 30px;
+  padding: 5px 7px;
+  border: 0;
+  border-radius: 5px;
+  background: transparent;
+  color: #8d9ab0;
+  cursor: pointer;
 }
 
-.trade-order-section .order-book-label{
-  color:#eaecef !important;
-  font-size:13px !important;
-  font-weight:700 !important;
-  padding:10px !important;
+.trade-timeframe-menu button:hover,
+.trade-timeframe-menu button.active {
+  background: #1b2639;
+  color: #ffffff;
 }
 
-.trade-order-section .order-book-columns{
-  color:#848e9c !important;
-  font-size:10px !important;
-  padding:6px 10px !important;
-}
-
-.trade-order-section .order-book-row{
-  min-height:23px !important;
-  padding:3px 10px !important;
-  font-size:10px !important;
-}
-
-.trade-order-section .ask,
-.trade-order-section .sell,
-.trade-order-section .asks{
-  color:#f6465d !important;
-}
-
-.trade-order-section .bid,
-.trade-order-section .buy,
-.trade-order-section .bids{
-  color:#0ecb81 !important;
-}
-
-/* =========================================================
-   BUY / SELL EXECUTION PANEL
-   ========================================================= */
-
-.trade-order-section .trade-form,
-.trade-order-section .trade-panel,
-.trade-order-section .execution-card{
-  background:#151921 !important;
-  border:1px solid #262c36 !important;
-  border-radius:6px !important;
-}
-
-/* Buy / Sell tabs */
-.trade-order-section .trade-side-tabs,
-.trade-order-section .side-mode-tabs{
-  display:grid !important;
-  grid-template-columns:1fr 1fr !important;
-  gap:6px !important;
-  padding:10px !important;
-  margin:0 !important;
-}
-
-.trade-order-section .trade-side-tabs button,
-.trade-order-section .side-mode-tabs button{
-  min-height:38px !important;
-  border:0 !important;
-  border-radius:4px !important;
-  background:#1e2329 !important;
-  color:#848e9c !important;
-  font-size:12px !important;
-  font-weight:700 !important;
-}
-
-.trade-order-section .trade-side-tabs button.active:first-child,
-.trade-order-section .side-mode-tabs .buy-mode.active{
-  background:#0ecb81 !important;
-  color:#fff !important;
-}
-
-.trade-order-section .trade-side-tabs button.active:last-child,
-.trade-order-section .side-mode-tabs .sell-mode.active{
-  background:#f6465d !important;
-  color:#fff !important;
-}
-
-/* Limit / Market */
-.trade-order-section .order-type-tabs{
-  display:flex !important;
-  gap:20px !important;
-  padding:8px 10px !important;
-  border-bottom:1px solid #262c36 !important;
-}
-
-.trade-order-section .order-type-tabs button{
-  background:none !important;
-  border:0 !important;
-  color:#848e9c !important;
-  font-size:11px !important;
-}
-
-.trade-order-section .order-type-tabs button.active{
-  color:#eaecef !important;
-}
-
-/* Input boxes */
-.trade-order-section .order-field{
-  margin:8px 10px !important;
-  background:#1e2329 !important;
-  border:1px solid #262c36 !important;
-  border-radius:4px !important;
-}
-
-.trade-order-section .order-field input{
-  background:transparent !important;
-  border:0 !important;
-  color:#eaecef !important;
-  min-height:38px !important;
-  font-size:12px !important;
-}
-
-/* Percentage buttons */
-.trade-order-section .percentage-buttons,
-.trade-order-section .percent-grid{
-  display:grid !important;
-  grid-template-columns:repeat(4,1fr) !important;
-  gap:4px !important;
-  margin:8px 10px !important;
-}
-
-.trade-order-section .percentage-buttons button,
-.trade-order-section .percent-grid button{
-  background:#1e2329 !important;
-  border:1px solid #262c36 !important;
-  color:#848e9c !important;
-  border-radius:3px !important;
-  min-height:27px !important;
-  font-size:10px !important;
-}
-
-.trade-order-section .percentage-buttons button:hover,
-.trade-order-section .percent-grid button:hover{
-  color:#eaecef !important;
-  border-color:#5b6675 !important;
-}
-
-/* Balance */
-.trade-order-section .trade-balance,
-.trade-order-section .available-balance-row{
-  padding:8px 10px !important;
-  color:#848e9c !important;
-  font-size:10px !important;
-}
-
-.trade-order-section .trade-balance strong,
-.trade-order-section .available-balance-row strong{
-  color:#eaecef !important;
-}
-
-/* Buy / Sell submit */
-.trade-order-section .buy-button,
-.trade-order-section .action-submit-btn{
-  width:calc(100% - 20px) !important;
-  margin:8px 10px 12px !important;
-  min-height:42px !important;
-  border:0 !important;
-  border-radius:4px !important;
-  font-size:13px !important;
-  font-weight:700 !important;
-}
-
-.trade-order-section .buy-button{
-  background:#0ecb81 !important;
-  color:#fff !important;
-}
-
-.trade-order-section .sell-button,
-.trade-order-section .sell-theme-btn{
-  background:#f6465d !important;
-  color:#fff !important;
-}
-
-/* =========================================================
-   OPEN ORDERS / HISTORY
-   ========================================================= */
-
-.trade-orders{
-  background:#151921 !important;
-  border-top:1px solid #262c36 !important;
-  padding:12px 10px !important;
-}
-
-.trade-orders button{
-  color:#848e9c !important;
-  background:none !important;
-  border:0 !important;
-}
-
-.trade-orders button.active{
-  color:#eaecef !important;
-}
-
-/* =========================================================
-   MOBILE
-   ========================================================= */
-
-@media(max-width:900px){
-  .trade-workspace{
-    grid-template-columns:1fr !important;
-  }
-
-  .trade-order-section{
-    width:100% !important;
-  }
-}
-
-
-/* FINAL DESKTOP TRADE LAYOUT */
-@media (min-width: 761px) {
+@media (min-width: 769px) {
   .trade-workspace {
     display: grid !important;
-    grid-template-columns: minmax(0, 1fr) minmax(320px, 380px) !important;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) !important;
+    grid-template-rows: 380px !important;
     gap: 12px !important;
-    align-items: start !important;
+    align-items: stretch !important;
+    width: 100% !important;
   }
 
   .trade-workspace .trade-order-section {
     grid-column: 1 !important;
     grid-row: 1 !important;
+    height: 380px !important;
+    min-height: 380px !important;
+    max-height: 380px !important;
+    box-sizing: border-box !important;
+    overflow: hidden !important;
   }
 
   .trade-workspace .trade-market-section {
     grid-column: 2 !important;
     grid-row: 1 !important;
-  }
-}
-
-/* FINAL TRADE LAYOUT OVERRIDE */
-
-.trade-workspace {
-  display: grid !important;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 0.92fr) !important;
-  gap: 14px !important;
-  width: 100% !important;
-  max-width: 100% !important;
-  align-items: start !important;
-  overflow: visible !important;
-}
-
-.trade-order-section {
-  grid-column: 1 !important;
-  grid-row: 1 !important;
-  width: 100% !important;
-  min-width: 0 !important;
-  max-width: none !important;
-  order: 1 !important;
-}
-
-.trade-market-section {
-  grid-column: 2 !important;
-  grid-row: 1 !important;
-  width: 100% !important;
-  min-width: 0 !important;
-  max-width: none !important;
-  order: 2 !important;
-}
-
-.trade-market-section .trade-section-title {
-  width: 100% !important;
-  box-sizing: border-box !important;
-}
-
-.trade-market-section .order-book {
-  width: 100% !important;
-  box-sizing: border-box !important;
-}
-
-.trade-market-section .order-book-controls {
-  width: 100% !important;
-  display: grid !important;
-  grid-template-columns: 1fr 1fr !important;
-  gap: 10px !important;
-  box-sizing: border-box !important;
-}
-
-.trade-market-section .order-book-dropdown {
-  min-width: 0 !important;
-  width: 100% !important;
-}
-
-.trade-market-section .order-book-dropdown-button {
-  width: 100% !important;
-  box-sizing: border-box !important;
-}
-
-.trade-order-section .trade-tabs {
-  width: 100% !important;
-  display: grid !important;
-  grid-template-columns: 1fr 1fr !important;
-}
-
-.trade-order-section .order-tabs {
-  width: 100% !important;
-}
-
-.trade-order-section .order-field,
-.trade-order-section .order-field > div,
-.trade-order-section .order-field input {
-  max-width: 100% !important;
-  box-sizing: border-box !important;
-}
-
-.trade-order-section .trade-percent-buttons {
-  width: 100% !important;
-  display: grid !important;
-  grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
-  gap: 6px !important;
-}
-
-.trade-order-section .trade-percent-buttons button {
-  min-width: 0 !important;
-  padding-left: 4px !important;
-  padding-right: 4px !important;
-}
-
-.trade-order-section .buy-button,
-.trade-order-section .sell-button {
-  width: 100% !important;
-  box-sizing: border-box !important;
-}
-
-/* Mobile trade workspace */
-@media (max-width: 768px) {
-  .trade-workspace {
-    display: grid !important;
-    grid-template-columns: minmax(0, 1fr) minmax(0, 0.92fr) !important;
-    gap: 8px !important;
-    width: 100% !important;
-    max-width: 100% !important;
-    margin: 0 !important;
-    padding: 0 !important;
+    height: 380px !important;
+    min-height: 380px !important;
+    max-height: 380px !important;
     box-sizing: border-box !important;
-    align-items: start !important;
-    overflow: visible !important;
-  }
-
-  .trade-order-section {
-    grid-column: 1 !important;
-    grid-row: 1 !important;
-    width: 100% !important;
-    min-width: 0 !important;
-    margin: 0 !important;
-    padding: 0 !important;
-  }
-
-  .trade-market-section {
-    grid-column: 2 !important;
-    grid-row: 1 !important;
-    width: 100% !important;
-    min-width: 0 !important;
-    margin: 0 !important;
-    padding: 0 !important;
-  }
-
-  .trade-market-section .trade-section-title {
-    padding: 8px 6px !important;
-    font-size: 11px !important;
-    min-height: 34px !important;
-  }
-
-  .trade-market-section .order-book-columns {
-    gap: 3px !important;
-    font-size: 8px !important;
-  }
-
-  .trade-market-section .order-book {
-    width: 100% !important;
-    min-width: 0 !important;
     overflow: hidden !important;
   }
 
-  .trade-market-section .order-book-label {
-    font-size: 10px !important;
-    padding: 8px 6px !important;
-  }
-
-  .trade-market-section .order-row {
-    grid-template-columns: 1fr 1fr 1fr !important;
-    gap: 2px !important;
-    padding: 6px 4px !important;
-    font-size: 8px !important;
-    min-width: 0 !important;
-  }
-
-  .trade-market-section .order-current {
-    padding: 12px 4px !important;
-    text-align: center !important;
-  }
-
-  .trade-market-section .order-current strong {
-    font-size: 15px !important;
-    line-height: 1.15 !important;
-    word-break: break-word !important;
-  }
-
-  .trade-market-section .order-current span {
-    font-size: 7px !important;
-  }
-
-  .trade-market-section .order-book-controls {
-    display: grid !important;
-    grid-template-columns: 1fr 1fr !important;
-    gap: 5px !important;
-    padding: 5px !important;
-  }
-
-  .trade-market-section .order-book-dropdown-button {
-    min-height: 32px !important;
-    padding: 5px !important;
-    font-size: 9px !important;
-  }
-
-  .trade-order-section .trade-tabs {
-    display: grid !important;
-    grid-template-columns: 1fr 1fr !important;
-    gap: 4px !important;
-  }
-
-  .trade-order-section .trade-tabs button {
-    min-width: 0 !important;
-    padding: 9px 3px !important;
-    font-size: 10px !important;
-  }
-
-  .trade-order-section .order-tabs {
-    display: grid !important;
-    grid-template-columns: 1fr 1fr !important;
-  }
-
-  .trade-order-section .order-tabs button {
-    min-width: 0 !important;
-    padding: 8px 3px !important;
-    font-size: 9px !important;
-  }
-
-  .trade-order-section .order-field {
-    margin-bottom: 8px !important;
-    min-width: 0 !important;
-  }
-
-  .trade-order-section .order-field label {
-    font-size: 8px !important;
-  }
-
-  .trade-order-section .order-field > div {
-    width: 100% !important;
-    min-width: 0 !important;
-  }
-
-  .trade-order-section .order-field input {
-    width: 100% !important;
-    min-width: 0 !important;
-    padding: 10px 6px !important;
-    font-size: 10px !important;
-  }
-
-  .trade-order-section .order-field span {
-    font-size: 8px !important;
-    right: 6px !important;
-  }
-
-  .trade-order-section .trade-percent-buttons {
-    display: grid !important;
-    grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
-    gap: 3px !important;
-  }
-
-  .trade-order-section .trade-percent-buttons button {
-    min-width: 0 !important;
-    padding: 7px 1px !important;
-    font-size: 7px !important;
-  }
-
-  .trade-order-section .trade-balance {
-    font-size: 8px !important;
-    gap: 4px !important;
-  }
-
-  .trade-order-section .buy-button,
-  .trade-order-section .sell-button {
-    width: 100% !important;
-    min-width: 0 !important;
-    padding: 11px 3px !important;
-    font-size: 10px !important;
-  }
-}
-
-/* Very narrow phones */
-@media (max-width: 380px) {
-  .trade-workspace {
-    grid-template-columns: minmax(0, 1fr) minmax(0, 0.9fr) !important;
-    gap: 5px !important;
-  }
-
-  .trade-market-section .trade-section-title {
-    font-size: 9px !important;
-    padding-left: 4px !important;
-    padding-right: 4px !important;
-  }
-
-  .trade-market-section .order-book-columns {
-    font-size: 6px !important;
-  }
-
-  .trade-market-section .order-current strong {
-    font-size: 12px !important;
-  }
-
-  .trade-order-section .trade-tabs button {
-    font-size: 8px !important;
-    padding: 8px 1px !important;
-  }
-
-  .trade-order-section .order-tabs button {
-    font-size: 8px !important;
-  }
-
-  .trade-order-section .order-field input {
-    font-size: 8px !important;
-    padding: 9px 4px !important;
-  }
-
-  .trade-order-section .buy-button,
-  .trade-order-section .sell-button {
-    font-size: 8px !important;
-  }
-}
-
-/* FINAL MOBILE TRADE LAYOUT */
-@media (max-width: 768px) {
-
-  .trade-workspace {
-    width: 100%;
-    display: grid !important;
-    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) !important;
-    gap: 8px !important;
-    align-items: start !important;
+  .trade-workspace .order-book {
+    height: 300px !important;
+    max-height: 300px !important;
+    overflow-y: auto !important;
     box-sizing: border-box !important;
   }
 
-  .trade-market-section,
-  .trade-order-section {
-    width: 100% !important;
-    min-width: 0 !important;
-    max-width: none !important;
-    box-sizing: border-box !important;
-    margin: 0 !important;
-  }
-
-  /* Compact order book */
-  .trade-market-section {
-    min-height: 0 !important;
-  }
-
-  .trade-market-section .trade-section-title {
-    min-height: 42px !important;
-    padding: 8px 8px !important;
-    font-size: 14px !important;
-    box-sizing: border-box !important;
-    white-space: nowrap !important;
-    overflow: hidden !important;
-  }
-
-  .trade-market-section .trade-section-title strong {
-    font-size: 16px !important;
-  }
-
-  .order-book-columns {
-    gap: 8px !important;
-    font-size: 7px !important;
-  }
-
-  .order-book {
-    min-height: 175px !important;
-    max-height: 175px !important;
-    overflow: hidden !important;
-    box-sizing: border-box !important;
-  }
-
-  .order-book-label {
-    padding: 8px !important;
-    font-size: 14px !important;
-    line-height: 1.1 !important;
-  }
-
-  .order-current {
-    min-height: 52px !important;
-    padding: 8px 4px !important;
-  }
-
-  .order-current strong {
-    font-size: 17px !important;
-  }
-
-  .order-current span {
-    font-size: 7px !important;
-  }
-
-  .order-row {
-    min-height: 24px !important;
-    padding: 4px 6px !important;
-    font-size: 8px !important;
-  }
-
-  .order-book-controls {
-    gap: 6px !important;
-    padding: 8px !important;
-  }
-
-  .order-book-dropdown,
-  .order-book-dropdown-button {
-    min-width: 0 !important;
-    width: 100% !important;
-  }
-
-  .order-book-dropdown-button {
-    height: 42px !important;
-    padding: 0 8px !important;
-    font-size: 11px !important;
-  }
-
-  /* Trade form becomes compact */
-  .trade-order-section {
-    display: flex !important;
-    flex-direction: column !important;
-    min-height: 0 !important;
-    padding: 0 !important;
-  }
-
-  /* Buy/Sell tabs move from top to bottom */
-  .trade-tabs {
-    order: 20 !important;
-    display: grid !important;
-    grid-template-columns: 1fr 1fr !important;
-    gap: 6px !important;
-    width: 100% !important;
-    margin-top: 10px !important;
-    margin-bottom: 6px !important;
-  }
-
-  .trade-tabs button {
-    width: 100% !important;
-    min-width: 0 !important;
-    height: 46px !important;
-    padding: 0 !important;
-    font-size: 13px !important;
-    font-weight: 700 !important;
-    box-sizing: border-box !important;
-  }
-
-  .order-tabs {
-    order: 1 !important;
-    display: grid !important;
-    grid-template-columns: 1fr 1fr !important;
-    width: 100% !important;
-    min-height: 42px !important;
-    margin: 0 0 8px 0 !important;
-  }
-
-  .order-tabs button {
-    min-width: 0 !important;
-    height: 42px !important;
-    padding: 0 !important;
-    font-size: 12px !important;
-  }
-
-  .market-order-note {
-    order: 2 !important;
-    font-size: 9px !important;
-    padding: 6px !important;
-  }
-
-  .order-field {
-    order: 3 !important;
+  .trade-workspace .order-field {
     margin-bottom: 7px !important;
   }
 
-  .order-field label {
-    display: block !important;
-    margin: 0 0 3px 3px !important;
-    font-size: 9px !important;
-    line-height: 1.1 !important;
-  }
-
-  .order-field > div {
-    min-height: 52px !important;
-    height: 52px !important;
+  .trade-workspace .order-field input {
+    min-height: 34px !important;
+    height: 34px !important;
+    padding: 7px 9px !important;
     box-sizing: border-box !important;
   }
 
-  .order-field input {
-    height: 52px !important;
-    min-height: 52px !important;
-    padding: 0 10px !important;
-    font-size: 11px !important;
-    box-sizing: border-box !important;
+  .trade-workspace .trade-percent-buttons {
+    margin: 7px 0 !important;
   }
 
-  .order-field > div > span {
-    right: 9px !important;
-    font-size: 9px !important;
+  .trade-workspace .trade-percent-buttons button {
+    min-height: 28px !important;
+    padding: 4px 7px !important;
   }
 
-  .trade-percent-buttons {
-    order: 4 !important;
-    display: grid !important;
-    grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
-    gap: 4px !important;
-    width: 100% !important;
-    margin: 5px 0 8px 0 !important;
+  .trade-workspace .trade-balance {
+    margin: 7px 0 !important;
   }
 
-  .trade-percent-buttons button {
-    min-width: 0 !important;
-    height: 36px !important;
-    padding: 0 2px !important;
-    font-size: 9px !important;
-  }
-
-  .trade-balance {
-    order: 5 !important;
-    display: flex !important;
-    justify-content: space-between !important;
-    align-items: center !important;
+  .trade-workspace .buy-button,
+  .trade-workspace .sell-button {
     min-height: 38px !important;
-    margin: 3px 2px 5px !important;
-    font-size: 8px !important;
-  }
-
-  .trade-balance strong {
-    font-size: 13px !important;
-  }
-
-  /* Buy/Sell buttons now appear below the fields */
-  .trade-tabs + .market-order-note {
-    margin-bottom: 0 !important;
-  }
-
-  .buy-button,
-  .sell-button {
-    order: 21 !important;
-    width: 100% !important;
-    min-width: 0 !important;
-    height: 48px !important;
-    min-height: 48px !important;
-    margin: 4px 0 0 0 !important;
-    padding: 0 !important;
-    font-size: 12px !important;
-    box-sizing: border-box !important;
-  }
-
-  /* Keep the whole workspace inside the phone */
-  .trade-workspace * {
-    max-width: 100%;
-    box-sizing: border-box;
-  }
-
-  /* Prevent long numbers from pushing the layout */
-  .trade-market-section,
-  .trade-order-section {
-    overflow: hidden !important;
-  }
-
-  /* Make lower order/history area fit better */
-  .trade-orders {
-    width: 100% !important;
-    overflow-x: auto !important;
-    white-space: nowrap !important;
-    margin-top: 10px !important;
-  }
-
-  .trade-orders button {
-    font-size: 9px !important;
-    padding: 8px 10px !important;
+    height: 38px !important;
   }
 }
 
+@media (max-width: 768px) {
+  .trade-workspace {
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) !important;
+    grid-template-rows: auto auto !important;
+    gap: 10px !important;
+  }
+
+  .trade-workspace .trade-order-section,
+  .trade-workspace .trade-market-section {
+    grid-column: 1 !important;
+    grid-row: auto !important;
+    width: 100% !important;
+    height: auto !important;
+    min-height: 0 !important;
+    max-height: none !important;
+  }
+
+  .trade-workspace .order-book {
+    height: auto !important;
+    max-height: 320px !important;
+    overflow-y: auto !important;
+  }
+}

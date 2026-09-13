@@ -51,6 +51,7 @@ const [orderBookSide, setOrderBookSide] = useState("All");
   const [priceStepMenuOpen, setPriceStepMenuOpen] = useState(false);
   const [liveCandles,setLiveCandles]=useState(()=>Array.from({length:15},(_,i)=>({up:i%3!==1,height:35+Math.floor(Math.random()*55)})));
   const [tradeTimeframe, setTradeTimeframe] = useState("1m");
+  const [tradeTimeframeMenuOpen, setTradeTimeframeMenuOpen] = useState(false);
   const [chartType, setChartType] = useState("Candles");
 
   /* ===== BITLORA FUTURES STATE ===== */
@@ -1244,10 +1245,46 @@ const [orderBookSide, setOrderBookSide] = useState("All");
           </div>
 
             <div className="trade-timeframes">
-              {["1m", "5m", "15m", "1H", "4H", "1D"].map((timeframe) => (
-                <button key={timeframe} type="button" className={tradeTimeframe === timeframe ? "active" : ""} onClick={() => setTradeTimeframe(timeframe)}>{timeframe}</button>
-              ))}
-          </div>
+              <div className="trade-timeframe-picker">
+                <button
+                  type="button"
+                  className="trade-timeframe-trigger"
+                  onClick={() => setTradeTimeframeMenuOpen((open) => !open)}
+                  aria-expanded={tradeTimeframeMenuOpen}
+                >
+                  <span>{({"1s":"1S","1m":"1M","5m":"5M","15m":"15M","30m":"30M","1H":"1H","4H":"4H","1D":"1D","1Mth":"1Mth"})[tradeTimeframe] || "1M"}</span>
+                  <span>▾</span>
+                </button>
+
+                {tradeTimeframeMenuOpen && (
+                  <div className="trade-timeframe-menu">
+                    {[
+                      ["1s", "1S"],
+                      ["1m", "1M"],
+                      ["5m", "5M"],
+                      ["15m", "15M"],
+                      ["30m", "30M"],
+                      ["1H", "1H"],
+                      ["4H", "4H"],
+                      ["1D", "1D"],
+                      ["1Mth", "1Mth"],
+                    ].map(([value, label]) => (
+                      <button
+                        key={value}
+                        type="button"
+                        className={tradeTimeframe === value ? "active" : ""}
+                        onClick={() => {
+                          setTradeTimeframe(value);
+                          setTradeTimeframeMenuOpen(false);
+                        }}
+                      >
+                        {label}
+                      </button>
+                    ))}
+                  </div>
+                )}
+              </div>
+            </div>
 
           <div className="trade-chart bitlora-real-chart">
             <div className="chart-toolbar">
@@ -1269,7 +1306,7 @@ const [orderBookSide, setOrderBookSide] = useState("All");
               </div>
             </div>
 
-            <TradingViewChart pair={selectedPair} />
+            <TradingViewChart pair={selectedPair} timeframe={tradeTimeframe} />
           </div>
 
 
