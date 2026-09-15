@@ -1,10 +1,11 @@
+import CoinLogo from "../components/CoinLogo";
+
 const markets = [
   {
     pair: "BTC/USDT",
     name: "Bitcoin",
     price: "66,842.10",
     change: "+2.34%",
-    coin: "₿",
     coinClass: "btc",
   },
   {
@@ -12,7 +13,6 @@ const markets = [
     name: "Ethereum",
     price: "3,482.76",
     change: "+1.87%",
-    coin: "◆",
     coinClass: "eth",
   },
   {
@@ -20,7 +20,6 @@ const markets = [
     name: "Solana",
     price: "184.52",
     change: "+3.21%",
-    coin: "≋",
     coinClass: "sol",
   },
   {
@@ -28,7 +27,6 @@ const markets = [
     name: "BNB",
     price: "586.32",
     change: "+1.42%",
-    coin: "✥",
     coinClass: "bnb",
   },
   {
@@ -36,7 +34,6 @@ const markets = [
     name: "Internet Computer",
     price: "4.92",
     change: "+2.18%",
-    coin: "∞",
     coinClass: "icp",
   },
   {
@@ -44,7 +41,6 @@ const markets = [
     name: "Cardano",
     price: "0.842",
     change: "+1.76%",
-    coin: "₳",
     coinClass: "ada",
   },
   {
@@ -52,7 +48,6 @@ const markets = [
     name: "Shiba Inu",
     price: "0.000013",
     change: "+3.08%",
-    coin: "🐕",
     coinClass: "shib",
   },
 ];
@@ -125,11 +120,10 @@ export default function Home() {
           {markets.map((market) => (
             <div className="home-mockup-market-row" key={market.pair}>
               <div className="home-mockup-market-left">
-                <span
-                  className={`home-mockup-coin home-mockup-coin-${market.coinClass}`}
-                >
-                  {market.coin}
-                </span>
+                <CoinLogo
+                  coin={market.coinClass}
+                  name={market.name}
+                />
 
                 <div>
                   <strong>{market.pair}</strong>

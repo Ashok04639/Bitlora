@@ -1003,34 +1003,10 @@
   gap: 9px;
 }
 
-.home-mockup-coin {
-  width: 29px;
-  height: 29px;
-  flex: 0 0 29px;
-  display: grid;
-  place-items: center;
-  border-radius: 50%;
-  color: #fff;
-  font-size: 15px;
-  font-weight: 850;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, .22);
-}
 
-.home-mockup-coin-btc {
-  background: linear-gradient(145deg, #ffad32, #e87916);
-}
 
-.home-mockup-coin-eth {
-  background: linear-gradient(145deg, #8798ff, #5264dc);
-}
 
-.home-mockup-coin-sol {
-  background: linear-gradient(145deg, #4c7dff, #6c4fff);
-}
 
-.home-mockup-coin-bnb {
-  background: linear-gradient(145deg, #f7bd32, #e79616);
-}
 
 .home-mockup-market-left div,
 .home-mockup-market-right {
@@ -1168,65 +1144,10 @@
    Single source for the final mobile Home surface.
    ========================================================= */
 
-.home-mockup-coin {
-  width: 30px;
-  height: 30px;
-  min-width: 30px;
-  min-height: 30px;
-  flex: 0 0 30px;
 
-  display: grid;
-  place-items: center;
 
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  border-radius: 50%;
-  overflow: hidden;
 
-  color: #ffffff;
-  font-size: 14px;
-  font-weight: 850;
-  line-height: 1;
 
-  background:
-    radial-gradient(
-      circle at 30% 24%,
-      rgba(255, 255, 255, 0.28),
-      transparent 30%
-    ),
-    linear-gradient(
-      145deg,
-      #4c6fa8,
-      #253b63
-    );
-
-  box-shadow:
-    0 4px 12px rgba(0, 0, 0, 0.24),
-    inset 0 1px 1px rgba(255, 255, 255, 0.16);
-}
-
-.home-mockup-coin-btc {
-  background:
-    radial-gradient(circle at 30% 24%, rgba(255,255,255,.30), transparent 30%),
-    linear-gradient(145deg, #ffbd4a, #e87817);
-}
-
-.home-mockup-coin-eth {
-  background:
-    radial-gradient(circle at 30% 24%, rgba(255,255,255,.28), transparent 30%),
-    linear-gradient(145deg, #9aa8ff, #5264dc);
-}
-
-.home-mockup-coin-sol {
-  background:
-    radial-gradient(circle at 30% 24%, rgba(255,255,255,.26), transparent 30%),
-    linear-gradient(145deg, #4c8bff, #6847f4);
-}
-
-.home-mockup-coin-bnb {
-  background:
-    radial-gradient(circle at 30% 24%, rgba(255,255,255,.28), transparent 30%),
-    linear-gradient(145deg, #ffd15a, #e89518);
-}
 
 @media (max-width: 700px) {
   .home-mockup {
@@ -1436,3 +1357,11 @@
     font-weight: 750;
   }
 }
+
+/* =========================================================
+   BITLORA HOME — REAL COIN LOGOS
+   Reusable local logo surface with safe fallback.
+   ========================================================= */
+
+
+
