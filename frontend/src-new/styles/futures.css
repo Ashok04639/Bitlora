@@ -1,0 +1,751 @@
+.futures-page {
+  width: min(1440px, 100%);
+  margin: 0 auto;
+  padding: 34px 28px 56px;
+}
+
+.futures-heading {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: 24px;
+}
+
+.section-kicker {
+  display: block;
+  margin-bottom: 7px;
+  color: var(--accent);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+}
+
+.futures-heading h1 {
+  margin: 0;
+  font-size: 30px;
+  line-height: 1.1;
+  letter-spacing: -0.025em;
+}
+
+.futures-heading p {
+  margin: 9px 0 0;
+  color: var(--text-secondary);
+  font-size: 14px;
+}
+
+.futures-risk {
+  min-width: 120px;
+  padding: 12px 15px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--surface);
+  text-align: right;
+}
+
+.futures-risk span {
+  display: block;
+  margin-bottom: 4px;
+  color: var(--text-muted);
+  font-size: 11px;
+}
+
+.futures-risk strong {
+  color: var(--success);
+  font-size: 13px;
+}
+
+.futures-market-bar {
+  display: grid;
+  grid-template-columns: minmax(220px, 1.5fr) repeat(4, minmax(120px, 1fr));
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--surface);
+  overflow: hidden;
+  margin-bottom: 16px;
+}
+
+.futures-pair,
+.futures-stat {
+  min-height: 78px;
+  padding: 15px 18px;
+  border-right: 1px solid var(--border);
+}
+
+.futures-stat:last-child {
+  border-right: 0;
+}
+
+.futures-pair {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.pair-icon {
+  display: grid;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: var(--accent-soft);
+  color: var(--accent);
+  font-size: 19px;
+  font-weight: 700;
+}
+
+.futures-pair strong,
+.futures-pair span,
+.futures-stat span,
+.futures-stat strong {
+  display: block;
+}
+
+.futures-pair strong {
+  font-size: 14px;
+}
+
+.futures-pair span,
+.futures-stat span {
+  margin-top: 4px;
+  color: var(--text-muted);
+  font-size: 11px;
+}
+
+.futures-stat {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.futures-stat strong {
+  margin-top: 5px;
+  font-size: 14px;
+}
+
+.positive {
+  color: var(--success);
+}
+
+.futures-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 390px;
+  gap: 16px;
+  align-items: stretch;
+}
+
+.futures-chart-card,
+.futures-order-card,
+.positions-card {
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--surface);
+}
+
+.futures-chart-card {
+  min-width: 0;
+  overflow: hidden;
+}
+
+.futures-card-header {
+  min-height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 12px 18px;
+  border-bottom: 1px solid var(--border);
+}
+
+.futures-card-header strong,
+.futures-card-header span {
+  display: block;
+}
+
+.futures-card-header strong {
+  font-size: 14px;
+}
+
+.futures-card-header span {
+  margin-top: 4px;
+  color: var(--text-muted);
+  font-size: 11px;
+}
+
+.futures-chart-actions {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+
+.futures-chart-actions button,
+.futures-order-types button {
+  border: 0;
+  background: transparent;
+  color: var(--text-muted);
+  padding: 7px 9px;
+  border-radius: 6px;
+  font-size: 11px;
+  cursor: pointer;
+}
+
+.futures-chart-actions button.active,
+.futures-chart-actions button:hover,
+.futures-order-types button.active {
+  background: var(--accent-soft);
+  color: var(--text-primary);
+}
+
+.futures-chart {
+  position: relative;
+  min-height: 480px;
+  overflow: hidden;
+  background:
+    linear-gradient(rgba(255,255,255,0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.035) 1px, transparent 1px),
+    var(--bg);
+  background-size: 72px 72px;
+}
+
+.chart-grid {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 35px 0;
+  pointer-events: none;
+}
+
+.chart-grid span {
+  width: 100%;
+  border-top: 1px solid rgba(255,255,255,0.045);
+}
+
+.demo-chart-line {
+  position: absolute;
+  inset: 40px 24px 40px 24px;
+  width: calc(100% - 48px);
+  height: calc(100% - 80px);
+  color: var(--accent);
+}
+
+.chart-price-label {
+  position: absolute;
+  right: 12px;
+  top: 15%;
+  padding: 5px 7px;
+  border-radius: 4px;
+  background: var(--accent);
+  color: white;
+  font-size: 10px;
+  font-weight: 700;
+}
+
+.futures-order-card {
+  padding: 18px;
+}
+
+.order-card-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--border);
+}
+
+.order-card-heading span,
+.order-card-heading strong {
+  display: block;
+}
+
+.order-card-heading span {
+  color: var(--text-muted);
+  font-size: 11px;
+}
+
+.order-card-heading strong {
+  margin-top: 4px;
+  font-size: 15px;
+}
+
+.order-card-heading svg {
+  color: var(--text-muted);
+}
+
+.futures-mode-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 13px 0 0;
+}
+
+.futures-mode-row span {
+  color: var(--text-secondary);
+  font-size: 11px;
+}
+
+.futures-mode-row button {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  border: 0;
+  background: transparent;
+  color: var(--text-primary);
+  font-size: 11px;
+  cursor: pointer;
+}
+
+.futures-tabs {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5px;
+  margin: 18px 0 8px;
+  padding: 4px;
+  border-radius: 8px;
+  background: var(--bg);
+}
+
+.futures-tabs button {
+  border: 0;
+  border-radius: 6px;
+  background: transparent;
+  color: var(--text-muted);
+  padding: 9px;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.futures-tabs button.active.long {
+  background: rgba(34, 197, 94, 0.13);
+  color: var(--success);
+}
+
+.futures-tabs button.active.short {
+  background: rgba(239, 68, 68, 0.13);
+  color: var(--danger);
+}
+
+.futures-order-types {
+  display: flex;
+  gap: 2px;
+  margin-bottom: 13px;
+  border-bottom: 1px solid var(--border);
+}
+
+.futures-order-types button {
+  padding: 8px 11px;
+  border-radius: 0;
+}
+
+.futures-order-types button.active {
+  color: var(--text-primary);
+  border-bottom: 2px solid var(--accent);
+  background: transparent;
+}
+
+.futures-form {
+  display: grid;
+  gap: 12px;
+}
+
+.futures-field > span,
+.leverage-field > div span,
+.futures-order-summary span,
+.futures-balance-row span {
+  color: var(--text-muted);
+  font-size: 11px;
+}
+
+.futures-field > div {
+  display: flex;
+  align-items: center;
+  margin-top: 6px;
+  padding: 0 10px;
+  border: 1px solid var(--border);
+  border-radius: 7px;
+  background: var(--bg);
+}
+
+.futures-field input {
+  width: 100%;
+  min-width: 0;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  color: var(--text-primary);
+  padding: 10px 0;
+  font-size: 13px;
+}
+
+.futures-field em {
+  color: var(--text-muted);
+  font-size: 10px;
+  font-style: normal;
+}
+
+.leverage-field {
+  padding: 11px;
+  border: 1px solid var(--border);
+  border-radius: 7px;
+  background: var(--bg);
+}
+
+.leverage-field > div:first-child {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.leverage-field strong {
+  color: var(--accent);
+  font-size: 12px;
+}
+
+.leverage-field input {
+  width: 100%;
+  margin: 10px 0 5px;
+  accent-color: var(--accent);
+}
+
+.leverage-scale {
+  display: flex;
+  justify-content: space-between;
+}
+
+.leverage-scale span {
+  color: var(--text-muted);
+  font-size: 9px;
+}
+
+.futures-order-summary,
+.futures-balance-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.futures-order-summary strong,
+.futures-balance-row strong {
+  color: var(--text-primary);
+  font-size: 11px;
+}
+
+.futures-submit {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  min-height: 43px;
+  border: 0;
+  border-radius: 7px;
+  color: white;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.futures-submit.long {
+  background: var(--success);
+}
+
+.futures-submit.short {
+  background: var(--danger);
+}
+
+.futures-message {
+  margin: -3px 0 0;
+  color: var(--accent);
+  font-size: 11px;
+  text-align: center;
+}
+
+.positions-card {
+  margin-top: 16px;
+  overflow: hidden;
+}
+
+.positions-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 17px 18px;
+  border-bottom: 1px solid var(--border);
+}
+
+.positions-header h2 {
+  margin: 0;
+  font-size: 17px;
+}
+
+.position-count {
+  color: var(--text-muted);
+  font-size: 11px;
+}
+
+.empty-positions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 180px;
+  padding: 25px;
+  text-align: center;
+}
+
+.empty-icon {
+  display: grid;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  margin-bottom: 10px;
+  border: 1px dashed var(--border-strong);
+  border-radius: 50%;
+  color: var(--text-muted);
+}
+
+.empty-positions strong {
+  font-size: 13px;
+}
+
+.empty-positions span {
+  margin-top: 5px;
+  color: var(--text-muted);
+  font-size: 11px;
+}
+
+.positions-table-wrap {
+  overflow-x: auto;
+}
+
+.positions-table {
+  width: 100%;
+  min-width: 760px;
+  border-collapse: collapse;
+}
+
+.positions-table th,
+.positions-table td {
+  padding: 13px 16px;
+  border-bottom: 1px solid var(--border);
+  text-align: left;
+  white-space: nowrap;
+}
+
+.positions-table th {
+  color: var(--text-muted);
+  font-size: 10px;
+  font-weight: 600;
+}
+
+.positions-table td {
+  color: var(--text-secondary);
+  font-size: 11px;
+}
+
+.positions-table td strong,
+.positions-table td span {
+  display: block;
+}
+
+.positions-table td strong {
+  color: var(--text-primary);
+  font-size: 11px;
+}
+
+.positions-table td span {
+  margin-top: 3px;
+  color: var(--text-muted);
+  font-size: 9px;
+}
+
+.position-side {
+  display: inline-block !important;
+  margin: 0 !important;
+  padding: 4px 7px;
+  border-radius: 4px;
+  font-size: 10px !important;
+  font-weight: 700;
+}
+
+.position-side.long {
+  background: rgba(34, 197, 94, 0.12);
+  color: var(--success) !important;
+}
+
+.position-side.short {
+  background: rgba(239, 68, 68, 0.12);
+  color: var(--danger) !important;
+}
+
+.neutral-pnl {
+  color: var(--text-primary) !important;
+}
+
+.close-position {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  border: 1px solid var(--border);
+  border-radius: 5px;
+  background: transparent;
+  color: var(--text-secondary);
+  padding: 6px 8px;
+  font-size: 10px;
+  cursor: pointer;
+}
+
+.close-position:hover {
+  border-color: var(--border-strong);
+  color: var(--text-primary);
+}
+
+.futures-info-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  margin-top: 16px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--border);
+  overflow: hidden;
+}
+
+.futures-info-grid > div {
+  padding: 15px 17px;
+  background: var(--surface);
+}
+
+.futures-info-grid span,
+.futures-info-grid strong {
+  display: block;
+}
+
+.futures-info-grid span {
+  color: var(--text-muted);
+  font-size: 10px;
+}
+
+.futures-info-grid strong {
+  margin-top: 6px;
+  color: var(--text-primary);
+  font-size: 12px;
+}
+
+@media (max-width: 1050px) {
+  .futures-market-bar {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .futures-pair {
+    grid-column: span 3;
+    border-right: 0;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .futures-stat:nth-child(4) {
+    border-right: 0;
+  }
+
+  .futures-layout {
+    grid-template-columns: minmax(0, 1fr) 350px;
+  }
+}
+
+@media (max-width: 820px) {
+  .futures-page {
+    padding: 24px 16px 42px;
+  }
+
+  .futures-heading {
+    align-items: flex-start;
+  }
+
+  .futures-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .futures-chart {
+    min-height: 390px;
+  }
+
+  .futures-info-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .futures-page {
+    padding: 18px 12px 32px;
+  }
+
+  .futures-heading h1 {
+    font-size: 25px;
+  }
+
+  .futures-heading p {
+    font-size: 12px;
+    line-height: 1.5;
+  }
+
+  .futures-risk {
+    min-width: 92px;
+    padding: 10px;
+  }
+
+  .futures-market-bar {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .futures-pair {
+    grid-column: span 2;
+  }
+
+  .futures-stat {
+    border-right: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .futures-stat:nth-child(odd) {
+    border-right: 0;
+  }
+
+  .futures-chart-actions {
+    overflow-x: auto;
+    max-width: 55%;
+  }
+
+  .futures-card-header {
+    padding: 11px 13px;
+  }
+
+  .futures-chart {
+    min-height: 300px;
+  }
+
+  .demo-chart-line {
+    inset: 28px 14px 30px 14px;
+    width: calc(100% - 28px);
+    height: calc(100% - 58px);
+  }
+
+  .futures-order-card {
+    padding: 14px;
+  }
+
+  .positions-header {
+    padding: 14px;
+  }
+
+  .futures-info-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .futures-info-grid > div {
+    padding: 12px;
+  }
+}
