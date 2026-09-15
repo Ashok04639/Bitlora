@@ -20,6 +20,13 @@ export default function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   useEffect(() => {
+    const handleDemoLogin = () => setIsLoggedIn(true);
+    window.addEventListener("bitlora-login", handleDemoLogin);
+
+    return () => window.removeEventListener("bitlora-login", handleDemoLogin);
+  }, []);
+
+  useEffect(() => {
     const handleLogin = () => setIsLoggedIn(true);
 
     window.addEventListener("bitlora:login", handleLogin);

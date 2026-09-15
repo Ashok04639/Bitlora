@@ -107,7 +107,7 @@ const markets = [
 
 const marketTabs = ["All", "USDT", "BTC", "ETH", "SOL"];
 
-export default function Markets() {
+export default function Markets({ isLoggedIn }) {
   const [activeTab, setActiveTab] = useState("All");
   const [query, setQuery] = useState("");
   const [favorites, setFavorites] = useState(new Set());
@@ -269,5 +269,7 @@ export default function Markets() {
         )}
       </div>
     </section>
+
+
   );
 }

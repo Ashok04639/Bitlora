@@ -241,8 +241,18 @@
 }
 
 .header-login-button {
-  color: #d9e6ff;
-  background: rgba(20, 30, 52, 0.72);
+  min-height: 38px;
+  padding: 0 16px;
+  border: 1px solid rgba(91, 118, 255, 0.72);
+  border-radius: 10px;
+  color: #ffffff;
+  background: linear-gradient(135deg, #2563eb, #6d4aff);
+  box-shadow:
+    0 6px 18px rgba(37, 99, 235, 0.24),
+    inset 0 1px 0 rgba(255, 255, 255, 0.14);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.15px;
 }
 
 .header-signup-button {
@@ -254,7 +264,11 @@
 .header-login-button:hover,
 .header-signup-button:hover {
   transform: translateY(-1px);
-  opacity: 0.94;
+  opacity: 1;
+  border-color: rgba(130, 150, 255, 0.9);
+  box-shadow:
+    0 8px 22px rgba(37, 99, 235, 0.32),
+    inset 0 1px 0 rgba(255, 255, 255, 0.18);
 }
 
 .header-login-button:active,
@@ -295,5 +309,7 @@
 
 /* BITLORA LOGGED OUT HOME HEADER CLEAN */
 .header-auth-actions {
-  display: none !important;
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }

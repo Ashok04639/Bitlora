@@ -32,7 +32,7 @@ const menuItems = [
   { label: "Terms / Privacy", icon: FileText },
 ];
 
-export default function Header({ onNavigate, isLoggedIn, onLogin, onLogout }) {
+export default function Header({ onNavigate, activePage, isLoggedIn, onLogin, onLogout }) {
   const [menuOpen, setMenuOpen] = useState(false);
 
   const goHome = () => {
@@ -47,35 +47,6 @@ export default function Header({ onNavigate, isLoggedIn, onLogin, onLogout }) {
           <span className="brand-mark" aria-hidden="true">B</span>
           <span className="brand-name">BITLORA</span>
         </button>
-
-        <div className="header-auth-actions">
-          {!isLoggedIn ? (
-            <>
-              <button
-                type="button"
-                className="header-login-button"
-                onClick={onLogin}
-              >
-                Log In
-              </button>
-              <button
-                type="button"
-                className="header-signup-button"
-                onClick={onLogin}
-              >
-                Sign Up
-              </button>
-            </>
-          ) : (
-            <button
-              type="button"
-              className="header-login-button"
-              onClick={onLogout}
-            >
-              Log Out
-            </button>
-          )}
-        </div>
 
         <div className="header-actions">
           <button className="header-icon-button" type="button" aria-label="Notifications">

@@ -393,5 +393,7 @@ export default function Futures({ isLoggedIn }) {
       </div>
 )}
     </section>
+
+
   );
 }
