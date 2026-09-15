@@ -1,399 +1,498 @@
-import { useMemo, useState } from "react";
-import { ArrowDown, ArrowUp, BarChart3, ChevronDown, X } from "lucide-react";
+import { useState } from "react";
+import {
+  ChevronDown,
+  CandlestickChart,
+  TrendingUp,
+  ArrowRight,
+  LockKeyhole,
+} from "lucide-react";
 
-const demoPrice = 66842.10;
+const markets = [
+  { pair: "BTC/USDT", price: "66,842.10", change: "+2.34%" },
+  { pair: "ETH/USDT", price: "3,482.76", change: "+1.92%" },
+  { pair: "SOL/USDT", price: "184.52", change: "+4.16%" },
+  { pair: "BNB/USDT", price: "612.38", change: "+0.87%" },
+];
 
-const initialPositions = [];
+const tabs = ["Positions", "Open Orders", "Order History"];
+const timeframes = ["1S", "1M", "5M", "15M", "30M", "1H", "4H", "1D", "1M"];
 
-export default function Futures({ isLoggedIn }) {
-  const [side, setSide] = useState("Long");
-  const [orderType, setOrderType] = useState("Limit");
-  const [price, setPrice] = useState(String(demoPrice));
-  const [amount, setAmount] = useState("");
-  const [leverage, setLeverage] = useState(10);
-  const [positions, setPositions] = useState(initialPositions);
-  const [message, setMessage] = useState("");
+const orderBookRows = [
+  ["66,858.40", "0.42"],
+  ["66,854.20", "0.31"],
+  ["66,850.10", "0.68"],
+  ["66,847.60", "0.24"],
+  ["66,845.30", "0.51"],
+];
 
-  const positionValue = useMemo(() => {
-    const p = Number(price) || 0;
-    const a = Number(amount) || 0;
-    return p * a;
-  }, [price, amount]);
+const bidRows = [
+  ["66,839.80", "0.28"],
+  ["66,836.40", "0.47"],
+  ["66,832.10", "0.36"],
+  ["66,828.70", "0.62"],
+  ["66,824.50", "0.33"],
+];
 
-  function submitOrder(event) {
-    event.preventDefault();
-
-    const numericAmount = Number(amount);
-    const numericPrice = Number(price);
-
-    if (!numericAmount || numericAmount <= 0) {
-      setMessage("Enter a valid amount.");
-      return;
-    }
-
-    if (orderType === "Limit" && (!numericPrice || numericPrice <= 0)) {
-      setMessage("Enter a valid limit price.");
-      return;
-    }
-
-    const entryPrice = orderType === "Market" ? demoPrice : numericPrice;
-
-    setPositions((current) => [
-      ...current,
-      {
-        id: Date.now(),
-        side,
-        entryPrice,
-        amount: numericAmount,
-        leverage,
-        pnl: 0,
-      },
-    ]);
-
-    setAmount("");
-    setMessage(
-      `Demo ${side.toLowerCase()} ${orderType.toLowerCase()} order opened.`
-    );
-  }
-
-  function closePosition(id) {
-    setPositions((current) => current.filter((position) => position.id !== id));
-    setMessage("Demo position closed.");
-  }
+function DemoChart({ price }) {
+  const candles = [
+    [42, 116, 48, 94, "up"],
+    [67, 101, 58, 80, "down"],
+    [91, 91, 74, 65, "up"],
+    [116, 76, 103, 54, "up"],
+    [141, 64, 126, 48, "down"],
+    [166, 74, 151, 56, "up"],
+    [191, 57, 178, 38, "up"],
+    [216, 48, 203, 29, "down"],
+    [241, 57, 228, 35, "up"],
+    [266, 42, 253, 24, "up"],
+    [291, 31, 278, 18, "up"],
+    [316, 25, 303, 13, "down"],
+    [341, 34, 328, 20, "up"],
+  ];
 
   return (
-    <section className="futures-page">
-      <div className="futures-heading">
+    <div className="futures-chart-panel">
+      <div className="futures-chart-toolbar">
+        <div className="futures-chart-label">
+          <span>Price Chart</span>
+          <small>Demo market view</small>
+        </div>
+
+        <div className="futures-timeframes">
+          {timeframes.map((frame, index) => (
+            <button
+              key={frame}
+              type="button"
+              className={index === 1 ? "active" : ""}
+            >
+              {frame}
+            </button>
+          ))}
+        </div>
+      </div>
+
+      <div className="futures-chart">
+        <div className="futures-chart-price-axis">
+          <span>67,200</span>
+          <span>67,000</span>
+          <span>66,842.10</span>
+          <span>66,400</span>
+          <span>66,000</span>
+        </div>
+
+        <svg
+          viewBox="0 0 390 150"
+          preserveAspectRatio="none"
+          className="futures-candles"
+          aria-label={`${price} futures candlestick chart`}
+        >
+          <defs>
+            <linearGradient id="futureGridFade" x1="0" x2="1">
+              <stop offset="0" stopColor="#172337" stopOpacity=".8" />
+              <stop offset="1" stopColor="#0b111b" stopOpacity=".25" />
+            </linearGradient>
+          </defs>
+
+          {[24, 54, 84, 114].map((y) => (
+            <line
+              key={y}
+              x1="0"
+              x2="390"
+              y1={y}
+              y2={y}
+              stroke="#253247"
+              strokeOpacity=".42"
+              strokeDasharray="3 5"
+            />
+          ))}
+
+          <rect
+            x="0"
+            y="0"
+            width="390"
+            height="150"
+            fill="url(#futureGridFade)"
+            opacity=".28"
+          />
+
+          {candles.map(([x, high, low, openClose, direction], index) => {
+            const bodyTop = Math.min(openClose, high - 15);
+            const bodyBottom = Math.max(openClose + 14, low + 10);
+
+            return (
+              <g key={index}>
+                <line
+                  x1={x}
+                  x2={x}
+                  y1={high}
+                  y2={low}
+                  stroke={direction === "up" ? "#22c55e" : "#ef4444"}
+                  strokeWidth="1.4"
+                />
+                <rect
+                  x={x - 4}
+                  y={bodyTop}
+                  width="8"
+                  height={Math.max(9, bodyBottom - bodyTop)}
+                  rx="1.5"
+                  fill={direction === "up" ? "#22c55e" : "#ef4444"}
+                  opacity=".9"
+                />
+              </g>
+            );
+          })}
+
+          <line
+            x1="0"
+            x2="390"
+            y1="58"
+            y2="58"
+            stroke="#22c55e"
+            strokeOpacity=".6"
+            strokeDasharray="4 4"
+          />
+        </svg>
+
+        <div className="futures-chart-current-price">
+          <span>{price}</span>
+        </div>
+
+        <div className="futures-chart-volume">
+          {[18, 29, 15, 34, 22, 39, 28, 46, 24, 38, 31, 48, 35, 52].map(
+            (height, index) => (
+              <i
+                key={index}
+                style={{ height: `${height}%` }}
+                className={index % 3 === 1 ? "red" : ""}
+              />
+            ),
+          )}
+        </div>
+
+        <div className="futures-chart-times">
+          <span>12:00</span>
+          <span>12:30</span>
+          <span>13:00</span>
+          <span>13:30</span>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function OrderBook({ price }) {
+  const [bookView, setBookView] = useState("both");
+
+  const showAsks = bookView !== "bids";
+  const showBids = bookView !== "asks";
+
+  return (
+    <section className="futures-orderbook-panel">
+      <div className="futures-panel-heading">
         <div>
-          <span className="section-kicker">DERIVATIVES</span>
-          <h1>Futures</h1>
-          <p>Trade perpetual contracts with a simple demo environment.</p>
+          <strong>Order Book</strong>
+          <span>Market depth</span>
         </div>
 
-        <div className="futures-risk">
-          <span>Risk level</span>
-          <strong>LOW</strong>
-        </div>
-      </div>
+        <div className="futures-book-toggle">
+          <button
+            type="button"
+            className={bookView === "both" ? "active" : ""}
+            aria-label="Show both sides"
+            aria-pressed={bookView === "both"}
+            onClick={() => setBookView("both")}
+          >
+            ●
+          </button>
 
-      <div className="futures-market-bar">
-        <div className="futures-pair">
-          <div className="pair-icon">₿</div>
-          <div>
-            <strong>BTC/USDT</strong>
-            <span>Perpetual</span>
-          </div>
-        </div>
+          <button
+            type="button"
+            className={bookView === "asks" ? "active" : ""}
+            aria-label="Show asks"
+            aria-pressed={bookView === "asks"}
+            onClick={() => setBookView("asks")}
+          >
+            ▲
+          </button>
 
-        <div className="futures-stat">
-          <span>Mark Price</span>
-          <strong>${demoPrice.toLocaleString()}</strong>
-        </div>
-
-        <div className="futures-stat">
-          <span>24h Change</span>
-          <strong className="positive">+2.84%</strong>
-        </div>
-
-        <div className="futures-stat">
-          <span>Index Price</span>
-          <strong>$66,835.70</strong>
-        </div>
-
-        <div className="futures-stat">
-          <span>Funding</span>
-          <strong>0.0100%</strong>
+          <button
+            type="button"
+            className={bookView === "bids" ? "active" : ""}
+            aria-label="Show bids"
+            aria-pressed={bookView === "bids"}
+            onClick={() => setBookView("bids")}
+          >
+            ▼
+          </button>
         </div>
       </div>
 
-      <div className="futures-layout">
-        <div className="futures-chart-card">
-          <div className="futures-card-header">
-            <div>
-              <strong>BTC/USDT Perpetual</strong>
-              <span>Demo chart</span>
+      <div className="futures-book-head">
+        <span>Price (USDT)</span>
+        <span>Amount</span>
+      </div>
+
+      {showAsks && (
+        <div className="futures-book-rows asks">
+          {orderBookRows.map(([rowPrice, amount]) => (
+            <div key={rowPrice}>
+              <span>{rowPrice}</span>
+              <small>{amount}</small>
             </div>
+          ))}
+        </div>
+      )}
 
-            <div className="futures-chart-actions">
-              {["1m", "5m", "15m", "1H", "4H", "1D"].map((timeframe) => (
+      <div className="futures-book-mid">
+        <strong>{price}</strong>
+        <span>Mark Price</span>
+      </div>
+
+      {showBids && (
+        <div className="futures-book-rows bids">
+          {bidRows.map(([rowPrice, amount]) => (
+            <div key={rowPrice}>
+              <span>{rowPrice}</span>
+              <small>{amount}</small>
+            </div>
+          ))}
+        </div>
+      )}
+    </section>
+  );
+}
+
+function FuturesOrderPanel({ market, pair, setPair, pairMenuOpen, setPairMenuOpen, markets, chartOpen, setChartOpen }) {
+  const [side, setSide] = useState("Long");
+  const [orderType, setOrderType] = useState("Limit");
+  const [orderMenuOpen, setOrderMenuOpen] = useState(false);
+
+  return (
+    <section className="futures-order-panel">
+      <div className="futures-pair-wrap">
+          <button
+            type="button"
+            className="futures-pair-trigger"
+            onClick={() => setPairMenuOpen((open) => !open)}
+            aria-expanded={pairMenuOpen}
+          >
+            <span>
+              <strong>{market.pair}</strong>
+              <em>Perpetual</em>
+            </span>
+            <span
+              className="futures-pair-chart-icon"
+              role="button"
+              tabIndex={0}
+              aria-label={chartOpen ? "Hide candlestick chart" : "Show candlestick chart"}
+              onClick={(event) => {
+                event.stopPropagation();
+                setChartOpen((open) => !open);
+              }}
+              onKeyDown={(event) => {
+                if (event.key === "Enter" || event.key === " ") {
+                  event.preventDefault();
+                  event.stopPropagation();
+                  setChartOpen((open) => !open);
+                }
+              }}
+            >
+              <CandlestickChart size={22} strokeWidth={2} />
+            </span>
+            <ChevronDown size={15} />
+          </button>
+
+          {pairMenuOpen && (
+            <div className="futures-inline-dropdown">
+              {markets.map((item) => (
                 <button
-                  key={timeframe}
+                  key={item.pair}
                   type="button"
-                  className={timeframe === "5m" ? "active" : ""}
+                  className={item.pair === pair ? "active" : ""}
+                  onClick={() => {
+                    setPair(item.pair);
+                    setPairMenuOpen(false);
+                  }}
                 >
-                  {timeframe}
+                  <span>
+                    <strong>{item.pair}</strong>
+                    <small>{item.change}</small>
+                  </span>
+                  <small>{item.price}</small>
                 </button>
               ))}
             </div>
-          </div>
-
-          <div className="futures-chart">
-            <div className="chart-grid">
-              <span />
-              <span />
-              <span />
-              <span />
-              <span />
-            </div>
-
-            <svg
-              className="demo-chart-line"
-              viewBox="0 0 900 360"
-              preserveAspectRatio="none"
-              aria-label="Demo futures chart"
-            >
-              <defs>
-                <linearGradient id="futuresFill" x1="0" x2="0" y1="0" y2="1">
-                  <stop offset="0%" stopOpacity="0.28" />
-                  <stop offset="100%" stopOpacity="0" />
-                </linearGradient>
-              </defs>
-
-              <path
-                d="M0 290 L65 260 L110 274 L160 218 L205 232 L250 190 L300 205 L345 150 L390 175 L435 125 L480 142 L525 110 L570 132 L615 90 L665 108 L710 68 L760 92 L810 55 L860 74 L900 35 L900 360 L0 360 Z"
-                fill="url(#futuresFill)"
-              />
-
-              <path
-                d="M0 290 L65 260 L110 274 L160 218 L205 232 L250 190 L300 205 L345 150 L390 175 L435 125 L480 142 L525 110 L570 132 L615 90 L665 108 L710 68 L760 92 L810 55 L860 74 L900 35"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="3"
-                vectorEffect="non-scaling-stroke"
-              />
-            </svg>
-
-            <div className="chart-price-label">${demoPrice.toLocaleString()}</div>
-          </div>
+          )}
         </div>
 
-        <aside className="futures-order-card">
-          <div className="order-card-heading">
-            <div>
-              <span>Order</span>
-              <strong>BTC/USDT</strong>
-            </div>
-
-            <BarChart3 size={19} strokeWidth={1.8} />
-          </div>
-
-          <div className="futures-mode-row">
-            <span>Margin Mode</span>
-            <button type="button">
-              Cross
-              <ChevronDown size={14} />
-            </button>
-          </div>
-
-          <div className="futures-mode-row">
-            <span>Position Mode</span>
-            <button type="button">
-              One-Way
-              <ChevronDown size={14} />
-            </button>
-          </div>
-
-          <div className="futures-tabs">
-            <button
-              type="button"
-              className={side === "Long" ? "active long" : ""}
-              onClick={() => setSide("Long")}
-            >
-              Long
-            </button>
-            <button
-              type="button"
-              className={side === "Short" ? "active short" : ""}
-              onClick={() => setSide("Short")}
-            >
-              Short
-            </button>
-          </div>
-
-          <div className="futures-order-types">
-            {["Limit", "Market"].map((type) => (
-              <button
-                key={type}
-                type="button"
-                className={orderType === type ? "active" : ""}
-                onClick={() => setOrderType(type)}
-              >
-                {type}
-              </button>
-            ))}
-          </div>
-
-          <form onSubmit={submitOrder} className="futures-form">
-            {orderType === "Limit" && (
-              <label className="futures-field">
-                <span>Price</span>
-                <div>
-                  <input
-                    type="number"
-                    min="0"
-                    step="0.01"
-                    value={price}
-                    onChange={(event) => setPrice(event.target.value)}
-                    placeholder="0.00"
-                  />
-                  <em>USDT</em>
-                </div>
-              </label>
-            )}
-
-            <label className="futures-field">
-              <span>Amount</span>
-              <div>
-                <input
-                  type="number"
-                  min="0"
-                  step="0.0001"
-                  value={amount}
-                  onChange={(event) => setAmount(event.target.value)}
-                  placeholder="0.0000"
-                />
-                <em>BTC</em>
-              </div>
-            </label>
-
-            <div className="leverage-field">
-              <div>
-                <span>Leverage</span>
-                <strong>{leverage}x</strong>
-              </div>
-              <input
-                type="range"
-                min="1"
-                max="50"
-                value={leverage}
-                onChange={(event) => setLeverage(Number(event.target.value))}
-              />
-              <div className="leverage-scale">
-                <span>1x</span>
-                <span>10x</span>
-                <span>25x</span>
-                <span>50x</span>
-              </div>
-            </div>
-
-            <div className="futures-order-summary">
-              <span>Order Value</span>
-              <strong>
-                ${positionValue.toLocaleString(undefined, {
-                  minimumFractionDigits: 2,
-                  maximumFractionDigits: 2,
-                })}
-              </strong>
-            </div>
-
-            {isLoggedIn && (
-<div className="futures-balance-row">
-              <span>Available Margin</span>
-              <strong>1,000.00 USDT</strong>
-            </div>
-)}
-
-            <button
-              className={`futures-submit ${side.toLowerCase()}`}
-              type="submit"
-            >
-              {side === "Long" ? <ArrowUp size={17} /> : <ArrowDown size={17} />}
-              {side} {orderType}
-            </button>
-
-            {message && <p className="futures-message">{message}</p>}
-          </form>
-        </aside>
+      <div className="futures-side-switch">
+        <button
+          type="button"
+          className={side === "Long" ? "long active" : "long"}
+          onClick={() => setSide("Long")}
+        >
+          Long
+        </button>
+        <button
+          type="button"
+          className={side === "Short" ? "short active" : "short"}
+          onClick={() => setSide("Short")}
+        >
+          Short
+        </button>
       </div>
 
-      <section className="positions-card">
-        <div className="positions-header">
-          <div>
-            <span className="section-kicker">ACCOUNT</span>
-            <h2>Open Positions</h2>
-          </div>
-          <span className="position-count">{positions.length} Active</span>
+      <label className="futures-field">
+        <span>Price</span>
+        <div>
+          <input
+            type="text"
+            inputMode="decimal"
+            placeholder="—"
+            aria-label="Futures price"
+          />
+          <small>USDT</small>
         </div>
+      </label>
 
-        {positions.length === 0 ? (
-          <div className="empty-positions">
-            <div className="empty-icon">+</div>
-            <strong>No open positions</strong>
-            <span>Your demo positions will appear here after an order.</span>
-          </div>
-        ) : (
-          <div className="positions-table-wrap">
-            <table className="positions-table">
-              <thead>
-                <tr>
-                  <th>Contract</th>
-                  <th>Side</th>
-                  <th>Entry Price</th>
-                  <th>Amount</th>
-                  <th>Leverage</th>
-                  <th>Unrealized PNL</th>
-                  <th />
-                </tr>
-              </thead>
-              <tbody>
-                {positions.map((position) => (
-                  <tr key={position.id}>
-                    <td>
-                      <strong>BTC/USDT</strong>
-                      <span>Perpetual</span>
-                    </td>
-                    <td>
-                      <span
-                        className={`position-side ${position.side.toLowerCase()}`}
-                      >
-                        {position.side}
-                      </span>
-                    </td>
-                    <td>${position.entryPrice.toLocaleString()}</td>
-                    <td>{position.amount} BTC</td>
-                    <td>{position.leverage}x</td>
-                    <td className="neutral-pnl">0.00 USDT</td>
-                    <td>
-                      <button
-                        className="close-position"
-                        type="button"
-                        onClick={() => closePosition(position.id)}
-                        aria-label="Close position"
-                      >
-                        <X size={16} />
-                        Close
-                      </button>
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        )}
-      </section>
+      <label className="futures-field">
+        <span>Size</span>
+        <div>
+          <input
+            type="text"
+            inputMode="decimal"
+            placeholder="—"
+            aria-label="Futures size"
+          />
+          <small>{market.pair.split("/")[0]}</small>
+        </div>
+      </label>
 
-      {isLoggedIn && (
-<div className="futures-info-grid">
-        <div>
-          <span>Available Balance</span>
-          <strong>1,000.00 USDT</strong>
-        </div>
-        <div>
-          <span>Used Margin</span>
-          <strong>0.00 USDT</strong>
-        </div>
-        <div>
-          <span>Maintenance Margin</span>
-          <strong>0.00 USDT</strong>
-        </div>
-        <div>
-          <span>Unrealized PNL</span>
-          <strong>0.00 USDT</strong>
-        </div>
+      <div className="futures-percentages">
+        {[25, 50, 75, 100].map((value) => (
+          <button type="button" key={value} disabled>
+            {value}%
+          </button>
+        ))}
       </div>
-)}
+
+      <button type="button" className="futures-login-trade">
+        <LockKeyhole size={15} />
+        Login to Trade
+      </button>
     </section>
+  );
+}
 
+export default function Futures({ onNavigate }) {
+  const [pair, setPair] = useState("BTC/USDT");
+  const [pairMenuOpen, setPairMenuOpen] = useState(false);
+  const [chartOpen, setChartOpen] = useState(false);
+  const [activeTab, setActiveTab] = useState("Positions");
 
+  const market =
+    markets.find((item) => item.pair === pair) || markets[0];
+
+  return (
+    <section className="futures-page">
+      <div className="futures-market-head">
+  
+
+</div>
+
+      <div className="futures-stats">
+        <div className="futures-stat-card public">
+          <span>Mark Price</span>
+          <strong>{market.price}</strong>
+          <small>USDT</small>
+        </div>
+
+        <div className="futures-stat-card">
+          <span>Available Margin</span>
+          <strong>—</strong>
+          <small>Login required</small>
+        </div>
+
+        <div className="futures-stat-card">
+          <span>Risk Level</span>
+          <strong>—</strong>
+          <small>Login required</small>
+        </div>
+
+        <div className="futures-stat-card">
+          <span>Leverage</span>
+          <strong>—</strong>
+          <small>Login required</small>
+        </div>
+      </div>
+
+      {chartOpen && (
+        <DemoChart price={market.price} />
+      )}
+
+      <div className="futures-trading-workspace">
+        <FuturesOrderPanel
+        market={market}
+        pair={pair}
+        setPair={setPair}
+        pairMenuOpen={pairMenuOpen}
+        setPairMenuOpen={setPairMenuOpen}
+        markets={markets}
+        chartOpen={chartOpen}
+        setChartOpen={setChartOpen}
+      />
+        <OrderBook price={market.price} />
+      </div>
+
+      <section className="futures-positions-card">
+        <div className="futures-tabs" role="tablist">
+          {tabs.map((tab) => (
+            <button
+              key={tab}
+              type="button"
+              role="tab"
+              aria-selected={activeTab === tab}
+              className={activeTab === tab ? "active" : ""}
+              onClick={() => setActiveTab(tab)}
+            >
+              {tab}
+            </button>
+          ))}
+        </div>
+
+        <div className="futures-empty-state">
+          <div className="futures-empty-icon">
+            <TrendingUp size={20} />
+          </div>
+
+          <strong>
+            {activeTab === "Positions"
+              ? "No positions yet"
+              : activeTab === "Open Orders"
+                ? "No open orders"
+                : "No order history"}
+          </strong>
+
+          <span>
+            {activeTab === "Positions"
+              ? "Your futures positions will appear here after you log in and start trading."
+              : activeTab === "Open Orders"
+                ? "Your active futures orders will appear here after login."
+                : "Your completed futures orders will appear here after login."}
+          </span>
+
+          {activeTab === "Positions" && (
+            <button
+              type="button"
+              className="futures-trade-now"
+              onClick={() => onNavigate?.("Trade")}
+            >
+              Explore Trading
+              <ArrowRight size={15} />
+            </button>
+          )}
+        </div>
+      </section>
+    </section>
   );
 }

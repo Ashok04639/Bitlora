@@ -86,44 +86,84 @@ export default function Header({ onNavigate, activePage, isLoggedIn, onLogin, on
             </button>
           </div>
 
-          <div className="header-menu-list">
-            {menuItems.map((item) => {
-              const Icon = item.icon;
+            <div className="header-menu-list">
+              {[
+                {
+                  title: "ACCOUNT",
+                  items: [
+                    "Profile",
+                    "Log In / Log Out",
+                    "Payment / Withdrawal Settings",
+                    "Transaction History",
+                  ],
+                },
+                {
+                  title: "SECURITY",
+                  items: [
+                    "2FA Security",
+                    "Change Password",
+                    "Devices & Sessions",
+                  ],
+                },
+                {
+                  title: "PREFERENCES & MORE",
+                  items: [
+                    "Notifications",
+                    "Settings",
+                    "Referral",
+                    "Help & Support",
+                    "Terms / Privacy",
+                  ],
+                },
+              ].map((group) => (
+                <div className="header-menu-group" key={group.title}>
+                  <span className="header-menu-group-title">{group.title}</span>
 
-              return (
-                <button
-                  key={item.label === "Log In / Log Out"
-                                  ? (isLoggedIn ? "Log Out" : "Log In")
-                                  : item.label}
-                  type="button"
-                  className={`header-menu-item${item.accountOnly ? " account-item" : ""}`}
-                  onClick={() => {
-                              if (item.label === "Log In / Log Out") {
-                                if (isLoggedIn) {
-                                  onLogout();
-                                } else {
-                                  onLogin();
-                                }
-                                setMenuOpen(false);
-                              }
-                            }}
-                >
-                  <span className="header-menu-item-icon">
-                    <Icon size={19} strokeWidth={1.9} />
-                  </span>
+                  {group.items.map((label) => {
+                    const item = menuItems.find((entry) => entry.label === label);
 
-                  <span className="header-menu-item-label">
-                    {item.label}
-                    {item.accountOnly && (
-                      <small>Available after login</small>
-                    )}
-                  </span>
+                    if (!item) return null;
 
-                  <ChevronRight size={18} strokeWidth={1.8} />
-                </button>
-              );
-            })}
-          </div>
+                    const Icon = item.icon;
+
+                    return (
+                      <button
+                        key={
+                          item.label === "Log In / Log Out"
+                            ? (isLoggedIn ? "Log Out" : "Log In")
+                            : item.label
+                        }
+                        type="button"
+                        className={`header-menu-item${item.accountOnly ? " account-item" : ""}`}
+                        onClick={() => {
+                          if (item.label === "Log In / Log Out") {
+                            if (isLoggedIn) {
+                              onLogout();
+                            } else {
+                              onLogin();
+                            }
+                            setMenuOpen(false);
+                          }
+                        }}
+                      >
+                        <span className="header-menu-item-icon">
+                          <Icon size={19} strokeWidth={1.9} />
+                        </span>
+
+                        <span className="header-menu-item-label">
+                          {item.label}
+                          {item.accountOnly && (
+                            <small>Available after login</small>
+                          )}
+                        </span>
+
+                        <ChevronRight size={18} strokeWidth={1.8} />
+                      </button>
+                    );
+                  })}
+                </div>
+              ))}
+            </div>
         </div>
       )}
     </header>
