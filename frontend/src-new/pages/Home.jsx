@@ -56,7 +56,7 @@ function login() {
   window.dispatchEvent(new CustomEvent("bitlora:login"));
 }
 
-export default function Home() {
+export default function Home({ onNavigate }) {
   return (
     <section className="home home-mockup">
       <div className="home-mockup-hero">
@@ -113,7 +113,12 @@ export default function Home() {
       <div className="home-mockup-markets">
         <div className="home-mockup-section-head">
           <h2>Top Markets</h2>
-          <button type="button">View All</button>
+          <button
+            type="button"
+            onClick={() => onNavigate?.("Markets")}
+          >
+            View All
+          </button>
         </div>
 
         <div className="home-mockup-market-list">

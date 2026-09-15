@@ -41,7 +41,7 @@ export default function App() {
       />
 
       <main className="page">
-        <Page isLoggedIn={isLoggedIn} />
+        <Page isLoggedIn={isLoggedIn} onNavigate={setActivePage} />
       </main>
 
       <Footer

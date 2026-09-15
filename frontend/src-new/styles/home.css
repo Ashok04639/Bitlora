@@ -1155,7 +1155,7 @@
     --home-price-size: 12px;
     --home-change-size: 11px;
 
-    width: calc(100% - 2px);
+    width: 99%;
     max-width: none;
     margin: 0 auto;
 
@@ -1179,8 +1179,9 @@
       );
 
     box-shadow:
-      0 10px 30px rgba(0, 0, 0, 0.28),
-      inset 0 1px 0 rgba(125, 185, 255, 0.06);
+      0 14px 34px rgba(0, 0, 0, 0.34),
+      0 0 0 1px rgba(37, 99, 235, 0.04),
+      inset 0 1px 0 rgba(125, 185, 255, 0.08);
   }
 
   /* ---------- HERO / TOP SCREEN ---------- */
