@@ -6,6 +6,7 @@ import Markets from "../pages/Markets";
 import Trade from "../pages/Trade";
 import Futures from "../pages/Futures";
 import Wallet from "../pages/Wallet";
+import AuthFlow from "../components/auth/AuthFlow";
 
 const pages = {
   Home,
@@ -107,6 +108,16 @@ export default function App() {
   }, []);
 
   const Page = pages[activePage];
+
+  if (!isLoggedIn) {
+    return (
+      <div className="app">
+        <AuthFlow
+          onAuthenticated={() => setIsLoggedIn(true)}
+        />
+      </div>
+    );
+  }
 
   return (
     <div className="app">

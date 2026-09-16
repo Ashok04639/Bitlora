@@ -6,6 +6,7 @@ import "./styles/header.css";
 import "./styles/home.css";
 import "./styles/markets.css";
 import "./styles/trade.css";
+import "./styles/auth.css";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
