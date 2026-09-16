@@ -7,6 +7,7 @@ export default function Login({
   onLogin,
   onSignUp,
   onForgotPassword,
+  onBack,
 }) {
   const [identifier, setIdentifier] = useState("");
   const [password, setPassword] = useState("");
@@ -27,6 +28,7 @@ export default function Login({
     <AuthShell
       title="Welcome Back"
       subtitle="Login to your account"
+      onBack={onBack}
       footer={
         <p>
           Don't have an account?{" "}

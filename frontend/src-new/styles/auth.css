@@ -14,7 +14,38 @@
     linear-gradient(180deg, #07111f 0%, #060c16 52%, #050a12 100%);
 }
 
+.auth-back-button {
+  position: fixed;
+  top: 24px;
+  left: 24px;
+  border: 0;
+  padding: 0;
+  border-radius: 0;
+  background: transparent;
+  color: #c9d8ea;
+  font: inherit;
+  font-size: 12px;
+  font-weight: 650;
+  cursor: pointer;
+  z-index: 20;
+}
+
+.auth-back-icon {
+  display: inline-block;
+  margin-right: 5px;
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 1;
+  vertical-align: -2px;
+}
+
+.auth-back-button:hover {
+  background: transparent;
+  color: #ffffff;
+}
+
 .auth-shell-card {
+  position: relative;
   width: 100%;
   max-width: 420px;
   padding: 20px 22px;

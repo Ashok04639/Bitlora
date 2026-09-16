@@ -6,6 +6,7 @@ import AuthButton from "../../components/auth/AuthButton";
 export default function SignUp({
   onCreateAccount,
   onLogin,
+  onBack,
 }) {
   const [fullName, setFullName] = useState("");
   const [identifier, setIdentifier] = useState("");
@@ -37,6 +38,7 @@ export default function SignUp({
     <AuthShell
       title="Create your account"
       subtitle="Join Bitlora and start your crypto journey."
+      onBack={onBack}
       footer={
         <p>
           Already have an account?{" "}

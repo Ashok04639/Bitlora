@@ -21,6 +21,7 @@ export default function ForgotPassword({
 
   return (
     <AuthShell
+      onBack={onBackToLogin}
       title="Forgot Password?"
       subtitle="Enter your email or phone and we'll help you recover your account."
       footer={

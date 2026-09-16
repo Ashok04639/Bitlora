@@ -904,9 +904,10 @@
 }
 
 .home-mockup-signup {
-  border: 1px solid #1688ff;
-  color: #e7f2ff;
-  background: rgba(8, 20, 38, .72);
+  border: 1px solid #2879ff;
+  color: #fff;
+  background: linear-gradient(135deg, #0878ff, #315cff);
+  box-shadow: 0 8px 22px rgba(24, 98, 255, .22);
 }
 
 .home-mockup-ticker {

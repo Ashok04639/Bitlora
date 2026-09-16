@@ -1,12 +1,10 @@
 import { useState } from "react";
-import Welcome from "../../pages/auth/Welcome";
 import Login from "../../pages/auth/Login";
 import SignUp from "../../pages/auth/SignUp";
 import ForgotPassword from "../../pages/auth/ForgotPassword";
 import OTPVerification from "../../pages/auth/OTPVerification";
 import CreatePIN from "../../pages/auth/CreatePIN";
 import {
-  clearDemoSession,
   createDemoAccount,
   createDemoPIN,
   loginDemoAccount,
@@ -14,18 +12,21 @@ import {
   verifyDemoOTP,
 } from "../../services/authDemo";
 
-export default function AuthFlow({ onAuthenticated }) {
-  const [screen, setScreen] = useState("login");
+export default function AuthFlow({
+  onAuthenticated,
+  initialScreen = "login",
+  onBack,
+}) {
+  const [screen, setScreen] = useState(initialScreen);
   const [identifier, setIdentifier] = useState("");
+  const [otpSource, setOtpSource] = useState("login");
 
   const handleLogin = ({ identifier: nextIdentifier }) => {
-    const result = loginDemoAccount({
-      identifier: nextIdentifier,
-    });
-
+    const result = loginDemoAccount({ identifier: nextIdentifier });
     if (!result.ok) return;
 
     setIdentifier(nextIdentifier);
+    setOtpSource("login");
     setScreen("otp");
   };
 
@@ -34,16 +35,15 @@ export default function AuthFlow({ onAuthenticated }) {
       fullName,
       identifier: nextIdentifier,
     });
-
     if (!result.ok) return;
 
     setIdentifier(nextIdentifier);
+    setOtpSource("signup");
     setScreen("otp");
   };
 
   const handleVerifyOTP = (otp) => {
     const result = verifyDemoOTP(otp);
-
     if (!result.ok) return;
 
     setScreen("create-pin");
@@ -51,7 +51,6 @@ export default function AuthFlow({ onAuthenticated }) {
 
   const handleCreatePIN = (pin) => {
     const result = createDemoPIN(pin);
-
     if (!result.ok) return;
 
     onAuthenticated?.();
@@ -63,16 +62,10 @@ export default function AuthFlow({ onAuthenticated }) {
 
   const handlePasswordReset = ({ identifier: nextIdentifier }) => {
     const result = requestDemoPasswordReset(nextIdentifier);
-
     if (!result.ok) return;
 
     setIdentifier(nextIdentifier);
     setScreen("login");
-  };
-
-  const handleLogout = () => {
-    clearDemoSession();
-    setScreen("welcome");
   };
 
   switch (screen) {
@@ -81,6 +74,7 @@ export default function AuthFlow({ onAuthenticated }) {
         <Login
           onLogin={handleLogin}
           onSignUp={() => setScreen("signup")}
+          onBack={onBack}
           onForgotPassword={() => setScreen("forgot-password")}
         />
       );
@@ -90,6 +84,7 @@ export default function AuthFlow({ onAuthenticated }) {
         <SignUp
           onCreateAccount={handleCreateAccount}
           onLogin={() => setScreen("login")}
+          onBack={onBack}
         />
       );
 
@@ -107,7 +102,7 @@ export default function AuthFlow({ onAuthenticated }) {
           destination={identifier}
           onVerify={handleVerifyOTP}
           onResend={() => {}}
-          onBack={() => setScreen("login")}
+          onBack={() => setScreen(otpSource === "signup" ? "signup" : "login")}
         />
       );
 
@@ -116,16 +111,11 @@ export default function AuthFlow({ onAuthenticated }) {
         <CreatePIN
           onCreatePIN={handleCreatePIN}
           onSkip={handleSkipPIN}
+          onBack={() => setScreen("otp")}
         />
       );
 
-    case "welcome":
     default:
-      return (
-        <Welcome
-          onLogin={() => setScreen("login")}
-          onSignUp={() => setScreen("signup")}
-        />
-      );
+      return null;
   }
 }

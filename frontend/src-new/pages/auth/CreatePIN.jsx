@@ -5,6 +5,7 @@ import AuthButton from "../../components/auth/AuthButton";
 export default function CreatePIN({
   onCreatePIN,
   onSkip,
+  onBack,
 }) {
   const [pin, setPin] = useState("");
   const [confirmPin, setConfirmPin] = useState("");
@@ -29,6 +30,7 @@ export default function CreatePIN({
 
   return (
     <AuthShell
+      onBack={onBack}
       title="Create your PIN"
       subtitle="Set a 6-digit PIN for quick and secure access."
       footer={

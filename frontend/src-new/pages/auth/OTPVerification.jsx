@@ -25,6 +25,7 @@ export default function OTPVerification({
 
   return (
     <AuthShell
+      onBack={onBack}
       title="Verify your account"
       subtitle={
         destination

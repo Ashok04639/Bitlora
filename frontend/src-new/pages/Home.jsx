@@ -56,7 +56,11 @@ function login() {
   window.dispatchEvent(new CustomEvent("bitlora:login"));
 }
 
-export default function Home({ onNavigate }) {
+function signUp() {
+  window.dispatchEvent(new CustomEvent("bitlora:signup"));
+}
+
+export default function Home({ onNavigate, isLoggedIn }) {
   return (
     <section className="home home-mockup">
       <div className="home-mockup-hero">
@@ -81,23 +85,25 @@ export default function Home({ onNavigate }) {
           <span>Secure · Fast · Global</span>
         </p>
 
-        <div className="home-mockup-auth">
-          <button
-            type="button"
-            className="home-mockup-login"
-            onClick={login}
-          >
-            Log In
-          </button>
+        {!isLoggedIn && (
+          <div className="home-mockup-auth">
+            <button
+              type="button"
+              className="home-mockup-login"
+              onClick={login}
+            >
+              Log In
+            </button>
 
-          <button
-            type="button"
-            className="home-mockup-signup"
-            onClick={login}
-          >
-            Sign Up
-          </button>
-        </div>
+            <button
+              type="button"
+              className="home-mockup-signup"
+              onClick={signUp}
+            >
+              Sign Up
+            </button>
+          </div>
+        )}
       </div>
 
       <div className="home-mockup-ticker" aria-label="Market ticker">

@@ -19,6 +19,8 @@ const pages = {
 export default function App() {
   const [activePage, setActivePage] = useState("Home");
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [showAuth, setShowAuth] = useState(false);
+  const [authScreen, setAuthScreen] = useState("login");
 
   const swipeStartRef = useRef(null);
 
@@ -91,29 +93,47 @@ export default function App() {
   }, [activePage]);
 
   useEffect(() => {
-    const handleDemoLogin = () => setIsLoggedIn(true);
+    const handleDemoLogin = () => {
+      setAuthScreen("login");
+      setShowAuth(true);
+    };
     window.addEventListener("bitlora-login", handleDemoLogin);
 
     return () => window.removeEventListener("bitlora-login", handleDemoLogin);
   }, []);
 
   useEffect(() => {
-    const handleLogin = () => setIsLoggedIn(true);
+    const handleLogin = () => {
+      setAuthScreen("login");
+      setShowAuth(true);
+    };
+
+    const handleSignUp = () => {
+      setAuthScreen("signup");
+      setShowAuth(true);
+    };
 
     window.addEventListener("bitlora:login", handleLogin);
+    window.addEventListener("bitlora:signup", handleSignUp);
 
     return () => {
       window.removeEventListener("bitlora:login", handleLogin);
+      window.removeEventListener("bitlora:signup", handleSignUp);
     };
   }, []);
 
   const Page = pages[activePage];
 
-  if (!isLoggedIn) {
+  if (showAuth && !isLoggedIn) {
     return (
       <div className="app">
         <AuthFlow
-          onAuthenticated={() => setIsLoggedIn(true)}
+          initialScreen={authScreen}
+          onBack={() => setShowAuth(false)}
+          onAuthenticated={() => {
+            setIsLoggedIn(true);
+            setShowAuth(false);
+          }}
         />
       </div>
     );
@@ -125,7 +145,11 @@ export default function App() {
         onNavigate={setActivePage}
         isLoggedIn={isLoggedIn}
         onLogin={() => setIsLoggedIn(true)}
-        onLogout={() => setIsLoggedIn(false)}
+        onLogout={() => {
+          setIsLoggedIn(false);
+          setShowAuth(false);
+          setActivePage("Home");
+        }}
       />
 
       <main className="page">
