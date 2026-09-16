@@ -30,6 +30,11 @@ export default function AuthInput({
               <path d="M8 10V7a4 4 0 0 1 8 0v3" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
               <circle cx="12" cy="15" r="1.2" fill="currentColor" />
             </svg>
+          ) : iconType === "name" ? (
+            <svg viewBox="0 0 24 24">
+              <circle cx="12" cy="8" r="3.2" fill="none" stroke="currentColor" strokeWidth="1.8" />
+              <path d="M5.5 19c.7-3.1 3.1-5 6.5-5s5.8 1.9 6.5 5" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
+            </svg>
           ) : (
             <svg viewBox="0 0 24 24">
               <rect x="3.5" y="5" width="17" height="14" rx="2.2" fill="none" stroke="currentColor" strokeWidth="1.8" />

@@ -17,7 +17,7 @@
 .auth-shell-card {
   width: 100%;
   max-width: 420px;
-  padding: 28px 22px;
+  padding: 20px 22px;
   border: 1px solid rgba(58, 91, 132, 0.48);
   border-radius: 18px;
   background:
@@ -31,10 +31,10 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 9px;
+  gap: 7px;
   position: relative;
   top: -55px;
-  margin-bottom: -22px;
+  margin-bottom: -20px;
 }
 
 .auth-shell-brand-mark {
@@ -58,7 +58,7 @@
 
 .auth-shell-heading {
   position: relative;
-  top: -12px;
+  top: -11px;
   margin-top: 0;
 }
 
@@ -80,14 +80,14 @@
 .auth-shell-content {
   display: flex;
   flex-direction: column;
-  gap: 11px;
+  gap: 9px;
 }
 
  .auth-social-divider {
   display: flex;
   align-items: center;
   gap: 12px;
-  margin: 22px 0 16px;
+  margin: 15px 0 11px;
 }
 
 .auth-social-divider span {
@@ -106,7 +106,7 @@
 
 .auth-social-actions {
   display: grid;
-  gap: 10px;
+  gap: 6px;
 }
 
 .auth-social-button {
@@ -162,7 +162,7 @@
 }
 
 .auth-shell-footer {
-  margin-top: 22px;
+  margin-top: 14px;
   color: #8d9bad;
   font-size: 12px;
   line-height: 1.5;
@@ -285,12 +285,16 @@
 
 @media (max-width: 420px) {
   .auth-shell {
-    padding: 20px 12px 28px;
+    min-height: 100dvh;
+    box-sizing: border-box;
+    padding: 50px 12px 48px;
   }
 
   .auth-shell-card {
-    padding: 24px 17px;
+    box-sizing: border-box;
+    padding: 18px 17px;
     border-radius: 15px;
+    
   }
 }
 
