@@ -9,22 +9,21 @@ import {
 } from "lucide-react";
 import CoinLogo from "../components/CoinLogo";
 import { markets } from "../data/marketData";
+import { getUniqueCoins } from "../utils/totalCoins";
 import "./../styles/wallet.css";
 
 function buildWalletAssets(spotBalances) {
   const marketMetadata = new Map();
 
-  markets.forEach((market) => {
+  getUniqueCoins(markets).forEach((market) => {
     const symbol = market.pair.split("/")[0];
 
-    if (!marketMetadata.has(symbol)) {
-      marketMetadata.set(symbol, {
-        coin: market.coinClass,
-        symbol,
-        name: market.name,
-        price: market.price,
-      });
-    }
+    marketMetadata.set(symbol, {
+      coin: market.coinClass,
+      symbol,
+      name: market.name,
+      price: market.price,
+    });
   });
 
   marketMetadata.set("USDT", {
@@ -41,17 +40,10 @@ function buildWalletAssets(spotBalances) {
     price: 1,
   });
 
-  return Object.entries(spotBalances).map(([symbol, balance]) => {
-    const metadata = marketMetadata.get(symbol);
-
-    return {
-      coin: metadata?.coin ?? symbol.toLowerCase(),
-      symbol,
-      name: metadata?.name ?? symbol,
-      balance,
-      price: metadata?.price ?? 0,
-    };
-  });
+  return Array.from(marketMetadata.values()).map((metadata) => ({
+    ...metadata,
+    balance: spotBalances[metadata.symbol] ?? 0,
+  }));
 }
 
 function PublicWallet({ onLogin }) {
@@ -147,9 +139,37 @@ function LoggedInWallet({ onNavigate, walletBalances, transactions }) {
   const availableBalance = displayedBalance * 0.86;
   const inOrders = displayedBalance - availableBalance;
 
-  const visibleAssets = hideZeroBalance
-    ? assets.filter((asset) => asset.balance > 0)
-    : assets;
+  const visibleAssets = useMemo(() => {
+    let sourceAssets;
+
+    if (walletTab === "Spot") {
+      sourceAssets = assets;
+    } else if (walletTab === "Futures") {
+      sourceAssets = futuresAssets;
+    } else {
+      const combined = new Map();
+
+      [...assets, ...futuresAssets].forEach((asset) => {
+        const existing = combined.get(asset.symbol);
+
+        if (existing) {
+          existing.balance += asset.balance;
+        } else {
+          combined.set(asset.symbol, { ...asset });
+        }
+      });
+
+      sourceAssets = Array.from(combined.values());
+    }
+
+    const filteredAssets = hideZeroBalance
+      ? sourceAssets.filter((asset) => asset.balance > 0)
+      : sourceAssets;
+
+    return [...filteredAssets].sort(
+      (a, b) => (b.balance * b.price) - (a.balance * a.price)
+    );
+  }, [walletTab, assets, futuresAssets, hideZeroBalance]);
 
   const actions = [
     {
@@ -235,6 +255,7 @@ function LoggedInWallet({ onNavigate, walletBalances, transactions }) {
               })}
             </strong>
           </div>
+
         </div>
       </section>
 
