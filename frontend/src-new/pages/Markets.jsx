@@ -3,34 +3,32 @@ import CoinLogo from "../components/CoinLogo";
 import { useMemo, useState } from "react";
 
 import { markets, marketTabs } from "../data/marketData";
+import { getTotalCoins, getUniqueCoins } from "../utils/totalCoins";
 
 
 export default function Markets({ isLoggedIn }) {
   const [activeTab, setActiveTab] = useState("All");
   const [query, setQuery] = useState("");
   const [favorites, setFavorites] = useState(new Set());
+  const totalCoins = getTotalCoins(markets);
 
   const filteredMarkets = useMemo(() => {
     let result = markets;
 
     if (activeTab === "Favorites") {
       result = result.filter((market) => favorites.has(market.pair));
-    }
-
-    if (activeTab === "USDT") {
+    } else if (activeTab === "USDT") {
       result = result.filter((market) => market.pair.endsWith("/USDT"));
-    }
-
-    if (activeTab === "BTC") {
+    } else if (activeTab === "USDC") {
+      result = result.filter((market) => market.pair.endsWith("/USDC"));
+    } else if (activeTab === "BTC") {
       result = result.filter((market) => market.pair.startsWith("BTC/"));
-    }
-
-    if (activeTab === "ETH") {
+    } else if (activeTab === "ETH") {
       result = result.filter((market) => market.pair.startsWith("ETH/"));
-    }
-
-    if (activeTab === "SOL") {
+    } else if (activeTab === "SOL") {
       result = result.filter((market) => market.pair.startsWith("SOL/"));
+    } else {
+      result = getUniqueCoins(markets);
     }
 
     if (query.trim()) {
@@ -58,7 +56,7 @@ export default function Markets({ isLoggedIn }) {
       <div className="markets-heading">
         <div>
           <span className="markets-eyebrow">MARKETS</span>
-          <h1>Explore markets</h1>
+          <h1>Explore markets <span>Total Coins: {totalCoins}</span></h1>
           <p>Track demo prices, market ranges and 24-hour activity.</p>
         </div>
 

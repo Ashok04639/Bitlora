@@ -1,56 +1,8 @@
 import CoinLogo from "../components/CoinLogo";
 
-const markets = [
-  {
-    pair: "BTC/USDT",
-    name: "Bitcoin",
-    price: "66,842.10",
-    change: "+2.34%",
-    coinClass: "btc",
-  },
-  {
-    pair: "ETH/USDT",
-    name: "Ethereum",
-    price: "3,482.76",
-    change: "+1.87%",
-    coinClass: "eth",
-  },
-  {
-    pair: "SOL/USDT",
-    name: "Solana",
-    price: "184.52",
-    change: "+3.21%",
-    coinClass: "sol",
-  },
-  {
-    pair: "BNB/USDT",
-    name: "BNB",
-    price: "586.32",
-    change: "+1.42%",
-    coinClass: "bnb",
-  },
-  {
-    pair: "ICP/USDT",
-    name: "Internet Computer",
-    price: "4.92",
-    change: "+2.18%",
-    coinClass: "icp",
-  },
-  {
-    pair: "ADA/USDT",
-    name: "Cardano",
-    price: "0.842",
-    change: "+1.76%",
-    coinClass: "ada",
-  },
-  {
-    pair: "SHIB/USDT",
-    name: "Shiba Inu",
-    price: "0.000013",
-    change: "+3.08%",
-    coinClass: "shib",
-  },
-];
+import { markets } from "../data/marketData";
+import { getTotalCoins, getUniqueCoins } from "../utils/totalCoins";
+
 
 function login() {
   window.dispatchEvent(new CustomEvent("bitlora:login"));
@@ -61,6 +13,8 @@ function signUp() {
 }
 
 export default function Home({ onNavigate, isLoggedIn }) {
+  const totalCoins = getTotalCoins(markets);
+  const uniqueCoins = getUniqueCoins(markets);
   return (
     <section className="home home-mockup">
       <div className="home-mockup-hero">
@@ -118,7 +72,7 @@ export default function Home({ onNavigate, isLoggedIn }) {
 
       <div className="home-mockup-markets">
         <div className="home-mockup-section-head">
-          <h2>Top Markets</h2>
+          <h2>Top Markets <span>Total Coins: {totalCoins}</span></h2>
           <button
             type="button"
             onClick={() => onNavigate?.("Markets")}
@@ -128,7 +82,7 @@ export default function Home({ onNavigate, isLoggedIn }) {
         </div>
 
         <div className="home-mockup-market-list">
-          {markets.map((market) => (
+          {uniqueCoins.map((market) => (
             <div className="home-mockup-market-row" key={market.pair}>
               <div className="home-mockup-market-left">
                 <CoinLogo

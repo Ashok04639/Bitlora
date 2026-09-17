@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { markets } from "../data/marketData";
+import { getUniqueCoins, getTotalCoins } from "../utils/totalCoins";
 import {
   BarChart3,
   ChevronDown,
@@ -7,18 +9,8 @@ import {
   RefreshCw,
 } from "lucide-react";
 
-const pairs = [
-  "BTC/USDT",
-  "ETH/USDT",
-  "SOL/USDT",
-  "BNB/USDT",
-  "ICP/USDT",
-  "ADA/USDT",
-  "SHIB/USDT",
-  "XRP/USDT",
-  "DOGE/USDT",
-  "AVAX/USDT",
-];
+const pairs = getUniqueCoins(markets).map((market) => market.pair);
+
 
 const timeframes = ["1S", "1M", "5M", "15M", "30M", "1H", "4H", "1D", "1M"];
 

@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { markets } from "../data/marketData";
+import { getTotalCoins, getUniqueCoins } from "../utils/totalCoins";
 import {
   ChevronDown,
   CandlestickChart,
@@ -7,12 +9,6 @@ import {
   LockKeyhole,
 } from "lucide-react";
 
-const markets = [
-  { pair: "BTC/USDT", price: "66,842.10", change: "+2.34%" },
-  { pair: "ETH/USDT", price: "3,482.76", change: "+1.92%" },
-  { pair: "SOL/USDT", price: "184.52", change: "+4.16%" },
-  { pair: "BNB/USDT", price: "612.38", change: "+0.87%" },
-];
 
 const tabs = ["Positions", "Open Orders", "Order History"];
 const timeframes = ["1S", "1M", "5M", "15M", "30M", "1H", "4H", "1D", "1M"];
@@ -385,13 +381,14 @@ function FuturesOrderPanel({ market, pair, setPair, pairMenuOpen, setPairMenuOpe
 }
 
 export default function Futures({ onNavigate }) {
+  const futuresMarkets = getUniqueCoins(markets);
   const [pair, setPair] = useState("BTC/USDT");
   const [pairMenuOpen, setPairMenuOpen] = useState(false);
   const [chartOpen, setChartOpen] = useState(false);
   const [activeTab, setActiveTab] = useState("Positions");
 
   const market =
-    markets.find((item) => item.pair === pair) || markets[0];
+    futuresMarkets.find((item) => item.pair === pair) || futuresMarkets[0];
 
   return (
     <section className="futures-page">
@@ -437,7 +434,7 @@ export default function Futures({ onNavigate }) {
         setPair={setPair}
         pairMenuOpen={pairMenuOpen}
         setPairMenuOpen={setPairMenuOpen}
-        markets={markets}
+        markets={futuresMarkets}
         chartOpen={chartOpen}
         setChartOpen={setChartOpen}
       />
