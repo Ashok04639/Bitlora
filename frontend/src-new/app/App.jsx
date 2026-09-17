@@ -6,6 +6,10 @@ import Markets from "../pages/Markets";
 import Trade from "../pages/Trade";
 import Futures from "../pages/Futures";
 import Wallet from "../pages/Wallet";
+import Deposit from "../pages/Deposit";
+import Withdraw from "../pages/Withdraw";
+import Transfer from "../pages/Transfer";
+import History from "../pages/History";
 import AuthFlow from "../components/auth/AuthFlow";
 
 const pages = {
@@ -14,11 +18,90 @@ const pages = {
   Trade,
   Futures,
   Wallet,
+  Deposit,
+  Withdraw,
+  Transfer,
+  History,
 };
 
 export default function App() {
   const [activePage, setActivePage] = useState("Home");
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [walletBalances, setWalletBalances] = useState(() => {
+    try {
+      const saved = localStorage.getItem("bitlora:wallet-balances");
+      if (saved) return JSON.parse(saved);
+    } catch {
+      // Fall back to demo balances.
+    }
+
+    return {
+      "Spot Wallet": {
+        USDT: 4250,
+        BTC: 0.045,
+        ETH: 1.25,
+        SOL: 8.5,
+        BNB: 2.1,
+      },
+      "Futures Wallet": {},
+    };
+  });
+  const [transactions, setTransactions] = useState(() => {
+    try {
+      const saved = localStorage.getItem("bitlora:transactions");
+      if (saved) return JSON.parse(saved);
+    } catch {
+      // Fall back to demo transactions.
+    }
+
+    return [
+    {
+      type: "Deposit",
+      asset: "USDT",
+      amount: "+1,500.00",
+      status: "Completed",
+      date: "Today, 18:42",
+    },
+    {
+      type: "Trade",
+      asset: "BTC",
+      amount: "0.0100",
+      status: "Completed",
+      date: "Today, 16:20",
+    },
+    {
+      type: "Transfer",
+      asset: "USDT",
+      amount: "250.00",
+      status: "Completed",
+      date: "Yesterday, 12:08",
+    },
+    {
+      type: "Withdrawal",
+      asset: "ETH",
+      amount: "0.2500",
+      status: "Processing",
+      date: "Yesterday, 09:34",
+    },
+    ];
+  });
+
+  useEffect(() => {
+    localStorage.setItem(
+      "bitlora:wallet-balances",
+      JSON.stringify(walletBalances)
+    );
+  }, [walletBalances]);
+
+  useEffect(() => {
+    localStorage.setItem(
+      "bitlora:transactions",
+      JSON.stringify(transactions)
+    );
+  }, [transactions]);
+
+  const [isLoggedIn, setIsLoggedIn] = useState(() => {
+    return localStorage.getItem("bitlora:logged-in") === "true";
+  });
   const [showAuth, setShowAuth] = useState(false);
   const [authScreen, setAuthScreen] = useState("login");
 
@@ -131,6 +214,7 @@ export default function App() {
           initialScreen={authScreen}
           onBack={() => setShowAuth(false)}
           onAuthenticated={() => {
+            localStorage.setItem("bitlora:logged-in", "true");
             setIsLoggedIn(true);
             setShowAuth(false);
           }}
@@ -146,6 +230,7 @@ export default function App() {
         isLoggedIn={isLoggedIn}
         onLogin={() => setIsLoggedIn(true)}
         onLogout={() => {
+          localStorage.removeItem("bitlora:logged-in");
           setIsLoggedIn(false);
           setShowAuth(false);
           setActivePage("Home");
@@ -153,7 +238,14 @@ export default function App() {
       />
 
       <main className="page">
-        <Page isLoggedIn={isLoggedIn} onNavigate={setActivePage} />
+        <Page
+          isLoggedIn={isLoggedIn}
+          onNavigate={setActivePage}
+          walletBalances={walletBalances}
+          setWalletBalances={setWalletBalances}
+            transactions={transactions}
+            setTransactions={setTransactions}
+        />
       </main>
 
       <Footer
