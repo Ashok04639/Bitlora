@@ -175,8 +175,8 @@ const bids = [
   ["66,837.60", "0.4892"],
 ];
 
-function TradeSurface({ isLoggedIn }) {
-  const [pair, setPair] = useState("BTC/USDT");
+function TradeSurface({ isLoggedIn, selectedTradePair }) {
+  const [pair, setPair] = useState(selectedTradePair || "BTC/USDT");
   const [pairMenuOpen, setPairMenuOpen] = useState(false);
   const [timeframe, setTimeframe] = useState("1M");
 
@@ -839,18 +839,28 @@ function TradeSurface({ isLoggedIn }) {
   );
 }
 
-function PublicTrade() {
-  return <TradeSurface isLoggedIn={false} />;
+function PublicTrade({ selectedTradePair }) {
+  return (
+    <TradeSurface
+      isLoggedIn={false}
+      selectedTradePair={selectedTradePair}
+    />
+  );
 }
 
-function LoggedInTrade() {
-  return <TradeSurface isLoggedIn />;
+function LoggedInTrade({ selectedTradePair }) {
+  return (
+    <TradeSurface
+      isLoggedIn
+      selectedTradePair={selectedTradePair}
+    />
+  );
 }
 
-export default function Trade({ isLoggedIn }) {
+export default function Trade({ isLoggedIn, selectedTradePair }) {
   if (isLoggedIn) {
-    return <LoggedInTrade />;
+    return <LoggedInTrade selectedTradePair={selectedTradePair} />;
   }
 
-  return <PublicTrade />;
+  return <PublicTrade selectedTradePair={selectedTradePair} />;
 }

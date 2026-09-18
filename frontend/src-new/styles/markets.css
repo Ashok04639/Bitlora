@@ -222,6 +222,32 @@
   text-align: center;
 }
 
+.markets-pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 14px 16px;
+}
+
+.markets-page {
+  min-width: 30px;
+  height: 30px;
+  padding: 0 8px;
+  border: 1px solid var(--border);
+  border-radius: 7px;
+  background: transparent;
+  color: var(--text-secondary);
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.markets-page.active {
+  border-color: var(--accent);
+  background: var(--accent);
+  color: #ffffff;
+}
+
 @media (max-width: 760px) {
   .markets {
     gap: 22px;

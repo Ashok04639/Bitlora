@@ -26,6 +26,7 @@ const pages = {
 
 export default function App() {
   const [activePage, setActivePage] = useState("Home");
+  const [selectedTradePair, setSelectedTradePair] = useState("BTC/USDT");
   const [walletBalances, setWalletBalances] = useState(() => {
     try {
       const saved = localStorage.getItem("bitlora:wallet-balances");
@@ -278,6 +279,8 @@ export default function App() {
           walletBalances={walletBalances}
           setWalletBalances={setWalletBalances}
           todayPnl={todayPnl}
+            selectedTradePair={selectedTradePair}
+            setSelectedTradePair={setSelectedTradePair}
             transactions={transactions}
             setTransactions={setTransactions}
         />

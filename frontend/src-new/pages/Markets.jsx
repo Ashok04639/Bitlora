@@ -3,12 +3,13 @@ import CoinLogo from "../components/CoinLogo";
 import { useEffect, useMemo, useState } from "react";
 
 import { markets, marketTabs } from "../data/marketData";
-import { getTotalCoins, getUniqueCoins } from "../utils/totalCoins";
 
 
-function MarketsSurface() {
+
+function MarketsSurface({ onNavigate, setSelectedTradePair }) {
   const [activeTab, setActiveTab] = useState("All");
   const [query, setQuery] = useState("");
+  const [currentPage, setCurrentPage] = useState(1);
   const [favorites, setFavorites] = useState(() => {
     try {
       const saved = localStorage.getItem("bitlora-market-favorites");
@@ -17,7 +18,6 @@ function MarketsSurface() {
       return new Set();
     }
   });
-  const totalCoins = getTotalCoins(markets);
 
   useEffect(() => {
     localStorage.setItem(
@@ -42,7 +42,6 @@ function MarketsSurface() {
     } else if (activeTab === "SOL") {
       result = result.filter((market) => market.pair.startsWith("SOL/"));
     } else {
-      result = getUniqueCoins(markets);
     }
 
     if (query.trim()) {
@@ -55,6 +54,16 @@ function MarketsSurface() {
 
     return result;
   }, [activeTab, query, favorites]);
+
+  const totalPages = Math.ceil(filteredMarkets.length / 20);
+  const paginatedMarkets = filteredMarkets.slice(
+    (currentPage - 1) * 20,
+    currentPage * 20
+  );
+
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [activeTab, query]);
 
   const toggleFavorite = (pair) => {
     setFavorites((current) => {
@@ -129,11 +138,18 @@ function MarketsSurface() {
           </thead>
 
           <tbody>
-            {filteredMarkets.map((market) => {
+            {paginatedMarkets.map((market) => {
               const positive = market.change.startsWith("+");
 
               return (
-                <tr key={market.pair}>
+                <tr
+                    key={market.pair}
+                    onClick={(event) => {
+                      if (event.target.closest("button")) return;
+                      setSelectedTradePair(market.pair);
+                      onNavigate("Trade");
+                    }}
+                  >
                   <td>
                     <div className="market-name">
                       <button
@@ -177,25 +193,66 @@ function MarketsSurface() {
           </div>
         )}
       </div>
+
+      {totalPages > 1 && (
+        <div className="markets-pagination">
+          {Array.from({ length: totalPages }, (_, index) => index + 1).map(
+            (page) => (
+              <button
+                key={page}
+                type="button"
+                className={`markets-page${currentPage === page ? " active" : ""}`}
+                onClick={() => setCurrentPage(page)}
+              >
+                {page}
+              </button>
+            )
+          )}
+        </div>
+      )}
     </section>
 
 
   );
 }
 
-function PublicMarkets() {
-  return <MarketsSurface />;
+function PublicMarkets({ onNavigate, setSelectedTradePair }) {
+  return (
+    <MarketsSurface
+      onNavigate={onNavigate}
+      setSelectedTradePair={setSelectedTradePair}
+    />
+  );
 }
 
-function LoggedInMarkets() {
-  return <MarketsSurface />;
+function LoggedInMarkets({ onNavigate, setSelectedTradePair }) {
+  return (
+    <MarketsSurface
+      onNavigate={onNavigate}
+      setSelectedTradePair={setSelectedTradePair}
+    />
+  );
 }
 
-export default function Markets({ isLoggedIn }) {
+export default function Markets({
+  isLoggedIn,
+  onNavigate,
+  setSelectedTradePair,
+}) {
   if (isLoggedIn) {
-    return <LoggedInMarkets />;
+    return (
+      <LoggedInMarkets
+        onNavigate={onNavigate}
+        setSelectedTradePair={setSelectedTradePair}
+      />
+    );
   }
 
-  return <PublicMarkets />;
+  return (
+    <PublicMarkets
+      onNavigate={onNavigate}
+      setSelectedTradePair={setSelectedTradePair}
+    />
+  );
 }
 
