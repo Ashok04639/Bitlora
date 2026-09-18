@@ -1,3 +1,5 @@
+import logo from "../assets/bitlora-auth-logo-transparent.png";
+
 import {
   Bell,
   ChevronRight,
@@ -44,8 +46,11 @@ export default function Header({ onNavigate, activePage, isLoggedIn, onLogin, on
     <header className="header">
       <div className="header-inner">
         <button className="brand" type="button" onClick={goHome} aria-label="Bitlora home">
-          <span className="brand-mark" aria-hidden="true">B</span>
-          <span className="brand-name">BITLORA</span>
+          <img
+            src={logo}
+            alt="Bitlora"
+            className="brand-mark"
+          />
         </button>
 
         <div className="header-actions">
@@ -86,36 +91,56 @@ export default function Header({ onNavigate, activePage, isLoggedIn, onLogin, on
             </button>
           </div>
 
-            <div className="header-menu-list">
-              {[
-                {
-                  title: "ACCOUNT",
-                  items: [
-                    "Profile",
-                    "Log In / Log Out",
-                    "Payment / Withdrawal Settings",
-                    "Transaction History",
-                  ],
-                },
-                {
-                  title: "SECURITY",
-                  items: [
-                    "2FA Security",
-                    "Change Password",
-                    "Devices & Sessions",
-                  ],
-                },
-                {
-                  title: "PREFERENCES & MORE",
-                  items: [
-                    "Notifications",
-                    "Settings",
-                    "Referral",
-                    "Help & Support",
-                    "Terms / Privacy",
-                  ],
-                },
-              ].map((group) => (
+              <div className="header-menu-list">
+                {(isLoggedIn
+                  ? [
+                      {
+                        title: "ACCOUNT",
+                        items: [
+                          "Profile",
+                          "Log In / Log Out",
+                          "Payment / Withdrawal Settings",
+                          "Transaction History",
+                        ],
+                      },
+                      {
+                        title: "SECURITY",
+                        items: [
+                          "2FA Security",
+                          "Change Password",
+                          "Devices & Sessions",
+                        ],
+                      },
+                      {
+                        title: "PREFERENCES & MORE",
+                        items: [
+                          "Notifications",
+                          "Settings",
+                          "Referral",
+                          "Help & Support",
+                          "Terms / Privacy",
+                        ],
+                      },
+                    ]
+                  : [
+                      {
+                        title: "ACCOUNT",
+                        items: [
+                          "Log In / Log Out",
+                        ],
+                      },
+                      {
+                        title: "PREFERENCES & MORE",
+                        items: [
+                          "Notifications",
+                          "Settings",
+                          "Referral",
+                          "Help & Support",
+                          "Terms / Privacy",
+                        ],
+                      },
+                    ]
+                ).map((group) => (
                 <div className="header-menu-group" key={group.title}>
                   <span className="header-menu-group-title">{group.title}</span>
 
@@ -151,7 +176,7 @@ export default function Header({ onNavigate, activePage, isLoggedIn, onLogin, on
                         </span>
 
                         <span className="header-menu-item-label">
-                          {item.label}
+                          {item.label === "Log In / Log Out" ? (isLoggedIn ? "Log Out" : "Log In") : item.label}
                           {item.accountOnly && (
                             <small>Available after login</small>
                           )}

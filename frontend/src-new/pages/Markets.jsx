@@ -6,7 +6,7 @@ import { markets, marketTabs } from "../data/marketData";
 import { getTotalCoins, getUniqueCoins } from "../utils/totalCoins";
 
 
-export default function Markets({ isLoggedIn }) {
+function MarketsSurface() {
   const [activeTab, setActiveTab] = useState("All");
   const [query, setQuery] = useState("");
   const [favorites, setFavorites] = useState(new Set());
@@ -169,3 +169,20 @@ export default function Markets({ isLoggedIn }) {
 
   );
 }
+
+function PublicMarkets() {
+  return <MarketsSurface />;
+}
+
+function LoggedInMarkets() {
+  return <MarketsSurface />;
+}
+
+export default function Markets({ isLoggedIn }) {
+  if (isLoggedIn) {
+    return <LoggedInMarkets />;
+  }
+
+  return <PublicMarkets />;
+}
+

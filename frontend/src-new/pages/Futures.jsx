@@ -380,7 +380,7 @@ function FuturesOrderPanel({ market, pair, setPair, pairMenuOpen, setPairMenuOpe
   );
 }
 
-export default function Futures({ onNavigate }) {
+function FuturesSurface({ onNavigate }) {
   const futuresMarkets = getUniqueCoins(markets);
   const [pair, setPair] = useState("BTC/USDT");
   const [pairMenuOpen, setPairMenuOpen] = useState(false);
@@ -492,4 +492,20 @@ export default function Futures({ onNavigate }) {
       </section>
     </section>
   );
+}
+
+function PublicFutures({ onNavigate }) {
+  return <FuturesSurface onNavigate={onNavigate} />;
+}
+
+function LoggedInFutures({ onNavigate }) {
+  return <FuturesSurface onNavigate={onNavigate} />;
+}
+
+export default function Futures({ onNavigate, isLoggedIn }) {
+  if (isLoggedIn) {
+    return <LoggedInFutures onNavigate={onNavigate} />;
+  }
+
+  return <PublicFutures onNavigate={onNavigate} />;
 }

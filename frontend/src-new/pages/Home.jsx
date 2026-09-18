@@ -1,4 +1,6 @@
 import CoinLogo from "../components/CoinLogo";
+import logo from "../assets/bitlora-auth-logo-transparent.png";
+import bLogo from "../assets/bitlora-b-mark.png";
 
 import { markets } from "../data/marketData";
 import { getTotalCoins, getUniqueCoins } from "../utils/totalCoins";
@@ -12,53 +14,88 @@ function signUp() {
   window.dispatchEvent(new CustomEvent("bitlora:signup"));
 }
 
-export default function Home({ onNavigate, isLoggedIn }) {
-  const totalCoins = getTotalCoins(markets);
-  const uniqueCoins = getUniqueCoins(markets);
+function PublicHomeHero() {
   return (
-    <section className="home home-mockup">
-      <div className="home-mockup-hero">
-        <div className="home-mockup-art" aria-hidden="true">
+    <div className="home-mockup-hero">
+      <div className="home-mockup-hero-content">
+        <div className="home-mockup-hero-copy">
+          <h1>
+            Trade Smarter
+            <br />
+            <span>Grow Faster</span>
+          </h1>
+
+          <p>
+            Next Generation Crypto Exchange
+            <br />
+            <span>Secure · Fast · Global</span>
+          </p>
+        </div>
+
+        <div className="home-mockup-art home-mockup-public-art" style={{ transform: "translateX(20px) scale(0.85)" }} aria-hidden="true">
           <div className="home-mockup-glow" />
           <div className="home-mockup-orbit home-mockup-orbit-one" />
           <div className="home-mockup-orbit home-mockup-orbit-two" />
           <div className="home-mockup-core">
-            <span>B</span>
+            <img className="home-mockup-logo-crop" src={bLogo} alt="Bitlora B mark" />
           </div>
         </div>
-
-        <h1>
-          Trade Smarter
-          <br />
-          <span>Grow Faster</span>
-        </h1>
-
-        <p>
-          Next Generation Crypto Exchange
-          <br />
-          <span>Secure · Fast · Global</span>
-        </p>
-
-        {!isLoggedIn && (
-          <div className="home-mockup-auth">
-            <button
-              type="button"
-              className="home-mockup-login"
-              onClick={login}
-            >
-              Log In
-            </button>
-
-            <button
-              type="button"
-              className="home-mockup-signup"
-              onClick={signUp}
-            >
-              Sign Up
-            </button>
-          </div>
-        )}
       </div>
+
+      <div className="home-mockup-auth">
+        <button
+          type="button"
+          className="home-mockup-login"
+          onClick={login}
+        >
+          Log In
+        </button>
+
+        <button
+          type="button"
+          className="home-mockup-signup"
+          onClick={signUp}
+        >
+          Sign Up
+        </button>
+      </div>
+    </div>
+  );
+}
+
+function LoggedInHomeHero() {
+  return (
+    <div className="home-mockup-logged-in-hero">
+      <div className="home-mockup-art" aria-hidden="true">
+        <div className="home-mockup-glow" />
+        <div className="home-mockup-orbit home-mockup-orbit-one" />
+        <div className="home-mockup-orbit home-mockup-orbit-two" />
+        <div className="home-mockup-core">
+          <img src={logo} alt="Bitlora" />
+        </div>
+      </div>
+
+      <h1>
+        Trade Smarter
+        <br />
+        <span>Grow Faster</span>
+      </h1>
+
+      <p>
+        Next Generation Crypto Exchange
+        <br />
+        <span>Secure · Fast · Global</span>
+      </p>
+    </div>
+  );
+}
+
+function HomeSurface({ onNavigate, walletBalances, hero }) {
+  const totalCoins = getTotalCoins(markets);
+  const uniqueCoins = getUniqueCoins(markets);
+  return (
+    <section className="home home-mockup">
+      {hero}
 
       <div className="home-mockup-ticker" aria-label="Market ticker">
         {markets.slice(0, 3).map((market) => (
@@ -106,4 +143,35 @@ export default function Home({ onNavigate, isLoggedIn }) {
       </div>
     </section>
   );
+}
+
+function PublicHome({ onNavigate }) {
+  return (
+    <HomeSurface
+      onNavigate={onNavigate}
+      hero={<PublicHomeHero />}
+    />
+  );
+}
+
+function LoggedInHome({ onNavigate, walletBalances }) {
+  return (
+    <HomeSurface
+      onNavigate={onNavigate}
+      walletBalances={walletBalances}
+    />
+  );
+}
+
+export default function Home({ onNavigate, isLoggedIn, walletBalances }) {
+  if (isLoggedIn) {
+    return (
+      <LoggedInHome
+        onNavigate={onNavigate}
+        walletBalances={walletBalances}
+      />
+    );
+  }
+
+  return <PublicHome onNavigate={onNavigate} />;
 }

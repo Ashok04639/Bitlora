@@ -28,16 +28,10 @@
 }
 
 .brand-mark {
-  width: 38px;
-  height: 38px;
-  display: grid;
-  place-items: center;
-  border-radius: 11px;
-  background: linear-gradient(135deg, #2563eb, #7c3aed);
-  color: #fff;
-  font-size: 22px;
-  font-weight: 800;
-  box-shadow: 0 8px 24px rgba(37, 99, 235, 0.22);
+  width: 135px;
+  height: auto;
+  display: block;
+  object-fit: contain;
 }
 
 .brand-name {
@@ -250,10 +244,10 @@
   }
 
   .brand-mark {
-    width: 36px;
-    height: 36px;
-    border-radius: 10px;
-    font-size: 21px;
+    width: 155px;
+    height: auto;
+    display: block;
+    object-fit: contain;
   }
 
   .brand-name {

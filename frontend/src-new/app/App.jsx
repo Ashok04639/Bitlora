@@ -85,12 +85,43 @@ export default function App() {
     ];
   });
 
+  const [todayPnl, setTodayPnl] = useState(() => {
+    try {
+      const saved = localStorage.getItem("bitlora:today-pnl");
+      if (saved) return JSON.parse(saved);
+    } catch {
+      // Fall back to the initial demo P&L state.
+    }
+
+    return {
+      value: 128.45,
+      points: [
+        { time: "09:00", value: 42.18 },
+        { time: "10:00", value: 58.72 },
+        { time: "11:00", value: 51.34 },
+        { time: "12:00", value: 76.91 },
+        { time: "13:00", value: 69.45 },
+        { time: "14:00", value: 94.26 },
+        { time: "15:00", value: 82.73 },
+        { time: "16:00", value: 116.84 },
+        { time: "17:00", value: 128.45 },
+      ],
+    };
+  });
+
   useEffect(() => {
     localStorage.setItem(
       "bitlora:wallet-balances",
       JSON.stringify(walletBalances)
     );
   }, [walletBalances]);
+
+  useEffect(() => {
+    localStorage.setItem(
+      "bitlora:today-pnl",
+      JSON.stringify(todayPnl)
+    );
+  }, [todayPnl]);
 
   useEffect(() => {
     localStorage.setItem(
@@ -228,7 +259,10 @@ export default function App() {
       <Header
         onNavigate={setActivePage}
         isLoggedIn={isLoggedIn}
-        onLogin={() => setIsLoggedIn(true)}
+        onLogin={() => {
+          setAuthScreen("login");
+          setShowAuth(true);
+        }}
         onLogout={() => {
           localStorage.removeItem("bitlora:logged-in");
           setIsLoggedIn(false);
