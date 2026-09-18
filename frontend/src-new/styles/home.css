@@ -759,6 +759,16 @@
 }
 
 
+.home-mockup-authenticated {
+  gap: 10px;
+}
+.home-mockup-authenticated .wallet-action-bar {
+  margin-top: 0;
+}
+.home-mockup-authenticated .home-mockup-ticker {
+  margin-top: -8px;
+}
+
 /* BITLORA LOGGED OUT HOME MOCKUP REFERENCE */
 .home-mockup {
   width: 100%;
@@ -1168,7 +1178,7 @@
     margin: 0 auto;
 
     box-sizing: border-box;
-    padding: 0 12px 12px;
+    padding: 8px 12px 12px;
 
     border: 1px solid rgba(65, 113, 176, 0.46);
     border-radius: 16px;
@@ -1238,11 +1248,93 @@
       inset 0 1px 0 rgba(255, 255, 255, 0.12);
   }
 
+  /* ---------- LOGGED-IN HOME HERO ---------- */
+
+  .home-mockup-logged-in-hero {
+    min-height: 104px;
+    padding: 6px 4px;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 104px;
+    grid-template-rows: auto auto;
+    align-items: center;
+    column-gap: 8px;
+    box-sizing: border-box;
+  }
+
+  .home-mockup-logged-in-hero .home-mockup-art {
+    grid-column: 2;
+    grid-row: 1 / span 2;
+    width: 104px;
+    height: 88px;
+    margin: 0;
+    justify-self: end;
+    transform: translate(-27px, -20px);
+  }
+
+  .home-mockup-logged-in-hero .home-mockup-core {
+    width: 38.4px;
+    height: 38.4px;
+  }
+
+  .home-mockup-logged-in-hero .home-mockup-orbit {
+    width: 104px;
+    height: 45.5px;
+  }
+
+  .home-mockup-logged-in-hero .home-mockup-orbit-two {
+    width: 93.6px;
+    height: 40.3px;
+  }
+
+  .home-mockup-logged-in-hero .home-mockup-core img {
+    position: relative;
+    z-index: 3;
+    display: block;
+    width: 39px;
+    height: 43.29px;
+    object-fit: contain;
+    object-position: center;
+    filter:
+      drop-shadow(0 5px 8px rgba(6, 43, 105, .5))
+      drop-shadow(0 0 13px rgba(35, 151, 255, .55))
+      drop-shadow(0 0 22px rgba(105, 68, 255, .35));
+  }
+
+  .home-mockup-logged-in-hero h1 {
+    grid-column: 1;
+    grid-row: 1;
+    margin: 0;
+    font-size: clamp(21px, 5.8vw, 26px);
+    line-height: 1.02;
+    font-weight: 850;
+    letter-spacing: -.045em;
+  }
+
+  .home-mockup-logged-in-hero h1 span {
+    background: linear-gradient(100deg, #36a8ff 0%, #6574ff 48%, #b347ff 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .home-mockup-logged-in-hero p {
+    grid-column: 1;
+    grid-row: 2;
+    margin: 5px 0 0;
+    color: #a9bfdc;
+    font-size: 8px;
+    line-height: 1.4;
+  }
+
+  .home-mockup-logged-in-hero p span {
+    color: #7186a5;
+  }
+
   /* ---------- TICKER ---------- */
 
   .home-mockup-ticker {
     gap: 7px;
-    padding-top: 13px;
+    padding-top: -7px;
   }
 
   .home-mockup-ticker-card {
