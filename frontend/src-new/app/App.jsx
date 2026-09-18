@@ -277,6 +277,7 @@ export default function App() {
           onNavigate={setActivePage}
           walletBalances={walletBalances}
           setWalletBalances={setWalletBalances}
+          todayPnl={todayPnl}
             transactions={transactions}
             setTransactions={setTransactions}
         />

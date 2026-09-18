@@ -110,6 +110,16 @@ export const markets = [
     volume: "612.45M",
   },
   {
+    pair: "BTC/ETH",
+    name: "Bitcoin",
+    coinClass: "btc",
+    price: 19.20,
+    change: "+1.42%",
+    high: 19.48,
+    low: 18.76,
+    volume: "42.18M",
+  },
+  {
     pair: "ETH/USDC",
     name: "Ethereum",
     coinClass: "eth",

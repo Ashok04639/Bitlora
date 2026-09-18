@@ -1,6 +1,6 @@
 import { Search, Star } from "lucide-react";
 import CoinLogo from "../components/CoinLogo";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 
 import { markets, marketTabs } from "../data/marketData";
 import { getTotalCoins, getUniqueCoins } from "../utils/totalCoins";
@@ -9,8 +9,22 @@ import { getTotalCoins, getUniqueCoins } from "../utils/totalCoins";
 function MarketsSurface() {
   const [activeTab, setActiveTab] = useState("All");
   const [query, setQuery] = useState("");
-  const [favorites, setFavorites] = useState(new Set());
+  const [favorites, setFavorites] = useState(() => {
+    try {
+      const saved = localStorage.getItem("bitlora-market-favorites");
+      return saved ? new Set(JSON.parse(saved)) : new Set();
+    } catch {
+      return new Set();
+    }
+  });
   const totalCoins = getTotalCoins(markets);
+
+  useEffect(() => {
+    localStorage.setItem(
+      "bitlora-market-favorites",
+      JSON.stringify([...favorites])
+    );
+  }, [favorites]);
 
   const filteredMarkets = useMemo(() => {
     let result = markets;
@@ -56,8 +70,7 @@ function MarketsSurface() {
       <div className="markets-heading">
         <div>
           <span className="markets-eyebrow">MARKETS</span>
-          <h1>Explore markets <span>Total Coins: {totalCoins}</span></h1>
-          <p>Track demo prices, market ranges and 24-hour activity.</p>
+          <h1>Live Crypto Prices &amp; 24 Hours Market Activity</h1>
         </div>
 
         <span className="markets-demo-badge">DEMO DATA</span>
