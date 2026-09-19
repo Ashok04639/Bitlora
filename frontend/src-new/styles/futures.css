@@ -906,6 +906,137 @@
   color: #e6efff;
 }
 
+.futures-position-list {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.futures-position-grid {
+  display: grid;
+  grid-template-columns:
+    minmax(110px, 1.2fr)
+    minmax(70px, 0.7fr)
+    minmax(120px, 1fr)
+    minmax(110px, 1fr)
+    minmax(110px, 1fr)
+    minmax(80px, 0.7fr)
+    minmax(120px, 1fr)
+    minmax(120px, 1fr)
+    minmax(190px, 1.4fr);
+  min-width: 1130px;
+  gap: 12px;
+  align-items: center;
+}
+
+.futures-position-table-head {
+  min-height: 38px;
+  padding: 0 16px;
+  border-bottom: 1px solid rgba(43, 57, 76, 0.8);
+  background: rgba(7, 12, 20, 0.5);
+  color: var(--text-muted);
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.futures-position-rows {
+  width: 100%;
+}
+
+.futures-position-row {
+  min-height: 58px;
+  padding: 9px 16px;
+  border-bottom: 1px solid rgba(43, 57, 76, 0.52);
+  color: var(--text-secondary);
+  font-size: 11px;
+}
+
+.futures-position-row:last-child {
+  border-bottom: 0;
+}
+
+.futures-position-row strong {
+  color: var(--text-primary);
+  font-size: 12px;
+}
+
+.futures-position-side {
+  font-weight: 700;
+}
+
+.futures-position-side.long {
+  color: #22c55e;
+}
+
+.futures-position-side.short {
+  color: #ef4444;
+}
+
+.futures-position-pnl {
+  font-weight: 700;
+}
+
+.futures-position-pnl.gain {
+  color: #22c55e;
+}
+
+.futures-position-pnl.loss {
+  color: #ef4444;
+}
+
+.futures-position-action {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.futures-position-reduce-input {
+  width: 66px;
+  min-width: 66px;
+  height: 30px;
+  padding: 0 7px;
+  border: 1px solid rgba(71, 85, 105, 0.52);
+  border-radius: 7px;
+  background: rgba(8, 13, 25, 0.78);
+  color: var(--text-primary);
+  font-size: 10px;
+  outline: none;
+}
+
+.futures-position-reduce-input:focus {
+  border-color: rgba(96, 165, 250, 0.62);
+}
+
+.futures-position-reduce {
+  min-height: 30px;
+  padding: 0 9px;
+  border: 1px solid rgba(59, 130, 246, 0.36);
+  border-radius: 7px;
+  background: rgba(30, 64, 175, 0.16);
+  color: #bfdbfe;
+  font-size: 10px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.futures-position-reduce:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.futures-position-close {
+  min-height: 30px;
+  padding: 0 11px;
+  border: 1px solid rgba(239, 68, 68, 0.36);
+  border-radius: 7px;
+  background: rgba(127, 29, 29, 0.16);
+  color: #fca5a5;
+  font-size: 10px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
 .futures-empty-state {
   display: flex;
   min-height: 210px;
@@ -1214,8 +1345,8 @@
 
 /* Explicitly keep the two Trade-style panels equal in height */
 .futures-page .futures-order-panel,
-.futures-page .futures-order-book {
-  min-height: 390px;
+.futures-page .futures-orderbook-panel {
+  min-height: clamp(360px, 46vh, 440px);
 }
 
 /* ---------- ORDER PANEL ---------- */
@@ -1574,7 +1705,7 @@
     min-width: 0 !important;
     width: 100%;
     max-width: 100%;
-    min-height: 0 !important;
+    min-height: clamp(360px, 46vh, 440px) !important;
     height: auto !important;
     overflow: visible;
     padding: 11px !important;

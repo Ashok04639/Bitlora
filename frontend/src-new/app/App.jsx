@@ -108,6 +108,28 @@ export default function App() {
     return [];
   });
 
+  const [futuresPositions, setFuturesPositions] = useState(() => {
+    try {
+      const saved = localStorage.getItem("bitlora:futures-positions");
+      if (saved) return JSON.parse(saved);
+    } catch {
+      // Fall back to an empty futures position store.
+    }
+
+    return [];
+  });
+
+  const [futuresOrders, setFuturesOrders] = useState(() => {
+    try {
+      const saved = localStorage.getItem("bitlora:futures-orders");
+      if (saved) return JSON.parse(saved);
+    } catch {
+      // Fall back to an empty futures order store.
+    }
+
+    return [];
+  });
+
   const [todayPnl, setTodayPnl] = useState(() => {
     try {
       const saved = localStorage.getItem("bitlora:today-pnl");
@@ -166,6 +188,20 @@ export default function App() {
       JSON.stringify(tradeFills)
     );
   }, [tradeFills]);
+
+  useEffect(() => {
+    localStorage.setItem(
+      "bitlora:futures-positions",
+      JSON.stringify(futuresPositions)
+    );
+  }, [futuresPositions]);
+
+  useEffect(() => {
+    localStorage.setItem(
+      "bitlora:futures-orders",
+      JSON.stringify(futuresOrders)
+    );
+  }, [futuresOrders]);
 
   const [isLoggedIn, setIsLoggedIn] = useState(() => {
     return localStorage.getItem("bitlora:logged-in") === "true";
@@ -253,6 +289,10 @@ export default function App() {
             setTradeOrders={setTradeOrders}
             tradeFills={tradeFills}
             setTradeFills={setTradeFills}
+            futuresPositions={futuresPositions}
+            setFuturesPositions={setFuturesPositions}
+            futuresOrders={futuresOrders}
+            setFuturesOrders={setFuturesOrders}
         />
       </main>
 
