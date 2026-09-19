@@ -9,6 +9,7 @@ import logo from "../assets/bitlora-auth-logo-transparent.png";
 import bLogo from "../assets/bitlora-b-mark.png";
 
 import { markets } from "../data/marketData";
+import { calculateWalletValuation } from "../utils/walletValuation";
 import { getTotalCoins, getUniqueCoins } from "../utils/totalCoins";
 
 
@@ -100,7 +101,7 @@ function LoggedInHomeHero() {
   );
 }
 
-function HomeSurface({ onNavigate, walletBalances, balanceCard, hero, walletActions = false }) {
+function HomeSurface({ onNavigate, setSelectedTradePair, walletBalances, balanceCard, hero, walletActions = false }) {
   const totalCoins = getTotalCoins(markets);
   const uniqueCoins = getUniqueCoins(markets);
   return (
@@ -179,7 +180,14 @@ function HomeSurface({ onNavigate, walletBalances, balanceCard, hero, walletActi
 
         <div className="home-mockup-market-list">
           {uniqueCoins.map((market) => (
-            <div className="home-mockup-market-row" key={market.pair}>
+            <div
+              className="home-mockup-market-row"
+              key={market.pair}
+              onClick={() => {
+                setSelectedTradePair(market.pair);
+                onNavigate("Trade");
+              }}
+            >
               <div className="home-mockup-market-left">
                 <CoinLogo
                   coin={market.coinClass}
@@ -204,45 +212,30 @@ function HomeSurface({ onNavigate, walletBalances, balanceCard, hero, walletActi
   );
 }
 
-function PublicHome({ onNavigate }) {
+function PublicHome({ onNavigate, setSelectedTradePair }) {
   return (
     <HomeSurface
       onNavigate={onNavigate}
+      setSelectedTradePair={setSelectedTradePair}
       hero={<PublicHomeHero />}
     />
   );
 }
 
-function LoggedInHome({ onNavigate, walletBalances, todayPnl }) {
-  const walletAssets = getUniqueCoins(markets).map((market) => ({
-    symbol: market.pair.split("/")[0],
-    price: market.price,
-  }));
-
-  walletAssets.push(
-    { symbol: "USDT", price: 1 },
-    { symbol: "USDC", price: 1 }
-  );
-
-  const totalBalance = ["Spot Wallet", "Futures Wallet"].reduce(
-    (walletTotal, walletName) => {
-      const balances = walletBalances?.[walletName] ?? {};
-
-      return (
-        walletTotal +
-        walletAssets.reduce(
-          (total, asset) =>
-            total + (balances[asset.symbol] ?? 0) * asset.price,
-          0
-        )
-      );
-    },
-    0
-  );
+function LoggedInHome({
+  onNavigate,
+  setSelectedTradePair,
+  walletBalances,
+  tradeOrders,
+  todayPnl,
+}) {
+  const { totalBalance } =
+    calculateWalletValuation(walletBalances, tradeOrders);
 
   return (
     <HomeSurface
       onNavigate={onNavigate}
+      setSelectedTradePair={setSelectedTradePair}
       walletBalances={walletBalances}
       walletActions
       hero={<LoggedInHomeHero />}
@@ -265,16 +258,25 @@ function LoggedInHome({ onNavigate, walletBalances, todayPnl }) {
   );
 }
 
-export default function Home({ onNavigate, isLoggedIn, walletBalances, todayPnl }) {
+export default function Home({
+  onNavigate,
+  isLoggedIn,
+  setSelectedTradePair,
+  walletBalances,
+  tradeOrders,
+  todayPnl,
+}) {
   if (isLoggedIn) {
     return (
       <LoggedInHome
         onNavigate={onNavigate}
+        setSelectedTradePair={setSelectedTradePair}
         walletBalances={walletBalances}
+        tradeOrders={tradeOrders}
         todayPnl={todayPnl}
       />
     );
   }
 
-  return <PublicHome onNavigate={onNavigate} />;
+  return <PublicHome onNavigate={onNavigate} setSelectedTradePair={setSelectedTradePair} />;
 }

@@ -8,43 +8,8 @@ import {
   WalletCards,
 } from "lucide-react";
 import CoinLogo from "../components/CoinLogo";
-import { markets } from "../data/marketData";
-import { getUniqueCoins } from "../utils/totalCoins";
+import { calculateWalletValuation } from "../utils/walletValuation";
 import "./../styles/wallet.css";
-
-function buildWalletAssets(spotBalances) {
-  const marketMetadata = new Map();
-
-  getUniqueCoins(markets).forEach((market) => {
-    const symbol = market.pair.split("/")[0];
-
-    marketMetadata.set(symbol, {
-      coin: market.coinClass,
-      symbol,
-      name: market.name,
-      price: market.price,
-    });
-  });
-
-  marketMetadata.set("USDT", {
-    coin: "usdt",
-    symbol: "USDT",
-    name: "Tether",
-    price: 1,
-  });
-
-  marketMetadata.set("USDC", {
-    coin: "usdc",
-    symbol: "USDC",
-    name: "USD Coin",
-    price: 1,
-  });
-
-  return Array.from(marketMetadata.values()).map((metadata) => ({
-    ...metadata,
-    balance: spotBalances[metadata.symbol] ?? 0,
-  }));
-}
 
 function PublicWallet({ onLogin }) {
   return (
@@ -99,45 +64,47 @@ function PublicWallet({ onLogin }) {
   );
 }
 
-function LoggedInWallet({ onNavigate, walletBalances, transactions }) {
+function LoggedInWallet({
+  onNavigate,
+  walletBalances,
+  transactions,
+  tradeOrders,
+}) {
   const [hideZeroBalance, setHideZeroBalance] = useState(false);
   const [walletTab, setWalletTab] = useState("Overview");
 
-  const assets = useMemo(
-    () => buildWalletAssets(walletBalances?.["Spot Wallet"] ?? {}),
-    [walletBalances]
+  const walletValuation = useMemo(
+    () => calculateWalletValuation(walletBalances, tradeOrders),
+    [walletBalances, tradeOrders]
   );
 
-  const spotBalance = useMemo(
-    () => assets.reduce((total, asset) => total + asset.balance * asset.price, 0),
-    [assets]
-  );
-
-  const futuresAssets = useMemo(
-    () => buildWalletAssets(walletBalances?.["Futures Wallet"] ?? {}),
-    [walletBalances]
-  );
-
-  const futuresBalance = useMemo(
-    () =>
-      futuresAssets.reduce(
-        (total, asset) => total + asset.balance * asset.price,
-        0
-      ),
-    [futuresAssets]
-  );
-
-  const totalBalance = spotBalance + futuresBalance;
+  const {
+    spotAssets: assets,
+    futuresAssets,
+    spotAvailableBalance: spotBalance,
+    spotInOrders,
+    spotTotalBalance,
+    futuresBalance,
+    totalAvailableBalance,
+    totalBalance,
+  } = walletValuation;
 
   const displayedBalance =
     walletTab === "Spot"
-      ? spotBalance
+      ? spotTotalBalance
       : walletTab === "Futures"
         ? futuresBalance
         : totalBalance;
 
-  const availableBalance = displayedBalance * 0.86;
-  const inOrders = displayedBalance - availableBalance;
+  const availableBalance =
+    walletTab === "Spot"
+      ? spotBalance
+      : walletTab === "Futures"
+        ? futuresBalance
+        : totalAvailableBalance;
+
+  const inOrders =
+    walletTab === "Futures" ? 0 : spotInOrders;
 
   const visibleAssets = useMemo(() => {
     let sourceAssets;
@@ -355,7 +322,13 @@ function LoggedInWallet({ onNavigate, walletBalances, transactions }) {
   );
 }
 
-export default function Wallet({ isLoggedIn, onNavigate, walletBalances, transactions }) {
+export default function Wallet({
+  isLoggedIn,
+  onNavigate,
+  walletBalances,
+  transactions,
+  tradeOrders,
+}) {
   const handleLogin = () => {
     window.dispatchEvent(new CustomEvent("bitlora:login"));
   };
@@ -364,5 +337,12 @@ export default function Wallet({ isLoggedIn, onNavigate, walletBalances, transac
     return <PublicWallet onLogin={handleLogin} />;
   }
 
-  return <LoggedInWallet onNavigate={onNavigate} walletBalances={walletBalances} transactions={transactions} />;
+  return (
+    <LoggedInWallet
+      onNavigate={onNavigate}
+      walletBalances={walletBalances}
+      transactions={transactions}
+      tradeOrders={tradeOrders}
+    />
+  );
 }
